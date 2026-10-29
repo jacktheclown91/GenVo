@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "subject": "shell",
+  "seed": "GENVO8-TEST-A",
+  "comparison": {
+    "timings": [
+      {
+        "label": "native32",
+        "medianMs": 8.599999994039536,
+        "p90Ms": 26,
+        "samples": 10
+      },
+      {
+        "label": "before64",
+        "medianMs": 8.299999997019768,
+        "p90Ms": 22,
+        "samples": 10
+      },
+      {
+        "label": "current64",
+        "medianMs": 8.799999997019768,
+        "p90Ms": 26.700000002980232,
+        "samples": 10
+      },
+      {
+        "label": "closeup128",
+        "medianMs": 8.399999998509884,
+        "p90Ms": 26.5,
+        "samples": 10
+      }
+    ],
+    "stateExact": true,
+    "plan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "dome-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/dorsal",
+          "partId": "shell-back",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "dorsal"
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-c36842cb"
+    },
+    "parts": [
+      "dome-torso",
+      "shell-back",
+      "simple-eye",
+      "simple-eye",
+      "sturdy-leg",
+      "sturdy-leg",
+      "sturdy-leg",
+      "sturdy-leg",
+      "grazing-mouth"
+    ],
+    "position": {
+      "x": 54.5,
+      "y": 2.5
+    },
+    "decodedRgbaBytesPerVariant": 1048576
+  },
+  "movement": {
+    "distance": 1.989363378069065,
+    "start": {
+      "x": 54.5,
+      "y": 2.5
+    },
+    "end": {
+      "x": 52.510636621930935,
+      "y": 2.5
+    },
+    "tick": 25
+  },
+  "errors": [],
+  "scope": "Public recorded sandbox-founder import; real supported anatomy and ordinary keyboard movement in a new planetary world. Same paused world/camera across native32/prior64/refined64/128 art. No living actor, food, position or weather injection. 128 capture uses the same gameplay footprint; Lab closeups are separate.",
+  "creatorAcceptance": false
+}

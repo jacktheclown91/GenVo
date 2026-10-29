@@ -7,11 +7,13 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 let playwright;try{playwright=require('playwright')}catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));}
 const root=process.cwd(),out=path.join(root,'assets/art/production-candidate-v1');
-const previous=JSON.parse(fs.readFileSync('assets/art/experiments/resolution-v1/catalog.json','utf8'));
-const painted=new Set(['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
+const refinement=process.argv.includes('--refine-coverings');
+const previous=JSON.parse(fs.readFileSync(refinement?path.join(out,'catalog.json'):'assets/art/experiments/resolution-v1/catalog.json','utf8'));
+const painted=new Set(refinement?['fur-mantle','feather-mantle','shell-back']:['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
 const catalog={schema:'genvo.part-art-variants/1',version:1,status:'production-candidate-creator-review',
   native32Fallback:true,author:'Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.',
   generation:'Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.',parts:[]};
+if(refinement)Object.assign(catalog,{...previous,version:2,parts:[],refinement:'Three single-view covering masters, explicit fixed registration; preceding masters retained.'});
 const server=http.createServer((req,res)=>{
  const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));
  if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
@@ -21,13 +23,15 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{
  browser=await playwright.chromium.launch();const page=await browser.newPage();
  await page.goto('http://127.0.0.1:'+server.address().port+'/tools/art-resolution/index.html');
- const results=await page.evaluate(async()=>{
+ const results=await page.evaluate(async({ids,refinement})=>{
   const {compileIndexedPart}=await import('/src/render/indexed-part-art.js');
   const results=[];
-  for(const id of ['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']){
+  for(const id of ids){
    const source=await (await fetch('/assets/art/parts/'+id+'.indexed.json')).json();
    const masterId=id.endsWith('-leg')?'walking-leg':id;
-   const response=await fetch('/assets/art/production-candidate-v1/source/'+masterId+'-master.png');
+   const masterPath=(refinement?'refinement-v2/':'')+masterId+'-master.png';
+   const response=await fetch('/assets/art/production-candidate-v1/source/'+masterPath);
+   if(!response.ok)throw Error('Missing master '+masterPath);
    const image=await createImageBitmap(await response.blob());
    const cell=image.width/4;
    const reference=document.createElement('canvas');reference.width=image.width;reference.height=image.height;
@@ -38,7 +42,7 @@ try{
     for(let y=Math.floor(y0);y<Math.floor(y1);y++)for(let x=0;x<image.width;x++)if(pixels[(y*image.width+x)*4+3]>=80){x0=Math.min(x0,x);x1=Math.max(x1,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
     if(x1<0)throw Error('Empty source tissue');return[x0,top,x1-x0+1,bottom-top+1];
    };
-   const allBounds=id==='head-base'?bounds(0,image.height):null;
+   const allBounds=id==='head-base'||refinement?bounds(0,image.height):null;
    const upperBounds=id.endsWith('-leg')?bounds(0,image.height/2):null;
    const lowerBounds=id.endsWith('-leg')?bounds(image.height/2,image.height):null;
    if(image.width!==image.height)throw Error('Master is not square');
@@ -60,6 +64,9 @@ try{
       c.translate(resolution/2,resolution/2);c.rotate(facing*Math.PI/4);
       if(id==='head-base'){
        const [w,h]=source.rig.bodyBoundsPx;c.drawImage(image,...allBounds,-w*ratio/2,-h*ratio/2,w*ratio,h*ratio);
+      }else if(refinement){
+       const size=26*ratio,max=Math.max(allBounds[2],allBounds[3]),w=size*allBounds[2]/max,h=size*allBounds[3]/max;
+       c.drawImage(image,...allBounds,-w/2,-h/2,w,h);
       }else{
        const side=26*ratio;c.drawImage(image,0,0,cell,cell,-side/2,-side/2,side,side);
       }
@@ -84,18 +91,19 @@ try{
     }
     const scaleRig=v=>Array.isArray(v)?v.map(scaleRig):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaleRig(x)])):typeof v==='number'?v*ratio:v;
     const asset=await compileIndexedPart({...(source.rig?{rig:scaleRig(source.rig)}:{}),partId:id,version:2,width:resolution,height:resolution,displayScale:(source.displayScale??1)/ratio,rootAnchorPx:source.rootAnchorPx.map(v=>v*ratio),regions,frames});
-    results.push({id,resolution,asset,png:atlas.toDataURL('image/png'),masterId,masterWidth:image.width,sourceChecksum:source.checksum});
+    results.push({id,resolution,asset,png:atlas.toDataURL('image/png'),masterId,masterPath,masterWidth:image.width,sourceChecksum:source.checksum});
    }
    image.close();
   }
   return results;
- });
+ },{ids:[...painted],refinement});
  for(const entry of previous.parts){
+  if(refinement&&!painted.has(entry.partId)){catalog.parts.push(entry);continue;}
   const {partId,resolution}=entry,file=partId+'-'+resolution+'.indexed.json.gz';let bytes,checksum,kind,master;
   if(painted.has(partId)){
    const r=results.find(r=>r.id===partId&&r.resolution===resolution);bytes=gzipSync(JSON.stringify(r.asset),{level:9});checksum=r.asset.checksum;kind='imagegen-indexed';
    fs.writeFileSync(path.join(out,partId+'-'+resolution+'.png'),Buffer.from(r.png.split(',')[1],'base64'));
-   master={path:'./source/'+r.masterId+'-master.png',sha256:createHash('sha256').update(fs.readFileSync(path.join(out,'source',r.masterId+'-master.png'))).digest('hex'),width:r.masterWidth,registration:partId.endsWith('-leg')?'Two registered tissue rows, canonical bone anchors preserved':partId==='head-base'?'Single canonical north surface, registered to existing head bounds':'Canonical north atlas cell zero, registered to existing dorsal pivot'};
+   master={path:'./source/'+r.masterPath,sha256:createHash('sha256').update(fs.readFileSync(path.join(out,'source',r.masterPath))).digest('hex'),width:r.masterWidth,registration:refinement?'Single north-view tissue, alpha bounds registered once with preserved aspect ratio':partId.endsWith('-leg')?'Two registered tissue rows, canonical bone anchors preserved':partId==='head-base'?'Single canonical north surface, registered to existing head bounds':'Canonical north atlas cell zero, registered to existing dorsal pivot'};
   }else{
    bytes=fs.readFileSync(path.join(root,'assets/art/experiments/resolution-v1',entry.path));checksum=entry.checksum;kind='code-authored-indexed';
    fs.copyFileSync(path.join(root,'assets/art/experiments/resolution-v1',partId+'-'+resolution+'.png'),path.join(out,partId+'-'+resolution+'.png'));
@@ -104,5 +112,5 @@ try{
   catalog.parts.push({partId,resolution,path:'./'+file,checksum,bytes:bytes.length,decodedRgbaBytes:resolution*resolution*16*4,sourceChecksum:entry.sourceChecksum,kind,...(master?{master}:{}),coordinatePolicy:'Existing 32-unit pivot, registered physical display scale; no world-size change.'});
  }
  fs.writeFileSync(path.join(out,'catalog.json'),JSON.stringify(catalog,null,2)+'\n');
- console.log('Compiled production candidate: '+catalog.parts.length+' modular variants; 7 imagegen-derived modular parts × 2 native resolutions; 32px untouched.');
+ console.log('Compiled production candidate: '+catalog.parts.length+' modular variants; registered imagegen-derived modular parts × 2 native resolutions; 32px untouched.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}

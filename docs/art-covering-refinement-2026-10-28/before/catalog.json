@@ -1,0 +1,113 @@
+{
+  "schema": "genvo.part-art-variants/1",
+  "version": 1,
+  "status": "production-candidate-creator-review",
+  "native32Fallback": true,
+  "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
+  "generation": "Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.",
+  "parts": [
+    {
+      "partId": "fur-mantle",
+      "resolution": 64,
+      "path": "./fur-mantle-64.indexed.json.gz",
+      "checksum": "00637d24067f8ec7793fe25de01769d66388b7e8e3b30065c6cd6f8a40f6a3d7",
+      "bytes": 8099,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/fur-mantle-master.png",
+        "sha256": "502f5428cc938a0430d8efb3b18bd94836b5fd7508c1d2d0fa12c02bb97742a5",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 64,
+      "path": "./feather-mantle-64.indexed.json.gz",
+      "checksum": "45c1fe15d093ffe5870eb1d1d71ea968ca654f1af2ec5b842712a6b7ef23afbf",
+      "bytes": 8061,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/feather-mantle-master.png",
+        "sha256": "31f9c126a161eddd7bcad75988ec19e45707dc799f0b04aeaa2b86c4d7347568",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 64,
+      "path": "./shell-back-64.indexed.json.gz",
+      "checksum": "b17928ddc5f448c2bec19e86734612462a3f03eebc7f2b60b4ec90cc6eb438e1",
+      "bytes": 8286,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/shell-back-master.png",
+        "sha256": "dcd82a9ed32fac2c631430b9529211f2006040362fdeefe956c6136000f3c81b",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "fur-mantle",
+      "resolution": 128,
+      "path": "./fur-mantle-128.indexed.json.gz",
+      "checksum": "a158d668eb974d7e3a22c1777aaee8ddb88f70dccf1ab16912edf9bc815fe5b0",
+      "bytes": 38993,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/fur-mantle-master.png",
+        "sha256": "502f5428cc938a0430d8efb3b18bd94836b5fd7508c1d2d0fa12c02bb97742a5",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 128,
+      "path": "./feather-mantle-128.indexed.json.gz",
+      "checksum": "e206010fe01e19a79902f9c5a1a376a11bedf3b23d76f548e78aa7f160b11399",
+      "bytes": 38285,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/feather-mantle-master.png",
+        "sha256": "31f9c126a161eddd7bcad75988ec19e45707dc799f0b04aeaa2b86c4d7347568",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 128,
+      "path": "./shell-back-128.indexed.json.gz",
+      "checksum": "75a737b92cd754a9eb1db5c1f062343e1c67b2b10a683c01940a52743edef08f",
+      "bytes": 41849,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/shell-back-master.png",
+        "sha256": "dcd82a9ed32fac2c631430b9529211f2006040362fdeefe956c6136000f3c81b",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    }
+  ],
+  "scope": "Frozen pre-refinement covering variants from 92c71a2b; runtime loader comparison only. Original masters remain at assets/art/production-candidate-v1/source."
+}
