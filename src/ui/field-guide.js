@@ -31,6 +31,41 @@ export class FieldGuide{
     for(const animal of D.observedBodies||[]){if(seen.has(animal.bodyPlan.id))continue;seen.add(animal.bodyPlan.id);list.push({id:animal.bodyPlan.id,key:'observed:'+animal.bodyPlan.id,name:animal.name,animal,known:true,protection:plateProtectionReading(animal)})}
     return list;
   }
+  // Live observations must not reset keyboard focus or a long specimen's scroll.
+  captureView(){
+    const body=this.el.querySelector('.fg-body');
+    const active=this.el.contains(document.activeElement)?document.activeElement:null;
+    let focus=null;
+    if(active?.hasAttribute('data-page'))focus={kind:'page',value:active.dataset.page};
+    else if(active?.hasAttribute('data-specimen-turn'))focus={kind:'turn',value:active.dataset.specimenTurn};
+    else if(active?.hasAttribute('data-specimen'))focus={kind:'specimen'};
+    else if(active?.matches('.specimen-catalog > summary'))focus={kind:'catalog'};
+    else if(active?.matches('.fg-protection-archive > summary'))focus={kind:'protection'};
+    else if(active?.hasAttribute('data-act'))focus={kind:'action',value:active.dataset.act};
+    return {page:body?.dataset.show,scroll:body?.scrollTop||0,
+      selected:this.el.querySelector('.specimen-selected [data-specimen]')?.dataset.specimen||null,
+      catalogScroll:this.el.querySelector('.specimen-catalog .fg-cards')?.scrollLeft||0,
+      notesOpen:!!this.el.querySelector('.fg-protection-archive')?.open,focus};
+  }
+  restoreView(state){
+    const body=this.el.querySelector('.fg-body');
+    if(body&&state.page===this.page)body.scrollTop=state.selected===this.specimenId?state.scroll:0;
+    const cards=this.el.querySelector('.specimen-catalog .fg-cards');
+    if(cards&&state.page===this.page)cards.scrollLeft=state.catalogScroll;
+    const focus=state.focus;if(!focus)return;
+    let target=null;
+    if(focus.kind==='page')target=[...this.el.querySelectorAll('[data-page]')].find(b=>b.dataset.page===focus.value);
+    else if(focus.kind==='turn')target=[...this.el.querySelectorAll('[data-specimen-turn]')].find(b=>b.dataset.specimenTurn===focus.value);
+    else if(focus.kind==='catalog')target=this.el.querySelector('.specimen-catalog > summary');
+    else if(focus.kind==='protection')target=this.el.querySelector('.fg-protection-archive > summary');
+    else if(focus.kind==='action')target=[...this.el.querySelectorAll('[data-act]')].find(b=>b.dataset.act===focus.value);
+    else if(focus.kind==='specimen'){
+      // Once the collection closes, send focus to the displayed record.
+      target=this.el.querySelector('.specimen-sheet > header h3');
+      if(target)target.tabIndex=-1;
+    }
+    target?.focus({preventScroll:true});
+  }
   render(){
     if(this.page!=='map'){for(const k of ['left','right','top','bottom'])this.el.style[k]='';this.el.classList.remove('map-expanded');this.explorationMap.anchor=null}
     const D=this.getSim()?.discovery;if(!D||!this.open)return;
@@ -38,13 +73,14 @@ export class FieldGuide{
     if(this.page==='map'&&this.el.querySelector('.fg-body')?.dataset.show==='map'&&this.explorationMap.root?.isConnected){this.explorationMap.update();return}
     const creatures=this.creatures(D),found=new Set(D.sites.filter(s=>D.isFound(s)).map(s=>s.kind)),placeKinds=Object.keys(SITE_KINDS).filter(k=>k!=='relic'&&k!=='carcass');
     const selected=creatures.find(c=>c.key===this.specimenId)||creatures[0];this.specimenId=selected?.key||null;const key=JSON.stringify([this.specimenId,this.specimenDir,this.page,creatures.map(c=>[c.id,c.name,c.animal?.genes,c.protection?.label,c.protection?.detail]),[...found],D.trials,D.unlockedParts,D.seenParts.length]);if(key===this.key){if(this.page==='map')this.explorationMap.update();return}this.key=key;
+    const view=this.captureView();
     const missingPlaces=placeKinds.filter(k=>!found.has(k)).length,doneTrials=Object.keys(D.trials).length;
     const trials=Object.entries(TRIALS).map(([id,t])=>`<li class="${D.trials[id]?'done':''}"><i></i><div><b>${esc(t.label)}</b><small>${esc(t.text)}</small></div></li>`).join('');
     const seen=Object.keys(PARTS).filter(id=>D.seenParts.includes(id)&&!PARTS[id].tags.includes('starter'));
     this.el.innerHTML=`<header class="fg-head"><div><h2>Field guide</h2><p>What your family has seen and learned. Press Y to close.</p></div><button type="button" data-act="close">Close</button></header>
-      <nav class="fg-tabs">${[['creatures','Creatures'],['places','Places'],['map','Map'],['trials','Trials'],['parts','Parts']].map(([id,l])=>`<button type="button" data-page="${id}" class="${this.page===id?'active':''}">${l}</button>`).join('')}</nav>
+      <nav class="fg-tabs" aria-label="Field guide sections">${[['creatures','Creatures'],['places','Places'],['map','Map'],['trials','Trials'],['parts','Parts']].map(([id,l])=>`<button type="button" data-page="${id}" class="${this.page===id?'active':''}" aria-current="${this.page===id?'page':'false'}">${l}</button>`).join('')}</nav>
       <div class="fg-body" data-show="${this.page}">
-        <section class="fg-creatures"><details class="specimen-catalog" ${this.catalogOpen?'open':''}><summary>Observed body collection · ${creatures.length}</summary><p class="fg-note">Choose a retained body to study its specimen sheet.</p><div class="fg-cards">${creatures.map((c,i)=>`<figure class="${c.key===selected?.key?'specimen-selected':''} ${c.known?'':'unknown'} ${c.special?'special':''}"><button type="button" data-specimen="${esc(c.key)}" aria-pressed="${c.key===selected?.key}" aria-label="Study ${esc(c.name)}"><canvas data-c="${i}" width="96" height="76"></canvas></button><figcaption>${c.known?esc(c.name):c.special?'Rare creature':'Not seen yet'}</figcaption>${c.known&&c.protection?`<small class="fg-protection ${c.protection.protective?'on':'off'}" title="${esc(c.protection.detail)}">${esc(c.protection.label)}</small>`:''}</figure>`).join('')}</div></details>${selected?specimenSheetHTML(selected,this.getSim(),this.specimenDir):''}${(()=>{const notes=creatures.filter(c=>c.known&&c.protection);return notes.length?`<dl class="fg-protection-notes"><dt>Plate protection</dt>${notes.map(c=>`<dd><strong>${esc(c.name)}:</strong> ${esc(c.protection.detail)}</dd>`).join('')}</dl>`:''})()}</section>
+        <section class="fg-creatures"><p class="fg-note">${selected?.current?'Showing the living anatomy of your current creature.':selected?'Showing a retained observation, not the animal\'s present condition.':'No creature bodies have been recorded.'} Choose another recorded body below.</p><details class="specimen-catalog" ${this.catalogOpen?'open':''}><summary>Observed body collection · ${creatures.length}</summary><p class="fg-note">Choose a retained body to study its specimen sheet.</p><div class="fg-cards">${creatures.map((c,i)=>`<figure class="${c.key===selected?.key?'specimen-selected':''} ${c.known?'':'unknown'} ${c.special?'special':''}"><button type="button" data-specimen="${esc(c.key)}" aria-pressed="${c.key===selected?.key}" aria-label="Study ${esc(c.name)}"><canvas data-c="${i}" width="96" height="76"></canvas></button><figcaption>${c.known?esc(c.name):c.special?'Rare creature':'Not seen yet'}</figcaption>${c.known&&c.protection?`<small class="fg-protection ${c.protection.protective?'on':'off'}" title="${esc(c.protection.detail)}">${esc(c.protection.label)}</small>`:''}</figure>`).join('')}</div></details>${selected?specimenSheetHTML(selected,this.getSim(),this.specimenDir):''}${(()=>{const notes=creatures.filter(c=>c.known&&c.protection);return notes.length?`<details class="fg-protection-archive" ${view.notesOpen?'open':''}><summary>Compare plate protection records · ${notes.length}</summary><dl class="fg-protection-notes"><dt>Plate protection</dt>${notes.map(c=>`<dd><strong>${esc(c.name)}:</strong> ${esc(c.protection.detail)}</dd>`).join('')}</dl></details>`:''})()}</section>
         <section class="fg-places"><h3>Places</h3><div class="fg-cards">${placeKinds.map(k=>`<figure class="${found.has(k)?'':'unknown'}" title="${found.has(k)?esc(D.description(k)):''}"><canvas data-p="${k}" width="96" height="64"></canvas><figcaption>${found.has(k)?esc(SITE_KINDS[k].label):'Not found yet'}</figcaption>${found.has(k)?`<small>${esc(D.description(k))}</small>`:''}</figure>`).join('')}</div><p class="fg-note">${missingPlaces?`${missingPlaces} kind${missingPlaces===1?'':'s'} of place still to find. Lookout rocks reveal places nearby.`:'You have found every kind of place.'}</p></section>
         <section class="fg-map"></section>
         <section class="fg-trials"><h3>Trials <span>${doneTrials} of ${Object.keys(TRIALS).length}</span></h3><ul>${trials}</ul><p class="fg-note">Each trial adds to the bonus points for your next evolution (up to 4 more).</p></section>
@@ -55,6 +91,7 @@ export class FieldGuide{
     if(selected)drawSpecimenSheet(this.el,selected,this.specimenDir);
     this.el.querySelectorAll('canvas[data-c]').forEach(cv=>{const c=creatures[Number(cv.dataset.c)];this.drawCreature(cv,c)});
     this.el.querySelectorAll('canvas[data-p]').forEach(cv=>this.drawPlace(cv,cv.dataset.p,found.has(cv.dataset.p)));
+    this.restoreView(view);
   }
   silhouette(cv){const c=cv.getContext('2d');c.globalCompositeOperation='source-in';c.fillStyle='#120c07';c.fillRect(0,0,cv.width,cv.height);c.globalCompositeOperation='source-over'}
   drawCreature(cv,cr){
