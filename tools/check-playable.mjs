@@ -103,6 +103,7 @@ const runtime=[
   'tests/body-size-physics.mjs',
   'tests/inertia.mjs',
   'tests/structural-support.mjs',
+  'tests/arid-physiology.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

@@ -53,7 +53,7 @@ export function enterTorpor(sim,animal){
 }
 export function wakeTorpor(animal,{reason='Woke from torpor.'}={}){
  if(!animal?.torpor)return{ok:false,type:'torpor',message:'Not in torpor.'};
- animal.torpor=false;animal.intent='idle';animal.target=null;
+ animal.torpor=false;delete animal.torporKind;animal.intent='idle';animal.target=null;
  return{ok:true,type:'torpor',message:reason};
 }
 export function maintainTorpor(sim,animal,temp){
