@@ -2,6 +2,7 @@ import {SPECIES} from './species.js';
 import {developmentFor} from '../family/family.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {validatePlan} from '../lineage/body-plan.js';
+import {adultSizeScale,bodyDimensions} from './body-size.js';
 
 export const ANATOMICAL_MASS='relative-anatomical-load/1';
 export const LEGACY_MASS='legacy-species/1';
@@ -17,7 +18,12 @@ export function massPolicy(animal){
 }
 // Structural capacity in relative game units, not kilograms or owned elemental tissue.
 // Consumed edible stock remains separately accounted by prey-biomass.js.
+// body-size/1 scales the anatomy's adult mass by the inherited linear scale cubed.
 export function adultBodyMass(animal){
+  if(!animal?.bodySize)return anatomicalAdultMass(animal);
+  return anatomicalAdultMass(animal)*adultSizeScale(animal)**3;
+}
+function anatomicalAdultMass(animal){
   if(massPolicy(animal)===LEGACY_MASS)return SPECIES[animal?.species]?.mass||0;
   const plan=animal?.bodyPlan;
   if(!plan)throw Error('Missing anatomical mass body');
@@ -39,6 +45,8 @@ export function adultBodyMass(animal){
   return mass;
 }
 export function bodyMass(animal){return adultBodyMass(animal)*developmentFor(animal).growth**3;}
+// Read-only physical size for presentation and interaction (Codex contract).
+export function bodyDimensionsOf(animal){return bodyDimensions(animal,developmentFor(animal),{adultMass:adultBodyMass(animal),mass:bodyMass(animal)})}
 export function bodyMassFraction(animal){
   if(massPolicy(animal)===ANATOMICAL_MASS)return developmentFor(animal).growth**3;
   const adult=SPECIES[animal?.species]?.mass;return adult?bodyMass(animal)/adult:1;

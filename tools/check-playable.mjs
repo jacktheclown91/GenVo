@@ -98,6 +98,7 @@ const runtime=[
   'tests/overlay-placement.mjs',
   'tests/regional-founding.mjs',
   'tests/regional-founding-water.mjs',
+  'tests/body-size.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

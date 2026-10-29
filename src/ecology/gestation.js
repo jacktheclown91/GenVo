@@ -5,7 +5,7 @@ export function paternalInheritance(father,{population=null}={}){
   const fields=['id','species','sex','generation','parentIds','grandparentIds','genes','pigmentGenome','reproductiveGenome','matePreferences','adaptations',
     'massPolicy','anatomy','legacyWaterPhysiology','bodyPlan','elder','lineage','x','y','protoHistory','formHistory',
     // Recorded founding provenance, so offspring know which founders they descend from.
-    'foundingOrigin','foundingLineage','evolutionaryAncestry'];
+    'foundingOrigin','foundingLineage','evolutionaryAncestry','bodySize'];
   const record={alive:false,player:false};
   for(const key of fields)if(father[key]!==undefined)record[key]=structuredClone(father[key]);
   if(population!==null)record.evolutionaryPopulationAtConception=structuredClone(population);
