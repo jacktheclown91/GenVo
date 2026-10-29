@@ -1,4 +1,5 @@
 import {CFG,PLANTS} from '../sim/config.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {SPECIES} from '../organisms/species.js';
 import {canHunt,preyPreference,plantPreference,groundDiet} from './functional-diet.js';
 import {harvestFreshwater} from './freshwater-food.js';
@@ -49,7 +50,7 @@ const scale=(sim,a,kind,live=false)=>a.genes.digestion*adaptationEffects(a).food
 function drink(sim,a){
  const s=SPECIES[a.species];if(a.hydration>=s.maxHydration*B.thirsty)return false;let spot=null,best=Infinity;
  near(sim,a,B.drinkRadius,(x,y)=>{const d=Math.hypot(x-a.x,y-a.y);if(d<best&&sim.world.isDrinkable(x,y)&&reachable(sim,a,x,y)){best=d;spot={x,y}}});
- if(!spot)return false;travel(sim,a,spot.x,spot.y,{move:false,trips:2});a.hydration=Math.min(s.maxHydration,a.hydration+B.drink);return true;
+ if(!spot)return false;travel(sim,a,spot.x,spot.y,{move:false,trips:2});a.hydration=Math.min(s.maxHydration,a.hydration+toReserve(a,B.drink*mouthScale(a)));return true;
 }
 // Canonical prey choice and the shared capture/damage/bite-meal rule.
 function hunt(sim,a){
@@ -61,15 +62,15 @@ function graze(sim,a){
  near(sim,a,B.forageRadius,(x,y,i)=>{if(w.water[i]||!reachable(sim,a,x,y))return;
   for(const [kind,eff] of diet){const stock=kind==='carrion'?w.carrion[i]:w.plants[kind]?.[i]||0;if(stock<=0)continue;const v=stock*eff;if(!best||v>best.v)best={kind,eff,x,y,i,v}}});
  if(!best)return false;travel(sim,a,best.x,best.y);
- if(best.kind==='carrion'){const got=Math.min(B.carrionBite,w.carrion[best.i]);w.carrion[best.i]-=got;a.energy=Math.min(s.maxEnergy,a.energy+got*B.carrionEnergy*plantPreference(a,'carrion')*scale(sim,a,'carrion'));return got>0}
- const bite=Math.min(B.maxBite,FOOD_PROFILES[best.kind]?.bite??.18),got=w.consume(best.kind,best.x,best.y,bite);if(!(got>0))return false;
+ if(best.kind==='carrion'){const got=Math.min(B.carrionBite*mouthScale(a),w.carrion[best.i]);w.carrion[best.i]-=got;a.energy=Math.min(s.maxEnergy,a.energy+toReserve(a,got*B.carrionEnergy*plantPreference(a,'carrion')*scale(sim,a,'carrion')));return got>0}
+ const bite=Math.min(B.maxBite,FOOD_PROFILES[best.kind]?.bite??.18)*mouthScale(a),got=w.consume(best.kind,best.x,best.y,bite);if(!(got>0))return false;
  sim.history.notePlantConsumption(best.kind,best.x,best.y,got);sim.dispersal.onFeed(a,best.kind,got);
  const nutrition=sim.dispersal.genomeAt(best.kind,best.i)?.traits.nutrition??PLANTS[best.kind].nutrition;
- a.energy=Math.min(s.maxEnergy,a.energy+got*nutrition*best.eff*a.genes.digestion*3.6*adaptationEffects(a).foodGain*(sim.speciesLifestyle?.foodEnergyMultiplier?.(a,{kind:best.kind})||1));return true;
+ a.energy=Math.min(s.maxEnergy,a.energy+toReserve(a,got*nutrition*best.eff*a.genes.digestion*3.6*adaptationEffects(a).foodGain*(sim.speciesLifestyle?.foodEnergyMultiplier?.(a,{kind:best.kind})||1)));return true;
 }
 function filterFeed(sim,a){
  const s=SPECIES[a.species];if(!sim.world.water[sim.world.idx(a.x,a.y)])return false;
- const meal=harvestFreshwater(sim,a,Math.min(B.freshwaterMeal,s.maxEnergy-a.energy));if(!meal)return false;a.energy+=meal.energyGain;return true;
+ const meal=harvestFreshwater(sim,a,Math.min(B.freshwaterMeal*mouthScale(a),toAbsolute(a,s.maxEnergy-a.energy)));if(!meal)return false;a.energy+=toReserve(a,meal.energyGain);return true;
 }
 function pair(sim,female,males){
  const s=SPECIES[female.species];

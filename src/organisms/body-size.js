@@ -39,6 +39,13 @@ export function adultSizeScale(animal){
  const a=animal?.bodySize?.alleles;return a?Math.exp((a[0]+a[1])/2):1;
 }
 export const reserveScale=animal=>animal?.bodySize?adultSizeScale(animal)**3:1;
+// Reserve accounting. Food and water stay absolute in the world, prey, stores and
+// other bodies; they enter or leave reserves through these. A body without
+// body-size/1 converts nothing (the identity, so recorded worlds are exact).
+export const toReserve=(animal,amount)=>animal?.bodySize?amount/reserveScale(animal):amount;
+export const toAbsolute=(animal,amount)=>animal?.bodySize?amount*reserveScale(animal):amount;
+// Bites and sips follow mouth area: linear scale squared.
+export const mouthScale=animal=>animal?.bodySize?adultSizeScale(animal)**2:1;
 // Resting-cost multipliers in capacity units: mass^-0.25 for energy, mass^-1/3 for water.
 export function enduranceScale(animal){
  if(!animal?.bodySize)return{energy:1,water:1};

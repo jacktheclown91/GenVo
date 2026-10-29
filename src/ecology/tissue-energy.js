@@ -1,4 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
+import {toAbsolute} from '../organisms/body-size.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {METABOLISM,metabolismActive} from './metabolism-policy.js';
 
@@ -31,7 +32,7 @@ export function meatEnergy(sim,eater){return tissueEnergyActive(sim)&&SPECIES[ea
 // recorded worlds.
 export function killMealLimit(sim,eater,energyPerMass){
  if(!tissueEnergyActive(sim))return Infinity;const s=SPECIES[eater.species];
- return Math.max(0,Math.min(bodyMass(eater)*TISSUE_ENERGY.gorgeShare,(s.maxEnergy-eater.energy)/Math.max(1e-9,energyPerMass)));
+ return Math.max(0,Math.min(bodyMass(eater)*TISSUE_ENERGY.gorgeShare,toAbsolute(eater,s.maxEnergy-eater.energy)/Math.max(1e-9,energyPerMass)));
 }
 export function restoreTissueEnergy(sim,core){
  if(core.tissueEnergyRules!==undefined&&core.tissueEnergyRules!==TISSUE_ENERGY.policy)throw Error('Unknown saved tissue-energy rules.');

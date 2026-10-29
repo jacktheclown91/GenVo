@@ -1,4 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {exposedCaveWater} from '../world/cave-water.js';
 import {boundedFloat32Debit} from '../core/float32-transfer.js';
 import {syncCaveAir} from '../world/cave-air.js';
@@ -22,11 +23,11 @@ export function drinkCaveWater(sim,a=sim.player(),{target=null,gain=Math.max(18,
  const w=sim.world,s=w.soilWater,i=status.i,missing=SPECIES[a.species].maxHydration-a.hydration;
  if(!Number.isFinite(gain)||gain<0)throw Error('Invalid cave hydration request.');
  const prior=s.totals.caveDrinking??0,pending=s.pendingCaveDrinking??0;if(!Number.isFinite(prior)||prior<0||!Number.isFinite(pending)||pending<0||pending>prior)throw Error('Invalid cave drinking receipt.');
- const debit=boundedFloat32Debit(s.groundwater[i],Math.min(exposedCaveWater(w,i),Math.min(gain,missing)*CAVE_DRINK.waterPerHydration));
+ const debit=boundedFloat32Debit(s.groundwater[i],Math.min(exposedCaveWater(w,i),Math.min(gain*mouthScale(a),toAbsolute(a,missing))*CAVE_DRINK.waterPerHydration));
  if(!(debit.amount>0))return{ok:false,type:'drink',message:'Only a trace of water remains.'};
  s.groundwater[i]=debit.remaining;s.totals.caveDrinking=prior+debit.amount;
  s.pendingCaveDrinking=pending+debit.amount;
- const hydrationGain=debit.amount/CAVE_DRINK.waterPerHydration;a.hydration+=hydrationGain;syncCaveAir(w);
+ const hydrationGain=toReserve(a,debit.amount/CAVE_DRINK.waterPerHydration);a.hydration+=hydrationGain;syncCaveAir(w);
  a.lastCaveDrink={i,water:debit.amount,hydrationGain,day:sim.day,tick:sim.tickCount};if(a.hidden)a.hidden=false;
  sim.cognition?.onDrink(a);sim.family?.notePracticeInteraction(a,'water',{x:a.x,y:a.y,amount:hydrationGain});
  if(a.player)sim.lastPlayerAction={type:'drink',actorId:a.id,source:'cave-groundwater',...a.lastCaveDrink};

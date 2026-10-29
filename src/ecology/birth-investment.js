@@ -4,11 +4,13 @@ export function debitReserve(animal,requested){
   const paid=Math.min(Math.max(0,animal.energy),Math.max(0,requested));
   animal.energy-=paid;return paid;
 }
+import {toAbsolute} from '../organisms/body-size.js';
+// Budgets are absolute food and water; each parent pays in its own reserve units.
 export function birthFunding(mother,species,pregnancy){
   const payment=Math.min(Math.max(0,mother.energy),pregnancy?.birthCost??species.reproCost);
   // Older current-schema pregnancies have no recorded investment. Preserve
   // gestation/inheritance, but do not invent or charge conception money again.
-  return{payment,budget:payment+Math.max(0,pregnancy?.reserveInvestment||0),hydrationBudget:Math.max(0,mother.hydration)};
+  return{payment,budget:toAbsolute(mother,payment)+Math.max(0,pregnancy?.reserveInvestment||0),hydrationBudget:toAbsolute(mother,Math.max(0,mother.hydration))};
 }
 
 // A configured brood is committed at conception. The legacy litter rule remains
@@ -24,6 +26,6 @@ export function conceptionFunding(rng,mother,father,species,mode='live',{dual=fa
   // total parental investment over more young. Neither mode creates reserves.
   const plannedLitterSize=mode==='egg'?rng.int(3,5):profile?rng.int(profile.min,profile.max):null;
   const cost=mode==='egg'?plannedLitterSize*(profile?.perOffspringCost??17):profile?profile.perOffspringCost*plannedLitterSize:species.reproCost;
-  const reserveInvestment=debitReserve(mother,cost*.35)+debitReserve(father,cost*.12);
+  const reserveInvestment=toAbsolute(mother,debitReserve(mother,cost*.35))+toAbsolute(father,debitReserve(father,cost*.12));
   return profile?{plannedLitterSize,birthCost:cost,reserveInvestment,dualCostPaid}:{reserveInvestment,dualCostPaid};
 }

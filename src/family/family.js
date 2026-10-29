@@ -1,4 +1,5 @@
 import {learnedResourceTarget} from './learned-resource-target.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {isFeedingIntent} from '../ecology/feeding-intents.js';
 import {SPECIES} from '../organisms/species.js';
@@ -348,9 +349,9 @@ export class FamilyController{
   tendProvision(parent,child){
     const status=this.careStatus(child,parent),childSpec=SPECIES[child.species],parentSpec=SPECIES[parent.species];
     const shelter=this.sim.shelter?.nearest(child,{radius:1.8,familyOnly:true})||null;
-    const fromShelter=status.energy<.78?Math.max(0,Math.min(4.2*1.08,shelter?.foodStore||0,childSpec.maxEnergy*.80-child.energy)):0;
-    const fromParent=status.energy<.78?Math.max(0,Math.min(5.2*1.34,parent.energy-parentSpec.maxEnergy*.46,childSpec.maxEnergy*.74-child.energy-fromShelter)):0;
-    const water=status.hydration<.62?Math.max(0,Math.min(3.2*1.28,parent.hydration-parentSpec.maxHydration*.48,childSpec.maxHydration-child.hydration)):0;
+    const mouth=mouthScale(child),fromShelter=status.energy<.78?Math.max(0,Math.min(4.2*1.08*mouth,shelter?.foodStore||0,toAbsolute(child,childSpec.maxEnergy*.80-child.energy))):0;
+    const fromParent=status.energy<.78?Math.max(0,Math.min(5.2*1.34*mouth,toAbsolute(parent,parent.energy-parentSpec.maxEnergy*.46),toAbsolute(child,childSpec.maxEnergy*.74-child.energy)-fromShelter)):0;
+    const water=status.hydration<.62?Math.max(0,Math.min(3.2*1.28*mouth,toAbsolute(parent,parent.hydration-parentSpec.maxHydration*.48),toAbsolute(child,childSpec.maxHydration-child.hydration))):0;
     return{shelter,fromShelter,fromParent,water};
   }
   tendAvailability(parent,child){
@@ -375,7 +376,7 @@ export class FamilyController{
     const provision=this.tendProvision(parent,young);if(milkEligible(parent,young)){provision.fromParent=0;provision.water=0}
     const fromShelter=provision.fromShelter,fed=fromShelter+provision.fromParent,shared=provision.water;
     if(fromShelter>0){provision.shelter.foodStore-=fromShelter;provision.shelter.lastUsedTick=this.sim.tickCount}
-    parent.energy-=provision.fromParent;young.energy+=fed;parent.hydration-=shared;young.hydration+=shared;
+    parent.energy-=toReserve(parent,provision.fromParent);young.energy+=toReserve(young,fed);parent.hydration-=toReserve(parent,shared);young.hydration+=toReserve(young,shared);
     const before=young.careStress??0;young.careStress=Math.max(0,before-.36);young.careTendedCount=(young.careTendedCount||0)+1;young.lastTendedDay=this.sim.day;
     young.careCooldownUntil=this.sim.tickCount+CFG.simHz*1.5;
     parent.energy=Math.max(0,parent.energy-.55);
@@ -438,12 +439,12 @@ export class FamilyController{
       if(need<=0&&waterNeed<=0)continue;
       const rate=(care.nurseRate??.055)*(1-independence*.68)*Math.max(0,care.nurseEfficiency??1.35);
       if(need>0&&caregiver.energy>=parentSpec.maxEnergy*(care.parentReserve??.48)){
-        const amount=Math.min(need,rate,Math.max(0,caregiver.energy-parentSpec.maxEnergy*(care.parentReserve??.48)));
-        if(amount>0){child.energy=Math.min(childSpec.maxEnergy,child.energy+amount);caregiver.energy-=amount;}
+        const amount=Math.min(toAbsolute(child,need),rate*mouthScale(child),toAbsolute(caregiver,Math.max(0,caregiver.energy-parentSpec.maxEnergy*(care.parentReserve??.48))));
+        if(amount>0){child.energy=Math.min(childSpec.maxEnergy,child.energy+toReserve(child,amount));caregiver.energy-=toReserve(caregiver,amount);}
       }
       if(waterNeed>0&&caregiver.hydration>=parentSpec.maxHydration*(care.parentReserve??.48)){
-        const waterAmount=Math.min(waterNeed,rate,Math.max(0,caregiver.hydration-parentSpec.maxHydration*(care.parentReserve??.48)));
-        if(waterAmount>0){child.hydration=Math.min(childSpec.maxHydration,child.hydration+waterAmount);caregiver.hydration-=waterAmount;}
+        const waterAmount=Math.min(toAbsolute(child,waterNeed),rate*mouthScale(child),toAbsolute(caregiver,Math.max(0,caregiver.hydration-parentSpec.maxHydration*(care.parentReserve??.48))));
+        if(waterAmount>0){child.hydration=Math.min(childSpec.maxHydration,child.hydration+toReserve(child,waterAmount));caregiver.hydration-=toReserve(caregiver,waterAmount);}
       }
     }
   }

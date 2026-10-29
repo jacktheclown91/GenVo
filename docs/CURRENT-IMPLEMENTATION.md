@@ -1,5 +1,7 @@
 # Current implementation and acceptance
 
+New games record `body-size/1` (morphology S1): every body carries an inherited, continuous adult size (0.5–2×, founders 0.95–1.05) that sets its mass (× s³), its resting cost (Kleiber M^0.75, water M^(2/3)) and its bite (× s²). Food and water are absolute outside bodies and convert at every intake and transfer site, so nothing is created or lost between bodies of different size. Saved worlds keep their rules and replay exactly. See [S1 body size](MORPHOLOGY-S1-BODY-SIZE-2026-10-28.md).
+
 New planetary games found entered regions under `regional-founding-templates/2`: land founders only where drinking water is reachable on foot. Founded drinkers no longer die of thirst in waterless regions (72–77 dehydration deaths per neighbour region before, 0–2 after). Saved worlds keep `/1`. Most regions still lack surface water, which is a geography decision. See [founding water](FOUNDING-WATER-2026-10-28.md).
 
 Four natural 320-day two-region fields (two seeds, `/4` and `/3`) completed with exact restore and continuation, and produced no recognitions. In seed 1, real dispersal created cross-region ancestry, which `/4` resolved and aligned correctly. Recognition was blocked by biology: the inherited-trait gate never passed, and the pressure contrast measured 0.115 against the 0.12 threshold. Neighbour regions declined sharply, which needs its own investigation. See [the field findings](REGIONAL-EVOLUTION-FIELDS-2026-10-28.md).
