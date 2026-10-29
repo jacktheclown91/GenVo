@@ -121,3 +121,5 @@ Codex C7 heads-up: adding read-only Journal organism-study export and Creature L
 Codex anatomical audio heads-up: audio-only contact reading/synthesis will observe canonical liquid/ice support, snowpack, moisture, vegetation, mounted feet and inherited dimensions. Existing displacement/event and call capability gates remain authoritative; no biology or save changes.
 
 Codex autonomous contact audio heads-up: bounded ephemeral nearby-displacement tracker and spatial playback through existing effects bus. No simulated events, actor writes or biological/RNG/save changes. Contact classification stays in the just-implemented audio query.
+
+Codex wing audio heads-up: shared pure aerial-cycle phase query in aerial-presentation.js; main.js passes the existing renderer encounter clock to AudioDirector.update. Audio reads actual powered flight plus canonical wing anatomy, never glide/jump/display. No simulation timing/events/save changes.

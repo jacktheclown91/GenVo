@@ -1,3 +1,4 @@
+import {WingMovementTracker} from './wing-movement.js';
 import {WildlifeContactTracker} from './wildlife-contact.js';
 import {movementContact,contactEnvelope} from './movement-contact.js';
 import {audibleWildfire} from '../ecology/wildfire.js';
@@ -23,13 +24,13 @@ export class AudioDirector{
     this.masterLevel=.72;this.musicLevel=.34;this.sfxLevel=.68;this.ambienceLevel=.42;
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
     this.lastFireAudioTick=-1;this.fireAudioState=null;this.thunderAudio=new WeakMap();this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
-    this.moveClock=0;this.movementAudio=null;this.wildlifeContacts=new WildlifeContactTracker();this.sceneClock=0;this.currentScene=musicSceneFor(sim);
+    this.moveClock=0;this.movementAudio=null;this.wildlifeContacts=new WildlifeContactTracker();this.wingMovement=new WingMovementTracker();this.sceneClock=0;this.currentScene=musicSceneFor(sim);
     this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;
     this.loadPrefs();
   }
   setSimulation(sim){
-    this.movementAudio=null;this.moveClock=0;this.wildlifeContacts.clear();
+    this.movementAudio=null;this.moveClock=0;this.wildlifeContacts.clear();this.wingMovement.clear();
     this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     if(this.ctx)this.updateMix(this.currentScene);
   }
@@ -130,12 +131,12 @@ export class AudioDirector{
   toggleMute(){this.enabled=!this.enabled;this.savePrefs();if(this.master&&this.ctx){const t=this.ctx.currentTime;this.master.gain.cancelScheduledValues(t);this.master.gain.setTargetAtTime(this.enabled?this.masterLevel:0,t,.035)}return this.enabled}
   noteResult(result){this.markInteractiveAudio();const cue=cueForResult(result);if(cue)this.playCue(cue,result)}
   note(name,data={}){this.markInteractiveAudio();this.playCue(name,data)}
-  update(dt,input={}){
+  update(dt,input={},presentationTime=null){
     if(!this.sim)return;
     this.sceneClock+=dt;
     if(this.sceneClock>=.22){this.sceneClock=0;this.currentScene=musicSceneFor(this.sim);this.updateMix(this.currentScene)}
     this.pollSimulationEvents();
-    if(this.unlocked&&this.enabled){this.scheduleMusic();this.updateMovement(dt,input);this.updateWildlifeMovement(dt);this.updateWildlife(dt)}else this.wildlifeContacts.clear();
+    if(this.unlocked&&this.enabled){this.scheduleMusic();this.updateMovement(dt,input);this.updateWildlifeMovement(dt);this.updateWingMovement(presentationTime);this.updateWildlife(dt)}else{this.wildlifeContacts.clear();this.wingMovement.clear()}
   }
   updateMix(scene){
     if(!this.ctx||!this.master)return;const t=this.ctx.currentTime,danger=scene.danger||0,duck=t<this.handoffDuckUntil?.56:1;
@@ -193,6 +194,13 @@ export class AudioDirector{
   }
   updateWildlifeMovement(dt){
     for(const {animal,contact,sprint} of this.wildlifeContacts.sample(this.sim,dt)){const destination=this.spatialDestination(animal.x,animal.y,{radius:8,volume:.38});if(destination)this.playContact(contact,sprint,null,destination)}
+  }
+  updateWingMovement(time){
+    for(const {animal,acoustic} of this.wingMovement.sample(this.sim,time)){const own=animal.id===this.sim.player()?.id,destination=this.spatialDestination(animal.x,animal.y,{radius:10,volume:own?.75:.38});if(destination)this.playWingStroke(acoustic,destination)}
+  }
+  playWingStroke(acoustic,destination=this.sfxBus,time=null){
+    if(!this.unlocked||!this.enabled||!this.ctx)return false;time??=this.ctx.currentTime+.005;
+    this.noise(time,.14*acoustic.duration,.034*acoustic.weight,850*acoustic.pitch,destination);this.noise(time+.035,.085*acoustic.duration,.014*acoustic.weight,2400*acoustic.pitch,destination);return true;
   }
   updateWildlife(dt){
     const sim=this.sim,p=sim.player?.();if(!p||sim.paused)return;

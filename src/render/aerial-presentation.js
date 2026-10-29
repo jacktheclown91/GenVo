@@ -1,5 +1,7 @@
 // Read-only aerial presentation. Real airborne/mode transitions own activation;
 // this clock never grants flight, spends energy or changes altitude/navigation.
+// Unwrapped visual cycle shared with wing audio; no biological clock is advanced.
+export const aerialCycle=(id,time)=>time/.11+(id%17)*.47;
 const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
 export function aerialPose({mode='fly',phase=0,age=1,fromDeployment=1,fromGlide=0}={}){
   const p=(((phase%8)+8)%8)/8;
@@ -36,7 +38,7 @@ export class AerialPresentation{
     }
     if(state.mode==='ground')return null;
     if(state.mode==='land'&&time-state.changed>=.26){state.mode='ground';state.last=null;return null;}
-    const phase=(time/.11+(id%17)*.47)%8;
+    const phase=aerialCycle(id,time)%8;
     state.last=aerialPose({mode:state.mode,phase,age:time-state.changed,fromDeployment:state.fromDeployment,fromGlide:state.fromGlide});return state.last;
   }
   prune(time){for(const [id,state] of this.states)if(time-state.seen>2.5)this.states.delete(id);}
