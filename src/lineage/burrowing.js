@@ -3,6 +3,7 @@ import {CAVE_AIR,caveAirAt} from '../world/cave-air.js';
 import {CAVES} from '../world/cave-policy.js';
 import {startCaveTransit} from './cave-traversal.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,scaleMassCost,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {planPartCounts,ROOT_FOODS} from './part-abilities.js';
 import {SUBSURFACE,passageAt,excavationSite,excavatePassage} from '../world/subsurface.js';
 export const BURROWING=Object.freeze({policy:SUBSURFACE.policy,seconds:2.5,work:2,moveSpeed:.9,moveWork:.15,airSeconds:12});
@@ -49,18 +50,18 @@ function startBurrowWork(sim,a,i,entry=false){
 export function stepBurrowWork(sim,a,dt){
  if(!a?.alive||!a.burrowWork)return null;if(!(dt>0&&dt<=.25)||sim.burrowingRules!==BURROWING.policy)throw Error('Invalid burrowing step.');
  const job=a.burrowWork;if(!burrowingAnatomy(a)||a.energy<=1||a.health<20||a.airborne||a.perched||(a.diveDepth||0)>.03||Math.hypot(a.x-job.x,a.y-job.y)>.02||!excavationSite(sim.world,job.i)){delete a.burrowWork;return{ok:false,type:'burrow',message:'Excavation stopped: body, ground or stored energy no longer supports it.'}}
- const work=Math.min(dt,BURROWING.seconds-job.elapsed);job.elapsed+=work;a.energy-=work*BURROWING.work*adultBodyMass(a);a.anim=(a.anim+work*4)%8;
+ const work=Math.min(dt,BURROWING.seconds-job.elapsed);job.elapsed+=work;a.energy-=massCostToReserve(a,work*BURROWING.work*adultBodyMass(a),SIZE_PHYSICS.power);a.anim=(a.anim+work*4)%8;
  if(job.elapsed>=BURROWING.seconds-1e-9){const p=excavatePassage(sim.world,job.i,{entry:job.entry});delete a.burrowWork;if(!p)return{ok:false,type:'burrow',message:'The excavation site is no longer usable.'};if(job.entry){a.underground=true;a.burrowSince=sim.tickCount}return{ok:true,i:p.i,type:job.entry?'burrow-enter':'burrow-dug',message:job.entry?'Entrance finished. Underground passages are a separate physical layer.':'Passage opened. Removed soil is now a surface mound.'}}
  return null;
 }
 export function moveUnderground(sim,a,dx,dy,dt){
  if(!a?.underground||a.burrowWork||a.caveTransit||!(dt>0&&dt<=.25))return false;
  const w=sim.world,len=Math.hypot(dx,dy);if(!len)return false;dx/=len;dy/=len;const wading=1/(1+exposedCaveWater(w,w.idx(a.x,a.y))*60);const nx=a.x+dx*BURROWING.moveSpeed*wading*dt,ny=a.y+dy*BURROWING.moveSpeed*wading*dt;
- if(undergroundPosition(w,a,nx,ny)){const ox=a.x,oy=a.y;a.x=nx;a.y=ny;a.energy-=Math.hypot(nx-ox,ny-oy)*adultBodyMass(a)*BURROWING.moveWork;a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;a.anim=(a.anim+dt*4)%8;a.movedTick=sim.tickCount;sim.regionalEcology?.notePageMove(a,ox,oy);return true}
+ if(undergroundPosition(w,a,nx,ny)){const ox=a.x,oy=a.y;a.x=nx;a.y=ny;a.energy-=massCostToReserve(a,Math.hypot(nx-ox,ny-oy)*adultBodyMass(a)*BURROWING.moveWork,SIZE_PHYSICS.transport);a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;a.anim=(a.anim+dt*4)%8;a.movedTick=sim.tickCount;sim.regionalEcology?.notePageMove(a,ox,oy);return true}
  const cx=Math.floor(a.x),cy=Math.floor(a.y),tx=cx+(Math.abs(dx)>=Math.abs(dy)?Math.sign(dx):0),ty=cy+(Math.abs(dx)<Math.abs(dy)?Math.sign(dy):0),i=w.idx(tx+.5,ty+.5),site=excavationSite(w,i),from=passageAt(w,a.x,a.y);
  if(site&&Math.abs(site.floor-(from?.floor??site.floor))<=.6)startBurrowWork(sim,a,i);return false;
 }
-export function* undergroundRespirators(sim,dt){for(const a of sim.animals)if(a.alive&&a.underground)yield{id:a.id,i:sim.world.idx(a.x,a.y),demand:adultBodyMass(a)*CAVE_AIR.consumption*dt*(a.burrowWork?1.6:a.intent==='rest'?.65:1)}}
+export function* undergroundRespirators(sim,dt){for(const a of sim.animals)if(a.alive&&a.underground)yield{id:a.id,i:sim.world.idx(a.x,a.y),demand:scaleMassCost(a,adultBodyMass(a)*CAVE_AIR.consumption*dt*(a.burrowWork?1.6:a.intent==='rest'?.65:1),SIZE_PHYSICS.power)}}
 export function stepUndergroundCondition(sim,a,dt,supplied=undefined){
  if(!a?.underground)return;const p=passageAt(sim.world,a.x,a.y),flooded=caveFlooded(sim.world,sim.world.idx(a.x,a.y));
  if(!p||p.closed||flooded||(sim.world.subsurface?.air?(supplied===undefined?!caveAirAt(sim.world,p.i).breathable:supplied<.99):!entranceRoute(sim.world,a))){a.burrowAir=Math.max(0,(a.burrowAir??BURROWING.airSeconds)-dt);if(a.burrowAir===0)a.health=Math.max(0,a.health-4*dt)}else delete a.burrowAir;

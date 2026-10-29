@@ -1,4 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {iceAmount,surfaceIceCovered,fractureSurfaceIce} from '../world/surface-ice.js';
@@ -59,8 +60,8 @@ export function resolveWinterWater(sim,a){
  }
  if(t.snow){
   if(Math.hypot(t.x-a.x,t.y-a.y)>.9)return false;const i=w.idx(t.x,t.y),snow=w.soilWater?.snowpack;if(!snow||!(snow[i]>0)){a.target=null;return false}
-  const want=Math.min(s.maxHydration-a.hydration,s.maxHydration*.1),take=Math.min(snow[i],want/WINTER_WATER.hydrationPerSnow);if(!(take>0))return false;
-  const water=take*WINTER_WATER.hydrationPerSnow,cost=water*WINTER_WATER.meltEnergyPerWater;snow[i]-=take;w.soilWater.pendingSnowEaten=(w.soilWater.pendingSnowEaten||0)+take;a.hydration+=water;a.energy=Math.max(0,a.energy-cost);
+  const want=Math.min(toAbsolute(a,s.maxHydration-a.hydration),s.maxHydration*.1*mouthScale(a)),take=Math.min(snow[i],want/WINTER_WATER.hydrationPerSnow);if(!(take>0))return false;
+  const water=take*WINTER_WATER.hydrationPerSnow,cost=water*WINTER_WATER.meltEnergyPerWater;snow[i]-=take;w.soilWater.pendingSnowEaten=(w.soilWater.pendingSnowEaten||0)+take;a.hydration+=toReserve(a,water);a.energy=Math.max(0,a.energy-toReserve(a,cost));
   const l=ledger(sim);l.snowWater+=water;l.snowMeltEnergy+=cost;if(a.hydration/s.maxHydration>.82)a.target=null;return true;
  }
  return false;

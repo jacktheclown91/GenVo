@@ -1,4 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
+import {toReserve,toAbsolute} from '../organisms/body-size.js';
 
 // Water from prey and carrion (creator decision 2026-10-23, GenVo v1 survival rebalance). Fresh
 // animal tissue is mostly water. On worlds with this policy, eating tissue returns water from the
@@ -19,18 +20,18 @@ export const TISSUE_WATER=Object.freeze({policy:'tissue-water/1',
 export function tissueWaterActive(sim){return sim?.tissueWaterRules===TISSUE_WATER.policy}
 // Water accounting for conservation checks (sim.stats.tissueWater).
 function ledger(sim){return sim.stats.tissueWater??={fromPrey:0,carcassDeposited:0,fromCarrion:0,dried:0,overflowLost:0}}
-function drink(sim,a,water,source){const s=SPECIES[a.species];if(!s||!(water>0))return 0;const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+water);const got=a.hydration-before,l=ledger(sim);l[source]+=water;l.overflowLost+=water-got;return got}
+function drink(sim,a,water,source){const s=SPECIES[a.species];if(!s||!(water>0))return 0;const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+toReserve(a,water));const got=toAbsolute(a,a.hydration-before),l=ledger(sim);l[source]+=water;l.overflowLost+=water-got;return got}
 // A predator eats `meal` tissue from `prey`, which held `remainingBefore` tissue before the bite.
 // Returns the water the predator gained.
 export function waterFromPrey(sim,pred,prey,meal,remainingBefore){
  if(!tissueWaterActive(sim)||!(meal>0)||!(remainingBefore>0))return 0;
- const share=Math.min(1,meal/remainingBefore),water=Math.max(0,prey.hydration)*share;prey.hydration=Math.max(0,prey.hydration-water);
+ const share=Math.min(1,meal/remainingBefore),held=Math.max(0,prey.hydration)*share,water=toAbsolute(prey,held);prey.hydration=Math.max(0,prey.hydration-held);
  return drink(sim,pred,water,'fromPrey');
 }
 // A body becomes carcass tissue: its remaining water stays with it.
 export function depositCarcassWater(sim,animal,i,tissue){
  if(!tissueWaterActive(sim)||!(tissue>0))return;const w=sim.world;w.carrionWater??=new Float32Array(w.len);
- const water=Math.max(0,animal.hydration);w.carrionWater[i]+=water;ledger(sim).carcassDeposited+=water;animal.hydration=0;
+ const water=toAbsolute(animal,Math.max(0,animal.hydration));w.carrionWater[i]+=water;ledger(sim).carcassDeposited+=water;animal.hydration=0;
 }
 // An eater takes `got` tissue from carrion cell i, which held `before` tissue. Returns water gained.
 export function waterFromCarrion(sim,a,i,got,before){

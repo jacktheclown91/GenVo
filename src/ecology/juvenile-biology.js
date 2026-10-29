@@ -1,4 +1,5 @@
 import {bodyMass} from '../organisms/body-mass.js';
+import {toReserve} from '../organisms/body-size.js';
 import {SPECIES} from '../organisms/species.js';
 import {developmentFor} from '../family/family.js';
 import {partEffectFactors} from '../lineage/part-abilities.js';
@@ -37,7 +38,7 @@ export function advanceAgeDay(animal,stats=null,energyPerMass=TISSUE_ENERGY_PER_
   const s=SPECIES[animal.species];
   if(!JUVENILE_SWITCH.growthCost||!s||animal.age>=s.maturity){animal.age++;return}
   const cost=growthCostForDay(animal,energyPerMass),floor=s.maxEnergy*GROWTH_RESERVE_FLOOR;
-  if(animal.energy-cost>=floor){animal.energy-=cost;animal.age++;animal.growthPaid=(animal.growthPaid||0)+cost;if(stats)stats.growthEnergy=(stats.growthEnergy||0)+cost}
+  if(animal.energy-toReserve(animal,cost)>=floor){animal.energy-=toReserve(animal,cost);animal.age++;animal.growthPaid=(animal.growthPaid||0)+cost;if(stats)stats.growthEnergy=(stats.growthEnergy||0)+cost}
   else{animal.growthDelayDays=(animal.growthDelayDays||0)+1;if(stats)stats.growthDelays=(stats.growthDelays||0)+1}
 }
 export function captureLikelihood(pred,prey){

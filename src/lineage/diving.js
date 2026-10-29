@@ -1,6 +1,7 @@
 import {iceSupports} from './ice-locomotion.js';
 import {SURFACE_ICE,liquidVolume,surfaceIceCovered} from '../world/surface-ice.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {undergroundContact} from './burrowing.js';
 import {swimsByBody,hasGills} from './aquatic.js';
 
@@ -59,7 +60,9 @@ export function stepDiving(sim,a,dt){
  if(!a.diveAir&&(submerged(a)||covered))a.health=Math.max(0,a.health-DIVING.suffocation*dt);
  const before=a.diveDepth||0,target=Math.min(maximum,Math.max(covered?DIVING.clearance:0,a.diveTarget||0)),speed=target>before?DIVING.downSpeed:DIVING.upSpeed;
  if((a.diveTarget||0)>maximum)a.diveTarget=maximum;a.diveDepth=Math.max(0,Math.min(maximum,before+Math.sign(target-before)*Math.min(Math.abs(target-before),speed*dt)));
- a.energy-=adultBodyMass(a)*(Math.abs(a.diveDepth-before)*DIVING.verticalWork+(submerged(a)?DIVING.work*dt:0));
+ // Vertical travel is work against buoyancy (M); holding a dive is sustained effort (M^0.75).
+ if(a.bodySize)a.energy-=massCostToReserve(a,adultBodyMass(a)*Math.abs(a.diveDepth-before)*DIVING.verticalWork)+massCostToReserve(a,adultBodyMass(a)*(submerged(a)?DIVING.work*dt:0),SIZE_PHYSICS.power);
+ else a.energy-=adultBodyMass(a)*(Math.abs(a.diveDepth-before)*DIVING.verticalWork+(submerged(a)?DIVING.work*dt:0));
  if(before>.03&&!submerged(a)&&!target&&!covered)incident={ok:true,type:'surface',message:'At the surface. Air is replenishing.'};
  return incident;
 }

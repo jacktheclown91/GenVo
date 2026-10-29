@@ -1,4 +1,5 @@
 import {diggingRule,DIGGING_RULES} from './digging-rules.js';
+import {toReserve,mouthScale} from '../organisms/body-size.js';
 import {canHunt,plantPreference} from '../ecology/functional-diet.js';
 import {disturbanceAt,recordSoilDig,pruneRecoveredSoil} from '../ecology/soil-disturbance.js';
 import {isWildSpecies,wildStartPlan} from '../organisms/wild-bodies.js';
@@ -379,7 +380,7 @@ export class PartAbilityController{
     if(animal.hidden)animal.hidden=false;
     // Roots are richer in moist, fertile ground.
     const mound=this.sim.discovery?.mound?.(animal),richness=.6+.4*Math.min(1,(w.moisture[i]||0)*.6+(w.fertility[i]||0)*.6),energy=P.rootEnergy*richness*(mound?3:1);if(mound)this.sim.discovery.useMound(mound);
-    animal.energy=Math.min(s.maxEnergy,animal.energy+energy);animal.hydration=Math.min(s.maxHydration,animal.hydration+P.rootWater);
+    animal.energy=Math.min(s.maxEnergy,animal.energy+toReserve(animal,energy*mouthScale(animal)));animal.hydration=Math.min(s.maxHydration,animal.hydration+toReserve(animal,P.rootWater*mouthScale(animal)));
     this.soilDisturbance??=new Map();
     recordSoilDig(this.soilDisturbance,i,this.sim.day,animal.id);
     this.sim.regionalEcology?.noteSoilDig(animal);

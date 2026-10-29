@@ -1,4 +1,5 @@
 import {bodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {SURFACE_ICE,iceCapacity,surfaceIceCovered,fractureSurfaceIce} from '../world/surface-ice.js';
 import {hasGills} from './aquatic.js';
 // Physical support does not change the water mask or invent swimming anatomy.
@@ -55,7 +56,7 @@ export function advanceIceSupport(sim,dt){
   const i=w.idx(a.x,a.y),immersed=!a.airborne&&!a.perched&&!a.underground&&!(a.diveDepth>.03)&&w.water[i]&&!iceSupports(w,a)&&!sim.canSwim(a);
   if(!immersed){if(a.iceImmersion){delete a.iceImmersion;a.lastIceIncident={tick:sim.tickCount,type:'ice-escape',ok:true,message:'Reached supporting ground.'}}continue}
   if(!a.iceImmersion){a.iceImmersion={air:24,seconds:0};a.hidden=false;a.bracing=false;a.torpor=false;delete a.navigationRoute;a.lastIceIncident={tick:sim.tickCount,type:'ice-break',ok:false,message:broken.has(i)?'The ice gives way. Scramble toward the nearest bank or supporting sheet.':'Stranded in water without swimming anatomy. Reach the adjacent bank.'};if(a.player)sim.playerCombat.queue(a.lastIceIncident)}
-  const state=a.iceImmersion;state.seconds+=dt;a.energy-=bodyMass(a)*.12*dt;
+  const state=a.iceImmersion;state.seconds+=dt;a.energy-=massCostToReserve(a,bodyMass(a)*.12*dt,SIZE_PHYSICS.surface);
   if(hasGills(a)&&a.energy>0&&a.health>15)state.air=24;else state.air=Math.max(0,state.air-dt*(a.energy<=0?2:1));
   if(!state.air)a.health=Math.max(0,a.health-5*dt);
   if(a.health<=0){sim.kill(a,'drowning');continue}

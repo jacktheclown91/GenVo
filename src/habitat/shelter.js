@@ -1,4 +1,5 @@
 import {groundDiet,canHunt,preyPreference} from '../ecology/functional-diet.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {shelterExposureEffect} from '../lineage/effects.js';
@@ -253,9 +254,9 @@ export class ShelterController{
   eatStoredFood(animal,id=null){
     const status=this.eatStoredAvailability(animal,id);if(!status.enabled)return{ok:false,type:'eat',reason:status.reason,message:status.reason};
     const shelter=id===null?this.nearest(animal,{radius:2.0,familyOnly:true}):this.activeShelters().find(s=>s.id===id);
-    const spec=SPECIES[animal.species],need=Math.max(0,spec.maxEnergy-animal.energy),draw=Math.min(shelter.foodStore,need/1.05,5.5);
+    const spec=SPECIES[animal.species],need=toAbsolute(animal,Math.max(0,spec.maxEnergy-animal.energy)),draw=Math.min(shelter.foodStore,need/1.05,5.5*mouthScale(animal));
     if(!(draw>0))return{ok:false,type:'eat',reason:'No stored food drawn.',message:'No stored food drawn.'};
-    shelter.foodStore=Math.max(0,shelter.foodStore-draw);const gain=Math.min(need,draw*1.05);animal.energy=Math.min(spec.maxEnergy,animal.energy+gain);shelter.lastUsedTick=this.sim.tickCount;
+    shelter.foodStore=Math.max(0,shelter.foodStore-draw);const gain=toReserve(animal,Math.min(need,draw*1.05));animal.energy=Math.min(spec.maxEnergy,animal.energy+gain);shelter.lastUsedTick=this.sim.tickCount;
     this.sim.cognition?.recordOnce?.(animal,`eat-cache:${shelter.id}:${this.sim.day}`,`Ate stored food at shelter #${shelter.id}`,{shelterId:shelter.id,gain});
     this.sim.lastPlayerAction={type:'eat',action:'eat-cache',actorId:animal.id,shelterId:shelter.id,energyGain:gain,tick:this.sim.tickCount};
     return{ok:true,type:'eat',action:'eat-cache',shelter,energyGain:gain,waterGain:0,message:`Ate stored shelter food · +${gain.toFixed(1)} energy (${shelter.foodStore.toFixed(1)} left)`};
@@ -267,8 +268,8 @@ export class ShelterController{
       const spec=SPECIES[animal.species],ratio=animal.energy/spec.maxEnergy;
       const dependent=this.sim.family.isDependent(animal);if(ratio>(dependent?.62:.38))continue;
       const need=spec.maxEnergy*(dependent?.72:.52)-animal.energy;if(need<=0)continue;
-      const draw=Math.min(need/1.05,shelter.foodStore,dependent?1.2:.7);if(draw<=0)continue;
-      shelter.foodStore-=draw;animal.energy=Math.min(spec.maxEnergy,animal.energy+draw*1.05);shelter.lastUsedTick=this.sim.tickCount;
+      const draw=Math.min(toAbsolute(animal,need)/1.05,shelter.foodStore,(dependent?1.2:.7)*mouthScale(animal));if(draw<=0)continue;
+      shelter.foodStore-=draw;animal.energy=Math.min(spec.maxEnergy,animal.energy+toReserve(animal,draw*1.05));shelter.lastUsedTick=this.sim.tickCount;
     }
   }
 

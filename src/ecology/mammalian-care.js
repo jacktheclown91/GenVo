@@ -2,6 +2,7 @@
 // free calories, generic replacement for live birth, or independent new fauna.
 // All maternal reserves are the existing animal energy and hydration fields.
 import {SPECIES} from '../organisms/species.js';
+import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {hasPart} from '../lineage/part-abilities.js';
 import {reproductiveMode} from '../reproduction/reproductive-anatomy.js';
 
@@ -35,15 +36,16 @@ export function transferMilk(parent,child,{maximum=MAMMAL.milkPerLifeStep}={}){
  if(parent.airborne||child.airborne||parent.perched||child.perched||distance(parent,child)>MAMMAL.contactDistance)
   return{ok:false,reason:'The infant and birth parent must be together on the surface.'};
  const ps=SPECIES[parent.species],cs=SPECIES[child.species];
- const availableEnergy=Math.max(0,parent.energy-ps.maxEnergy*MAMMAL.parentEnergyReserve)/MAMMAL.conversionEnergy;
- const availableWater=Math.max(0,parent.hydration-ps.maxHydration*MAMMAL.parentWaterReserve)/MAMMAL.waterPerMilk;
- const need=Math.max(0,cs.maxEnergy*.83-child.energy);
- const amount=Math.min(Math.max(0,maximum),availableEnergy,availableWater,need);
+ // Milk is absolute; each body pays or gains it in its own reserve units.
+ const availableEnergy=toAbsolute(parent,Math.max(0,parent.energy-ps.maxEnergy*MAMMAL.parentEnergyReserve))/MAMMAL.conversionEnergy;
+ const availableWater=toAbsolute(parent,Math.max(0,parent.hydration-ps.maxHydration*MAMMAL.parentWaterReserve))/MAMMAL.waterPerMilk;
+ const need=toAbsolute(child,Math.max(0,cs.maxEnergy*.83-child.energy));
+ const amount=Math.min(Math.max(0,maximum)*mouthScale(child),availableEnergy,availableWater,need);
  if(!(amount>1e-8))return{ok:false,reason:'The child is satisfied, or maternal food or water reserves are too low.'};
- parent.energy-=amount*MAMMAL.conversionEnergy;
- parent.hydration-=amount*MAMMAL.waterPerMilk;
- child.energy=Math.min(cs.maxEnergy,child.energy+amount);
- child.hydration=Math.min(cs.maxHydration,child.hydration+amount*MAMMAL.waterPerMilk);
+ parent.energy-=toReserve(parent,amount*MAMMAL.conversionEnergy);
+ parent.hydration-=toReserve(parent,amount*MAMMAL.waterPerMilk);
+ child.energy=Math.min(cs.maxEnergy,child.energy+toReserve(child,amount));
+ child.hydration=Math.min(cs.maxHydration,child.hydration+toReserve(child,amount*MAMMAL.waterPerMilk));
  child.milkMeals=(child.milkMeals||0)+1;
  child.milkTotal=(child.milkTotal||0)+amount;
  return{ok:true,type:'nursing',fed:amount,energyCost:amount*MAMMAL.conversionEnergy,waterCost:amount*MAMMAL.waterPerMilk};

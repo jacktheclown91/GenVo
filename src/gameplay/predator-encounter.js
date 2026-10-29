@@ -2,6 +2,7 @@ import {sameDepth} from '../lineage/diving.js';
 import {atmosphericSight} from '../ecology/atmospheric-visibility.js';
 import {canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {bodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
 import {partEffectFactors,WAVE1} from '../lineage/part-abilities.js';
 import {CFG} from '../sim/config.js';
@@ -400,7 +401,7 @@ export class PredatorEncounterController{
         let nx=h.x+dx*step,ny=h.y+dy*step;
         if(!this.sim.canOccupy(h,nx,ny)){const steer=h.intent==='charge-player'?null:this.sim.steerAroundWater(h,dx,dy,sp,dt*CFG.simHz);if(steer){nx=steer.x;ny=steer.y;dx=steer.dx;dy=steer.dy}else{nx=h.x;ny=h.y;if(h.intent==='charge-player'&&st)st.laneTravel=st.laneLength}}
         const moved=Math.hypot(nx-h.x,ny-h.y);
-        if(moved>0){h.x=nx;h.y=ny;h.energy-=.072*bodyMass(h)*moved/(h.genes?.metabolism||1);h.anim=((h.anim||0)+dt*8)%8;if(h.intent!=='hunt-windup')h.dir=dirIndex(dx,dy);if(h.intent==='charge-player'&&st)st.laneTravel=(st.laneTravel||0)+moved}
+        if(moved>0){h.x=nx;h.y=ny;h.energy-=massCostToReserve(h,.072*bodyMass(h)*moved/(h.genes?.metabolism||1),SIZE_PHYSICS.transport);h.anim=((h.anim||0)+dt*8)%8;if(h.intent!=='hunt-windup')h.dir=dirIndex(dx,dy);if(h.intent==='charge-player'&&st)st.laneTravel=(st.laneTravel||0)+moved}
       }
       if(h.intent==='charge-player'&&!this.resolveCharge(h)&&h.playerHunt?.phase==='charge'&&player&&st.laneTravel>=st.laneLength-1e-6){
         // The lane is spent without contact: the overrun is the opening.

@@ -1,4 +1,5 @@
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
+import {toReserve} from '../organisms/body-size.js';
 // Canonical egg ecology: finite nests, voluntary parental care, and opportunistic
 // predation. All functions act on existing world stocks/animal reserves. Neither
 // protection nor incubation requires a guaranteed surviving clutch.
@@ -129,7 +130,7 @@ export function eatEgg(sim,predator,egg){
   }
   const digest=1;
   const benefit=Math.max(0,egg.energy||0)*.72+Math.max(0,egg.hydration||0)*.08;
-  predator.energy=Math.min(SPECIES[predator.species].maxEnergy,predator.energy+benefit*digest);
+  predator.energy=Math.min(SPECIES[predator.species].maxEnergy,predator.energy+toReserve(predator,benefit*digest));
   sim.eggs.splice(sim.eggs.indexOf(egg),1);
   sim.family?.pushEvent?.({type:'egg-predated',animalId:egg.motherId,eggId:egg.id,predatorId:predator.id});
   return true;

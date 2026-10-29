@@ -1,5 +1,9 @@
 import {settleIceLoad} from './ice-locomotion.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,structuralScale} from '../organisms/body-size.js';
+// Gliding surfaces carry wing loading: mass s^3 over surface s^2, so the same anatomy
+// scaled by s loads them as if it weighed mass/s^2. Reference-size bodies are unchanged.
+export function glideLoading(a){return a?.bodySize?adultBodyMass(a)/structuralScale(a)**2:adultBodyMass(a)}
 import {SPECIES} from '../organisms/species.js';
 import {flightWindFactors} from './flight-wind.js';
 import {canopySupport,canopyGrips} from '../ecology/canopy-site.js';
@@ -27,7 +31,7 @@ export function glidingAvailability(sim,a=sim.player()){
  if((a.diveDepth||0)>.03)return fail('Surface before gliding.');
  if(a.airborne)return fail('Land from powered flight before starting a glide.');
  if(!hasGlidingSurfaces(a))return fail('A gliding membrane must be mounted on each flank.');
- if(adultBodyMass(a)>GLIDING.maxMass)return fail('This body is too heavy for its gliding surfaces.');
+ if(glideLoading(a)>GLIDING.maxMass)return fail('This body is too heavy for its gliding surfaces.');
  if(a.age<(SPECIES[a.species]?.maturity||0)*.75||a.health<GLIDING.minHealth)return fail('The body is too young or injured to glide.');
  if(a.energy<GLIDING.minEnergy||a.carryingFood)return fail('Recover food energy and put down carried food before gliding.');
  const ground=glideGround(sim.world,a.x,a.y);if(ground===null)return fail('Outside the playable region.');
@@ -63,14 +67,14 @@ export function endGlide(a,world,{collision=false,swimmer=false,fold=false}={}){
 export function stepGlide(a,world,dt,{dx=0,dy=0,swimmer=false}={}){
  if(!a?.alive||a.aerialMode!=='glide')return null;
  if(!Number.isFinite(dt)||dt<=0||dt>.25)throw Error('Invalid glide physics step.');
- if(!hasGlidingSurfaces(a)||adultBodyMass(a)>GLIDING.maxMass||a.energy<=0||a.health<GLIDING.minHealth)
+ if(!hasGlidingSurfaces(a)||glideLoading(a)>GLIDING.maxMass||a.energy<=0||a.health<GLIDING.minHealth)
   return endGlide(a,world,{collision:true,swimmer});
  if(dx||dy){const desired=Math.atan2(dy,dx),delta=Math.atan2(Math.sin(desired-a.glideHeading),Math.cos(desired-a.glideHeading));a.glideHeading+=Math.max(-GLIDING.turnRate*dt,Math.min(GLIDING.turnRate*dt,delta));}
  const ux=Math.cos(a.glideHeading),uy=Math.sin(a.glideHeading),wind=flightWindFactors(a,world,{toX:a.x+ux,toY:a.y+uy}),
   speed=GLIDING.speed*(a.genes?.motion||1)*wind.speed,distance=speed*dt,nx=a.x+ux*distance,ny=a.y+uy*distance,
   ground=glideGround(world,nx,ny),mass=adultBodyMass(a);
- a.energy-=mass*(.10*dt+.04*distance*wind.energy);
- a.glideAltitude-=GLIDING.sink*Math.max(.7,mass/1.4)*(1+wind.cross*.12)*dt;
+ a.energy-=massCostToReserve(a,mass*(.10*dt+.04*distance*wind.energy));
+ a.glideAltitude-=GLIDING.sink*Math.max(.7,glideLoading(a)/1.4)*(1+wind.cross*.12)*dt;
  if(ground===null)return endGlide(a,world,{collision:true,swimmer});
  if(ground>a.glideAltitude+.3)return endGlide(a,world,{collision:true,swimmer});
  a.x=nx;a.y=ny;a.dir=((Math.round(a.glideHeading/(Math.PI/4))+2)%8+8)%8;a.anim=((a.anim||0)+dt*2)%8;

@@ -39,6 +39,30 @@ export function adultSizeScale(animal){
  const a=animal?.bodySize?.alleles;return a?Math.exp((a[0]+a[1])/2):1;
 }
 export const reserveScale=animal=>animal?.bodySize?adultSizeScale(animal)**3:1;
+// Reserve accounting. Food and water stay absolute in the world, prey, stores and
+// other bodies; they enter or leave reserves through these. A body without
+// body-size/1 converts nothing (the identity, so recorded worlds are exact).
+export const toReserve=(animal,amount)=>animal?.bodySize?amount/reserveScale(animal):amount;
+export const toAbsolute=(animal,amount)=>animal?.bodySize?amount*reserveScale(animal):amount;
+// Bites and sips follow mouth area: linear scale squared.
+export const mouthScale=animal=>animal?.bodySize?adultSizeScale(animal)**2:1;
+// S2 physical consequences. Mass-proportional costs are computed from absolute
+// mass (anatomy x s^3); physics sets how each really grows with mass M:
+// work against gravity M^1, cost of transport (running, swimming) M^0.68,
+// sustained muscular and respiratory power M^0.75, heat loss through the body
+// surface M^(2/3), flapping-flight power M^(7/6). scaleMassCost turns a cost
+// proportional to M into one following its exponent (absolute units);
+// massCostToReserve then enters it into the body's own reserves.
+export const SIZE_PHYSICS=Object.freeze({work:1,transport:.68,power:.75,surface:2/3,flight:7/6});
+export function scaleMassCost(animal,amount,exponent=SIZE_PHYSICS.work){
+ if(!animal?.bodySize||exponent===1)return amount;return amount*reserveScale(animal)**(exponent-1);
+}
+export function massCostToReserve(animal,amount,exponent=SIZE_PHYSICS.work){
+ return animal?.bodySize?scaleMassCost(animal,amount,exponent)/reserveScale(animal):amount;
+}
+// Peak tissue stress (weight over supporting cross-section) relative to the same
+// anatomy at reference size: s. Impacts, falls and limb or wing loading follow it.
+export const structuralScale=animal=>animal?.bodySize?adultSizeScale(animal):1;
 // Resting-cost multipliers in capacity units: mass^-0.25 for energy, mass^-1/3 for water.
 export function enduranceScale(animal){
  if(!animal?.bodySize)return{energy:1,water:1};
