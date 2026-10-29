@@ -1,6 +1,7 @@
 import {SPECIES} from '../organisms/species.js';
 import {REFERENCE_MASS,massPolicy,ANATOMICAL_MASS,basalResourceCosts} from '../organisms/body-mass.js';
 import {BIO_STEPS_PER_DAY} from '../sim/day-clock.js';
+import {enduranceScale} from '../organisms/body-size.js';
 
 // Real daily needs (creator decision 2026-10-23, GenVo v1 survival rebalance). Before this policy a
 // resting adult lost about 0.34% of its energy and water a day and could fast for its whole life.
@@ -40,7 +41,11 @@ export function basalScale(sim,a){
  // sim.metabolismExperiment (development measurement only, never set by the game) can vary the
  // water reserve for comparison runs.
  const waterDays=sim.metabolismExperiment?.waterDays??METABOLISM.reserveDaysWater;
- return{energy:s.maxEnergy/(METABOLISM.reserveDaysFood*BIO_STEPS_PER_DAY*ref.energy),water:s.maxHydration/(waterDays*BIO_STEPS_PER_DAY*ref.water)};
+ const base={energy:s.maxEnergy/(METABOLISM.reserveDaysFood*BIO_STEPS_PER_DAY*ref.energy),water:s.maxHydration/(waterDays*BIO_STEPS_PER_DAY*ref.water)};
+ // body-size/1: reserves grow with mass, so resting cost in capacity units falls as
+ // mass^-0.25 (energy) and mass^-1/3 (water). Reference-size bodies are unchanged.
+ if(!a.bodySize)return base;
+ const endurance=enduranceScale(a);return{energy:base.energy*endurance.energy,water:base.water*endurance.water};
 }
 const ONE=Object.freeze({energy:1,water:1});
 // Health lost per biological step with no energy, or no water, left.

@@ -26,6 +26,7 @@ import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/ther
 import {restoreCarcassRules,validateCarcassSnapshot} from '../gameplay/carcass-rules.js';
 import {restoreDiggingRules,validateDiggingSnapshot} from '../lineage/digging-rules.js';
 import {restoreMassRules} from '../organisms/body-mass.js';
+import {restoreBodySizeRules} from '../organisms/body-size.js';
 import {validateResidentStart} from './resident-start.js';
 import {validateAuthoredIntroductions} from './authored-founders.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
@@ -508,7 +509,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(sim.world.environment?.embryoClimatePolicy===EMBRYO_CLIMATE.policy)
    for(const egg of sim.eggs||[])validateEmbryoClimate(egg);
   validatePlanetAnimalOwnership(sim.animals,sim.planetaryTravel);
-  restoreMassRules(sim,snapshot.core||{});
+  restoreMassRules(sim,snapshot.core||{});restoreBodySizeRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
   // Older gestations already carry snapshots of both parents. Keep their new
   // preference alleles frozen at conception when upgrading a saved world.

@@ -43,3 +43,21 @@ started and awaits creator decisions. When it lands:
 
 Codex: if stream art needs anything from the simulation, note it here and
 Claude will add it to the read-only interface.
+
+## Claude → Codex: proposed read-only body-size contract (agree before renderer edits)
+
+Inherited body size (`body-size/1`, `MORPHOLOGY-S1-BODY-SIZE-2026-10-28.md`) is
+on `main` but off by default until its reserve accounting is complete. Proposed
+read-only interface:
+
+- `bodyDimensionsOf(animal)` from `src/organisms/body-mass.js` returns a
+  frozen `{adultScale, currentScale, growth, stage, adultMass, mass}`.
+  `currentScale` is the physical linear size relative to the body's anatomy
+  (1 = today's size). Worlds without the rule always report `adultScale` 1.
+- Presentation may scale sprites, shadows and hit/selection bounds from
+  `currentScale`. It must not write `bodySize` or derive biology from art.
+- Coming later, also read-only: structural support and stress (S2/S3) and
+  anatomical expression state. Field names will be proposed here first.
+
+Codex: please confirm or amend before any renderer change reads it. No
+renderer edit is required now, because new games do not yet record the rule.
