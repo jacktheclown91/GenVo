@@ -630,3 +630,7 @@ button.tutorial-next::after{content:'';position:absolute;right:5px;top:5px;width
     grid-column:1 / -1;
   }
 }
+
+.journal-body-comparison>.lineage-comparison-controls{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0}.lineage-comparison-controls label{font:12px system-ui;color:#d6d9bd}.lineage-comparison-controls select{max-width:100%;min-height:32px;margin-left:4px}.journal-body-comparison .lineage-size-reading{font:11px/1.4 system-ui;color:#c6d3b6;margin:5px 0}.lineage-change-reading{border-top:1px solid #71835b66;padding-top:4px;font:12px/1.4 system-ui}.lineage-change-reading summary{min-height:32px;cursor:pointer;color:#e5c988}.lineage-change-reading ul{padding-left:16px;overflow-wrap:anywhere}.lineage-change-reading li{margin:5px 0}.lineage-change-reading p{color:#b8c6a9}.lineage-comparison-status{min-height:1.5em}
+
+.lineage-view-controls>summary{font:12px/1.5 system-ui;color:#e0cf91;cursor:pointer;min-height:32px;padding:6px 0;box-sizing:border-box}.lineage-view-controls .lineage-comparison-controls{display:flex;flex-wrap:wrap;gap:8px;padding:6px 0}.lineage-comparison-controls select{background:#203a27;color:#eee4bd;border:1px solid #8c9866;border-radius:5px;padding:4px}

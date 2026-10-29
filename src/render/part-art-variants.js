@@ -3,15 +3,18 @@ import {prepareIndexedPartRenderer} from './indexed-part-renderer.js';
 
 // Opt-in presentation assets. Loading returns an independent map and never
 // changes the installed native32 catalog, biological state or save preferences.
-export async function loadPartArtVariant(url,{resolution=128,createCanvas,fetcher=globalThis.fetch}={}){
+export async function loadPartArtVariant(url,{resolution=128,partIds=null,createCanvas,fetcher=globalThis.fetch}={}){
   if(![64,128].includes(resolution))throw Error('Detailed artwork requires 64 or 128 pixels');
   const manifestUrl=new URL(url,import.meta.url);
   const response=await fetcher(manifestUrl);
   if(!response.ok)throw Error('Detailed artwork catalog '+response.status);
   const catalog=await response.json();
   if(catalog.schema!=='genvo.part-art-variants/1'||!Array.isArray(catalog.parts))throw Error('Unknown detailed artwork catalog');
-  const entries=catalog.parts.filter(entry=>entry.resolution===resolution);
-  if(!entries.length)throw Error('Artwork resolution is not supplied');
+  const supplied=catalog.parts.filter(entry=>entry.resolution===resolution);
+  if(!supplied.length)throw Error('Artwork resolution is not supplied');
+  if(partIds!==null&&(!Array.isArray(partIds)||partIds.some(id=>typeof id!=='string'||!id)))throw Error('Invalid detailed part selection');
+  const requested=partIds===null?null:new Set(partIds);
+  const entries=supplied.filter(entry=>!requested||requested.has(entry.partId));
   const ids=new Set(),staged=new Map();let cursor=0;
   for(const entry of entries){if(ids.has(entry.partId))throw Error('Duplicate detailed part');ids.add(entry.partId);}
   const worker=async()=>{
