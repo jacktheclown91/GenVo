@@ -5,6 +5,7 @@ import {SPECIES} from '../organisms/species.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
 import {groundDiet} from './functional-diet.js';
 import {PLANTS} from '../sim/config.js';
+import {airTemperature} from './diurnal-temperature.js';
 
 export const COLD_BEHAVIOR=Object.freeze({
  enterTemperature:.27,wakeTemperature:.38,
@@ -31,7 +32,7 @@ export function torporStatus(sim,animal){
  if(animal.airborne||animal.perched)return fail('Find safe ground before slowing your body.');
  if(sim.world.water[sim.world.idx(animal.x,animal.y)])return fail('A land resting site is needed.');
  const s=SPECIES[animal.species];if(!s)return fail('Unknown physiology.');
- const temp=sim.world.temperature[sim.world.idx(animal.x,animal.y)];
+ const temp=airTemperature(sim,sim.world.idx(animal.x,animal.y));
  if(temp>COLD_BEHAVIOR.enterTemperature)return fail('The local ground is too warm for cold-season torpor.');
  if(animal.age<s.maturity*COLD_BEHAVIOR.minimumMaturity)return fail('Young creatures must keep feeding and growing.');
  if(animal.pregnant)return fail('Pregnant creatures must remain metabolically active.');
@@ -75,7 +76,7 @@ export function torporPredationMultiplier(prey){
 export function decideTorpor(sim,animal){
  if(animal?.torpor)return{intent:'torpor',target:null};
  if(!animal?.alive||animal.player&&!sim.playerAutonomy)return null;
- const s=SPECIES[animal.species],temp=sim.world.temperature[sim.world.idx(animal.x,animal.y)];
+ const s=SPECIES[animal.species],temp=airTemperature(sim,sim.world.idx(animal.x,animal.y));
  if(temp>COLD_BEHAVIOR.autoStartTemperature||ratio(animal.energy,s.maxEnergy)<COLD_BEHAVIOR.autoEnergy)return null;
  const availability=torporStatus(sim,animal);
  if(!availability.enabled)return null;

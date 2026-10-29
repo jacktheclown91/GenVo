@@ -21,6 +21,7 @@
 import {SPECIES} from '../organisms/species.js';
 import {winterFatAnatomy} from './cold-wildlife.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
+import {airTemperature} from './diurnal-temperature.js';
 
 export const ARID_PHYSIOLOGY=Object.freeze({policy:'arid-physiology/1',evaporativeWater:40,
  aestivation:Object.freeze({heatMargin:.1,drySoil:.2,maximumHydration:.55,minimumEnergy:.45,waterReach:12,cover:.32,minimumHealth:68,
@@ -38,7 +39,7 @@ export const aestivating=animal=>!!animal?.torpor&&animal.torporKind==='aestivat
 function sheltered(sim,a){return !!a.underground||(sim.coverAt?.(a)??0)>=A.cover}
 function hotOrDry(sim,a){
  const w=sim.world,i=w.idx(a.x,a.y),comfort=.55*(a.genes?.climate??1);
- return w.temperature[i]>comfort+A.heatMargin||(w.moisture[i]??1)<A.drySoil;
+ return airTemperature(sim,i)>comfort+A.heatMargin||(w.moisture[i]??1)<A.drySoil;
 }
 export function aestivationStatus(sim,a){
  const fail=reason=>({enabled:false,reason});
@@ -86,7 +87,7 @@ export function decideAestivation(sim,a){
 // arid anatomy right now. Presentation never writes it.
 export function aridExpressionOf(sim,a){
  if(!a)return null;const w=sim.world,i=w.idx(a.x,a.y),comfort=.55*(a.genes?.climate??1),parts=planPartCounts(a);
- const temp=w.temperature[i],moisture=w.moisture[i]??1;
+ const temp=airTemperature(sim,i),moisture=w.moisture[i]??1;
  return Object.freeze({policy:aridPhysiologyEnabled(sim)?ARID_PHYSIOLOGY.policy:null,heat:Math.max(0,temp-comfort),
   frillFlushed:!!parts['heat-frill']&&temp>comfort,waxSealed:!!parts['wax-plates']&&moisture<.48,aestivating:aestivating(a)});
 }
