@@ -1,3 +1,4 @@
+import {drawDetailedFeeler} from './feeler-detail.js';
 import {flankInstanceOffset} from './flank-placement.js';
 import {gestationSurfaceSize} from './gestation-surface.js';
 import {pixel,pixelLine,snap,ART_DETAIL} from './pixel-art.js';
@@ -336,7 +337,8 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
     const rx=bx+fx*(Math.max(2.4,bodyW*.30))+perp.x*sign*(face.eyeSpread+1.0),ry=by+fy*(Math.max(2.4,bodyH*.30))+perp.y*sign*(face.eyeSpread+1.0);
     const behavior=profile.behavior||{},sweep=(Number(behavior.feelerSweep)||0)*Math.sin((frame+sign*1.6)*Math.PI/4),pin=Number(behavior.feelerPin)||0;
     const curl=(sign*(frameInt<4?1:-1))*.45,endX=rx+fx*(face.feelerReach-pin*.8)+perp.x*(sign*.75+curl+sweep*sign),endY=ry+fy*(face.feelerReach-pin*.8)+perp.y*(sign*.75+curl+sweep*sign);
-    pixelLine(c,rx,ry,endX,endY,s,p.light,.5);pixel(c,snap(endX),snap(endY),1,1,s,p.body);
+    const sensoryArt=authoredParts?.[head?.partId||'head-base']||artForPart(head?.partId||'head-base');
+    if(!drawDetailedFeeler(c,{root:{x:rx,y:ry},tip:{x:endX,y:endY},scale:s,palette:p,resolution:sensoryArt?.resolution||32,side:sign})){pixelLine(c,rx,ry,endX,endY,s,p.light,.5);pixel(c,snap(endX),snap(endY),1,1,s,p.body);}
   }
 
   // Each installed eye now supplies its own eyelid and iris. Use authored frame 1

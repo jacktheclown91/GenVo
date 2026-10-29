@@ -102,7 +102,7 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   const entry=tinted(chosen,pigment),[bw,bh]=rig.bodyBoundsPx;
   ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);if(rotationRadians)ctx.rotate(rotationRadians);ctx.scale(width/bw,height/bh);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true;
  }
- return Object.freeze({partId:asset.partId,checksum:asset.checksum,rig,expressionScale:asset.expressionScale||'pulse',frameAt(options){return select(options)?.frame||null},
+ return Object.freeze({partId:asset.partId,checksum:asset.checksum,resolution:asset.width,rig,expressionScale:asset.expressionScale||'pulse',frameAt(options){return select(options)?.frame||null},
  drawTorso(ctx,options){return drawSurface(ctx,'torso',options)},
  drawHead(ctx,options){return drawSurface(ctx,'head',options)},
  drawDorsal(ctx,{x=0,y=0,scale=1,headingRadians=0,deployment=0,extent=1,sweepRadians=0,pigment=null,state='idle',facing=2,timeMs=0,frameIndex=null}={}){

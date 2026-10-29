@@ -127,3 +127,5 @@ Codex wing audio heads-up: shared pure aerial-cycle phase query in aerial-presen
 Codex limb art batch heads-up: refining only optional64/128 walking/runner/sturdy indexed tissue via existing production compiler; fixed bone anchors/hip/knee regions, pigmentation, timing and native32 preserved. Claude ecebf2e4 inertia merged normally first. No movement/physics mechanisms edited by this asset batch.
 
 Codex inertia-expression heads-up: renderer.js will consume canonical motionStateOf/inertiaEnabled for bounded torso lean/bank/drop/twist and follow-through. Existing foot tracker keeps contact authority; higher action poses retain priority. No physics, velocity, target, steering or save edits. Legacy worlds without inertia remain on their current paint path.
+
+Codex sensory-art heads-up: replacing only optional64/128 procedural feeler square tips with finely shaded tapered tissue, consuming the existing exact base/tip/action coordinates and pigmentation. indexed-part-renderer exposes its immutable compiled resolution; genvo-draw selects detail from the actual head renderer. Native32 calls unchanged; no sensory capability, anatomy, physics or save edits.
