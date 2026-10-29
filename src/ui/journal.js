@@ -114,7 +114,7 @@ export function journalMarkup(m,canTakeOver,recordCount,recordPosition){
   const children=m.children.length?m.children.slice(0,8).map(r=>`<span>${r.alive?'•':'×'} G${r.generation} #${r.id}</span>`).join(''):'<em>none recorded</em>';
   const notes=m.notes.length?m.notes.map(n=>`<li><span>${escapeHtml(n.text)}</span><small>${n.when}</small></li>`).join(''):'<li><span>No field notes yet.</span></li>';
   return `<div class="journal-page knowledge-panel">
-    <header class="journal-head"><div><small>FAMILY LINE</small><h2>${escapeHtml(m.subjectName)} <span>Generation ${m.generation}</span></h2></div><p>${m.active?'YOU ARE HERE':m.alive?'LIVING RELATIVE':'FAMILY RECORD'}</p></header>
+    <header class="journal-head"><div><small>FAMILY LINE</small><h2 data-focus-key="journal-subject" tabindex="-1">${escapeHtml(m.subjectName)} <span>Generation ${m.generation}</span></h2></div><p>${m.active?'YOU ARE HERE':m.alive?'LIVING RELATIVE':'FAMILY RECORD'}</p></header>
     <div class="journal-scroll" data-focus-key="family-scroll" tabindex="0" aria-label="Scrollable family record"><div class="journal-stitch"></div>
     <div class="journal-facts" aria-label="Family member at a glance"><div><b>Life record</b><span>${escapeHtml(m.born)}</span></div><div><b>Family ties</b><span>${m.parents.length} recorded parent${m.parents.length===1?'':'s'} · ${m.children.length} recorded child${m.children.length===1?'':'ren'}</span></div></div>
     <div class="journal-grid">
