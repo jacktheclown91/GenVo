@@ -1,32 +1,32 @@
 /* Review overlay: scoped to the genuine family journal. */
-#journal .journal-page{box-sizing:border-box;left:12px;top:12px;bottom:12px;width:min(720px,48vw);max-width:calc(100vw - 24px);padding:18px 20px;background:#102017;border:1px solid #879268;border-radius:2px;color:#d9dec6;box-shadow:0 4px 18px #06110b99;font:13px/1.5 Verdana,sans-serif}
+#journal .journal-page{box-sizing:border-box;left:12px;top:12px;bottom:12px;width:min(720px,48vw);max-width:calc(100vw - 24px);padding:18px 20px;background:#102017;border:1px solid #879268;border-radius:2px;color:#d9dec6;box-shadow:0 4px 18px #06110b99;font:14px/1.5 Verdana,sans-serif}
 #journal .journal-page:after{display:none}
 #journal .journal-head,#journal .journal-foot{background:#102017}
 #journal .journal-head{align-items:flex-start;gap:12px;border-bottom:1px solid #596447;padding-bottom:12px}
-#journal .journal-head small{font:700 10px/1.5 Verdana,sans-serif;letter-spacing:1.5px;color:#bdc8a2}
+#journal .journal-head small{font:700 12px/1.5 Verdana,sans-serif;letter-spacing:1.5px;color:#bdc8a2}
 #journal .journal-head h2{font:700 24px/1.15 Georgia,serif;color:#eee3bd;overflow-wrap:anywhere}
-#journal .journal-head h2 span{display:block;margin-top:5px;color:#b7c49e;font:12px/1.4 Verdana,sans-serif}
-#journal .journal-head>p{font:700 10px/1.5 Verdana,sans-serif;color:#d9c375;letter-spacing:.6px;text-align:right}
+#journal .journal-head h2 span{display:block;margin-top:5px;color:#b7c49e;font:13px/1.4 Verdana,sans-serif}
+#journal .journal-head>p{font:700 12px/1.5 Verdana,sans-serif;color:#d9c375;letter-spacing:.6px;text-align:right}
 #journal .journal-stitch{height:1px;margin:12px 0;background:#596447;opacity:1}
 #journal .journal-scroll{padding-right:8px;scrollbar-color:#8d9a6b #102017}
 #journal .journal-grid{grid-template-columns:72px minmax(0,1fr);gap:14px;min-height:0}
 #journal .journal-spine{grid-column:1;grid-row:1 / 3;padding:4px 0 0 0;gap:12px}
 #journal .journal-spine:before{left:6px;border-left:1px solid #77845e;top:12px;bottom:12px}
-#journal .journal-node{grid-template-columns:14px 1fr;gap:4px;font-size:11px;color:#c2cbaa}
-#journal .journal-node small{grid-column:2;font:11px/1.3 Verdana,sans-serif;color:#b6c29f}
+#journal .journal-node{grid-template-columns:14px 1fr;gap:4px;font-size:12px;color:#c2cbaa}
+#journal .journal-node small{grid-column:2;font:12px/1.3 Verdana,sans-serif;color:#b6c29f}
 #journal .journal-node b{font:700 14px/1.3 Georgia,serif;color:#d5d9bb}
 #journal .journal-node.dead{opacity:.72}
 #journal .journal-node.selected b{color:#efd28a}
 #journal .journal-family-plate{min-width:0;grid-column:2;grid-row:1;text-align:center}
 #journal .journal-family-plate h3{font:700 16px/1.35 Georgia,serif;color:#e4d7aa;margin:0 0 5px}
 #journal .journal-family-plate h3 span{font:12px Verdana,sans-serif;color:#bdc8a2}
-#journal .kin-context{font:11px/1.5 Verdana,sans-serif;color:#bec9aa;margin:0 0 10px}
+#journal .kin-context{font:13px/1.5 Verdana,sans-serif;color:#bec9aa;margin:0 0 10px}
 #journal .kin-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 10px;position:relative;padding:8px 0 14px}
 #journal .kin-record{position:relative;flex:0 1 112px;min-width:0;margin:0;border-bottom:1px solid #626f4e;padding:0 4px 8px;background:transparent}
 #journal .kin-record canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
-#journal .kin-record figcaption{display:flex;flex-direction:column;gap:3px;color:#dce0c5;font:11px/1.5 Verdana,sans-serif;overflow-wrap:anywhere}
-#journal .kin-record figcaption b{color:#ecdba8;font-weight:700}
-#journal .kin-record figcaption span{color:#bdc8a6}
+#journal .kin-record .kin-card-caption{display:flex;flex-direction:column;gap:3px;color:#dce0c5;font:13px/1.5 Verdana,sans-serif;overflow-wrap:anywhere}
+#journal .kin-record .kin-card-caption b{color:#ecdba8;font-weight:700}
+#journal .kin-record .kin-card-caption span{color:#bdc8a6}
 #journal .kin-dead{border-bottom-style:dashed}
 #journal .kin-missing,#journal .kin-empty{font:12px/1.5 Georgia,serif;color:#bdc8a6;margin:8px 0}
 #journal .kin-missing{min-height:60px;display:grid;place-items:center}
@@ -36,14 +36,14 @@
 #journal .journal-specimen canvas{width:min(100%,280px);max-height:none;height:auto;margin:0 auto;background:transparent;border:0;border-radius:0}
 #journal .specimen-caption{flex-wrap:wrap;gap:4px 8px;margin-top:0}
 #journal .specimen-caption b{font:700 15px Georgia,serif;color:#ecdba8}
-#journal .specimen-caption span{font:11px/1.5 Verdana,sans-serif;color:#c4ceaf}
+#journal .specimen-caption span{font:13px/1.5 Verdana,sans-serif;color:#c4ceaf}
 #journal .journal-specimen>p{max-width:none;font:13px/1.5 Georgia,serif;color:#d2d9bc}
 #journal .journal-notes{grid-column:2;grid-row:2;background:#e5dcb7;color:#283c2a;border-radius:2px;padding:14px;display:block}
 #journal .journal-notes h3{font:700 15px/1.4 Georgia,serif;color:#253a28;margin:0 0 4px}
-#journal .journal-notes p,#journal .journal-notes details p{font:12px/1.6 Verdana,sans-serif;color:#334932;margin:0 0 13px}
+#journal .journal-notes p,#journal .journal-notes details p{font:13px/1.6 Verdana,sans-serif;color:#334932;margin:0 0 13px}
 #journal .journal-children,#journal .journal-children em{color:#40553a;font:12px/1.6 Verdana,sans-serif}
 #journal .knowledge-fold{border-color:#84906a;border-radius:2px;background:transparent;margin:12px 0;padding:8px}
-#journal .knowledge-fold>summary{font:700 12px/1.5 Verdana,sans-serif;color:#dec989;cursor:pointer;min-height:28px}
+#journal .knowledge-fold>summary{font:700 13px/1.5 Verdana,sans-serif;color:#dec989;cursor:pointer;min-height:28px}
 #journal .journal-notes .knowledge-fold>summary{color:#34492c}
 #journal .journal-events{margin:16px 0 0 86px;border-top:1px solid #596447;padding-top:12px}
 #journal .journal-events h3{font:700 16px/1.4 Georgia,serif;color:#e0d2a2}
@@ -54,7 +54,7 @@
 #journal .journal-body-comparison>div{grid-template-columns:1fr}
 #journal .journal-body-comparison figure{border-radius:2px;border-color:#64724e;background:#17291b}
 #journal .journal-foot{gap:6px;border-top:1px solid #596447;padding-top:12px;margin-top:12px;flex-wrap:wrap}
-#journal .journal-foot button,#journal button[data-journal=revisit]{min-height:40px;border:1px solid #72815a;border-radius:2px;background:#20351f;color:#e8dfb7;padding:8px 12px;font:700 11px/1.4 Verdana,sans-serif;cursor:pointer}
+#journal .journal-foot button,#journal button[data-journal=revisit]{min-height:44px;border:1px solid #72815a;border-radius:2px;background:#20351f;color:#e8dfb7;padding:8px 12px;font:700 13px/1.4 Verdana,sans-serif;cursor:pointer}
 #journal .journal-foot button[data-journal=close]{margin-left:auto;background:#394625;border-color:#a99d62}
 #journal button:focus-visible,#journal summary:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
 @media(max-width:1100px){#journal .journal-page{width:min(600px,60vw)}}
@@ -68,7 +68,7 @@
 
 #journal .kin-subject{padding:12px 8px}
 #journal .journal-specimen canvas{width:min(100%,240px)}
-#journal .kin-scale-note{font:10px/1.5 Verdana,sans-serif;color:#bec9aa;margin:0}
+#journal .kin-scale-note{font:12px/1.5 Verdana,sans-serif;color:#bec9aa;margin:0}
 #journal .kin-parents:has(.kin-empty){padding:0 0 4px}
 #journal .kin-parents .kin-empty{margin:0 0 8px}
 #journal .kin-children:has(.kin-record){border-top:1px solid #78855d;padding-top:12px}
@@ -86,3 +86,16 @@
 
 #journal .journal-foot{flex-wrap:wrap}
 #journal .journal-record-position{align-self:center;margin-right:auto;color:#c4cba9;font:11px/1.4 Verdana,sans-serif}
+
+/* The family should be navigable by its actual recorded members, not just
+   record-order Previous/Next buttons. These are presentation-only controls. */
+#journal .journal-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 14px}
+#journal .journal-facts>div{min-width:0;padding:7px 9px;background:rgba(31,46,30,.65);border-left:2px solid #8f9d75}
+#journal .journal-facts b{display:block;color:#e5d2a0;font:700 12px/1.4 Verdana,sans-serif}
+#journal .journal-facts span{display:block;margin-top:3px;color:#d5dfca;font:13px/1.5 Verdana,sans-serif;overflow-wrap:anywhere}
+#journal .kin-record-link{display:block;width:100%;min-height:88px;padding:3px 2px 7px;border:0;background:transparent;color:inherit;font:inherit;text-align:center;cursor:pointer;border-radius:2px}
+#journal .kin-record-link:hover{background:rgba(148,171,113,.15)}
+#journal .kin-record-link:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
+#journal .kin-record .kin-card-caption{display:flex;flex-direction:column;gap:3px}
+#journal .journal-head h2:focus{outline:2px solid #e8d487;outline-offset:3px}
+@media(max-width:440px){#journal .journal-facts{grid-template-columns:1fr;gap:6px}#journal .journal-facts>div{padding:5px 8px}}
