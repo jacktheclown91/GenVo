@@ -1,0 +1,281 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "comparison": {
+    "timings": [
+      {
+        "label": "before",
+        "resolution": 64,
+        "medianMs": 5.699999999254942,
+        "p90Ms": 32.69999999925494,
+        "samples": 10
+      },
+      {
+        "label": "current",
+        "resolution": 64,
+        "medianMs": 8,
+        "p90Ms": 38.80000000074506,
+        "samples": 10
+      },
+      {
+        "label": "before",
+        "resolution": 128,
+        "medianMs": 8.299999997019768,
+        "p90Ms": 35.599999997764826,
+        "samples": 10
+      },
+      {
+        "label": "current",
+        "resolution": 128,
+        "medianMs": 4.699999999254942,
+        "p90Ms": 31.400000002235174,
+        "samples": 10
+      }
+    ],
+    "rootPart": "light-torso",
+    "climateWater": "climate-water/1",
+    "stateExact": true,
+    "airborne": true,
+    "mode": null,
+    "study": {
+      "format": "genvo.organism-study/1",
+      "source": {
+        "seed": "LIGHT-BODY-DETAIL",
+        "day": 1
+      },
+      "animal": {
+        "id": 197,
+        "species": "genvo",
+        "age": 30,
+        "genes": {
+          "body": 1.0639187965076418,
+          "motion": 0.9762165025342256,
+          "metabolism": 0.9391674628015608,
+          "digestion": 0.9529032856691629,
+          "senses": 1.0195717606227845,
+          "climate": 0.9307014800142497,
+          "immunity": 0.9691108555067331,
+          "temperament": 1.0465512357186526
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 22,
+          "chroma": 2,
+          "tone": 0,
+          "marking": 3,
+          "density": 0,
+          "accent": 2
+        },
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "adaptations": [],
+        "sex": "F",
+        "massPolicy": "relative-anatomical-load/1",
+        "bodySize": {
+          "schema": 1,
+          "alleles": [
+            -0.02913786745630205,
+            -0.023972197971306744
+          ]
+        },
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "light-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/dorsal",
+              "partId": "flight-wing",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "dorsal"
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-e710eff6"
+        },
+        "alive": true
+      }
+    },
+    "aerial": {
+      "landing": false,
+      "phase": 2.8400000000541894,
+      "wingFrame": 0,
+      "glideSpread": 0,
+      "flightSpread": 0.9497365970296336,
+      "wingSweep": 0.17383410271691307,
+      "aerialTuck": 1,
+      "bodyRise": 0.01804327286115716,
+      "bodyDrop": 0,
+      "bodyLean": 0.22
+    }
+  },
+  "facings": [
+    {
+      "resolution": "64",
+      "dir": 0,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 1,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 2,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 3,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 4,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 5,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 6,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 7,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 0,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 1,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 2,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 3,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 4,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 5,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 6,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 7,
+      "plan": "bp0-e710eff6",
+      "study": 197
+    }
+  ],
+  "scope": "Public legal light-torso founder import, real6 takeoff/landing and keyboard flight; same-state airborne gameplay before/current isolated to light-torso detail, plus actual organism study in Lab resting preview/all8 directions. Lab rest is not a biological takeoff claim. Enlarged airborne capture uses6x viewing zoom and the real paused flight pose. No mass/position/anatomy/energy/airborne injection; native32 and canonical state retained. Short CPU render observations, not mature-world acceptance."
+}
