@@ -13,16 +13,18 @@ export class GroundContactTracker{
     this.states=new Map();this.world=null;this.serial=0;
     this.stats={held:0,replanted:0,recovered:0,maxHoldDrift:0,resets:0};
   }
-  begin({id,world,anatomy='',x,y,dir,now,moving=false,paused=false,eligible=true,action='move'}={}){
+  begin({id,world,anatomy='',x,y,dir,now,moving=false,paused=false,eligible=true,action='move',sizeScale=1}={}){
     if(this.world!==world){this.clear();this.world=world;}
     if(!eligible||!GROUNDED_ACTIONS.has(action)||![x,y,now].every(Number.isFinite)){this.states.delete(id);return null;}
+    const units=this.units/sizeScale;
+    if(!Number.isFinite(units)||units<=0){this.states.delete(id);return null;}
     let state=this.states.get(id);
-    if(state&&(state.anatomy!==anatomy||Math.hypot(x-state.x,y-state.y)>2||now<state.lastSeen||(!paused&&now-state.lastSeen>350&&Math.hypot(x-state.x,y-state.y)>.25))){
+    if(state&&(state.anatomy!==anatomy||state.units!==units||Math.hypot(x-state.x,y-state.y)>2||now<state.lastSeen||(!paused&&now-state.lastSeen>350&&Math.hypot(x-state.x,y-state.y)>.25))){
       this.states.delete(id);state=null;this.stats.resets++;
     }
     if(!state){
       if(this.states.size>=this.maxStates)this.states.delete(this.states.keys().next().value);
-      state={id,serial:++this.serial,anatomy,x,y,dir,lastSeen:now,time:0,mode:'idle',modeStart:0,startVersion:0,settleVersion:0,legs:null};
+      state={id,units,serial:++this.serial,anatomy,x,y,dir,lastSeen:now,time:0,mode:'idle',modeStart:0,startVersion:0,settleVersion:0,legs:null};
       state.frame=new ContactFrame(this,state);this.states.set(id,state);
     }
     const oldDir=state.dir,changed=dir!==oldDir;
@@ -68,7 +70,7 @@ class ContactFrame{
   }
   resolve(leg,{root,knee,foot,restFoot=foot}){
     const key=leg.slot??leg.index,cached=this.memo.get(key);if(cached)return cached;
-    const s=this.state,u=this.owner.units;
+    const s=this.state,u=s.units;
     const world=point=>({x:s.x+point.x/u,y:s.y+point.y/u});
     const local=point=>({x:(point.x-s.x)*u,y:(point.y-s.y)*u});
     const candidate=world(foot);

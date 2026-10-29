@@ -1,3 +1,4 @@
+import {adultSizeScale} from '../organisms/body-size.js';
 import {WorkMotionPresentation,applyWorkMotion,CLIMB_PIXEL_HEIGHT} from './work-motion.js';
 import {AerialPresentation,applyAerialPose} from './aerial-presentation.js';
 import {GroundContactTracker} from './ground-contacts.js';
@@ -172,7 +173,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      // distant creature in a large living ecosystem.
      const visible=this.sim.animals.filter(a=>a.alive&&
        !!a.underground===!!observer?.underground&&
-       Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2&&
+       Math.abs(a.x-this.camera.x)<cols/2+2*adultSizeScale(a)&&Math.abs(a.y-this.camera.y)<rows/2+2*adultSizeScale(a)&&
        visuallyObservable(this.sim,observer,a,8,playerView)).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
     const regional=visibleRegionalFauna(this.sim,this.borderTerrain);this.regionalFauna=regional;
     const actors=regional.length?[...visible.map(actor=>({actor,y:actor.y})),...regional].sort((a,b)=>a.y-b.y):visible,draw=regional.length?(entry=>entry.owner?drawRegionalAnimal(this,entry,tile):this.drawAnimal(entry.actor,tile)):(actor=>this.drawAnimal(actor,tile));
@@ -1017,7 +1018,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   playerGaitVisual(a,gaitPerTile){const g=this.motion.sample({...a,id:'gait:'+a.id,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile});return{...this.playerVisual,gaitPhase:g.gaitPhase,recentlyMoving:g.recentlyMoving}}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
+    const sizeScale=adultSizeScale(a),worldScale=this.zoom,scale=worldScale*sizeScale,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/sizeScale/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(a.player?!!visual.recentlyMoving:!!visual.recentlyMoving&&targetTravel);if(a.player)this.lastPlayerDrawMoving=moving;
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
@@ -1090,18 +1091,18 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(!a.underground&&!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     if(!a.underground&&!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-(workMotion?.height??a.climb.height)*CLIMB_PIXEL_HEIGHT:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-(workMotion?.height??a.climb.height)*CLIMB_PIXEL_HEIGHT:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*worldScale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
-    if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*scale);c.globalAlpha*=1-depth*.55}
-    if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*scale)}
+    if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*worldScale);c.globalAlpha*=1-depth*.55}
+    if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*worldScale)}
     // Record the actual translated sprite surface for DOM obstruction avoidance,
     // including aerial/climbing/depth offsets; UI does not reimplement those rules.
     if(a.player||a.id===this.overlayTargetId){const t=c.getTransform?.();if(t){const radius=Math.ceil(44*scale/2)+2,rx=radius*(Math.abs(t.a)+Math.abs(t.c)),ry=radius*(Math.abs(t.b)+Math.abs(t.d));this.screenBounds.set(a.id,{left:t.e-rx,top:t.f-ry,right:t.e+rx,bottom:t.f+ry,width:rx*2,height:ry*2});}}
     const drawPhase=life.dormant?0:a.player?phase:cachePhase;
     const spriteTransform=c.getTransform?.();
     const groundContactFrame=(this.groundContacts||=new GroundContactTracker({unitsPerTile:CFG.tileSize})).begin({
-      id:a.id,world:this.sim.world,anatomy:(a.bodyPlan?.id||'')+'|'+(a.genVersion||0)+'|'+visualGrowth,
+      id:a.id,world:this.sim.world,sizeScale,anatomy:(a.bodyPlan?.id||'')+'|'+(a.genVersion||0)+'|'+visualGrowth,
       x:this.camera.x+((spriteTransform?.e??px)-this.w/2)/tile,y:this.camera.y+((spriteTransform?.f??py)-this.h/2)/tile,
       dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
       eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden

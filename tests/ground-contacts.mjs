@@ -43,3 +43,8 @@ const lift=reverse.begin({...base,moving:true,dir:6,now:64}).resolve(leg,longSte
 const bounded=new GroundContactTracker({maxStates:3,maxAgeMs:100});for(let id=0;id<10;id++)bounded.begin({...base,id,now:id});assert.equal(bounded.states.size,3);bounded.prune(200);assert.equal(bounded.states.size,0);
 assert.deepEqual(points.foot,{x:6,y:3});assert.equal(leg.planted,true,'render contact cannot mutate the provided anatomical pose');
 console.log('Ground contacts PASS: world-space stance, moving/standing turns, eased starts/stops/reversal, pause, identity/teleport resets, idempotent draw and bounded idle-cache recovery.');
+
+const sized=new GroundContactTracker(),sizeBase={id:42,world:{},x:0,y:0,dir:2,now:0,moving:true,action:'move'};
+const originalSize=sized.begin({...sizeBase,sizeScale:1});originalSize.resolve(leg,points);
+const changedSize=sized.begin({...sizeBase,sizeScale:2,now:16});assert.notEqual(changedSize,originalSize,'changed inherited size resets stale world contacts');assert.equal(changedSize.state.units,8);
+assert.equal(sized.begin({...sizeBase,sizeScale:0,now:32}),null,'invalid size cannot leave stale feet');assert.equal(sized.states.size,0);

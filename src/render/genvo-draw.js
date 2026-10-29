@@ -17,16 +17,19 @@ function shapeScales(shape,dir){if(!shape)return[1,1];const [vx,vy]=DIRV[dir&7],
 // Art redo (v1.47.0): every creature is drawn to a scratch canvas, then composited with a dark
 // one-art-pixel outline round its whole silhouette, so bodies, heads and legs read clearly against
 // any ground. Contexts without drawImage (tests, exporters) get the plain drawing.
-let scratch=null;
+const scratches=new Map();let scratchBytes=0;
+function reserveScratch(bytes,keep=null){
+  while(scratchBytes+bytes>POOL_BYTES||(!keep&&scratches.size>=8)){const entry=[...scratches].find(([,s])=>s!==keep);if(!entry)return false;const [key,s]=entry;scratches.delete(key);scratchBytes-=s.bytes;}return true;
+}
 // v1.57.3: ordinary page canvases, as the terrain uses. On some graphics drivers every copy from an
 // OffscreenCanvas onto the page is an expensive transfer; creature drawing took 35 ms a frame on the
 // creator's machine while terrain (page canvases) took 0.4 ms.
 function makeCanvas(n){if(typeof document!=='undefined'){const cv=document.createElement('canvas');cv.width=n;cv.height=n;return cv}if(typeof OffscreenCanvas!=='undefined')return new OffscreenCanvas(n,n);return null}
 function scratchFor(n){
-  if(scratch&&scratch.n===n)return scratch;const a=makeCanvas(n),b=makeCanvas(n);if(!a||!b)return null;
+  const hit=scratches.get(n);if(hit){scratches.delete(n);scratches.set(n,hit);return hit;}const bytes=n*n*8;if(!reserveScratch(bytes))return null;const a=makeCanvas(n),b=makeCanvas(n);if(!a||!b)return null;
   // v1.57.3: the scratch canvases are CPU canvases (willReadFrequently). On a GPU backend, drawing a
   // freshly painted GPU canvas forces the card to finish its work first, several stalls per creature.
-  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};scratch={n,a:ctx(a),b:ctx(b),pool:[],next:0,ctx};return scratch;
+  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};const scratch={n,a:ctx(a),b:ctx(b),pool:[],next:0,ctx,bytes};scratches.set(n,scratch);scratchBytes+=bytes;return scratch;
 }
 // Phase 3K render audit: on a GPU backend, copying the one shared finished-sprite canvas onto the page right
 // after repainting it waited for the previous upload: 83.5 ms of a 112 ms frame (headed Chromium, D3D11) for
@@ -35,7 +38,7 @@ function scratchFor(n){
 // Pixels are unchanged; the pool is capped at POOL_BYTES of canvas memory. ?scratchPool=1 restores the single
 // shared canvas. Measured, headed Chromium on D3D11, day 20: render p50 103 ms (one canvas), 36.5 (16), 29 (64), 20.8 (256).
 const POOL_BYTES=32*1024*1024;
-function finishCanvas(S){const k=Math.min(SPRITE_CACHE.scratchPool|0,Math.floor(POOL_BYTES/(S.n*S.n*4)));if(k<=1)return S.b;S.next=(S.next+1)%k;let x=S.pool[S.next];if(!x){const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return S.b;S.pool[S.next]=x}return x}
+function finishCanvas(S){const k=Math.min(SPRITE_CACHE.scratchPool|0,Math.floor(POOL_BYTES/(S.n*S.n*4)));if(k<=1)return S.b;S.next=(S.next+1)%k;let x=S.pool[S.next];if(!x){const bytes=S.n*S.n*4;if(!reserveScratch(bytes,S))return S.b;const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return S.b;S.pool[S.next]=x;S.bytes+=bytes;scratchBytes+=bytes}return x}
 // The outline colour: the palette's shade, much darker.
 // A blend of two hex colours (t = 0 gives a, 1 gives b).
 export function mixHex(a,b,t){const A=/^#([0-9a-f]{6})$/i.exec(a||''),B=/^#([0-9a-f]{6})$/i.exec(b||'');if(!A||!B)return a;const x=parseInt(A[1],16),y=parseInt(B[1],16),ch=k=>Math.round((x>>k&255)*(1-t)+(y>>k&255)*t).toString(16).padStart(2,'0');return'#'+ch(16)+ch(8)+ch(0)}
@@ -62,7 +65,7 @@ export function outlineColor(p){const m=/^#([0-9a-f]{6})$/i.exec(p?.shade||'');i
 // into a texture that is drawn from in the same frame stalls GPU backends.)
 const spriteCache=new Map(),SPRITE_CACHE_MAX=2400,bodyLayerCache=new Map(),BODY_LAYER_MAX=1200;
 // Diagnostic counters (read by tools/profile-population-frames.cjs; cost one increment per sprite draw).
-export const SPRITE_STATS={pendingBitmaps:0,hits:0,pending:0,misses:0,uncached:0,evictions:0,lastSide:0,size:()=>spriteCache.size};
+export const SPRITE_STATS={pendingBitmaps:0,hits:0,pending:0,misses:0,uncached:0,evictions:0,lastSide:0,size:()=>spriteCache.size,scratchBytes:()=>scratchBytes,scratchSizes:()=>scratches.size};
 // skipMoving: a walking creature's pose (32 per stride x direction x head turn) was almost never drawn twice
 // before eviction (Phase 3K render audit: 3483 of 3483 sampled misses were new keys), so caching it only paid
 // a bitmap upload and pushed out reusable resting poses. Moving poses are drawn directly; pixels are identical.

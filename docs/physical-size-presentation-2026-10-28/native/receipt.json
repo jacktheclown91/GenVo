@@ -1,0 +1,2294 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "result": {
+    "cases": [
+      {
+        "resolution": 32,
+        "size": 0.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 0.18125,
+          "mass": 0.18125
+        },
+        "bound": {
+          "left": 96,
+          "top": 96,
+          "right": 144,
+          "bottom": 144,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 1,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 1,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 1.45,
+          "mass": 1.45
+        },
+        "bound": {
+          "left": 324,
+          "top": 74,
+          "right": 416,
+          "bottom": 166,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 1.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 1.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 4.89375,
+          "mass": 4.89375
+        },
+        "bound": {
+          "left": 552,
+          "top": 52,
+          "right": 688,
+          "bottom": 188,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 2,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 2,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 11.6,
+          "mass": 11.6
+        },
+        "bound": {
+          "left": 780,
+          "top": 30,
+          "right": 960,
+          "bottom": 210,
+          "width": 180,
+          "height": 180
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 0.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.275,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 0.18125,
+          "mass": 0.030155468750000008
+        },
+        "bound": {
+          "left": 96,
+          "top": 296,
+          "right": 144,
+          "bottom": 344,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 1,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 0.55,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 1.45,
+          "mass": 0.24124375000000006
+        },
+        "bound": {
+          "left": 324,
+          "top": 274,
+          "right": 416,
+          "bottom": 366,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 1.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 0.8250000000000001,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 4.89375,
+          "mass": 0.8141976562500002
+        },
+        "bound": {
+          "left": 552,
+          "top": 252,
+          "right": 688,
+          "bottom": 388,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 32,
+        "size": 2,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 1.1,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 11.6,
+          "mass": 1.9299500000000005
+        },
+        "bound": {
+          "left": 780,
+          "top": 230,
+          "right": 960,
+          "bottom": 410,
+          "width": 180,
+          "height": 180
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 0.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 0.18125,
+          "mass": 0.18125
+        },
+        "bound": {
+          "left": 96,
+          "top": 96,
+          "right": 144,
+          "bottom": 144,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 1,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 1,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 1.45,
+          "mass": 1.45
+        },
+        "bound": {
+          "left": 324,
+          "top": 74,
+          "right": 416,
+          "bottom": 166,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 1.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 1.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 4.89375,
+          "mass": 4.89375
+        },
+        "bound": {
+          "left": 552,
+          "top": 52,
+          "right": 688,
+          "bottom": 188,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 2,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 2,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 11.6,
+          "mass": 11.6
+        },
+        "bound": {
+          "left": 780,
+          "top": 30,
+          "right": 960,
+          "bottom": 210,
+          "width": 180,
+          "height": 180
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 0.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.275,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 0.18125,
+          "mass": 0.030155468750000008
+        },
+        "bound": {
+          "left": 96,
+          "top": 296,
+          "right": 144,
+          "bottom": 344,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 1,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 0.55,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 1.45,
+          "mass": 0.24124375000000006
+        },
+        "bound": {
+          "left": 324,
+          "top": 274,
+          "right": 416,
+          "bottom": 366,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 1.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 0.8250000000000001,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 4.89375,
+          "mass": 0.8141976562500002
+        },
+        "bound": {
+          "left": 552,
+          "top": 252,
+          "right": 688,
+          "bottom": 388,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 64,
+        "size": 2,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 1.1,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 11.6,
+          "mass": 1.9299500000000005
+        },
+        "bound": {
+          "left": 780,
+          "top": 230,
+          "right": 960,
+          "bottom": 410,
+          "width": 180,
+          "height": 180
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 0.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 0.18125,
+          "mass": 0.18125
+        },
+        "bound": {
+          "left": 96,
+          "top": 96,
+          "right": 144,
+          "bottom": 144,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 1,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 1,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 1.45,
+          "mass": 1.45
+        },
+        "bound": {
+          "left": 324,
+          "top": 74,
+          "right": 416,
+          "bottom": 166,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 1.5,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 1.5,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 4.89375,
+          "mass": 4.89375
+        },
+        "bound": {
+          "left": 552,
+          "top": 52,
+          "right": 688,
+          "bottom": 188,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 2,
+        "age": 32,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 2,
+          "growth": 1,
+          "stage": "adult",
+          "adultMass": 11.6,
+          "mass": 11.6
+        },
+        "bound": {
+          "left": 780,
+          "top": 30,
+          "right": 960,
+          "bottom": 210,
+          "width": 180,
+          "height": 180
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 0.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 0.5,
+          "currentScale": 0.275,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 0.18125,
+          "mass": 0.030155468750000008
+        },
+        "bound": {
+          "left": 96,
+          "top": 296,
+          "right": 144,
+          "bottom": 344,
+          "width": 48,
+          "height": 48
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 1,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1,
+          "currentScale": 0.55,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 1.45,
+          "mass": 0.24124375000000006
+        },
+        "bound": {
+          "left": 324,
+          "top": 274,
+          "right": 416,
+          "bottom": 366,
+          "width": 92,
+          "height": 92
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 1.5,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 1.5,
+          "currentScale": 0.8250000000000001,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 4.89375,
+          "mass": 0.8141976562500002
+        },
+        "bound": {
+          "left": 552,
+          "top": 252,
+          "right": 688,
+          "bottom": 388,
+          "width": 136,
+          "height": 136
+        }
+      },
+      {
+        "resolution": 128,
+        "size": 2,
+        "age": 0,
+        "dimensions": {
+          "adultScale": 2,
+          "currentScale": 1.1,
+          "growth": 0.55,
+          "stage": "newborn",
+          "adultMass": 11.6,
+          "mass": 1.9299500000000005
+        },
+        "bound": {
+          "left": 780,
+          "top": 230,
+          "right": 960,
+          "bottom": 410,
+          "width": 180,
+          "height": 180
+        }
+      }
+    ],
+    "natural": [
+      {
+        "id": 1,
+        "adultScale": 1.0290313635934578,
+        "currentScale": 0.8992181218229616,
+        "growth": 0.8738490911324819,
+        "stage": "adolescent",
+        "adultMass": 1.6463476813283426,
+        "mass": 1.0985779376073805
+      },
+      {
+        "id": 2,
+        "adultScale": 0.9851281517496204,
+        "currentScale": 0.8624302115881174,
+        "growth": 0.875449767683943,
+        "stage": "adolescent",
+        "adultMass": 1.44448790946799,
+        "mass": 0.9691870587951235
+      },
+      {
+        "id": 3,
+        "adultScale": 1.0121661944044216,
+        "currentScale": 0.8830644828291241,
+        "growth": 0.8724500854810079,
+        "stage": "adolescent",
+        "adultMass": 1.5667193436188065,
+        "mass": 1.0404302583904923
+      },
+      {
+        "id": 4,
+        "adultScale": 1.0116651278253677,
+        "currentScale": 0.8578455426893224,
+        "growth": 0.8479540503025055,
+        "stage": "adolescent",
+        "adultMass": 1.5643937112896151,
+        "mass": 0.9538125189509219
+      },
+      {
+        "id": 5,
+        "adultScale": 0.9996625569612421,
+        "currentScale": 0.9900498349508043,
+        "growth": 0.9903840331484873,
+        "stage": "adolescent",
+        "adultMass": 1.5093709880087642,
+        "mass": 1.4662461619772469
+      },
+      {
+        "id": 6,
+        "adultScale": 1.000738337311796,
+        "currentScale": 0.8027006007459458,
+        "growth": 0.8021083742051662,
+        "stage": "juvenile",
+        "adultMass": 1.5142491331063928,
+        "mass": 0.7814415245507088
+      },
+      {
+        "id": 7,
+        "adultScale": 1.0072300208940101,
+        "currentScale": 0.9363490231772583,
+        "growth": 0.9296277947972218,
+        "stage": "adolescent",
+        "adultMass": 1.5439090254735859,
+        "mass": 1.2403635817942118
+      },
+      {
+        "id": 8,
+        "adultScale": 1.024601390281856,
+        "currentScale": 0.8675125745164675,
+        "growth": 0.846682995694379,
+        "stage": "adolescent",
+        "adultMass": 1.6251765370018472,
+        "mass": 0.9864226977756054
+      },
+      {
+        "id": 9,
+        "adultScale": 1.0181383315329713,
+        "currentScale": 0.8917283505939054,
+        "growth": 0.8758420373499393,
+        "stage": "adolescent",
+        "adultMass": 1.5946158857147315,
+        "mass": 1.0713551069972718
+      },
+      {
+        "id": 10,
+        "adultScale": 1.007593201487283,
+        "currentScale": 0.7406599064307103,
+        "growth": 0.7350783087236404,
+        "stage": "juvenile",
+        "adultMass": 1.5455797064160257,
+        "mass": 0.6138923607628453
+      },
+      {
+        "id": 11,
+        "adultScale": 1.034080206120397,
+        "currentScale": 1.034080206120397,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.6706997077299623,
+        "mass": 1.6706997077299623
+      },
+      {
+        "id": 12,
+        "adultScale": 0.9988289992144435,
+        "currentScale": 0.881864865016868,
+        "growth": 0.8828987401351331,
+        "stage": "adolescent",
+        "adultMass": 1.5055984177456354,
+        "mass": 1.0361958318149116
+      },
+      {
+        "id": 13,
+        "adultScale": 1.043970537851422,
+        "currentScale": 1.043970537851422,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.7190972624017637,
+        "mass": 1.7190972624017637
+      },
+      {
+        "id": 14,
+        "adultScale": 0.9657839533859103,
+        "currentScale": 0.8180714248479516,
+        "growth": 0.8470542733495434,
+        "stage": "adolescent",
+        "adultMass": 1.3610550052829273,
+        "mass": 0.827197837485301
+      },
+      {
+        "id": 15,
+        "adultScale": 1.006193305382143,
+        "currentScale": 0.7576904781171385,
+        "growth": 0.7530267534719629,
+        "stage": "juvenile",
+        "adultMass": 1.5391466151471598,
+        "mass": 0.657220663835138
+      },
+      {
+        "id": 16,
+        "adultScale": 1.0055983198895408,
+        "currentScale": 0.8948873658881243,
+        "growth": 0.889905390838782,
+        "stage": "adolescent",
+        "adultMass": 1.5364178298546918,
+        "mass": 1.0827815607401046
+      },
+      {
+        "id": 17,
+        "adultScale": 0.9884857052695835,
+        "currentScale": 0.8348124924848912,
+        "growth": 0.8445367373898625,
+        "stage": "adolescent",
+        "adultMass": 1.459307790562651,
+        "mass": 0.8790276566931207
+      },
+      {
+        "id": 18,
+        "adultScale": 1.0129546222314405,
+        "currentScale": 0.990296916095408,
+        "growth": 0.9776320620502035,
+        "stage": "adolescent",
+        "adultMass": 1.5703833888507523,
+        "mass": 1.4673442042797198
+      },
+      {
+        "id": 19,
+        "adultScale": 1.0030023352933486,
+        "currentScale": 0.8677639401434956,
+        "growth": 0.8651664204647143,
+        "stage": "adolescent",
+        "adultMass": 1.5245495839096264,
+        "mass": 0.9872804073451765
+      },
+      {
+        "id": 20,
+        "adultScale": 1.020529924605741,
+        "currentScale": 0.739898634100162,
+        "growth": 0.7250141482975183,
+        "stage": "juvenile",
+        "adultMass": 1.605879495382083,
+        "mass": 0.6120013751020702
+      },
+      {
+        "id": 21,
+        "adultScale": 1.0204939513810565,
+        "currentScale": 1.0069393362261325,
+        "growth": 0.9867175938313205,
+        "stage": "adolescent",
+        "adultMass": 1.6057096817601146,
+        "mass": 1.542572703584886
+      },
+      {
+        "id": 22,
+        "adultScale": 1.0309658820428709,
+        "currentScale": 0.7764789817912157,
+        "growth": 0.7531568166471363,
+        "stage": "juvenile",
+        "adultMass": 1.6556502582013075,
+        "mass": 0.7073344893439302
+      },
+      {
+        "id": 23,
+        "adultScale": 0.9659964235093224,
+        "currentScale": 0.6981034954849024,
+        "growth": 0.7226771015867692,
+        "stage": "juvenile",
+        "adultMass": 1.361953489301845,
+        "mass": 0.5140379215728618
+      },
+      {
+        "id": 24,
+        "adultScale": 1.0070146682069012,
+        "currentScale": 1.0070146682069012,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5429189421721738,
+        "mass": 1.5429189421721738
+      },
+      {
+        "id": 25,
+        "adultScale": 0.9956675188771018,
+        "currentScale": 0.9956675188771018,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4913471205031694,
+        "mass": 1.4913471205031694
+      },
+      {
+        "id": 26,
+        "adultScale": 1.0290365440222284,
+        "currentScale": 0.8247212730407089,
+        "growth": 0.8014499366728942,
+        "stage": "juvenile",
+        "adultMass": 1.6463725459635703,
+        "mass": 0.8475343564108425
+      },
+      {
+        "id": 27,
+        "adultScale": 0.9909119827600122,
+        "currentScale": 0.7365093266406983,
+        "growth": 0.7432641238117641,
+        "stage": "juvenile",
+        "adultMass": 1.470079975196097,
+        "mass": 0.6036295244658099
+      },
+      {
+        "id": 28,
+        "adultScale": 1.0111470214279192,
+        "currentScale": 0.7561716273482256,
+        "growth": 0.7478354891263754,
+        "stage": "juvenile",
+        "adultMass": 1.5619914123159013,
+        "mass": 0.6532762282182895
+      },
+      {
+        "id": 29,
+        "adultScale": 1.0175870219129686,
+        "currentScale": 0.8762594133597603,
+        "growth": 0.8611149655903378,
+        "stage": "adolescent",
+        "adultMass": 1.592026892352995,
+        "mass": 1.0165618578791926
+      },
+      {
+        "id": 30,
+        "adultScale": 0.9747545943926643,
+        "currentScale": 0.8466681280031293,
+        "growth": 0.8685961911578973,
+        "stage": "adolescent",
+        "adultMass": 1.3993346681023735,
+        "mass": 0.917012711116346
+      },
+      {
+        "id": 31,
+        "adultScale": 1.0104618336066937,
+        "currentScale": 0.8978879899247267,
+        "growth": 0.8885916915039221,
+        "stage": "adolescent",
+        "adultMass": 1.558818187085653,
+        "mass": 1.093710064881495
+      },
+      {
+        "id": 32,
+        "adultScale": 1.0160649380855558,
+        "currentScale": 1.0160649380855558,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.584893618515048,
+        "mass": 1.584893618515048
+      },
+      {
+        "id": 33,
+        "adultScale": 0.9876972085133816,
+        "currentScale": 0.9197772190371422,
+        "growth": 0.9312339967240889,
+        "stage": "adolescent",
+        "adultMass": 1.4558183870113688,
+        "mass": 1.1756652120478028
+      },
+      {
+        "id": 34,
+        "adultScale": 0.9900626197161696,
+        "currentScale": 0.7840798962612837,
+        "growth": 0.7919498026155791,
+        "stage": "juvenile",
+        "adultMass": 1.4663029647397585,
+        "mass": 0.728310678077416
+      },
+      {
+        "id": 35,
+        "adultScale": 0.9906848823145645,
+        "currentScale": 0.9906848823145645,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4690694536320337,
+        "mass": 1.4690694536320337
+      },
+      {
+        "id": 36,
+        "adultScale": 1.0382390863570974,
+        "currentScale": 1.018734418827066,
+        "growth": 0.9812137032921115,
+        "stage": "adolescent",
+        "adultMass": 1.6909386271856006,
+        "mass": 1.597418314969763
+      },
+      {
+        "id": 37,
+        "adultScale": 0.9775138455628971,
+        "currentScale": 0.9597329246263803,
+        "growth": 0.9818100572004913,
+        "stage": "adolescent",
+        "adultMass": 1.4112516855828965,
+        "mass": 1.3356322690943678
+      },
+      {
+        "id": 38,
+        "adultScale": 0.9996040647008103,
+        "currentScale": 0.9996040647008103,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.509106054543216,
+        "mass": 1.509106054543216
+      },
+      {
+        "id": 39,
+        "adultScale": 0.9985581804017399,
+        "currentScale": 0.9181553361176173,
+        "growth": 0.9194810619329412,
+        "stage": "adolescent",
+        "adultMass": 1.5043740825534027,
+        "mass": 1.169456868540704
+      },
+      {
+        "id": 40,
+        "adultScale": 1.0345518640407911,
+        "currentScale": 0.9792858118934799,
+        "growth": 0.9465797181675831,
+        "stage": "adolescent",
+        "adultMass": 1.6729868365713643,
+        "mass": 1.4189402506868718
+      },
+      {
+        "id": 41,
+        "adultScale": 0.975329560987526,
+        "currentScale": 0.975329560987526,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4018123543921097,
+        "mass": 1.4018123543921097
+      },
+      {
+        "id": 42,
+        "adultScale": 0.9812988034626172,
+        "currentScale": 0.8374655001838927,
+        "growth": 0.8534255796795089,
+        "stage": "adolescent",
+        "adultMass": 1.4277084471865837,
+        "mass": 0.8874348843582981
+      },
+      {
+        "id": 43,
+        "adultScale": 0.9997617640771683,
+        "currentScale": 0.8618255125494945,
+        "growth": 0.8620308792715271,
+        "stage": "adolescent",
+        "adultMass": 1.5098204052716813,
+        "mass": 0.9671498308100153
+      },
+      {
+        "id": 44,
+        "adultScale": 0.9709957347835899,
+        "currentScale": 0.9709957347835899,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3832086235454302,
+        "mass": 1.3832086235454302
+      },
+      {
+        "id": 45,
+        "adultScale": 1.007233784850969,
+        "currentScale": 1.007233784850969,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5439263340189502,
+        "mass": 1.5439263340189502
+      },
+      {
+        "id": 46,
+        "adultScale": 0.9853271677835189,
+        "currentScale": 0.749168056316562,
+        "growth": 0.7603241652230154,
+        "stage": "juvenile",
+        "adultMass": 1.4453635346368765,
+        "mass": 0.6352921295314061
+      },
+      {
+        "id": 47,
+        "adultScale": 1.0245754156349298,
+        "currentScale": 1.0120888159935157,
+        "growth": 0.9878129033247629,
+        "stage": "adolescent",
+        "adultMass": 1.625052940693077,
+        "mass": 1.5663600518754113
+      },
+      {
+        "id": 48,
+        "adultScale": 1.0188346468294707,
+        "currentScale": 0.7322035862416454,
+        "growth": 0.7186677332972554,
+        "stage": "juvenile",
+        "adultMass": 1.5978898464983229,
+        "mass": 0.5931045779632866
+      },
+      {
+        "id": 49,
+        "adultScale": 1.0125498602950214,
+        "currentScale": 0.8512084459534064,
+        "growth": 0.8406583017110824,
+        "stage": "adolescent",
+        "adultMass": 1.5685016338771196,
+        "mass": 0.9318446019112482
+      },
+      {
+        "id": 50,
+        "adultScale": 1.0267025630631381,
+        "currentScale": 0.8658460686708344,
+        "growth": 0.8433270742868383,
+        "stage": "adolescent",
+        "adultMass": 1.6351954115084442,
+        "mass": 0.9807488089688288
+      },
+      {
+        "id": 51,
+        "adultScale": 0.9954468085022193,
+        "currentScale": 0.8506875752795151,
+        "growth": 0.8545786354566614,
+        "stage": "adolescent",
+        "adultMass": 1.4903555761864584,
+        "mass": 0.9301350080467721
+      },
+      {
+        "id": 52,
+        "adultScale": 0.9628183555766232,
+        "currentScale": 0.9628183555766232,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3485554390010697,
+        "mass": 1.3485554390010697
+      },
+      {
+        "id": 53,
+        "adultScale": 1.0001235656407856,
+        "currentScale": 1.0001235656407856,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5114601551902227,
+        "mass": 1.5114601551902227
+      },
+      {
+        "id": 54,
+        "adultScale": 0.9721945669658778,
+        "currentScale": 0.9721945669658778,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3883382542611784,
+        "mass": 1.3883382542611784
+      },
+      {
+        "id": 55,
+        "adultScale": 1.023929441213712,
+        "currentScale": 1.023929441213712,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.6219811875140184,
+        "mass": 1.6219811875140184
+      },
+      {
+        "id": 56,
+        "adultScale": 1.0300007378560676,
+        "currentScale": 0.8732007470983723,
+        "growth": 0.8477671083187063,
+        "stage": "adolescent",
+        "adultMass": 1.6510047724615833,
+        "mass": 1.0059537571807065
+      },
+      {
+        "id": 57,
+        "adultScale": 0.9811042693537473,
+        "currentScale": 0.8615270572786514,
+        "growth": 0.878119771964848,
+        "stage": "adolescent",
+        "adultMass": 1.426859522473827,
+        "mass": 0.9661453896191883
+      },
+      {
+        "id": 58,
+        "adultScale": 0.9885198863109411,
+        "currentScale": 0.9885198863109411,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4594591808696529,
+        "mass": 1.4594591808696529
+      },
+      {
+        "id": 59,
+        "adultScale": 0.9872498544525115,
+        "currentScale": 0.9872498544525115,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4538411474365003,
+        "mass": 1.4538411474365003
+      },
+      {
+        "id": 60,
+        "adultScale": 1.0317735680232054,
+        "currentScale": 1.0098152747670912,
+        "growth": 0.9787179145341118,
+        "stage": "adolescent",
+        "adultMass": 1.6595445483005002,
+        "mass": 1.5558278032334996
+      },
+      {
+        "id": 61,
+        "adultScale": 1.030721883159243,
+        "currentScale": 0.8103039319664964,
+        "growth": 0.7861518661880463,
+        "stage": "juvenile",
+        "adultMass": 1.6544750072449277,
+        "mass": 0.8038584107284498
+      },
+      {
+        "id": 62,
+        "adultScale": 1.0016135211243486,
+        "currentScale": 0.8552462202172965,
+        "growth": 0.8538684853787223,
+        "stage": "adolescent",
+        "adultMass": 1.5182254142069191,
+        "mass": 0.9451684398374458
+      },
+      {
+        "id": 63,
+        "adultScale": 1.0080716266879912,
+        "currentScale": 0.9711560445400492,
+        "growth": 0.9633800008147955,
+        "stage": "adolescent",
+        "adultMass": 1.5477823674855382,
+        "mass": 1.3838938328852222
+      },
+      {
+        "id": 64,
+        "adultScale": 1.0262463808625368,
+        "currentScale": 1.0262463808625368,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.6330167406461633,
+        "mass": 1.6330167406461633
+      },
+      {
+        "id": 65,
+        "adultScale": 1.0160632136614671,
+        "currentScale": 0.8016622599972995,
+        "growth": 0.7889885680522216,
+        "stage": "juvenile",
+        "adultMass": 2.248043034104556,
+        "mass": 1.104121209373423
+      },
+      {
+        "id": 66,
+        "adultScale": 1.0210572693219846,
+        "currentScale": 0.8869218032448105,
+        "growth": 0.8686308103303114,
+        "stage": "adolescent",
+        "adultMass": 2.281354318577122,
+        "mass": 1.4951970455813108
+      },
+      {
+        "id": 67,
+        "adultScale": 0.9713753450630186,
+        "currentScale": 0.8178195823867783,
+        "growth": 0.8419192298253377,
+        "stage": "adolescent",
+        "adultMass": 1.9642812224357566,
+        "mass": 1.172235723915612
+      },
+      {
+        "id": 68,
+        "adultScale": 0.9827670500600784,
+        "currentScale": 0.8658779717072634,
+        "growth": 0.8810612562298774,
+        "stage": "adolescent",
+        "adultMass": 2.0342025656679343,
+        "mass": 1.39127348936651
+      },
+      {
+        "id": 69,
+        "adultScale": 0.9977438739351361,
+        "currentScale": 0.8369470364048517,
+        "growth": 0.8388395642099047,
+        "stage": "juvenile",
+        "adultMass": 2.128627389890908,
+        "mass": 1.2564244059545393
+      },
+      {
+        "id": 70,
+        "adultScale": 0.9713687810822301,
+        "currentScale": 0.755219014013401,
+        "growth": 0.7774791909330148,
+        "stage": "juvenile",
+        "adultMass": 1.96424140234825,
+        "mass": 0.9231264249499249
+      },
+      {
+        "id": 71,
+        "adultScale": 0.9831186025439891,
+        "currentScale": 0.7235737095336802,
+        "growth": 0.7359983908974037,
+        "stage": "juvenile",
+        "adultMass": 2.0363863531961814,
+        "mass": 0.8118779986951001
+      },
+      {
+        "id": 72,
+        "adultScale": 0.9553072463343067,
+        "currentScale": 0.7638269278259704,
+        "growth": 0.7995615345292498,
+        "stage": "juvenile",
+        "adultMass": 1.868407717093015,
+        "mass": 0.9550526871293561
+      },
+      {
+        "id": 73,
+        "adultScale": 1.007115810016103,
+        "currentScale": 1.007115810016103,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.1891759955232803,
+        "mass": 2.1891759955232803
+      },
+      {
+        "id": 74,
+        "adultScale": 1.013468532542195,
+        "currentScale": 0.9949913273274719,
+        "growth": 0.9817683483784397,
+        "stage": "adolescent",
+        "adultMass": 2.2308647561380823,
+        "mass": 2.1110587620783305
+      },
+      {
+        "id": 75,
+        "adultScale": 1.024500241167807,
+        "currentScale": 1.024500241167807,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.3045101814692326,
+        "mass": 2.3045101814692326
+      },
+      {
+        "id": 76,
+        "adultScale": 1.0091550649099308,
+        "currentScale": 0.7542276808416724,
+        "growth": 0.7473853197268437,
+        "stage": "juvenile",
+        "adultMass": 2.202501176450501,
+        "mass": 0.9194959874678641
+      },
+      {
+        "id": 77,
+        "adultScale": 1.0199643315548064,
+        "currentScale": 0.8009191252730855,
+        "growth": 0.7852422878868576,
+        "stage": "juvenile",
+        "adultMass": 2.2740362853537692,
+        "mass": 1.1010535193529272
+      },
+      {
+        "id": 78,
+        "adultScale": 0.9801300828028621,
+        "currentScale": 0.9801300828028621,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.0178719040688824,
+        "mass": 2.0178719040688824
+      },
+      {
+        "id": 79,
+        "adultScale": 0.9669883273719246,
+        "currentScale": 0.775300365109427,
+        "growth": 0.80176807016537,
+        "stage": "juvenile",
+        "adultMass": 1.937787416499329,
+        "mass": 0.9987399030561517
+      },
+      {
+        "id": 80,
+        "adultScale": 1.0087098320993357,
+        "currentScale": 0.9833188354714563,
+        "growth": 0.974828245130678,
+        "stage": "adolescent",
+        "adultMass": 2.199587273797783,
+        "mass": 2.037630866277679
+      },
+      {
+        "id": 81,
+        "adultScale": 1.0296582880578198,
+        "currentScale": 1.0296582880578198,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.3394932428898225,
+        "mass": 2.3394932428898225
+      },
+      {
+        "id": 82,
+        "adultScale": 1.0240796659830136,
+        "currentScale": 0.738482156438645,
+        "growth": 0.721117878783167,
+        "stage": "juvenile",
+        "adultMass": 2.3016732217614284,
+        "mass": 0.8631026593140148
+      },
+      {
+        "id": 83,
+        "adultScale": 1.015694316633666,
+        "currentScale": 0.9101274457215845,
+        "growth": 0.896064328427116,
+        "stage": "adolescent",
+        "adultMass": 2.2455953655035774,
+        "mass": 1.615656639323997
+      },
+      {
+        "id": 84,
+        "adultScale": 1.0114393904016037,
+        "currentScale": 0.9007556823901138,
+        "growth": 0.8905681259185074,
+        "stage": "adolescent",
+        "adultMass": 2.2174918167980446,
+        "mass": 1.5662585973859227
+      },
+      {
+        "id": 85,
+        "adultScale": 1.0135351662654757,
+        "currentScale": 1.0017513319593243,
+        "growth": 0.9883735318730275,
+        "stage": "adolescent",
+        "adultMass": 2.2313048110400375,
+        "mass": 2.1543795697931434
+      },
+      {
+        "id": 86,
+        "adultScale": 0.9896296057664035,
+        "currentScale": 0.9896296057664035,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.0771146737477215,
+        "mass": 2.0771146737477215
+      },
+      {
+        "id": 87,
+        "adultScale": 0.9788716672047282,
+        "currentScale": 0.9412867701384614,
+        "growth": 0.9616038564344247,
+        "stage": "adolescent",
+        "adultMass": 2.010109477585231,
+        "mass": 1.7873446321398623
+      },
+      {
+        "id": 88,
+        "adultScale": 0.9897774072315028,
+        "currentScale": 0.727430719711226,
+        "growth": 0.7349437503791036,
+        "stage": "juvenile",
+        "adultMass": 2.078045465762468,
+        "mass": 0.8249304771103814
+      },
+      {
+        "id": 89,
+        "adultScale": 0.9742990644416661,
+        "currentScale": 0.8211809124539006,
+        "growth": 0.8428427599122126,
+        "stage": "adolescent",
+        "adultMass": 1.9820713903244298,
+        "mass": 1.1867492734072465
+      },
+      {
+        "id": 90,
+        "adultScale": 0.9920692374885948,
+        "currentScale": 0.8018324585867298,
+        "growth": 0.8082424374094636,
+        "stage": "juvenile",
+        "adultMass": 2.092514063205478,
+        "mass": 1.1048245970018087
+      },
+      {
+        "id": 91,
+        "adultScale": 1.0234658976270121,
+        "currentScale": 1.0234658976270121,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.297537271035575,
+        "mass": 2.297537271035575
+      },
+      {
+        "id": 92,
+        "adultScale": 0.9771400754483657,
+        "currentScale": 0.7416176179832369,
+        "growth": 0.7589675591219016,
+        "stage": "juvenile",
+        "adultMass": 1.9994608843419304,
+        "mass": 0.8741431356921014
+      },
+      {
+        "id": 93,
+        "adultScale": 1.0104701691089022,
+        "currentScale": 0.8800157051249186,
+        "growth": 0.8708972634995976,
+        "stage": "adolescent",
+        "adultMass": 2.211123126492587,
+        "mass": 1.4605408380554503
+      },
+      {
+        "id": 94,
+        "adultScale": 1.0049871831039268,
+        "currentScale": 0.888987369314958,
+        "growth": 0.8845758276929457,
+        "stage": "adolescent",
+        "adultMass": 2.1753242716822205,
+        "mass": 1.5056679570424232
+      },
+      {
+        "id": 95,
+        "adultScale": 1.0007374014691368,
+        "currentScale": 0.8041410637872509,
+        "growth": 0.8035485259237121,
+        "stage": "juvenile",
+        "adultMass": 2.1478444721269656,
+        "mass": 1.1143950045022215
+      },
+      {
+        "id": 96,
+        "adultScale": 1.0042257876078842,
+        "currentScale": 1.0042257876078842,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.1703838278041374,
+        "mass": 2.1703838278041374
+      },
+      {
+        "id": 97,
+        "adultScale": 0.9909759557865123,
+        "currentScale": 0.9061300837937968,
+        "growth": 0.9143815029039978,
+        "stage": "adolescent",
+        "adultMass": 1.7412956443924605,
+        "mass": 1.3312352534815048
+      },
+      {
+        "id": 98,
+        "adultScale": 0.9979025546592615,
+        "currentScale": 0.9979025546592615,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.7780647215239234,
+        "mass": 1.7780647215239234
+      },
+      {
+        "id": 99,
+        "adultScale": 0.9805680430138326,
+        "currentScale": 0.7173693841184683,
+        "growth": 0.7315855225238547,
+        "stage": "juvenile",
+        "adultMass": 1.6870049932115574,
+        "mass": 0.6605590936506299
+      },
+      {
+        "id": 100,
+        "adultScale": 0.9579840846748259,
+        "currentScale": 0.9579840846748259,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5731062049457507,
+        "mass": 1.5731062049457507
+      },
+      {
+        "id": 101,
+        "adultScale": 1.0018518359583957,
+        "currentScale": 0.8811501177820823,
+        "growth": 0.8795213884487748,
+        "stage": "adolescent",
+        "adultMass": 1.7992588897242474,
+        "mass": 1.2241450273964274
+      },
+      {
+        "id": 102,
+        "adultScale": 0.9692801710049337,
+        "currentScale": 0.8270404800436781,
+        "growth": 0.8532522430395086,
+        "stage": "adolescent",
+        "adultMass": 1.6294128867564637,
+        "mass": 1.0121933102118377
+      },
+      {
+        "id": 103,
+        "adultScale": 0.9886625669710196,
+        "currentScale": 0.8549779843685621,
+        "growth": 0.8647823968778053,
+        "stage": "adolescent",
+        "adultMass": 1.7291291615687938,
+        "mass": 1.1182733041529955
+      },
+      {
+        "id": 104,
+        "adultScale": 0.9634748392861718,
+        "currentScale": 0.7072168342543533,
+        "growth": 0.7340272993307461,
+        "stage": "juvenile",
+        "adultMass": 1.6003106487989716,
+        "mass": 0.6329085046943017
+      },
+      {
+        "id": 105,
+        "adultScale": 1.0135966354936128,
+        "currentScale": 1.0135966354936128,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.8632822328356555,
+        "mass": 1.8632822328356555
+      },
+      {
+        "id": 106,
+        "adultScale": 1.014373810772541,
+        "currentScale": 0.9253935374639188,
+        "growth": 0.9122805889075001,
+        "stage": "adolescent",
+        "adultMass": 1.8675715352576452,
+        "mass": 1.4179553275893864
+      },
+      {
+        "id": 107,
+        "adultScale": 1.043383612882971,
+        "currentScale": 1.023387686467202,
+        "growth": 0.9808354988818366,
+        "stage": "adolescent",
+        "adultMass": 2.0324281268455096,
+        "mass": 1.9178018069032068
+      },
+      {
+        "id": 108,
+        "adultScale": 0.9889715977859607,
+        "currentScale": 0.7323967694022931,
+        "growth": 0.7405640071382545,
+        "stage": "juvenile",
+        "adultMass": 1.730751114057188,
+        "mass": 0.7029467410427406
+      },
+      {
+        "id": 109,
+        "adultScale": 0.9684850737589639,
+        "currentScale": 0.9684850737589639,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3171850643817662,
+        "mass": 1.3171850643817662
+      },
+      {
+        "id": 110,
+        "adultScale": 1.0207446397842352,
+        "currentScale": 1.0207446397842352,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5421241069208687,
+        "mass": 1.5421241069208687
+      },
+      {
+        "id": 111,
+        "adultScale": 0.9997579283569985,
+        "currentScale": 0.7145653920674043,
+        "growth": 0.7147384099686217,
+        "stage": "juvenile",
+        "adultMass": 1.4489472432366346,
+        "mass": 0.5290466124921167
+      },
+      {
+        "id": 112,
+        "adultScale": 1.0244622761436153,
+        "currentScale": 0.8417860626801618,
+        "growth": 0.8216857587464306,
+        "stage": "juvenile",
+        "adultMass": 1.5590351796077246,
+        "mass": 0.8649145339421711
+      },
+      {
+        "id": 113,
+        "adultScale": 0.9983818026362912,
+        "currentScale": 0.8757463822331462,
+        "growth": 0.8771658096338312,
+        "stage": "adolescent",
+        "adultMass": 1.4429722260714866,
+        "mass": 0.973874642466212
+      },
+      {
+        "id": 114,
+        "adultScale": 1.0256054295341115,
+        "currentScale": 0.8427084968734558,
+        "growth": 0.8216693014742152,
+        "stage": "juvenile",
+        "adultMass": 1.5642599863125455,
+        "mass": 0.8677609863548736
+      },
+      {
+        "id": 115,
+        "adultScale": 0.9967987058115757,
+        "currentScale": 0.9967987058115757,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4361189027465742,
+        "mass": 1.4361189027465742
+      },
+      {
+        "id": 116,
+        "adultScale": 0.9910684214334514,
+        "currentScale": 0.9910684214334514,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.411493613077243,
+        "mass": 1.411493613077243
+      },
+      {
+        "id": 117,
+        "adultScale": 1.0358198858393302,
+        "currentScale": 1.0358198858393302,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.6114644736250099,
+        "mass": 1.6114644736250099
+      },
+      {
+        "id": 118,
+        "adultScale": 0.9825272769396648,
+        "currentScale": 0.9825272769396648,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3753139576976527,
+        "mass": 1.3753139576976527
+      },
+      {
+        "id": 119,
+        "adultScale": 1.0208657400142456,
+        "currentScale": 1.0208657400142456,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.542673040710055,
+        "mass": 1.542673040710055
+      },
+      {
+        "id": 120,
+        "adultScale": 0.9990701492908761,
+        "currentScale": 0.9990701492908761,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4459589093567395,
+        "mass": 1.4459589093567395
+      },
+      {
+        "id": 121,
+        "adultScale": 0.9938552878290735,
+        "currentScale": 0.695266515361538,
+        "growth": 0.6995651418027292,
+        "stage": "juvenile",
+        "adultMass": 1.42343441071491,
+        "mass": 0.48732864960412614
+      },
+      {
+        "id": 122,
+        "adultScale": 1.0258963567083672,
+        "currentScale": 0.7826171000581176,
+        "growth": 0.7628617598069832,
+        "stage": "juvenile",
+        "adultMass": 1.5655915359360686,
+        "mass": 0.6950499253579087
+      },
+      {
+        "id": 123,
+        "adultScale": 1.0007993554451862,
+        "currentScale": 0.7621613569377296,
+        "growth": 0.7615526057155552,
+        "stage": "juvenile",
+        "adultMass": 1.4534799764428725,
+        "mass": 0.6419611974870413
+      },
+      {
+        "id": 124,
+        "adultScale": 1.0286411447621604,
+        "currentScale": 1.0286411447621604,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.578191418129358,
+        "mass": 1.578191418129358
+      },
+      {
+        "id": 125,
+        "adultScale": 1.0201991259924919,
+        "currentScale": 0.9423880805328607,
+        "growth": 0.9237295509502291,
+        "stage": "adolescent",
+        "adultMass": 1.5396529684129092,
+        "mass": 1.2135491086437358
+      },
+      {
+        "id": 126,
+        "adultScale": 1.0115723010678086,
+        "currentScale": 1.0115723010678086,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5009243007308861,
+        "mass": 1.5009243007308861
+      },
+      {
+        "id": 127,
+        "adultScale": 1.0201848958682964,
+        "currentScale": 1.0198165868739235,
+        "growth": 0.9996389781932036,
+        "stage": "adolescent",
+        "adultMass": 1.5395885423215703,
+        "mass": 1.5379216691321873
+      },
+      {
+        "id": 128,
+        "adultScale": 1.0019019286327093,
+        "currentScale": 1.0019019286327093,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.4582891349246316,
+        "mass": 1.4582891349246316
+      },
+      {
+        "id": 129,
+        "adultScale": 1.0286635055946494,
+        "currentScale": 0.8815037492591422,
+        "growth": 0.8569408212353785,
+        "stage": "adolescent",
+        "adultMass": 1.5782943416063833,
+        "mass": 0.9932086509451565
+      },
+      {
+        "id": 130,
+        "adultScale": 0.9604474751888643,
+        "currentScale": 0.9420324864253928,
+        "growth": 0.980826657116413,
+        "stage": "adolescent",
+        "adultMass": 1.2846619464404396,
+        "mass": 1.2121758906116935
+      },
+      {
+        "id": 131,
+        "adultScale": 0.9813611099468679,
+        "currentScale": 0.9813611099468679,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.370422664846062,
+        "mass": 1.370422664846062
+      },
+      {
+        "id": 132,
+        "adultScale": 0.9885910615925994,
+        "currentScale": 0.9885910615925994,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.40093517749072,
+        "mass": 1.40093517749072
+      },
+      {
+        "id": 133,
+        "adultScale": 1.0210487953968952,
+        "currentScale": 0.8005876516444779,
+        "growth": 0.7840836356241709,
+        "stage": "juvenile",
+        "adultMass": 1.8182466017669685,
+        "mass": 0.8764758501504653
+      },
+      {
+        "id": 134,
+        "adultScale": 0.9914536524611716,
+        "currentScale": 0.7661725611146707,
+        "growth": 0.7727769817708916,
+        "stage": "juvenile",
+        "adultMass": 1.664679164227119,
+        "mass": 0.7682332082485809
+      },
+      {
+        "id": 135,
+        "adultScale": 0.9850564694652901,
+        "currentScale": 0.9250877447405909,
+        "growth": 0.9391215360909699,
+        "stage": "adolescent",
+        "adultMass": 1.6326634693520872,
+        "mass": 1.3522658342963352
+      },
+      {
+        "id": 136,
+        "adultScale": 0.9650506082504554,
+        "currentScale": 0.6727778670341444,
+        "growth": 0.6971425760290711,
+        "stage": "juvenile",
+        "adultMass": 1.535195041686989,
+        "mass": 0.5201497327151974
+      },
+      {
+        "id": 137,
+        "adultScale": 1.0089017983499975,
+        "currentScale": 0.9096320832481904,
+        "growth": 0.9016061669588089,
+        "stage": "adolescent",
+        "adultMass": 1.7541227500241745,
+        "mass": 1.2856140262033322
+      },
+      {
+        "id": 138,
+        "adultScale": 0.997199658115609,
+        "currentScale": 0.997199658115609,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.6937903548952076,
+        "mass": 1.6937903548952076
+      },
+      {
+        "id": 139,
+        "adultScale": 0.9958578512748302,
+        "currentScale": 0.7820060140453022,
+        "growth": 0.7852586722535057,
+        "stage": "juvenile",
+        "adultMass": 1.6869621855401682,
+        "mass": 0.8168523668731495
+      },
+      {
+        "id": 140,
+        "adultScale": 0.9739501292578601,
+        "currentScale": 0.8696128996009449,
+        "growth": 0.8928721024592716,
+        "stage": "adolescent",
+        "adultMass": 1.5780597809873786,
+        "mass": 1.1232882413393965
+      },
+      {
+        "id": 141,
+        "adultScale": 0.9886968138417097,
+        "currentScale": 0.9725060888269706,
+        "growth": 0.9836241759980717,
+        "stage": "adolescent",
+        "adultMass": 1.6508313073767449,
+        "mass": 1.5710509874356666
+      },
+      {
+        "id": 142,
+        "adultScale": 0.9753769395922689,
+        "currentScale": 0.8906898169627463,
+        "growth": 0.9131749796494841,
+        "stage": "adolescent",
+        "adultMass": 1.5850053896000293,
+        "mass": 1.206959657723541
+      },
+      {
+        "id": 143,
+        "adultScale": 0.978218248506734,
+        "currentScale": 0.978218248506734,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.5988973158802189,
+        "mass": 1.5988973158802189
+      },
+      {
+        "id": 144,
+        "adultScale": 1.0172629107890772,
+        "currentScale": 1.0172629107890772,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.7980962039048136,
+        "mass": 1.7980962039048136
+      },
+      {
+        "id": 145,
+        "adultScale": 1.005423937390826,
+        "currentScale": 0.8623753379153587,
+        "growth": 0.8577231015140812,
+        "stage": "adolescent",
+        "adultMass": 1.7360449072066146,
+        "mass": 1.0954745110666666
+      },
+      {
+        "id": 146,
+        "adultScale": 1.002442429998334,
+        "currentScale": 1.002442429998334,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.7206463377565673,
+        "mass": 1.7206463377565673
+      },
+      {
+        "id": 147,
+        "adultScale": 0.9605149983389916,
+        "currentScale": 0.873748098864555,
+        "growth": 0.909666273171703,
+        "stage": "adolescent",
+        "adultMass": 1.5136509744726576,
+        "mass": 1.1393890045976196
+      },
+      {
+        "id": 148,
+        "adultScale": 0.9764856753092727,
+        "currentScale": 0.8879837997244976,
+        "growth": 0.9093669494365653,
+        "stage": "adolescent",
+        "adultMass": 1.5904166836320235,
+        "mass": 1.195992401840691
+      },
+      {
+        "id": 149,
+        "adultScale": 0.9685911567761818,
+        "currentScale": 0.9641262898037359,
+        "growth": 0.9953903492291768,
+        "stage": "adolescent",
+        "adultMass": 1.5521539396942043,
+        "mass": 1.530788069446696
+      },
+      {
+        "id": 150,
+        "adultScale": 1.0131944092529774,
+        "currentScale": 0.9136400276306604,
+        "growth": 0.9017420736700296,
+        "stage": "adolescent",
+        "adultMass": 1.7766081367881557,
+        "mass": 1.3026827055511028
+      },
+      {
+        "id": 151,
+        "adultScale": 0.9607028475146092,
+        "currentScale": 0.9607028475146092,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.9851006523396486,
+        "mass": 1.9851006523396486
+      },
+      {
+        "id": 152,
+        "adultScale": 1.0018844953364705,
+        "currentScale": 0.7519439367139947,
+        "growth": 0.7505295672446389,
+        "stage": "juvenile",
+        "adultMass": 2.251480891564532,
+        "mass": 0.9518569461554414
+      },
+      {
+        "id": 153,
+        "adultScale": 1.042464487237783,
+        "currentScale": 0.9743461656211574,
+        "growth": 0.934656458372871,
+        "stage": "adolescent",
+        "adultMass": 2.53629114644956,
+        "mass": 2.0708809804055175
+      },
+      {
+        "id": 154,
+        "adultScale": 0.9715351005072134,
+        "currentScale": 0.7989973786405272,
+        "growth": 0.8224071144968322,
+        "stage": "juvenile",
+        "adultMass": 2.053008680516275,
+        "mass": 1.141961235167019
+      },
+      {
+        "id": 155,
+        "adultScale": 0.9622554476246398,
+        "currentScale": 0.8636500242617996,
+        "growth": 0.8975267704576253,
+        "stage": "adolescent",
+        "adultMass": 1.9947406293778789,
+        "mass": 1.4422105458123966
+      },
+      {
+        "id": 156,
+        "adultScale": 0.9752332214245866,
+        "currentScale": 0.779493900295764,
+        "growth": 0.7992897321084967,
+        "stage": "juvenile",
+        "adultMass": 2.076542191927917,
+        "mass": 1.0603603053140132
+      },
+      {
+        "id": 157,
+        "adultScale": 0.9776474971307074,
+        "currentScale": 0.8046053450100993,
+        "growth": 0.8230014881350705,
+        "stage": "juvenile",
+        "adultMass": 2.0920023910135894,
+        "mass": 1.1661758353718865
+      },
+      {
+        "id": 158,
+        "adultScale": 0.9956641815397156,
+        "currentScale": 0.8896134091730109,
+        "growth": 0.893487408372263,
+        "stage": "adolescent",
+        "adultMass": 2.2098049901721626,
+        "mass": 1.5762288038719892
+      },
+      {
+        "id": 159,
+        "adultScale": 0.960356390568625,
+        "currentScale": 0.9463759706702044,
+        "growth": 0.9854424669469396,
+        "stage": "adolescent",
+        "adultMass": 1.982953774401118,
+        "mass": 1.8976076047455235
+      },
+      {
+        "id": 160,
+        "adultScale": 1.0017172308137428,
+        "currentScale": 1.0017172308137428,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.250353426243337,
+        "mass": 2.250353426243337
+      },
+      {
+        "id": 161,
+        "adultScale": 0.9658693464805889,
+        "currentScale": 0.9393776182128748,
+        "growth": 0.9725721409792701,
+        "stage": "adolescent",
+        "adultMass": 2.017299811088766,
+        "mass": 1.8558203103943602
+      },
+      {
+        "id": 162,
+        "adultScale": 1.0368740980155489,
+        "currentScale": 0.8207798813449455,
+        "growth": 0.791590688701568,
+        "stage": "juvenile",
+        "adultMass": 2.4957057232104467,
+        "mass": 1.237928057055779
+      },
+      {
+        "id": 163,
+        "adultScale": 1.0371299816767283,
+        "currentScale": 0.7455063531880072,
+        "growth": 0.718816702206166,
+        "stage": "juvenile",
+        "adultMass": 2.4975538779589552,
+        "mass": 0.9276183790397659
+      },
+      {
+        "id": 164,
+        "adultScale": 0.992234664296694,
+        "currentScale": 0.7308529376715991,
+        "growth": 0.736572671737522,
+        "stage": "juvenile",
+        "adultMass": 2.187048852822879,
+        "mass": 0.8739876364652014
+      },
+      {
+        "id": 165,
+        "adultScale": 0.9995185364880192,
+        "currentScale": 0.9995185364880192,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.2355678551275635,
+        "mass": 2.2355678551275635
+      },
+      {
+        "id": 166,
+        "adultScale": 1.0197548715874496,
+        "currentScale": 1.0197548715874496,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.374119987772104,
+        "mass": 2.374119987772104
+      },
+      {
+        "id": 167,
+        "adultScale": 1.0016309733413717,
+        "currentScale": 0.9898273062628434,
+        "growth": 0.9882155530403057,
+        "stage": "adolescent",
+        "adultMass": 2.249772145184329,
+        "mass": 2.171168800889543
+      },
+      {
+        "id": 168,
+        "adultScale": 1.0334976166259977,
+        "currentScale": 1.025051054933627,
+        "growth": 0.9918272073815266,
+        "stage": "adolescent",
+        "adultMass": 2.4714039502917564,
+        "mass": 2.4113030141348535
+      },
+      {
+        "id": 169,
+        "adultScale": 1.0037501487508242,
+        "currentScale": 1.0037501487508242,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.2640820740139787,
+        "mass": 2.2640820740139787
+      },
+      {
+        "id": 170,
+        "adultScale": 1.0146788468385313,
+        "currentScale": 1.0146788468385313,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.338843260781926,
+        "mass": 2.338843260781926
+      },
+      {
+        "id": 171,
+        "adultScale": 1.0406887636382913,
+        "currentScale": 1.0406887636382913,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 3.337231517196167,
+        "mass": 3.337231517196167
+      },
+      {
+        "id": 172,
+        "adultScale": 1.036312342815952,
+        "currentScale": 1.036312342815952,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 3.295306024253721,
+        "mass": 3.295306024253721
+      },
+      {
+        "id": 173,
+        "adultScale": 0.9996305094342087,
+        "currentScale": 0.9400260758453204,
+        "growth": 0.9403735349948208,
+        "stage": "adolescent",
+        "adultMass": 2.9576191386972095,
+        "mass": 2.459480834165415
+      },
+      {
+        "id": 174,
+        "adultScale": 1.036912614153124,
+        "currentScale": 1.036912614153124,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 3.3010356397485916,
+        "mass": 3.3010356397485916
+      },
+      {
+        "id": 175,
+        "adultScale": 1.0148657559108978,
+        "currentScale": 0.82140063786243,
+        "growth": 0.8093687594426494,
+        "stage": "juvenile",
+        "adultMass": 3.0949207712402673,
+        "mass": 1.640925436873687
+      },
+      {
+        "id": 176,
+        "adultScale": 0.9954405463721481,
+        "currentScale": 0.9954405463721481,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.9205841196633937,
+        "mass": 2.9205841196633937
+      },
+      {
+        "id": 177,
+        "adultScale": 1.0080462363066374,
+        "currentScale": 1.0080462363066374,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 3.0329489287002396,
+        "mass": 3.0329489287002396
+      },
+      {
+        "id": 178,
+        "adultScale": 1.0329776746843893,
+        "currentScale": 0.8262151040627463,
+        "growth": 0.799838296907224,
+        "stage": "juvenile",
+        "adultMass": 3.263597157297773,
+        "mass": 1.6699487005219855
+      },
+      {
+        "id": 179,
+        "adultScale": 0.9691118002971458,
+        "currentScale": 0.8651325562509258,
+        "growth": 0.8927066577722629,
+        "stage": "adolescent",
+        "adultMass": 2.6949169454885107,
+        "mass": 1.917218921248696
+      },
+      {
+        "id": 180,
+        "adultScale": 1.0117842732845777,
+        "currentScale": 0.9503060996611636,
+        "growth": 0.9392378639926513,
+        "stage": "adolescent",
+        "adultMass": 3.0668145422596016,
+        "mass": 2.5410563180460146
+      },
+      {
+        "id": 181,
+        "adultScale": 0.9750901267232295,
+        "currentScale": 0.9706693878843529,
+        "growth": 0.9954663279652596,
+        "stage": "adolescent",
+        "adultMass": 2.7450990343560924,
+        "mass": 2.707931912174009
+      },
+      {
+        "id": 182,
+        "adultScale": 1.0071381034510534,
+        "currentScale": 0.7470051501437293,
+        "growth": 0.7417107421356077,
+        "stage": "juvenile",
+        "adultMass": 3.0247593043741294,
+        "mass": 1.2342255370458126
+      },
+      {
+        "id": 183,
+        "adultScale": 1.0013136688213473,
+        "currentScale": 0.9591410514587202,
+        "growth": 0.9578827108070254,
+        "stage": "adolescent",
+        "adultMass": 2.972584261856154,
+        "mass": 2.6125895046877385
+      },
+      {
+        "id": 184,
+        "adultScale": 0.9702392108991771,
+        "currentScale": 0.8138650115159616,
+        "growth": 0.8388292313621355,
+        "stage": "juvenile",
+        "adultMass": 2.704333239466219,
+        "mass": 1.5961763619938023
+      },
+      {
+        "id": 185,
+        "adultScale": 0.993319416401299,
+        "currentScale": 0.9922489417011484,
+        "growth": 0.9989223258073131,
+        "stage": "adolescent",
+        "adultMass": 2.9019539339112574,
+        "mass": 2.8925819585186505
+      },
+      {
+        "id": 186,
+        "adultScale": 0.9799929921889287,
+        "currentScale": 0.9799929921889287,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.786715609976118,
+        "mass": 2.786715609976118
+      },
+      {
+        "id": 187,
+        "adultScale": 0.9957710280568078,
+        "currentScale": 0.9957710280568078,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.9234939469981964,
+        "mass": 2.9234939469981964
+      },
+      {
+        "id": 188,
+        "adultScale": 1.0409739082527842,
+        "currentScale": 1.0343662094775505,
+        "growth": 0.9936523877084256,
+        "stage": "adolescent",
+        "adultMass": 3.3399754336803413,
+        "mass": 3.2767756967940964
+      },
+      {
+        "id": 189,
+        "adultScale": 1.0076030349221596,
+        "currentScale": 1.0076030349221596,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.9787559447286809,
+        "mass": 1.9787559447286809
+      },
+      {
+        "id": 190,
+        "adultScale": 0.9771718753376984,
+        "currentScale": 0.862146201122939,
+        "growth": 0.8822871624554197,
+        "stage": "adolescent",
+        "adultMass": 1.8048316907036444,
+        "mass": 1.2395572463231042
+      },
+      {
+        "id": 191,
+        "adultScale": 0.9755546689068405,
+        "currentScale": 0.7473293718961908,
+        "growth": 0.766055861055549,
+        "stage": "juvenile",
+        "adultMass": 1.7958855955358473,
+        "mass": 0.8073465358250498
+      },
+      {
+        "id": 192,
+        "adultScale": 1.0125371209864105,
+        "currentScale": 1.0125371209864105,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 2.0079675674150037,
+        "mass": 2.0079675674150037
+      },
+      {
+        "id": 193,
+        "adultScale": 1.0065235488400992,
+        "currentScale": 0.8581420242765508,
+        "growth": 0.8525801758592327,
+        "stage": "adolescent",
+        "adultMass": 1.9724029907791403,
+        "mass": 1.2223662295851674
+      },
+      {
+        "id": 194,
+        "adultScale": 0.9586761763443435,
+        "currentScale": 0.8866288480958073,
+        "growth": 0.924847065123419,
+        "stage": "adolescent",
+        "adultMass": 1.7042748569477306,
+        "mass": 1.3481847338323054
+      },
+      {
+        "id": 195,
+        "adultScale": 0.9981477856119416,
+        "currentScale": 0.9981477856119416,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.9235716808344752,
+        "mass": 1.9235716808344752
+      },
+      {
+        "id": 196,
+        "adultScale": 1.0087288374557535,
+        "currentScale": 1.0087288374557535,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.985395995380263,
+        "mass": 1.985395995380263
+      }
+    ],
+    "stateParity": true,
+    "rule": "body-size/1",
+    "source": {
+      "id": 109,
+      "age": 32,
+      "dimensions": {
+        "adultScale": 0.9684850737589639,
+        "currentScale": 0.9684850737589639,
+        "growth": 1,
+        "stage": "adult",
+        "adultMass": 1.3171850643817662,
+        "mass": 1.3171850643817662
+      }
+    },
+    "scope": "Natural New World renderer captures plus explicitly controlled clone-only size/age specimens through drawAnimal. Clones never enter Simulation; no evolved 2x population or clearance acceptance claimed."
+  }
+}
