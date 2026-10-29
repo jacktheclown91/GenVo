@@ -1,6 +1,6 @@
 {
   "schema": "genvo.part-art-variants/1",
-  "version": 5,
+  "version": 6,
   "status": "production-candidate-creator-review",
   "native32Fallback": true,
   "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
@@ -43,17 +43,11 @@
       "partId": "head-base",
       "resolution": 64,
       "path": "./head-base-64.indexed.json.gz",
-      "checksum": "c4de74fdccaae1004de7f353db15c7c3c9caa255dc20128a0c175593e2f0491a",
-      "bytes": 6640,
+      "checksum": "deefd44ce56457adde65c0f9a9e49514fd53f0d1429a770a3d75f33eeff9217d",
+      "bytes": 4796,
       "decodedRgbaBytes": 262144,
       "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18",
-      "kind": "imagegen-indexed",
-      "master": {
-        "path": "./source/head-base-master.png",
-        "sha256": "592fa7304a22bf0b18414b3d8522281dcb9afb21e4b7d500f2882ba89a9cb66a",
-        "width": 1254,
-        "registration": "Single canonical north surface, registered to existing head bounds"
-      },
+      "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     },
     {
@@ -232,17 +226,11 @@
       "partId": "head-base",
       "resolution": 128,
       "path": "./head-base-128.indexed.json.gz",
-      "checksum": "416afb53f69615d4868da46138db965b5af29e2313148a9e90f8fb4c901f59a4",
-      "bytes": 28876,
+      "checksum": "212495e03ea60a4ec0f6361d480f3796643e6138b2c2e7e102132e3da7f11abb",
+      "bytes": 16107,
       "decodedRgbaBytes": 1048576,
       "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18",
-      "kind": "imagegen-indexed",
-      "master": {
-        "path": "./source/head-base-master.png",
-        "sha256": "592fa7304a22bf0b18414b3d8522281dcb9afb21e4b7d500f2882ba89a9cb66a",
-        "width": 1254,
-        "registration": "Single canonical north surface, registered to existing head bounds"
-      },
+      "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     },
     {
@@ -388,5 +376,6 @@
   "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
   "faceRefinement": "Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.",
   "limbRefinement": "Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration.",
-  "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration."
+  "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.",
+  "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved."
 }

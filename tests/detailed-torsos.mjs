@@ -8,7 +8,7 @@ const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object
 let frames=0;const silhouettes=new Map();
 for(const e of catalog.parts){
  const prior=before.parts.find(p=>p.partId===e.partId&&p.resolution===e.resolution);
- if(!ids.includes(e.partId)){assert.deepEqual(e,prior,'other24 variants remain exact');continue}
+ if(!ids.includes(e.partId)){if(e.partId==='head-base')continue;assert.deepEqual(e,prior,'other22 variants remain exact; head revision is checked by detailed-heads');continue}
  const asset=await compileIndexedPart(JSON.parse(gunzipSync(fs.readFileSync(new URL(e.path,folder))))),old=JSON.parse(gunzipSync(fs.readFileSync(new URL(prior.path,beforeRoot)))),source=JSON.parse(fs.readFileSync(new URL('../assets/art/parts/'+e.partId+'.indexed.json',import.meta.url))),ratio=e.resolution/32;
  assert.equal(asset.checksum,e.checksum);assert.notEqual(asset.checksum,old.checksum);
  assert.deepEqual(asset.rig,scaled(source.rig,ratio));assert.deepEqual(asset.rootAnchorPx,scaled(source.rootAnchorPx,ratio));assert.equal(asset.displayScale*ratio,source.displayScale);assert.deepEqual(asset.regions,source.regions);
@@ -24,4 +24,4 @@ for(const e of catalog.parts){
 }
 for(const resolution of [64,128])assert.equal(new Set(ids.map(id=>silhouettes.get(id+'-'+resolution))).size,3,'three distinct anatomical contours');
 assert.equal(catalog.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0),before.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0));
-console.log('Detailed torsos PASS: '+frames+' native frames, three distinct contours, real new tissue, exact rigs/pivots/palettes/timing, inherited tint, no clipping or doubled breathing, unchanged decoded memory and other24 variants.');
+console.log('Detailed torsos PASS: '+frames+' native frames, three distinct contours, real new tissue, exact rigs/pivots/palettes/timing, inherited tint, no clipping or doubled breathing, unchanged decoded memory and other22 variants (head revision separately checked).');
