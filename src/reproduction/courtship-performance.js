@@ -128,7 +128,7 @@ export function performedMateChoice(sim,actor,target){
   return {accepted,reason:accepted?'mutual-acceptance':draws[0]>=chances[0]?'first-declines':'second-declines',chances,appeal,competing};
 }
 export function performCourtship(sim,actor,target){
-  if(!actor?.alive||!target?.alive||dist(actor,target)>COURTSHIP_PERFORMANCE.radius){actor.courtshipPerformance=null;return false;}
+  if(!actor?.alive||!target?.alive||dist(actor,target)>(sim.reachBetween?.(actor,target,COURTSHIP_PERFORMANCE.radius)??COURTSHIP_PERFORMANCE.radius)){actor.courtshipPerformance=null;return false;}
   if(!sim.canMatePair(actor,target,{ready:true})){actor.courtshipPerformance=null;return false;}
   const current=actor.courtshipPerformance;
   // Completion uses the same one-life-update validity window as activeCourtship.

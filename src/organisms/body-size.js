@@ -18,21 +18,32 @@
 // larger bodies wait for structural support (later milestones).
 export const BODY_SIZE=Object.freeze({policy:'body-size/1',minScale:.5,maxScale:2,founderSpread:.05,mutation:.03,
  energyExponent:.75,waterExponent:2/3});
+// body-size/2 (morphology S7, new games): the same inheritance and physics with the
+// upper bound raised to 3x, once S2-S3 made large bodies pay for their size
+// (transport and flight costs, impacts, structural stress: a founder anatomy at
+// 3x sits exactly at tissue yield) and S1 made every intake and transfer
+// size-correct. Contact reach also grows with body size (contactReach).
+// body-size/1 worlds keep their 2x bound exactly.
+export const GIANT_SIZE=Object.freeze({policy:'body-size/2',maxScale:3});
+const MAX_SCALE=Object.freeze({[BODY_SIZE.policy]:BODY_SIZE.maxScale,[GIANT_SIZE.policy]:GIANT_SIZE.maxScale});
+export const bodySizePolicy=value=>Object.hasOwn(MAX_SCALE,value);
 const LOG_MIN=Math.log(BODY_SIZE.minScale),LOG_MAX=Math.log(BODY_SIZE.maxScale);
-const clampLog=v=>Math.max(LOG_MIN,Math.min(LOG_MAX,v));
-export const bodySizeEnabled=sim=>sim?.bodySizeRules===BODY_SIZE.policy;
+const logMax=policy=>Math.log(MAX_SCALE[policy]??BODY_SIZE.maxScale);
+const clampLog=(v,max=LOG_MAX)=>Math.max(LOG_MIN,Math.min(max,v));
+export const bodySizeEnabled=sim=>bodySizePolicy(sim?.bodySizeRules);
 
 export function founderBodySize(rng){
  const s=BODY_SIZE.founderSpread;return{schema:1,alleles:[rng.range(-s,s),rng.range(-s,s)]};
 }
 // One allele from each parent, each with a small symmetric mutation.
-export function inheritBodySize(rng,mother,father){
- const allele=parent=>parent.bodySize.alleles[rng.chance(.5)?0:1],m=BODY_SIZE.mutation;
- return{schema:1,alleles:[clampLog(allele(mother)+rng.range(-m,m)),clampLog(allele(father)+rng.range(-m,m))]};
+export function inheritBodySize(rng,mother,father,policy=BODY_SIZE.policy){
+ const allele=parent=>parent.bodySize.alleles[rng.chance(.5)?0:1],m=BODY_SIZE.mutation,max=logMax(policy);
+ return{schema:1,alleles:[clampLog(allele(mother)+rng.range(-m,m),max),clampLog(allele(father)+rng.range(-m,m),max)]};
 }
-export function validateBodySize(size){
+export function validateBodySize(size,policy=BODY_SIZE.policy){
+ const max=logMax(policy);
  if(size?.schema!==1||!Array.isArray(size.alleles)||size.alleles.length!==2||
-  size.alleles.some(v=>!Number.isFinite(v)||v<LOG_MIN-1e-12||v>LOG_MAX+1e-12))throw Error('Invalid inherited body size.');
+  size.alleles.some(v=>!Number.isFinite(v)||v<LOG_MIN-1e-12||v>max+1e-12))throw Error('Invalid inherited body size.');
 }
 // Adult linear scale this body's inheritance supports (1 without body-size/1).
 export function adultSizeScale(animal){
@@ -72,10 +83,17 @@ export function enduranceScale(animal){
 // carries a valid size exactly when the world records body-size/1.
 export function restoreBodySizeRules(sim,core){
  if(core.bodySizeRules===undefined)delete sim.bodySizeRules;
- else if(core.bodySizeRules!==BODY_SIZE.policy)throw Error('Unknown saved body size rules.');
- const enabled=bodySizeEnabled(sim),check=a=>{if(!a)return;if(enabled){validateBodySize(a.bodySize)}else if(a.bodySize!==undefined)throw Error('Saved body size without its recorded rule.')};
+ else if(!bodySizePolicy(core.bodySizeRules))throw Error('Unknown saved body size rules.');
+ const enabled=bodySizeEnabled(sim),check=a=>{if(!a)return;if(enabled){validateBodySize(a.bodySize,sim.bodySizeRules)}else if(a.bodySize!==undefined)throw Error('Saved body size without its recorded rule.')};
  for(const a of sim.animals){check(a);check(a.pregnant?.maternalInheritance);check(a.pregnant?.paternalInheritance)}
  for(const egg of sim.eggs||[]){check(egg.maternalInheritance);check(egg.paternalInheritance)}
+}
+// Contact reach under body-size/2: two bodies touch over the mean of their current
+// linear scales (frame and limbs grow with the body). A reference pair keeps the
+// base distance exactly, and only larger bodies reach further, so small bodies
+// keep every existing interaction. Worlds without /2 use the base distance.
+export function contactReach(sim,base,scaleA=1,scaleB=1){
+ return sim?.bodySizeRules===GIANT_SIZE.policy?base*Math.max(1,(scaleA+scaleB)/2):base;
 }
 // Read-only presentation contract (Codex): current and inherited linear scale,
 // growth and mass. Presentation may draw from these; it never writes them.
