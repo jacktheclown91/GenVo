@@ -114,3 +114,7 @@ H1 and H2 were implemented and measured, then **parked before any commit**. That
 - **Oases.** Rare oases appear only where geology and groundwater actually support springs.
 - **Rainfall and the soil model.** Today's soil model produces essentially no runoff, because evaporation meets or exceeds rain everywhere. Credible seasonal water first needs a measured review of that balance and of wet and dry periods. That review is versioned and separate from the groundwater-start decision.
 - **Founding.** It follows S6: survival capability per body, not universal water proximity.
+
+### S5 step 1 (October 29): evaporation fix
+
+The balance review found evaporation's fixed floor drying every world (planet 71–76% semi-arid, no humid land, runoff 0.3% of rain). `climate-water/1` (temperature-driven evaporation) is on for new games; the climate pass for deserts is deferred by creator decision. See [S5 climate water](MORPHOLOGY-S5-CLIMATE-WATER-2026-10-29.md).

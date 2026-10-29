@@ -19,6 +19,22 @@ import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
 import {recordPageGroundwater,finishPageGroundwater,validatePageGroundwater} from '../world/page-groundwater-transfers.js';
 import {PLANETARY_SEAM_GROUNDWATER,validateSeamGroundwaterPolicy} from '../world/planetary-seam-groundwater.js';
 import {GROUNDWATER_SPRINGS,advanceGroundwaterSprings,validateGroundwaterSpringPolicy} from '../world/groundwater-springs.js';
+// climate-water/1 (morphology S5): evaporation potential follows temperature above
+// freezing (Thornthwaite-type) instead of a fixed floor that kept cold, wet land
+// arid. Anchors: freezing is 0.30 (snow/ice rules), 1 temperature unit is about
+// 50 C, 1 moisture unit is about 100 mm, and potential evaporation rises about
+// 0.17 mm per day per C above freezing: 0.085 per unit per day. Applied when the
+// day's climate carries the rule; recorded worlds keep the original formula.
+export const CLIMATE_WATER=Object.freeze({policy:'climate-water/1',freezing:.30,perDegree:.085});
+export function evaporationPotential(climate,temperature){
+ if(climate?.evaporation===CLIMATE_WATER.policy)return CLIMATE_WATER.perDegree*Math.max(0,temperature-CLIMATE_WATER.freezing);
+ return SOIL_WATER.potentialBase+SOIL_WATER.potentialTemp*Math.max(0,temperature);
+}
+export function restoreClimateWaterRules(sim,core){
+ if(core.climateWaterRules===undefined)delete sim.climateWaterRules;
+ else if(core.climateWaterRules!==CLIMATE_WATER.policy)throw Error('Unknown saved climate water rules.');
+ if(sim.climate?.evaporation!==undefined&&sim.climate.evaporation!==sim.climateWaterRules)throw Error('Saved climate disagrees with its recorded climate water rule.');
+}
 export const SOIL_WATER={enabled:true,rainScale:.06,potentialBase:.025,potentialTemp:.035,capacityBase:.3,capacityWet:.4,drain:.15,rise:.08,lateral:.5,deepDrain:.004,wiltingPoint:.03};
 const clamp01=v=>v<0?0:v>1?1:v;
 export function initializeSoilWater(w){
@@ -46,7 +62,7 @@ export function plantAvailableWater(w,i,capacity){return Math.max(0,w.moisture[i
 export function withdrawPlantUptake(w,i,capacity,remaining){const s=w.soilWater,next=SOIL_WATER.wiltingPoint+remaining/capacity,used=Math.max(0,w.moisture[i]-next);if(used>0){w.moisture[i]-=used;if(s)s.totals.uptake+=used}return used}
 export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
   const P=SOIL_WATER,s=w.soilWater||initializeSoilWater(w),fc=s.fieldCapacity,g=s.groundwater,next=s.scratch,n=w.n,t=s.totals,atmospheric=w.environment?{...climate,frontDay:day}:climate;
-  const rain=Math.max(0,climate.rain)*P.rainScale,potential=P.potentialBase+P.potentialTemp*Math.max(0,climate.temp);
+  const rain=Math.max(0,climate.rain)*P.rainScale,potential=evaporationPotential(climate,climate.temp);
   // Groundwater lateral flow from the previous state: each pair of land neighbours exchanges the same amount in
   // opposite directions, open water is a fixed head of 1 and map edges are closed. t.lateral is the net inflow
   // from open water.
@@ -56,7 +72,7 @@ export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
     if(x>0)d+=g[i-1]-gi;if(x<n-1)d+=g[i+1]-gi;if(y>0)d+=g[i-n]-gi;if(y<n-1)d+=g[i+n]-gi;
     const flow=P.lateral*.25*d;next[i]=gi+flow;t.lateral+=flow}}
   for(let i=0;i<w.len;i++){if(w.water[i]){g[i]=1;w.moisture[i]=1;continue}
-    let m=w.moisture[i],gw=next[i];const cap=fc[i],cellRain=w.environment?localRain(w,atmospheric,i)*P.rainScale:rain,cellTemp=w.environment?localTemperature(w,atmospheric,i):w.temperature[i],cellPotential=w.environment?P.potentialBase+P.potentialTemp*Math.max(0,cellTemp):potential;
+    let m=w.moisture[i],gw=next[i];const cap=fc[i],cellRain=w.environment?localRain(w,atmospheric,i)*P.rainScale:rain,cellTemp=w.environment?localTemperature(w,atmospheric,i):w.temperature[i],cellPotential=w.environment?evaporationPotential(climate,cellTemp):potential;
     // Snowfall remains stored water, not immediate soil infiltration. Thaw
     // enters the SAME infiltration/runoff authority as rainfall and cannot
     // generate liquid volume without a preceding precipitation receipt.
