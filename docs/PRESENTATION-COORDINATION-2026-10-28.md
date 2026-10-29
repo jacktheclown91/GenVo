@@ -125,3 +125,5 @@ Codex autonomous contact audio heads-up: bounded ephemeral nearby-displacement t
 Codex wing audio heads-up: shared pure aerial-cycle phase query in aerial-presentation.js; main.js passes the existing renderer encounter clock to AudioDirector.update. Audio reads actual powered flight plus canonical wing anatomy, never glide/jump/display. No simulation timing/events/save changes.
 
 Codex limb art batch heads-up: refining only optional64/128 walking/runner/sturdy indexed tissue via existing production compiler; fixed bone anchors/hip/knee regions, pigmentation, timing and native32 preserved. Claude ecebf2e4 inertia merged normally first. No movement/physics mechanisms edited by this asset batch.
+
+Codex inertia-expression heads-up: renderer.js will consume canonical motionStateOf/inertiaEnabled for bounded torso lean/bank/drop/twist and follow-through. Existing foot tracker keeps contact authority; higher action poses retain priority. No physics, velocity, target, steering or save edits. Legacy worlds without inertia remain on their current paint path.

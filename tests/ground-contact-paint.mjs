@@ -1,3 +1,4 @@
+import {applyInertiaExpression} from '../src/render/inertia-expression.js';
 import assert from 'node:assert/strict';
 import {GroundContactTracker} from '../src/render/ground-contacts.js';
 import {drawGenvoSprite} from '../src/render/genvo-draw.js';
@@ -32,6 +33,7 @@ for(const animal of studyCreatures())for(const zoom of [1,2,4])for(const sizeSca
   const ctx=new Proxy({},{get:(target,key)=>key in target?target[key]:()=>{}});
   const displayPhase=moving?Math.floor(((phase+animal.id*3.125)%8)*4)/4:(step*.1)%8;
   const behavior=behaviorVisualState({bodyPlan:animal.bodyPlan,id:animal.id,phase:displayPhase,moving,action:moving?'move':'idle'});
+  applyInertiaExpression(behavior,{lean:.6*Math.sin(step*.1),sway:.4*Math.cos(step*.13),twist:.2*Math.sin(step*.13),roll:.1*Math.cos(step*.13),tail:0,drop:.15*Math.max(0,Math.cos(step*.1))});
   drawGenvoSprite(ctx,{animal,phenotype:phenotypeFor(animal),scale,frame:displayPhase,moving,groundContactFrame:frame,authoredParts,palette:{body:'#80a660',shade:'#405c38',light:'#b8d38e'},pose:{dir,action:moving?'move':'idle',behavior}});
   const current=new Map();
   if(frame)for(const [key,result] of frame.memo){
