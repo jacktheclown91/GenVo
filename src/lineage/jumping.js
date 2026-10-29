@@ -1,5 +1,6 @@
 import {iceSupports,settleIceLoad} from './ice-locomotion.js';
-import {adultBodyMass} from '../organisms/body-mass.js';
+import {adultBodyMass,anatomicalAdultMass} from '../organisms/body-mass.js';
+import {massCostToReserve,structuralScale} from '../organisms/body-size.js';
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 import {glideGround} from './gliding.js';
@@ -11,8 +12,12 @@ export const JUMP=Object.freeze({policy:'ballistic-jumping/1',gravity:10,lift:4.
  cooldownSeconds:.7,safeImpact:5,impactDamage:4,collisionDamage:12,waterDamage:12,maxSeconds:4});
 export function springLegs(a){return(a?.bodyPlan?.nodes||[]).filter(n=>n.partId==='spring-leg').length}
 export function hasJumpingAnatomy(a){return springLegs(a)>=2}
+// Launch kinematics use the anatomy's own load: for the same anatomy scaled up, muscle
+// work and body mass both grow as s^3, so the jump is about as high (Borelli). Limb
+// stress grows as s and bounds whether the legs can launch the body at all.
+export function jumpLoad(a){return anatomicalAdultMass(a)*structuralScale(a)}
 export function jumpKinematics(a){
- const load=Math.max(.7,adultBodyMass(a)/(Math.max(2,springLegs(a))/2*1.45)),lift=JUMP.lift/Math.sqrt(load),
+ const load=Math.max(.7,anatomicalAdultMass(a)/(Math.max(2,springLegs(a))/2*1.45)),lift=JUMP.lift/Math.sqrt(load),
   speed=JUMP.speed*Math.max(.5,Math.min(1.6,a.genes?.motion||1))/Math.sqrt(load);
  return{lift,speed,range:speed*2*lift/JUMP.gravity};
 }
@@ -24,17 +29,17 @@ export function jumpAvailability(sim,a=sim.player(),{pounce=false}={}){
  if((a.diveDepth||0)>.03)return fail('Surface before jumping.');
  if(a.airborne||a.perched)return fail('Land or descend before jumping.');
  if(a.torpor)return fail('Wake before jumping.');
- const legs=springLegs(a),mass=adultBodyMass(a);
+ const legs=springLegs(a),mass=adultBodyMass(a),food=massCostToReserve(a,JUMP.foodPerMass*mass);
  if(!hasJumpingAnatomy(a))return fail('Jumping requires at least two actual spring legs with developed tendons.');
- if(mass>JUMP.massPerPair*legs/2)return fail('The spring legs cannot launch this body load.');
+ if(jumpLoad(a)>JUMP.massPerPair*legs/2)return fail('The spring legs cannot launch this body load.');
  if(a.health<JUMP.minHealth||a.age<(SPECIES[a.species]?.maturity||0)*.5)return fail('The body is too young or injured to jump.');
  if(a.carryingFood||a.bracing)return fail('Put down carried food and release your brace before jumping.');
  if((a.jumpReadyTick||0)>sim.tickCount)return fail('Recover from the landing before jumping again.');
  if(!pounce&&sim.playerCombat?.attackActive(a))return fail('Finish the attack before jumping.');
- if(a.energy<JUMP.foodPerMass*mass+3)return fail('Need more food energy for this body load.');
+ if(a.energy<food+3)return fail('Need more food energy for this body load.');
  if(!pounce&&(a.exertionWinded||(a.exertion??CFG.exertion.max)<JUMP.breath))return fail('Catch your breath before jumping.');
  if(!sim.world.isPlayable(a.x,a.y)||sim.world.water[sim.world.idx(a.x,a.y)]&&!iceSupports(sim.world,a))return fail('Push off from firm ground.');
- return{enabled:true,reason:'Spring forward along your facing. The arc is committed; water, hard falls and rising terrain can injure.',mass,food:JUMP.foodPerMass*mass};
+ return{enabled:true,reason:'Spring forward along your facing. The arc is committed; water, hard falls and rising terrain can injure.',mass,food};
 }
 export function launchJump(sim,a=sim.player(),{dx,dy,range=null,pounce=false}={}){
  const status=jumpAvailability(sim,a,{pounce});if(!status.enabled)return{ok:false,type:'jump',message:status.reason};
@@ -52,7 +57,7 @@ export function launchJump(sim,a=sim.player(),{dx,dy,range=null,pounce=false}={}
 }
 export function finishJump(a,world,{tick=0,swimmer=false,collision=false}={}){
  const j=a.jump,impact=Math.abs(j?.verticalVelocity||0),water=!settleIceLoad(world,a,Math.max(1,impact/JUMP.safeImpact)),
-  damage=(collision?JUMP.collisionDamage:Math.max(0,impact-JUMP.safeImpact)*JUMP.impactDamage)+(water&&!swimmer?JUMP.waterDamage:0);
+  damage=(collision?JUMP.collisionDamage:Math.max(0,impact-JUMP.safeImpact)*JUMP.impactDamage)*structuralScale(a)+(water&&!swimmer?JUMP.waterDamage:0);
  a.airborne=false;delete a.aerialMode;delete a.jump;
  a.health=Math.max(0,a.health-damage);a.jumpReadyTick=tick+Math.ceil(JUMP.cooldownSeconds*CFG.simHz);
  a.jumpLanding={tick,impact,water,damage};

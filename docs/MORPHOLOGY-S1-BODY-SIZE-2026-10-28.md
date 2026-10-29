@@ -85,6 +85,6 @@ Worlds without the rule are bit-identical: the modernization fixtures, the `/2`�
 ## Next steps, in order
 
 1. ~~Reserve conversion~~ — done (see Reserve accounting); enabled for new games.
-2. **S2 movement and structure.** Acceleration and turning (inertia ∝ mass, force ∝ cross-section), locomotion cost per distance, jumping, climbing, flight feasibility and fall damage, all bounded by structural support from limbs and skeleton. No automatic size bonus.
+2. ~~S2 movement and structure~~ — done, see [S2 physics](MORPHOLOGY-S2-PHYSICS-2026-10-28.md). Originally: Acceleration and turning (inertia ∝ mass, force ∝ cross-section), locomotion cost per distance, jumping, climbing, flight feasibility and fall damage, all bounded by structural support from limbs and skeleton. No automatic size bonus.
 3. **S3 anatomical compatibility.** Support requirements per part and body load, and explained invalid combinations.
 4. **Later.** S4–S9 follow the brief, with the revised hydrology plan as S5.

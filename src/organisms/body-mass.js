@@ -23,7 +23,8 @@ export function adultBodyMass(animal){
   if(!animal?.bodySize)return anatomicalAdultMass(animal);
   return anatomicalAdultMass(animal)*adultSizeScale(animal)**3;
 }
-function anatomicalAdultMass(animal){
+// The anatomy's own adult mass at reference size (no inherited scale).
+export function anatomicalAdultMass(animal){
   if(massPolicy(animal)===LEGACY_MASS)return SPECIES[animal?.species]?.mass||0;
   const plan=animal?.bodyPlan;
   if(!plan)throw Error('Missing anatomical mass body');

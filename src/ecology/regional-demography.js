@@ -1,5 +1,5 @@
 import {CFG,PLANTS} from '../sim/config.js';
-import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
+import {toReserve,toAbsolute,mouthScale,massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {SPECIES} from '../organisms/species.js';
 import {canHunt,preyPreference,plantPreference,groundDiet} from './functional-diet.js';
 import {harvestFreshwater} from './freshwater-food.js';
@@ -36,7 +36,7 @@ const near=(sim,a,r,visit)=>{const w=sim.world,x0=Math.max(0,Math.floor(a.x-r)),
 const reachable=(sim,a,x,y)=>canSwim(a)||sim.world.sameLand(a.x,a.y,x,y);
 function travel(sim,a,x,y,{move=true,trips=1}={}){
  const d=Math.hypot(x-a.x,y-a.y)*trips;if(!(d>0))return;
- a.energy-=B.moveEnergyPerCell*d*bodyMass(a)/a.genes.metabolism*(sim.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:!!sim.world.water[sim.world.idx(x,y)]})||1);
+ a.energy-=massCostToReserve(a,B.moveEnergyPerCell*d*bodyMass(a)/a.genes.metabolism*(sim.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:!!sim.world.water[sim.world.idx(x,y)]})||1),SIZE_PHYSICS.transport);
  if(move&&canOccupy(a,sim.world,x,y)){const ox=a.x,oy=a.y;a.x=x;a.y=y;a.movedTick=sim.tickCount;sim.regionalEcology.notePageMove(a,ox,oy)}
 }
 // Animals inside a canonical transition keep it: their per-tick steps (digging,

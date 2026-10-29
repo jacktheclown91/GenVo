@@ -22,6 +22,7 @@ import {SPECIES} from '../organisms/species.js';
 import {canOccupy,canSwim} from '../lineage/lifestyle.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {bodyMass} from '../organisms/body-mass.js';
+import {massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
 import {advanceRemoteEnvironment,remoteEnvironmentDue,OFFSCREEN_ENVIRONMENT} from './planetary-offscreen-environment.js';
 import {advanceRemoteBiology,remoteBiologicalDebt,OFFSCREEN_BIOLOGY} from './planetary-offscreen-biology.js';
@@ -217,7 +218,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
   if(!point)throw Error('Cohort arrival missing physically validated crossing.');
   Object.assign(copy,{x:point.x,y:point.y,player:member.id===traveler.id,
    target:null,navigationRoute:null,pursuitEngaged:false,hidden:false,movedTick:sim.tickCount});
-  if(continuousSoloFrontier(sim)){if(!canOccupy(copy,dest.world,point.x,point.y))throw Error('The destination frontier no longer supports this creature.')}else copy.energy=Math.max(0,copy.energy-FAMILY_PASSAGE.energyCost*bodyMass(copy));
+  if(continuousSoloFrontier(sim)){if(!canOccupy(copy,dest.world,point.x,point.y))throw Error('The destination frontier no longer supports this creature.')}else copy.energy=Math.max(0,copy.energy-massCostToReserve(copy,FAMILY_PASSAGE.energyCost*bodyMass(copy),SIZE_PHYSICS.transport));
   return copy;
  });
  const arrivalsById=new Map(arrivals.map(a=>[a.id,a]));
