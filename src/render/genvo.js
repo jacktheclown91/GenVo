@@ -88,7 +88,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
       legs.push({index:k,slot,root,...work,front,side});continue;
     }
     if(slotList&&action==='swim'){
-      const stroke=swimmingLimb({phase:frame,moving,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
+      const stroke=swimmingLimb({phase:frame,moving,steer:b.swimSteer||0,brake:b.swimBrake||0,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
       legs.push({index:k,slot,root,...stroke,front,side});continue;
     }
     if(slotList&&b.aerialTuck>0){

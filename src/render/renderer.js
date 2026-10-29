@@ -1,3 +1,4 @@
+import {SwimMotionPresentation,applySwimMotion} from './swim-motion.js';
 import {aridVisualState} from './arid-presentation.js';
 import {InertiaExpression,applyInertiaExpression} from './inertia-expression.js';
 import {adultSizeScale} from '../organisms/body-size.js';
@@ -191,7 +192,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
-    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.inertiaPresentation?.prune(this.encounters?.time||0);this.workMotion?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
+    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.inertiaPresentation?.prune(this.encounters?.time||0);this.swimMotionPresentation?.prune(this.encounters?.time||0);this.workMotion?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
 
 
   // v1.33.5: which relatives are carrying out your Family Command (solid gold pip) and which
@@ -1078,6 +1079,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat','crack'].includes(action)});
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyBirthSettlement(behavior,birth,{feeding:!!feeding});
+    const swimMotion=(this.swimMotionPresentation||=new SwimMotionPresentation()).sample(this.sim,a,this.encounters?.time||0,{action,moving,blocked:!!feeding||!!reaction||!!defense||!!encounter.move||!!encounter.impact||!!a.attackAction||!!a.bracing});applySwimMotion(behavior,swimMotion);
     const inertial=(this.inertiaPresentation||=new InertiaExpression()).sample(this.sim,a,this.encounters?.time||0,{dir:drawDir,action,blocked:!!feeding||!!birth||!!reaction||!!defense||!!encounter.move||!!encounter.impact||!!a.attackAction||!!a.bracing});applyInertiaExpression(behavior,inertial);
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
@@ -1110,7 +1112,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
       eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
     });
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion||thermal),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')+(thermal?'|thermal'+thermal.cacheToken:'')+(inertial?'|inertia'+inertial.cacheToken:'')});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion||thermal),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')+(thermal?'|thermal'+thermal.cacheToken:'')+(inertial?'|inertia'+inertial.cacheToken:'')+(swimMotion?'|swim'+swimMotion.cacheToken:'')});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 
