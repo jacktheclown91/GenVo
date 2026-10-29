@@ -108,6 +108,7 @@ const runtime=[
   'tests/diurnal-temperature.mjs',
   'tests/regional-founding-physiology.mjs',
   'tests/giant-bodies.mjs',
+  'tests/size-visibility-spacing.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

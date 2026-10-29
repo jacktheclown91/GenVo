@@ -34,6 +34,27 @@ Performance: none of this adds per-creature work. Every constraint is the same c
 
   `Simulation.reachBetween()` is the one authority; `/1` worlds return the base.
 
+## Visibility and spacing (follow-up, October 29)
+
+- **Visibility.** A body is seen in proportion to its apparent size: its current linear scale, clamped to 0.5–3×.
+  - It applies in `atmosphericSight`, the one authority for animal sighting. That covers threat detection, predators finding prey (`preyHiddenFrom`), the stratum view and the renderer's visible-animal filter.
+  - Giants are seen and found from farther away. Small and young bodies hide better, the brief's small-body advantage; the floor reflects that motion and contrast still give them away.
+  - Callers' own radius caps still apply.
+  - Places and objects, and worlds without `body-size/2`, are unchanged.
+- **Concealment in cover** already scaled with the prey's linear size (cube root of absolute mass), so a giant needs three times the cover to hide.
+- **Spacing.** Social spacing keeps a separation of base × max(1, the pair's mean scale), the same contact-reach authority, and the step away grows by the same factor. It reuses the nearest-neighbour distance the social state already tracks, with no new scans. In `/1` worlds the logic and checks keep exactly the same order.
+- **Presentation note (Codex).** Under `/2`, young and small animals become visible to the player at shorter range, because the renderer filters through the same sight check.
+
+`tests/size-visibility-spacing.mjs` (gated) checks:
+- effective sighting range ×2 at 2×, ×0.5 at half size, capped at 3×;
+- a 2× body seen where a reference body is not, and a half-size body hidden where a reference body would be seen;
+- a 3× prey found far beyond a reference prey's range;
+- juveniles as smaller targets;
+- spacing separation and a 5.4-tile step for two 3× bodies;
+- `/1` unchanged.
+
+60-day soaks under `body-size/2` with all rules, day 61 alive and births: 148/25, 132/14 and 156/2. Under `/1` they were 140/13, 131/10 and 157/0. That is within run-to-run spread; observation only.
+
 ## Evidence
 
 `tests/giant-bodies.mjs` (new, gated) covers:
@@ -50,7 +71,6 @@ The full playable gate passes on Node 24 and Node 22 (161 checks). The earlier S
 
 ## Not yet
 
-- **Visibility.** Larger bodies are not yet seen from farther away. Perception distance by target size is the next interaction.
-- **Collision footprint.** Bodies are still points for spacing and grouping, and only contact reach scales. A size-scaled separation radius, coordinated with Codex's render bounds, is next.
+- **Hard collision.** Bodies still pass through one another between social spacing moves. A full collision footprint would add per-body neighbour work and stays out, per the brief's performance rule.
 - **Presentation (Codex).** `bodyDimensionsOf()` already gives `currentScale`; drawing giants at scale, and render bounds matching reach, are Codex's.
 - **Natural evidence.** Founders start near 1×. Whether any lineage drifts toward giant size depends on real selection over many generations (S8); nothing pushes it.

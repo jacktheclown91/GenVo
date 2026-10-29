@@ -149,9 +149,13 @@ export class SocialController{
     return{x:animal.x+dx/len*2.6+cx*.12,y:animal.y+dy/len*2.6+cy*.12,threat,shared:s.alarm.sourceId!==animal.id};
   }
   spacingTarget(animal){
-    if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<2||!Number.isFinite(s.nearestDistance)||s.nearestDistance>=(p.separation||1))return null;
+    // Under body-size/2 the separation and the step away grow with the pair's size
+    // (the same contact reach as capture and courtship); otherwise exactly as before.
+    const giant=this.sim.bodySizeRules==='body-size/2';
+    if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<2||!Number.isFinite(s.nearestDistance)||s.nearestDistance>=(p.separation||1)*(giant?3:1))return null;
     const other=this.sim.animals.find(a=>a.id===s.nearestId&&a.alive);if(!other)return null;
-    const dx=animal.x-other.x,dy=animal.y-other.y,len=Math.hypot(dx,dy)||1,target={x:animal.x+dx/len*1.8,y:animal.y+dy/len*1.8};
+    const separation=giant?this.sim.reachBetween(animal,other,p.separation||1):p.separation||1;if(s.nearestDistance>=separation)return null;
+    const step=giant?1.8*separation/(p.separation||1):1.8,dx=animal.x-other.x,dy=animal.y-other.y,len=Math.hypot(dx,dy)||1,target={x:animal.x+dx/len*step,y:animal.y+dy/len*step};
     if(!this.reachableHabitat(animal,target))return null;this.stats.spacingMoves++;
     return target;
   }
