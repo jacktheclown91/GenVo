@@ -1,4 +1,5 @@
-import {adultBodyMass} from '../organisms/body-mass.js';
+import {adultBodyMass,bodyDimensionsOf} from '../organisms/body-mass.js';
+import {structuralSupportEnabled,stressIndex} from '../organisms/structural-support.js';
 import {massCostToReserve,structuralScale} from '../organisms/body-size.js';
 import {canopySupport,canopyGrips,roostAvailability} from '../ecology/canopy-site.js';
 import {canTreeClimb} from './gliding.js';
@@ -27,12 +28,12 @@ export function startClimb(sim,a,{descending=false}={}){
  return{ok:true,type:'climb',message:descending?'Climbing down. Grips and food energy support the descent.':'Climbing the living trunk. Height and work accumulate continuously.'};
 }
 // A fall's damage follows tissue stress (s): the same anatomy, scaled up, lands harder.
-function fall(a,reason){const height=a.climb.height,damage=height*CLIMBING.fallDamage*structuralScale(a);delete a.climb;a.perched=false;a.health=Math.max(0,a.health-damage);return{ok:false,type:'climb-fall',height,damage,forced:true,message:reason+' Fell '+height.toFixed(1)+' height.'}}
+function fall(a,reason,impact=structuralScale(a)){const height=a.climb.height,damage=height*CLIMBING.fallDamage*impact;delete a.climb;a.perched=false;a.health=Math.max(0,a.health-damage);return{ok:false,type:'climb-fall',height,damage,forced:true,message:reason+' Fell '+height.toFixed(1)+' height.'}}
 export function stepClimb(sim,a,dt){
  if(!a?.alive||!a.climb)return null;
  if(sim.climbingRules!==CLIMBING.policy||!(dt>0&&dt<=.25))throw Error('Invalid climbing step.');
  const c=a.climb,site=canopySupport(sim.world,a.x,a.y),mass=adultBodyMass(a);
- if(!site.supported||mass>site.maxLoad||canopyGrips(a)<2||a.health<20||Math.hypot(a.x-c.x,a.y-c.y)>.02)return fall(a,'The trunk or grips cannot support this body.');
+ if(!site.supported||mass>site.maxLoad||canopyGrips(a)<2||a.health<20||Math.hypot(a.x-c.x,a.y-c.y)>.02)return fall(a,'The trunk or grips cannot support this body.',structuralSupportEnabled(sim)?stressIndex(a,bodyDimensionsOf(a).growth):structuralScale(a));
  let incident=null;if(a.energy<=1&&c.target>0){c.target=0;incident={ok:false,type:'climb',message:'Low food energy. Climbing back down before the grips fail.'}}
  const up=c.target>c.height,speed=(up?CLIMBING.upSpeed:CLIMBING.downSpeed)/Math.sqrt(Math.max(.5,mass)),distance=Math.min(Math.abs(c.target-c.height),speed*dt);
  c.height+=Math.sign(c.target-c.height)*distance;c.elapsed+=dt;a.energy-=massCostToReserve(a,distance*mass*(up?CLIMBING.upWork:CLIMBING.downWork));a.anim=(a.anim+dt*3)%8;

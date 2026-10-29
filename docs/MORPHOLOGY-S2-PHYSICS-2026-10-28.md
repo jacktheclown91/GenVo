@@ -61,7 +61,7 @@ A 60-day new-game soak (planetary, full opt-ins, seed SOAK-SIZE-1) ended day 61 
 ## Not in S2
 
 - **Acceleration and turning.** Movement is kinematic: there is no velocity state to give inertia to. Adding one changes every chase and the player's controls. It needs its own design pass, with the presentation contract, before giants (S7). That design is now [inertia/1](INERTIA-DESIGN-2026-10-28.md).
-- **Per-part structural capacity.** Whether a given set of legs, torso and skeleton can carry a given load, with explained invalid combinations, is S3 (anatomical compatibility). S2's stress term treats each anatomy as sound at its own reference size.
+- **Per-part structural capacity.** Whether a given set of legs, torso and skeleton can carry a given load, with explained invalid combinations, is S3 (anatomical compatibility). S2's stress term treats each anatomy as sound at its own reference size. Done in [S3](MORPHOLOGY-S3-STRUCTURE-2026-10-29.md).
 - **Thermal demand.** Surface-area heat exchange on land is left to S4.
 
 ## Next

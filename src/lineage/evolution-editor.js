@@ -28,7 +28,7 @@ export class EvolutionEditorController{
   // A fresh draft from the active parent's body, the lineage's ancestry and this handoff's budget.
   openDraft(){
     const o=this.pending();if(!o)return null;const parent=this.sim.animals.find(a=>a.id===o.parentId)||this.sim.player();
-    return createDraft({base:planFor(parent),ancestry:[...ancestryFor(this.sim,parent)],budget:this.sim.evolutionBudget?.budget?.()??8,known:this.sim.discovery?.seenParts||null,unlocked:this.sim.discovery?.unlockedParts||null});
+    return createDraft({base:planFor(parent),ancestry:[...ancestryFor(this.sim,parent)],budget:this.sim.evolutionBudget?.budget?.()??8,known:this.sim.discovery?.seenParts||null,unlocked:this.sim.discovery?.unlockedParts||null,structural:this.sim.structuralSupportRules==='structural-support/1'});
   }
   commit(draft){
     const o=this.pending();if(!o||!draft)return{ok:false,problems:['No litter is waiting for a design.']};

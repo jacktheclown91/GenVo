@@ -55,32 +55,33 @@ export function launchJump(sim,a=sim.player(),{dx,dy,range=null,pounce=false}={}
  a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;
  return{ok:true,type:'jump',message:'Jumping. The spring-powered arc is committed; land before using surface actions.'};
 }
-export function finishJump(a,world,{tick=0,swimmer=false,collision=false}={}){
+// `impact` scales landing injury by tissue stress (S2: inherited scale; S3: structural stress).
+export function finishJump(a,world,{tick=0,swimmer=false,collision=false,impact:impactScale=structuralScale(a)}={}){
  const j=a.jump,impact=Math.abs(j?.verticalVelocity||0),water=!settleIceLoad(world,a,Math.max(1,impact/JUMP.safeImpact)),
-  damage=(collision?JUMP.collisionDamage:Math.max(0,impact-JUMP.safeImpact)*JUMP.impactDamage)*structuralScale(a)+(water&&!swimmer?JUMP.waterDamage:0);
+  damage=(collision?JUMP.collisionDamage:Math.max(0,impact-JUMP.safeImpact)*JUMP.impactDamage)*impactScale+(water&&!swimmer?JUMP.waterDamage:0);
  a.airborne=false;delete a.aerialMode;delete a.jump;
  a.health=Math.max(0,a.health-damage);a.jumpReadyTick=tick+Math.ceil(JUMP.cooldownSeconds*CFG.simHz);
  a.jumpLanding={tick,impact,water,damage};
  return{ok:damage===0,type:'jump-land',forced:damage>0,impact,damage,water,
   message:collision?'The jump strikes terrain or the region edge; landing causes injury.':water&&!swimmer?'The jump ends in water; the creature falls in and must reach shore.':damage?'A hard fall causes injury on landing.':'Landed. Recover briefly before the next jump.'};
 }
-export function stepJump(a,world,dt,{tick=0,swimmer=false}={}){
+export function stepJump(a,world,dt,{tick=0,swimmer=false,impact=structuralScale(a)}={}){
  if(!a?.alive||a.aerialMode!=='jump')return null;
  if(!Number.isFinite(dt)||dt<=0||dt>.25)throw Error('Invalid jump physics step.');
  const j=a.jump,nx=a.x+j.vx*dt,ny=a.y+j.vy*dt,ground=glideGround(world,nx,ny),
   nextZ=j.altitude+j.verticalVelocity*dt-JUMP.gravity*dt*dt/2,nextV=j.verticalVelocity-JUMP.gravity*dt;
  if(ground===null||j.elapsed+dt>JUMP.maxSeconds||springLegs(a)<2||a.health<JUMP.minHealth)
-  return finishJump(a,world,{tick,swimmer,collision:true});
- if(ground>nextZ+.05&&nextV>0)return finishJump(a,world,{tick,swimmer,collision:true});
+  return finishJump(a,world,{tick,swimmer,collision:true,impact});
+ if(ground>nextZ+.05&&nextV>0)return finishJump(a,world,{tick,swimmer,collision:true,impact});
  let used=dt;
  if(nextZ<=ground&&nextV<=0){
   const discriminant=j.verticalVelocity**2+2*JUMP.gravity*(j.altitude-ground);
-  if(discriminant<0)return finishJump(a,world,{tick,swimmer,collision:true});
+  if(discriminant<0)return finishJump(a,world,{tick,swimmer,collision:true,impact});
   used=Math.max(0,Math.min(dt,(j.verticalVelocity+Math.sqrt(discriminant))/JUMP.gravity));
  }
  a.x+=j.vx*used;a.y+=j.vy*used;j.altitude+=j.verticalVelocity*used-JUMP.gravity*used*used/2;
  j.verticalVelocity-=JUMP.gravity*used;j.elapsed+=used;a.anim=((a.anim||0)+used*8)%8;
- if(used<dt||j.altitude<=glideGround(world,a.x,a.y))return finishJump(a,world,{tick,swimmer});
+ if(used<dt||j.altitude<=glideGround(world,a.x,a.y))return finishJump(a,world,{tick,swimmer,impact});
  return{ok:true,type:'jump',moving:true,distance:Math.hypot(j.vx,j.vy)*used};
 }
 export function restoreJumpingRules(sim,core){
