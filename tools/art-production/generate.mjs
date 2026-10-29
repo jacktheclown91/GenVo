@@ -7,13 +7,15 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 let playwright;try{playwright=require('playwright')}catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));}
 const root=process.cwd(),out=path.join(root,'assets/art/production-candidate-v1');
-const refinement=process.argv.includes('--refine-coverings');
-const previous=JSON.parse(fs.readFileSync(refinement?path.join(out,'catalog.json'):'assets/art/experiments/resolution-v1/catalog.json','utf8'));
-const painted=new Set(refinement?['fur-mantle','feather-mantle','shell-back']:['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
+const refinement=process.argv.includes('--refine-coverings'),faceRefinement=process.argv.includes('--refine-faces'),revision=refinement||faceRefinement;
+if(refinement&&faceRefinement)throw Error('Choose one coherent artwork revision.');
+const previous=JSON.parse(fs.readFileSync(revision?path.join(out,'catalog.json'):'assets/art/experiments/resolution-v1/catalog.json','utf8'));
+const painted=new Set(faceRefinement?['simple-eye','compound-eye','grazing-mouth','beak-mouth']:refinement?['fur-mantle','feather-mantle','shell-back']:['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
 const catalog={schema:'genvo.part-art-variants/1',version:1,status:'production-candidate-creator-review',
   native32Fallback:true,author:'Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.',
   generation:'Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.',parts:[]};
 if(refinement)Object.assign(catalog,{...previous,version:2,parts:[],refinement:'Three single-view covering masters, explicit fixed registration; preceding masters retained.'});
+if(faceRefinement)Object.assign(catalog,{...previous,version:3,parts:[],faceRefinement:'Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.'});
 const server=http.createServer((req,res)=>{
  const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));
  if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
@@ -23,11 +25,16 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{
  browser=await playwright.chromium.launch();const page=await browser.newPage();
  await page.goto('http://127.0.0.1:'+server.address().port+'/tools/art-resolution/index.html');
- const results=await page.evaluate(async({ids,refinement})=>{
-  const {compileIndexedPart}=await import('/src/render/indexed-part-art.js');
+ const results=await page.evaluate(async({ids,refinement,faceRefinement})=>{
+  const {compileIndexedPart,recolorIndexedFrame}=await import('/src/render/indexed-part-art.js');
   const results=[];
   for(const id of ids){
    const source=await (await fetch('/assets/art/parts/'+id+'.indexed.json')).json();
+   if(faceRefinement){
+    const {authorFacePart}=await import('/tools/art-production/face-recipes.mjs');
+    for(const resolution of [64,128]){const asset=await compileIndexedPart(authorFacePart(source,resolution)),atlas=document.createElement('canvas');atlas.width=resolution*8;atlas.height=resolution*2;const ac=atlas.getContext('2d');for(const frame of asset.frames){const rgba=ac.createImageData(resolution,resolution);rgba.data.set(recolorIndexedFrame(asset,frame.key));ac.putImageData(rgba,frame.facing*resolution,frame.index*resolution);}results.push({id,resolution,asset,png:atlas.toDataURL('image/png'),codeAuthored:true,sourceChecksum:source.checksum});}
+    continue;
+   }
    const masterId=id.endsWith('-leg')?'walking-leg':id;
    const masterPath=(refinement?'refinement-v2/':'')+masterId+'-master.png';
    const response=await fetch('/assets/art/production-candidate-v1/source/'+masterPath);
@@ -96,14 +103,14 @@ try{
    image.close();
   }
   return results;
- },{ids:[...painted],refinement});
+ },{ids:[...painted],refinement,faceRefinement});
  for(const entry of previous.parts){
-  if(refinement&&!painted.has(entry.partId)){catalog.parts.push(entry);continue;}
+  if(revision&&!painted.has(entry.partId)){catalog.parts.push(entry);continue;}
   const {partId,resolution}=entry,file=partId+'-'+resolution+'.indexed.json.gz';let bytes,checksum,kind,master;
   if(painted.has(partId)){
-   const r=results.find(r=>r.id===partId&&r.resolution===resolution);bytes=gzipSync(JSON.stringify(r.asset),{level:9});checksum=r.asset.checksum;kind='imagegen-indexed';
+   const r=results.find(r=>r.id===partId&&r.resolution===resolution);bytes=gzipSync(JSON.stringify(r.asset),{level:9});checksum=r.asset.checksum;kind=r.codeAuthored?'code-authored-indexed':'imagegen-indexed';
    fs.writeFileSync(path.join(out,partId+'-'+resolution+'.png'),Buffer.from(r.png.split(',')[1],'base64'));
-   master={path:'./source/'+r.masterPath,sha256:createHash('sha256').update(fs.readFileSync(path.join(out,'source',r.masterPath))).digest('hex'),width:r.masterWidth,registration:refinement?'Single north-view tissue, alpha bounds registered once with preserved aspect ratio':partId.endsWith('-leg')?'Two registered tissue rows, canonical bone anchors preserved':partId==='head-base'?'Single canonical north surface, registered to existing head bounds':'Canonical north atlas cell zero, registered to existing dorsal pivot'};
+   if(!r.codeAuthored)master={path:'./source/'+r.masterPath,sha256:createHash('sha256').update(fs.readFileSync(path.join(out,'source',r.masterPath))).digest('hex'),width:r.masterWidth,registration:refinement?'Single north-view tissue, alpha bounds registered once with preserved aspect ratio':partId.endsWith('-leg')?'Two registered tissue rows, canonical bone anchors preserved':partId==='head-base'?'Single canonical north surface, registered to existing head bounds':'Canonical north atlas cell zero, registered to existing dorsal pivot'};
   }else{
    bytes=fs.readFileSync(path.join(root,'assets/art/experiments/resolution-v1',entry.path));checksum=entry.checksum;kind='code-authored-indexed';
    fs.copyFileSync(path.join(root,'assets/art/experiments/resolution-v1',partId+'-'+resolution+'.png'),path.join(out,partId+'-'+resolution+'.png'));
@@ -112,5 +119,5 @@ try{
   catalog.parts.push({partId,resolution,path:'./'+file,checksum,bytes:bytes.length,decodedRgbaBytes:resolution*resolution*16*4,sourceChecksum:entry.sourceChecksum,kind,...(master?{master}:{}),coordinatePolicy:'Existing 32-unit pivot, registered physical display scale; no world-size change.'});
  }
  fs.writeFileSync(path.join(out,'catalog.json'),JSON.stringify(catalog,null,2)+'\n');
- console.log('Compiled production candidate: '+catalog.parts.length+' modular variants; registered imagegen-derived modular parts × 2 native resolutions; 32px untouched.');
+ console.log('Compiled production candidate: '+catalog.parts.length+' modular variants; '+(faceRefinement?'code-authored facial':refinement?'refined covering':'registered imagegen-derived')+' parts × 2 native resolutions; 32px untouched.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}
