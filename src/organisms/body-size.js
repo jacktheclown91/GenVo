@@ -35,6 +35,13 @@ export const bodySizeEnabled=sim=>bodySizePolicy(sim?.bodySizeRules);
 export function founderBodySize(rng){
  const s=BODY_SIZE.founderSpread;return{schema:1,alleles:[rng.range(-s,s),rng.range(-s,s)]};
 }
+// Founders of a naturally evolved configuration: both alleles around the cohort's
+// recorded mean log size, spread uniformly by its recorded standard deviation
+// (+/- sd x sqrt 3), within the world's bounds.
+export function evolvedFounderSize(rng,{mean,sd},policy=BODY_SIZE.policy){
+ const w=Math.max(0,sd)*Math.sqrt(3),max=logMax(policy);
+ return{schema:1,alleles:[clampLog(mean+rng.range(-w,w),max),clampLog(mean+rng.range(-w,w),max)]};
+}
 // One allele from each parent, each with a small symmetric mutation.
 export function inheritBodySize(rng,mother,father,policy=BODY_SIZE.policy){
  const allele=parent=>parent.bodySize.alleles[rng.chance(.5)?0:1],m=BODY_SIZE.mutation,max=logMax(policy);

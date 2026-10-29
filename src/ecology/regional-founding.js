@@ -10,6 +10,7 @@ import {isWaterDweller} from '../lineage/aquatic.js';
 import {thermalSiteDemand} from './thermal-refuge.js';
 import {renewableFood,founderDailyNeed,FOUNDING_RANGE} from './resource-founding.js';
 import {foundingWaterBudget} from './water-founding.js';
+import {bodySizeEnabled,evolvedFounderSize} from '../organisms/body-size.js';
 
 // Regional evolutionary founding (creator direction 2026-10-21). A newly
 // entered planetary region receives small, genetically varied founding groups
@@ -153,6 +154,9 @@ function foundGroup(sim,row,rng,origin,policy){
  for(let k=0;k<want;k++){
   const site=sites[k%sites.length],a=sim.spawnAnimal(t.carrier,site.x,site.y);bodyFor(a,variantPlan(t,rng));
   if(!place(sim,a,site,rng,isWaterDweller(a))){sim.animals.splice(sim.animals.indexOf(a),1);continue}
+  // A naturally evolved configuration keeps its cohort's inherited size: founders
+  // draw both alleles around the recorded mean with the recorded spread.
+  if(t.bodySize&&a.bodySize&&bodySizeEnabled(sim))a.bodySize=evolvedFounderSize(rng,t.bodySize,sim.bodySizeRules);
   a.foundingOrigin={schema:1,policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount,...(t.library?{library:t.library}:{})};
   members.push(a);
  }

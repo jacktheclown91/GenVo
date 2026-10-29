@@ -69,6 +69,8 @@ function buildEntry(sim,key,cohort,state,ev){
  const emerged=[...cohort].filter(a=>a.bodyVariation?.finalBody===planId&&(a.bodyVariation.accepted&&a.bodyVariation.attempted||(a.bodyInheritance?.parents||[]).every(p=>p.bodyId!==planId)))
   .sort((a,b)=>(a.birthDay??0)-(b.birthDay??0)||a.id-b.id)[0];
  const genes=Object.fromEntries(GENE_KEYS.map(k=>[k,stats(cohort.map(a=>a.genes?.[k]).filter(Number.isFinite))]));
+ // Inherited body size of the cohort (log adult scale), when its world records size.
+ const sizes=cohort.filter(a=>a.bodySize?.alleles).map(a=>(a.bodySize.alleles[0]+a.bodySize.alleles[1])/2);
  const sorted=[...cohort].sort((a,b)=>a.id-b.id),females=sorted.filter(a=>a.sex==='F'),males=sorted.filter(a=>a.sex==='M');let pairs=0,compatible=0;
  for(let i=0;i<females.length&&pairs<EVOLVED_LIBRARY.compatibilitySamples;i++)for(let j=0;j<males.length&&pairs<EVOLVED_LIBRARY.compatibilitySamples;j++){pairs++;if(reproductiveCompatibility(females[i],males[j]).enabled)compatible++}
  let temp=0,moist=0,wet=0;for(const a of cohort){const i=w.idx(a.x,a.y);temp+=w.temperature[i];moist+=w.moisture[i];if(w.water[i])wet++}
@@ -78,7 +80,7 @@ function buildEntry(sim,key,cohort,state,ev){
   carrier:species,label,plan:serializePlan(representative.bodyPlan),
   representative:{id:representative.id,generation:representative.generation,sex:representative.sex,parentIds:[...(representative.parentIds||[])],grandparentIds:[...(representative.grandparentIds||[])],birthDay:representative.birthDay??null,foundingLineage:[...(representative.foundingLineage||[])]},
   emergence:emerged?{animalId:emerged.id,birthDay:emerged.birthDay??null,generation:emerged.generation,operator:emerged.bodyVariation?.attempted&&emerged.bodyVariation?.accepted?emerged.bodyVariation.operator:'recombination',fromBody:emerged.bodyVariation?.from??null,parentBodies:(emerged.bodyInheritance?.parents||[]).map(p=>p.bodyId)}:null,
-  traits:{genes,hunter:canHunt(representative),medium},
+  traits:{genes,hunter:canHunt(representative),medium,...(sizes.length===n?{bodySize:stats(sizes)}:{})},
   diversity:{living:n,females:females.length,males:males.length,generations:ev.generations,distinctPigmentGenomes:new Set(cohort.map(a=>JSON.stringify(a.pigmentGenome??null))).size},
   compatibility:{sampledPairs:pairs,compatiblePairs:compatible},
   habitat:{region:w.regionOrigin?regionKey(w.regionOrigin):'local',meanTemperature:round(temp/n),meanMoisture:round(moist/n),waterShare:round(wet/n),medium},
@@ -125,6 +127,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export function libraryFoundingTemplates(sim){
  return(sim.foundingLibrary||[]).map(e=>{const h=e.habitat,T=EVOLVED_LIBRARY.temperatureMargin,M=EVOLVED_LIBRARY.moistureMargin;
   return Object.freeze({id:'evolved:'+e.id,label:e.label,carrier:e.carrier,library:e.id,plan:deserializePlan(e.plan),placements:[],variants:[],group:[3,8],
+   ...(Number.isFinite(e.traits?.bodySize?.mean)&&Number.isFinite(e.traits?.bodySize?.sd)?{bodySize:Object.freeze({mean:e.traits.bodySize.mean,sd:e.traits.bodySize.sd})}:{}),
    predator:!!e.traits?.hunter&&!!SPECIES[e.carrier]?.hunter,
    habitat:{medium:h.medium,temp:[clamp(h.meanTemperature-T,0,1),clamp(h.meanTemperature+T,0,1)],moisture:[clamp(h.meanMoisture-M,0,1),clamp(h.meanMoisture+M,0,1)]}})});
 }

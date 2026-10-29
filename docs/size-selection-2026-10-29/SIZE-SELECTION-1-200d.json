@@ -1,0 +1,777 @@
+{
+ "schema": "genvo.size-selection/1",
+ "seed": "SIZE-SELECTION-1",
+ "days": 200,
+ "seconds": 463,
+ "alive": 111,
+ "summary": {
+  "mosskip": {
+   "births": 43,
+   "heritabilitySlope": 0.791,
+   "selectionDifferentialLog": -0.0028,
+   "adultDeaths": 42,
+   "deathSizeShiftLog": 0.0043,
+   "first": {
+    "day": 2,
+    "adults": 24,
+    "meanScale": 0.9938,
+    "sdLog": 0.0206,
+    "min": 0.954,
+    "max": 1.039
+   },
+   "last": {
+    "day": 201,
+    "adults": 61,
+    "meanScale": 0.9926,
+    "sdLog": 0.0202,
+    "min": 0.954,
+    "max": 1.046
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 24,
+     "meanScale": 0.9938,
+     "sdLog": 0.0206,
+     "min": 0.954,
+     "max": 1.039
+    },
+    {
+     "day": 21,
+     "adults": 61,
+     "meanScale": 0.9962,
+     "sdLog": 0.0196,
+     "min": 0.954,
+     "max": 1.047
+    },
+    {
+     "day": 41,
+     "adults": 57,
+     "meanScale": 0.9961,
+     "sdLog": 0.0188,
+     "min": 0.954,
+     "max": 1.039
+    },
+    {
+     "day": 61,
+     "adults": 63,
+     "meanScale": 0.996,
+     "sdLog": 0.0193,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 81,
+     "adults": 62,
+     "meanScale": 0.9962,
+     "sdLog": 0.0194,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 101,
+     "adults": 67,
+     "meanScale": 0.9945,
+     "sdLog": 0.019,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 121,
+     "adults": 64,
+     "meanScale": 0.9955,
+     "sdLog": 0.0188,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 141,
+     "adults": 74,
+     "meanScale": 0.9944,
+     "sdLog": 0.0187,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 161,
+     "adults": 69,
+     "meanScale": 0.9935,
+     "sdLog": 0.0193,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 181,
+     "adults": 63,
+     "meanScale": 0.9938,
+     "sdLog": 0.0195,
+     "min": 0.954,
+     "max": 1.046
+    },
+    {
+     "day": 201,
+     "adults": 61,
+     "meanScale": 0.9926,
+     "sdLog": 0.0202,
+     "min": 0.954,
+     "max": 1.046
+    }
+   ]
+  },
+  "rootling": {
+   "births": 1,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": -0.0099,
+   "adultDeaths": 16,
+   "deathSizeShiftLog": 0.0028,
+   "first": {
+    "day": 2,
+    "adults": 10,
+    "meanScale": 0.9979,
+    "sdLog": 0.0199,
+    "min": 0.978,
+    "max": 1.039
+   },
+   "last": {
+    "day": 201,
+    "adults": 15,
+    "meanScale": 0.9989,
+    "sdLog": 0.0177,
+    "min": 0.964,
+    "max": 1.027
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 10,
+     "meanScale": 0.9979,
+     "sdLog": 0.0199,
+     "min": 0.978,
+     "max": 1.039
+    },
+    {
+     "day": 21,
+     "adults": 30,
+     "meanScale": 1.0006,
+     "sdLog": 0.0192,
+     "min": 0.964,
+     "max": 1.039
+    },
+    {
+     "day": 41,
+     "adults": 30,
+     "meanScale": 1.0006,
+     "sdLog": 0.0192,
+     "min": 0.964,
+     "max": 1.039
+    },
+    {
+     "day": 61,
+     "adults": 21,
+     "meanScale": 0.9996,
+     "sdLog": 0.0183,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 81,
+     "adults": 21,
+     "meanScale": 0.9996,
+     "sdLog": 0.0183,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 101,
+     "adults": 21,
+     "meanScale": 0.9996,
+     "sdLog": 0.0183,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 121,
+     "adults": 21,
+     "meanScale": 1.0009,
+     "sdLog": 0.0187,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 141,
+     "adults": 21,
+     "meanScale": 1.0009,
+     "sdLog": 0.0187,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 161,
+     "adults": 17,
+     "meanScale": 0.9998,
+     "sdLog": 0.0197,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 181,
+     "adults": 17,
+     "meanScale": 0.9998,
+     "sdLog": 0.0197,
+     "min": 0.964,
+     "max": 1.036
+    },
+    {
+     "day": 201,
+     "adults": 15,
+     "meanScale": 0.9989,
+     "sdLog": 0.0177,
+     "min": 0.964,
+     "max": 1.027
+    }
+   ]
+  },
+  "needlejaw": {
+   "births": 0,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": null,
+   "adultDeaths": 7,
+   "deathSizeShiftLog": -0.0139,
+   "first": {
+    "day": 2,
+    "adults": 4,
+    "meanScale": 1.0161,
+    "sdLog": 0.0069,
+    "min": 1.01,
+    "max": 1.026
+   },
+   "last": {
+    "day": 201,
+    "adults": 4,
+    "meanScale": 1.018,
+    "sdLog": 0.0066,
+    "min": 1.01,
+    "max": 1.026
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 4,
+     "meanScale": 1.0161,
+     "sdLog": 0.0069,
+     "min": 1.01,
+     "max": 1.026
+    },
+    {
+     "day": 21,
+     "adults": 7,
+     "meanScale": 1.0066,
+     "sdLog": 0.0234,
+     "min": 0.956,
+     "max": 1.026
+    },
+    {
+     "day": 41,
+     "adults": 8,
+     "meanScale": 1.0095,
+     "sdLog": 0.0132,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 61,
+     "adults": 8,
+     "meanScale": 1.0095,
+     "sdLog": 0.0132,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 81,
+     "adults": 7,
+     "meanScale": 1.0114,
+     "sdLog": 0.0131,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 101,
+     "adults": 7,
+     "meanScale": 1.0114,
+     "sdLog": 0.0131,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 121,
+     "adults": 7,
+     "meanScale": 1.0114,
+     "sdLog": 0.0131,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 141,
+     "adults": 7,
+     "meanScale": 1.0114,
+     "sdLog": 0.0131,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 161,
+     "adults": 7,
+     "meanScale": 1.0114,
+     "sdLog": 0.0131,
+     "min": 0.985,
+     "max": 1.026
+    },
+    {
+     "day": 181,
+     "adults": 5,
+     "meanScale": 1.0169,
+     "sdLog": 0.0062,
+     "min": 1.01,
+     "max": 1.026
+    },
+    {
+     "day": 201,
+     "adults": 4,
+     "meanScale": 1.018,
+     "sdLog": 0.0066,
+     "min": 1.01,
+     "max": 1.026
+    }
+   ]
+  },
+  "genvo": {
+   "births": 0,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": null,
+   "adultDeaths": 21,
+   "deathSizeShiftLog": 0.0095,
+   "first": {
+    "day": 2,
+    "adults": 9,
+    "meanScale": 1.0079,
+    "sdLog": 0.0237,
+    "min": 0.975,
+    "max": 1.036
+   },
+   "last": {
+    "day": 201,
+    "adults": 2,
+    "meanScale": 0.9754,
+    "sdLog": 0.0112,
+    "min": 0.968,
+    "max": 0.983
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 9,
+     "meanScale": 1.0079,
+     "sdLog": 0.0237,
+     "min": 0.975,
+     "max": 1.036
+    },
+    {
+     "day": 21,
+     "adults": 20,
+     "meanScale": 1.0021,
+     "sdLog": 0.0237,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 41,
+     "adults": 22,
+     "meanScale": 1.0003,
+     "sdLog": 0.0237,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 61,
+     "adults": 21,
+     "meanScale": 1.0004,
+     "sdLog": 0.0243,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 81,
+     "adults": 20,
+     "meanScale": 0.9992,
+     "sdLog": 0.0243,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 101,
+     "adults": 20,
+     "meanScale": 0.9992,
+     "sdLog": 0.0243,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 121,
+     "adults": 19,
+     "meanScale": 0.9978,
+     "sdLog": 0.0241,
+     "min": 0.953,
+     "max": 1.036
+    },
+    {
+     "day": 141,
+     "adults": 17,
+     "meanScale": 1.0011,
+     "sdLog": 0.0224,
+     "min": 0.968,
+     "max": 1.036
+    },
+    {
+     "day": 161,
+     "adults": 7,
+     "meanScale": 0.9832,
+     "sdLog": 0.015,
+     "min": 0.968,
+     "max": 1.006
+    },
+    {
+     "day": 181,
+     "adults": 7,
+     "meanScale": 0.9832,
+     "sdLog": 0.015,
+     "min": 0.968,
+     "max": 1.006
+    },
+    {
+     "day": 201,
+     "adults": 2,
+     "meanScale": 0.9754,
+     "sdLog": 0.0112,
+     "min": 0.968,
+     "max": 0.983
+    }
+   ]
+  },
+  "rillsifter": {
+   "births": 0,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": null,
+   "adultDeaths": 18,
+   "deathSizeShiftLog": -0.0002,
+   "first": {
+    "day": 2,
+    "adults": 6,
+    "meanScale": 0.9948,
+    "sdLog": 0.0134,
+    "min": 0.973,
+    "max": 1.009
+   },
+   "last": {
+    "day": 61,
+    "adults": 1,
+    "meanScale": 1.009,
+    "sdLog": null,
+    "min": 1.009,
+    "max": 1.009
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 6,
+     "meanScale": 0.9948,
+     "sdLog": 0.0134,
+     "min": 0.973,
+     "max": 1.009
+    },
+    {
+     "day": 21,
+     "adults": 18,
+     "meanScale": 0.9905,
+     "sdLog": 0.017,
+     "min": 0.963,
+     "max": 1.021
+    },
+    {
+     "day": 41,
+     "adults": 8,
+     "meanScale": 0.9923,
+     "sdLog": 0.0174,
+     "min": 0.963,
+     "max": 1.009
+    },
+    {
+     "day": 61,
+     "adults": 1,
+     "meanScale": 1.009,
+     "sdLog": null,
+     "min": 1.009,
+     "max": 1.009
+    }
+   ]
+  },
+  "mirelick": {
+   "births": 2,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": -0.0023,
+   "adultDeaths": 15,
+   "deathSizeShiftLog": 0.0046,
+   "first": {
+    "day": 2,
+    "adults": 6,
+    "meanScale": 1.0051,
+    "sdLog": 0.0172,
+    "min": 0.983,
+    "max": 1.031
+   },
+   "last": {
+    "day": 201,
+    "adults": 7,
+    "meanScale": 0.9886,
+    "sdLog": 0.0239,
+    "min": 0.961,
+    "max": 1.031
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 6,
+     "meanScale": 1.0051,
+     "sdLog": 0.0172,
+     "min": 0.983,
+     "max": 1.031
+    },
+    {
+     "day": 21,
+     "adults": 20,
+     "meanScale": 0.9985,
+     "sdLog": 0.0193,
+     "min": 0.961,
+     "max": 1.032
+    },
+    {
+     "day": 41,
+     "adults": 18,
+     "meanScale": 0.999,
+     "sdLog": 0.0203,
+     "min": 0.961,
+     "max": 1.032
+    },
+    {
+     "day": 61,
+     "adults": 16,
+     "meanScale": 1.0003,
+     "sdLog": 0.0212,
+     "min": 0.961,
+     "max": 1.032
+    },
+    {
+     "day": 81,
+     "adults": 14,
+     "meanScale": 0.9987,
+     "sdLog": 0.0222,
+     "min": 0.961,
+     "max": 1.032
+    },
+    {
+     "day": 101,
+     "adults": 13,
+     "meanScale": 0.9963,
+     "sdLog": 0.0237,
+     "min": 0.961,
+     "max": 1.032
+    },
+    {
+     "day": 121,
+     "adults": 11,
+     "meanScale": 0.9944,
+     "sdLog": 0.023,
+     "min": 0.961,
+     "max": 1.031
+    },
+    {
+     "day": 141,
+     "adults": 10,
+     "meanScale": 0.9927,
+     "sdLog": 0.0236,
+     "min": 0.961,
+     "max": 1.031
+    },
+    {
+     "day": 161,
+     "adults": 9,
+     "meanScale": 0.9926,
+     "sdLog": 0.025,
+     "min": 0.961,
+     "max": 1.031
+    },
+    {
+     "day": 181,
+     "adults": 7,
+     "meanScale": 0.9886,
+     "sdLog": 0.0239,
+     "min": 0.961,
+     "max": 1.031
+    },
+    {
+     "day": 201,
+     "adults": 7,
+     "meanScale": 0.9886,
+     "sdLog": 0.0239,
+     "min": 0.961,
+     "max": 1.031
+    }
+   ]
+  },
+  "podshell": {
+   "births": 0,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": null,
+   "adultDeaths": 0,
+   "deathSizeShiftLog": null,
+   "first": {
+    "day": 2,
+    "adults": 7,
+    "meanScale": 0.9943,
+    "sdLog": 0.0181,
+    "min": 0.973,
+    "max": 1.025
+   },
+   "last": {
+    "day": 201,
+    "adults": 18,
+    "meanScale": 0.9987,
+    "sdLog": 0.0174,
+    "min": 0.97,
+    "max": 1.025
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 7,
+     "meanScale": 0.9943,
+     "sdLog": 0.0181,
+     "min": 0.973,
+     "max": 1.025
+    },
+    {
+     "day": 21,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 41,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 61,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 81,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 101,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 121,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 141,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 161,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 181,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    },
+    {
+     "day": 201,
+     "adults": 18,
+     "meanScale": 0.9987,
+     "sdLog": 0.0174,
+     "min": 0.97,
+     "max": 1.025
+    }
+   ]
+  },
+  "bankjaw": {
+   "births": 0,
+   "heritabilitySlope": null,
+   "selectionDifferentialLog": null,
+   "adultDeaths": 1,
+   "deathSizeShiftLog": 0,
+   "first": {
+    "day": 2,
+    "adults": 1,
+    "meanScale": 1.0069,
+    "sdLog": null,
+    "min": 1.007,
+    "max": 1.007
+   },
+   "last": {
+    "day": 2,
+    "adults": 1,
+    "meanScale": 1.0069,
+    "sdLog": null,
+    "min": 1.007,
+    "max": 1.007
+   },
+   "snapshots": [
+    {
+     "day": 2,
+     "adults": 1,
+     "meanScale": 1.0069,
+     "sdLog": null,
+     "min": 1.007,
+     "max": 1.007
+    }
+   ]
+  }
+ }
+}
