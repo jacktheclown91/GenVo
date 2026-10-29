@@ -123,3 +123,5 @@ Codex anatomical audio heads-up: audio-only contact reading/synthesis will obser
 Codex autonomous contact audio heads-up: bounded ephemeral nearby-displacement tracker and spatial playback through existing effects bus. No simulated events, actor writes or biological/RNG/save changes. Contact classification stays in the just-implemented audio query.
 
 Codex wing audio heads-up: shared pure aerial-cycle phase query in aerial-presentation.js; main.js passes the existing renderer encounter clock to AudioDirector.update. Audio reads actual powered flight plus canonical wing anatomy, never glide/jump/display. No simulation timing/events/save changes.
+
+Codex limb art batch heads-up: refining only optional64/128 walking/runner/sturdy indexed tissue via existing production compiler; fixed bone anchors/hip/knee regions, pigmentation, timing and native32 preserved. Claude ecebf2e4 inertia merged normally first. No movement/physics mechanisms edited by this asset batch.

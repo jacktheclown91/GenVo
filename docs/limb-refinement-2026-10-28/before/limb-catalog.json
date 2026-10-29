@@ -1,0 +1,114 @@
+{
+  "schema": "genvo.part-art-variants/1",
+  "version": 3,
+  "status": "production-candidate-creator-review",
+  "native32Fallback": true,
+  "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
+  "generation": "Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.",
+  "parts": [
+    {
+      "partId": "walking-leg",
+      "resolution": 64,
+      "path": "./walking-leg-64.indexed.json.gz",
+      "checksum": "3b7976277f070f8ab9e8bd7e517e792db3805cce5f648f069d2d31f5123b63f5",
+      "bytes": 3475,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 64,
+      "path": "./runner-leg-64.indexed.json.gz",
+      "checksum": "096707ffdbbb61634b2a3fa811d5593e91f2c17476339585233f4faca1e9b6e7",
+      "bytes": 2897,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 64,
+      "path": "./sturdy-leg-64.indexed.json.gz",
+      "checksum": "59a48002a82a43a74481e3bbfd7e479fb26bfdd5d7ed5120f3e9f9b513ecfb60",
+      "bytes": 4238,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "walking-leg",
+      "resolution": 128,
+      "path": "./walking-leg-128.indexed.json.gz",
+      "checksum": "0b2358eac310e32a35c167c13ce90d53d2c92e369d5d01fca5d24c8e8580c384",
+      "bytes": 31449,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 128,
+      "path": "./runner-leg-128.indexed.json.gz",
+      "checksum": "a7ce30080c316eaa9bbc3f0c0a2c6aa6cb9d7ad1e5d5cee3647c831cad4a1eee",
+      "bytes": 24215,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 128,
+      "path": "./sturdy-leg-128.indexed.json.gz",
+      "checksum": "003bc48a788d8379e165adc5a6d5eafbffb1c191cf42dc7583bb8dd9edb1320c",
+      "bytes": 37416,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    }
+  ],
+  "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
+  "faceRefinement": "Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue."
+}
