@@ -140,7 +140,7 @@ export function drawGenvoSprite(c,opts={}){
 // would reach. Keys are "parent|socket" as the body plan uses them.
 export function genvoAnchors({animal:a,phenotype:ph,frame=0,pose={}}={}){
   const asm=assemblyFor(a),dir=pose.dir??a.dir??0,[shapeW,shapeH]=shapeScales(asm.shape,dir);
-  const profile=genvoVisualPose({id:a.id,dir,frame,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,stage:'adult',life:{},behavior:{}});
+  const profile=genvoVisualPose({id:a.id,dir,frame,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,stage:pose.stage||'adult',life:pose.life||{},behavior:{}});
   const {v,perp,bodyW,bodyH,bodyOffset,legs}=profile,fx=v.x,fy=v.y,bx=bodyOffset.x,by=bodyOffset.y,vn=Math.hypot(fx,fy)||1,rx=bodyW/2,ry=bodyH/2;
   const edgeAt=(dx,dy)=>1/Math.hypot(dx/rx,dy/ry),referenceHead=headPose(asm,profile,null);
   const forward=referenceHead?(referenceHead.x-bx)*fx+(referenceHead.y-by)*fy:profile.face.eyeForward,faceShift=Math.max(0,forward-profile.face.eyeForward+.15);
@@ -192,7 +192,7 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
   const face={...profile.face,eyeForward:profile.face.eyeForward+faceShift,mouthForward:profile.face.mouthForward+faceShift+.35};
   if(L){const proj=pt=>({f:(pt.x-bx)*fx+(pt.y-by)*fy,s:(pt.x-bx)*perp.x+(pt.y-by)*perp.y});if(L.mouth)face.mouthForward=proj(L.mouth).f;if(L['eye.right']){const e=proj(L['eye.right']);face.eyeForward=e.f;face.eyeSpread=Math.abs(e.s)}}
   const expressionNode=(socket,index=0)=>asm.faceNodes[socket]||a.bodyPlan?.nodes.filter(n=>n.parent==='root'&&n.socket===socket)[index]?.id;
-  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
+  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,nativeBodyWidthScale:(ph.bodyWidthScale||1)*shapeW,nativeBodyHeightScale:(ph.bodyHeightScale||1)*shapeH,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
   // Gait articulation (renderer-owned): the torso twists about its centre while walking, so the
   // head end and tail end swing to opposite sides and dorsal tissue rolls past the outline.
   // Whole-pixel canvas offsets keep pixel art crisp; feet are never moved (contacts stay planted).

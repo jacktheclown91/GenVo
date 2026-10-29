@@ -1,6 +1,7 @@
 import {pixel,pixelLine,snap} from './pixel-art.js';
 import {drawHead} from './head.js';
 import {artForPart} from './runtime-part-art.js';
+import {nativeCoveringFit} from './covering-fit.js';
 import {partDef} from '../lineage/part-registry.js';
 export {pixel,pixelLine} from './pixel-art.js';
 // Evolution Expansion Phase B (GDD v1, section 10; backlog EV-006): pixel part components.
@@ -387,7 +388,7 @@ export function drawPart(c,partId,k){
    const scale=k.s*(mount?.scale??(faceFactor/2));
    const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
     rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:['patagium','gliding-membrane'].includes(partId)&&Number.isFinite(k.behavior?.glideSpread)?0:(k.authoredFrameIndex??null)};
-   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX,oral=k.mouth&&authored.expressionScale!=='fixed'?k.behavior?.feedingMouthShape:null;let painted=false;c.save();try{if(rotation||paired||oral){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}if(oral){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(Math.max(.8,Math.min(1.15,oral.forward||1)),Math.max(.8,Math.min(1.15,oral.width||1)));c.rotate(-axis)}args.x=0;args.y=0}if(!oral&&k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
+   const fit=nativeCoveringFit(partId,k),rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX,oral=k.mouth&&authored.expressionScale!=='fixed'?k.behavior?.feedingMouthShape:null;let painted=false;c.save();try{if(rotation||paired||oral||fit){c.translate(args.x,args.y);if(fit)c.scale(fit.x,fit.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}if(oral){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(Math.max(.8,Math.min(1.15,oral.forward||1)),Math.max(.8,Math.min(1.15,oral.width||1)));c.rotate(-axis)}args.x=0;args.y=0}if(!oral&&k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
   }
  }
  const fn=DRAW[partId];if(fn)fn(c,k);return !!fn;
