@@ -17,7 +17,10 @@ export function initializeBotanicalReproduction(d){
  for(const [k,genome] of b.adultGenomes){const [kind,cell]=k.split(':');if(!FLORA_TISSUES[kind]||!validCell(d,Number(cell))||!validBotanicalGenome(genome))throw Error('Invalid botanical recognition genotype.');}
  const flowers=[...b.flowers.values()],pollen=[...b.pollen.values(),...d.sim.animals.map(a=>a.pollenCargo).filter(Boolean)],stocks=[...flowers,...pollen,...b.embryos];
  // Validate the whole restored payload before registering any reproductive genotype.
- for(const r of stocks)if(!(r.mass>=0)||!Number.isFinite(r.mass)||!FLORA_TISSUES[r.kind]||!validCell(d,r.i)||!Number.isSafeInteger(r.createdEpoch)||r.createdEpoch<0||r.createdEpoch>b.epoch||typeof r.producerId!=='string'||!validFloraGenome(r.genome,r.kind)||!r.genome.botanical)throw Error('Invalid finite botanical reproductive stock.');
+ // The error names the failed check and the stock's role, so a rejection is diagnosable.
+ const cargo=new Set(d.sim.animals.map(a=>a.pollenCargo).filter(Boolean)),role=r=>cargo.has(r)?'carried pollen':b.flowers.get(key(r.kind,r.i))===r?'flower':b.pollen.get(key(r.kind,r.i))===r?'pollen':'embryo';
+ for(const r of stocks){const failed=!(r.mass>=0)||!Number.isFinite(r.mass)?'mass':!FLORA_TISSUES[r.kind]?'kind':!validCell(d,r.i)?'cell':!Number.isSafeInteger(r.createdEpoch)||r.createdEpoch<0||r.createdEpoch>b.epoch?'epoch '+r.createdEpoch+' of '+b.epoch:typeof r.producerId!=='string'?'producer':!validFloraGenome(r.genome,r.kind)||!r.genome.botanical?'genome':null;
+  if(failed)throw Error('Invalid finite botanical reproductive stock ('+role(r)+': '+failed+').')}
  for(const [k,r] of [...b.flowers,...b.pollen])if(k!==key(r.kind,r.i))throw Error('Botanical stock target mismatch.');
  for(const r of pollen)if(!validBotanicalGamete(r.gamete,r.genome)||!Number.isSafeInteger(r.serial)||r.serial<1||r.serial>b.serial||!botanicalStructure(r.genome.botanical,'anther'))throw Error('Invalid inherited pollen payload.');
  for(const r of flowers)if(!botanicalStructure(r.genome.botanical,'stigma')||!botanicalStructure(r.genome.botanical,'ovule'))throw Error('Invalid receptive structure.');

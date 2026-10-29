@@ -1,6 +1,6 @@
 # Regional hydrology — plan
 
-Status: plan only. No source behaviour changes here. This follows [neighbour-region collapse](NEIGHBOUR-REGION-COLLAPSE-2026-10-28.md) and [founding water](FOUNDING-WATER-2026-10-28.md). Ownership: Claude owns the simulation, geography and water authorities; Codex owns how water looks (coordination note in `PRESENTATION-COORDINATION-2026-10-28.md`).
+Status: revised October 28 after the creator's morphological-evolution brief (section 10). No source behaviour changes here. This follows [neighbour-region collapse](NEIGHBOUR-REGION-COLLAPSE-2026-10-28.md) and [founding water](FOUNDING-WATER-2026-10-28.md). Ownership: Claude owns the simulation, geography and water authorities; Codex owns how water looks (coordination note in `PRESENTATION-COORDINATION-2026-10-28.md`).
 
 ## Measured facts
 
@@ -87,3 +87,30 @@ Regions whose rainfall and terrain would carry streams, ponds or springs actuall
 - Field outcomes reported as measured, including regions that remain dry.
 - Native browser observation of new water with Codex's presentation.
 - The full playable gate.
+
+## Revision — creator direction, October 28
+
+The creator's brief sets the goal as **physically credible water distribution, not universal freshwater availability**:
+
+- deserts and regions with no freshwater are intended;
+- all water must use the existing authoritative accounting;
+- no body part or feature may create unlimited water;
+- groundwater initialization stays a separate, evaluated decision.
+
+### Parked: `meso-creeks-ponds/1`
+
+H1 and H2 were implemented and measured, then **parked before any commit**. That version declared perennial creeks from drainage as drinkable land outside every water inventory. In effect that is unlimited water, present in 88–98% of regions and independent of rainfall timing. It would also have removed the deserts the creator wants to keep.
+
+- **What it measured.** The meso drainage itself worked: deterministic, border-consistent, cache-independent. Land unable to reach water fell from 75–86% to 5–16%, and founded neighbour regions held 56–88 animals with no dehydration deaths.
+- **Where it is.** The uncommitted patch, its test and documentation, and the survey and field receipts are preserved outside the repository in `evidence/GenVo-parked-meso-creeks-20261028/`. The drainage computation is reusable.
+- **Latent bug it exposed.** In the seed-1 field with populated neighbour regions, an archived region's restore rejected a botanical reproductive stock on day 116 (`initializeBotanicalReproduction`). The validator now names the failed check and the stock's role. The likely cause is pollen carried by an animal that dispersed between regions, keeping its source region's epoch; this is not yet confirmed. To reproduce, apply the parked patch and run `tools/observe-regional-evolution-field.mjs` for `POPULATION-FOUNDING-PROBE-1`, 120 days, with `--founding=regional-founding-templates/2 --hydrology=meso-creeks-ponds/1`. This should be resolved before regional populations exchange carriers more often.
+
+`tools/survey-regional-water.mjs` (H1) is kept. It measures any geography version without targets.
+
+### Revised S5 direction (after S1–S4)
+
+- **Drainage.** Reuse the parked meso drainage only to say *where* water can collect and flow. Do not declare water.
+- **Water inventories.** Stream and pond water must enter and leave through the existing conserved inventories: soil runoff and overland routing, groundwater and springs, evaporation, ice and seams. Channels and pools may then be temporary, seasonal or absent. Dry lakebeds and rain-filled depressions follow from the same accounting.
+- **Oases.** Rare oases appear only where geology and groundwater actually support springs.
+- **Rainfall and the soil model.** Today's soil model produces essentially no runoff, because evaporation meets or exceeds rain everywhere. Credible seasonal water first needs a measured review of that balance and of wet and dry periods. That review is versioned and separate from the groundwater-start decision.
+- **Founding.** It follows S6: survival capability per body, not universal water proximity.
