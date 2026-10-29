@@ -11,7 +11,9 @@ const source=JSON.parse(fs.readFileSync(new URL('../assets/art/parts/head-base.i
 const sourceBefore=JSON.stringify(source);
 const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaled(x,r)])):typeof v==='number'?v*r:v;
 let frames=0;
-for(const entry of catalog.parts){if(['proto-wing','flight-wing'].includes(entry.partId))continue;
+const originalBatch=catalog.parts.filter(e=>prior.parts.some(p=>p.partId===e.partId&&p.resolution===e.resolution));
+assert.equal(originalBatch.length,prior.parts.length,'every original batch entry remains present');
+for(const entry of originalBatch){
   const oldEntry=prior.parts.find(e=>e.partId===entry.partId&&e.resolution===entry.resolution);
   if(entry.partId!=='head-base'){
     assert.deepEqual(entry,oldEntry,'all other 28 candidate variants remain exact');
@@ -44,6 +46,6 @@ for(const entry of catalog.parts){if(['proto-wing','flight-wing'].includes(entry
   }
 }
 assert.equal(JSON.stringify(source),sourceBefore);
-assert.equal(catalog.parts.filter(e=>!['proto-wing','flight-wing'].includes(e.partId)).reduce((n,e)=>n+e.decodedRgbaBytes,0),prior.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0));
-assert.ok(catalog.parts.filter(e=>!['proto-wing','flight-wing'].includes(e.partId)).reduce((n,e)=>n+e.bytes,0)<=prior.parts.reduce((n,e)=>n+e.bytes,0));
+assert.equal(originalBatch.reduce((n,e)=>n+e.decodedRgbaBytes,0),prior.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0));
+assert.ok(originalBatch.reduce((n,e)=>n+e.bytes,0)<=prior.parts.reduce((n,e)=>n+e.bytes,0));
 console.log('Detailed heads PASS: '+frames+' real native frames, coherent new cranial/cheek tissue, exact registration/palette/timing, inherited tint, all8 directions unclipped, reproducible recipe, Native32 source and other28 variants preserved; no decoded-memory increase.');

@@ -6,7 +6,9 @@ const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url),b
 const catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',folder))),before=JSON.parse(fs.readFileSync(new URL('catalog.json',beforeRoot))),ids=['small-torso','soft-torso','dome-torso'];
 const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaled(x,r)])):typeof v==='number'?v*r:v;
 let frames=0;const silhouettes=new Map();
-for(const e of catalog.parts){if(['proto-wing','flight-wing'].includes(e.partId))continue;
+const originalBatch=catalog.parts.filter(e=>before.parts.some(p=>p.partId===e.partId&&p.resolution===e.resolution));
+assert.equal(originalBatch.length,before.parts.length,'every original batch entry remains present');
+for(const e of originalBatch){
  const prior=before.parts.find(p=>p.partId===e.partId&&p.resolution===e.resolution);
  if(!ids.includes(e.partId)){if(e.partId==='head-base')continue;assert.deepEqual(e,prior,'other22 variants remain exact; head revision is checked by detailed-heads');continue}
  const asset=await compileIndexedPart(JSON.parse(gunzipSync(fs.readFileSync(new URL(e.path,folder))))),old=JSON.parse(gunzipSync(fs.readFileSync(new URL(prior.path,beforeRoot)))),source=JSON.parse(fs.readFileSync(new URL('../assets/art/parts/'+e.partId+'.indexed.json',import.meta.url))),ratio=e.resolution/32;
@@ -23,5 +25,5 @@ for(const e of catalog.parts){if(['proto-wing','flight-wing'].includes(e.partId)
  }
 }
 for(const resolution of [64,128])assert.equal(new Set(ids.map(id=>silhouettes.get(id+'-'+resolution))).size,3,'three distinct anatomical contours');
-assert.equal(catalog.parts.filter(e=>!['proto-wing','flight-wing'].includes(e.partId)).reduce((n,e)=>n+e.decodedRgbaBytes,0),before.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0));
+assert.equal(originalBatch.reduce((n,e)=>n+e.decodedRgbaBytes,0),before.parts.reduce((n,e)=>n+e.decodedRgbaBytes,0));
 console.log('Detailed torsos PASS: '+frames+' native frames, three distinct contours, real new tissue, exact rigs/pivots/palettes/timing, inherited tint, no clipping or doubled breathing, unchanged decoded memory and other22 variants (head revision separately checked).');

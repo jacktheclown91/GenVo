@@ -2,10 +2,43 @@
 // finer creases and growth texture belong to the 64/128 artwork itself.
 // All coordinates retain the existing 32-unit body and socket registration.
 export const TORSO_PARTS=Object.freeze(['small-torso','soft-torso','dome-torso']);
+export const BODY_FORM_PARTS=Object.freeze(['light-torso','long-torso','reinforced-torso']);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const ellipse=(u,v,x,y,rx,ry)=>Math.hypot((u-x)/rx,(v-y)/ry);
 const bump=(u,center,width)=>Math.exp(-(((u-center)/width)**2));
+// These contours describe existing body tissue, never new plates, organs or
+// socket capacity. The long torso is already a segmented canonical body.
+function bodyFormSurface(id,u,v,dx,dy,pixel){
+  const light=id==='light-torso',long=id==='long-torso';
+  const length=light?10.5:long?10.8:10.9;
+  const width=light?8.4*(1+.08*bump(u,4,3)-.12*bump(u,-1.8,2.8)):
+    long?8.8*(1+.045*Math.cos(u*1.45)):
+    9.4*(1+.05*bump(u,4.2,3)+.045*bump(u,-5,3));
+  const q=Math.hypot(u/length,v/width);
+  if(q>1)return null;
+  if(q>1-.25/Math.min(length,width))return 0;
+  const height=Math.sqrt(Math.max(0,1-q*q));
+  const illumination=.36+.72*height-.22*dy/width-.17*dx/length;
+  let tone=illumination<.52?1:illumination<.77?2:illumination<1.05?3:4;
+  if(long){
+    // Short flexible folds cross the already segmented trunk. Broad central
+    // highlights remain continuous; this is skin, not an armor capability.
+    const fold=Math.abs(Math.sin((u+.2)*Math.PI/3.6));
+    if(Math.abs(v)>2.5&&q<.94&&fold<pixel*.21)tone=Math.max(1,tone-1);
+    if(Math.abs(v)>3&&q<.89&&fold>pixel*.21&&fold<pixel*.42&&dy<0)tone=Math.min(4,tone+1);
+  }else{
+    const shoulder=ellipse(u,Math.abs(v),3.7,3.2,3.4,3.8);
+    const hip=ellipse(u,Math.abs(v),-5.0,3.3,2.7,3.1);
+    if(q<.91&&Math.abs(v)>2&&Math.min(Math.abs(shoulder-.88),Math.abs(hip-.87))<pixel*.12)tone=Math.max(1,tone-1);
+    if(!light&&Math.abs(v)<.65&&Math.abs(u)<7.5)tone=Math.min(4,tone+1);
+  }
+  const flank=width*.70-.4*Math.cos(u*.35);
+  if(q<.91&&Math.abs(Math.abs(v)-flank)<pixel*.45&&Math.abs(u)<6)tone=Math.max(1,tone-1);
+  if(q<.86&&q>.25&&Math.sin(u*3.6+v*1.9)>.98&&Math.sin(v*4.3-u*.6)>.7)tone=Math.max(1,tone-1);
+  return tone;
+}
 function surface(id,u,v,dx,dy,pixel){
+ if(BODY_FORM_PARTS.includes(id))return bodyFormSurface(id,u,v,dx,dy,pixel);
  const dome=id==='dome-torso',small=id==='small-torso';
  const length=dome?11.1:small?10.6:11.3;
  // Soft bodies have a tucked flank between shoulder and haunch tissue. The
@@ -45,7 +78,7 @@ function surface(id,u,v,dx,dy,pixel){
 }
 const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaled(x,r)])):typeof v==='number'?v*r:v;
 export function authorTorsoPart(source,resolution){
- if(!TORSO_PARTS.includes(source.partId)||![64,128].includes(resolution)||source.rig?.kind!=='torso')throw Error('Unsupported detailed torso');
+ if(![...TORSO_PARTS,...BODY_FORM_PARTS].includes(source.partId)||![64,128].includes(resolution)||source.rig?.kind!=='torso')throw Error('Unsupported detailed torso');
  const ratio=resolution/32,frames=[];
  for(let facing=0;facing<8;facing++)for(let index=0;index<2;index++){
   const angle=(facing-2)*Math.PI/4,co=Math.cos(angle),si=Math.sin(angle),indices=[],alpha=[];
@@ -57,5 +90,5 @@ export function authorTorsoPart(source,resolution){
   // pulse or slipping texture when that geometry selects the other skin frame.
   frames.push({state:'idle',facing,index,durationMs:source.frames.find(f=>f.facing===facing&&f.index===index)?.durationMs||320,indices,alpha});
  }
- return{partId:source.partId,version:5,width:resolution,height:resolution,displayScale:(source.displayScale??1)/ratio,rootAnchorPx:source.rootAnchorPx.map(v=>v*ratio),rig:scaled(source.rig,ratio),regions:source.regions.map(({id,protected:fixed,colors})=>({id,protected:fixed,colors})),frames};
+ return{partId:source.partId,version:BODY_FORM_PARTS.includes(source.partId)?8:5,width:resolution,height:resolution,displayScale:(source.displayScale??1)/ratio,rootAnchorPx:source.rootAnchorPx.map(v=>v*ratio),rig:scaled(source.rig,ratio),regions:source.regions.map(({id,protected:fixed,colors})=>({id,protected:fixed,colors})),frames};
 }

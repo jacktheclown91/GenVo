@@ -7,7 +7,7 @@ import {loadPartArtVariant} from '../src/render/part-art-variants.js';
 import {nativeArtRevision,artForPart} from '../src/render/runtime-part-art.js';
 const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url),catalogUrl=new URL('catalog.json',folder);
 const catalog=JSON.parse(await fs.readFile(catalogUrl,'utf8'));
-assert.equal(catalog.parts.length,34);assert.equal(catalog.native32Fallback,true);
+assert.equal(catalog.parts.length,40);assert.equal(catalog.native32Fallback,true);
 for(const entry of catalog.parts){
  const asset=JSON.parse(gunzipSync(await fs.readFile(new URL(entry.path,folder))));
  assert.equal((await compileIndexedPart(asset)).checksum,entry.checksum);
@@ -29,7 +29,7 @@ const fetcher=async url=>{requested.push(String(url));return new Response(await 
 const revision=nativeArtRevision(),before=artForPart('fur-mantle');
 for(const resolution of [64,128]){
  const result=await loadPartArtVariant(catalogUrl,{resolution,createCanvas,fetcher});
- assert.equal(result.parts.size,17);assert.equal(result.resolution,resolution);
+ assert.equal(result.parts.size,20);assert.equal(result.resolution,resolution);
  assert.ok([...result.parts.values()].every(part=>part.frameAt({facing:7})!==null),'real indexed renderer supports every supplied facing');
  assert.ok(requested.filter(u=>u.endsWith('.gz')).every(u=>u.includes('-'+resolution+'.indexed')),'only selected resolution is decoded');
  requested.length=0;
@@ -46,4 +46,4 @@ const corrupt=async url=>{
 };
 await assert.rejects(()=>loadPartArtVariant(catalogUrl,{resolution:64,fetcher:corrupt,createCanvas}),/checksum mismatch/,'claimed checksum cannot hide altered pixels');
 assert.equal(nativeArtRevision(),revision,'failed candidate load cannot replace installed art');
-console.log('Production candidate PASS: 34 real modular variants, retained masters/palettes/pivots, no clipped facings, resolution-selective loading and fail-closed pixel identity.');
+console.log('Production candidate PASS: 40 real modular variants, retained masters/palettes/pivots, no clipped facings, resolution-selective loading and fail-closed pixel identity.');

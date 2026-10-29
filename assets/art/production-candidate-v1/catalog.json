@@ -1,6 +1,6 @@
 {
   "schema": "genvo.part-art-variants/1",
-  "version": 7,
+  "version": 8,
   "status": "production-candidate-creator-review",
   "native32Fallback": true,
   "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
@@ -415,6 +415,72 @@
       "sourceChecksum": "0a85a6d6edb07bb81d6027fc2e8949fd1393378926ccaa49b2914d7271daf02e",
       "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "light-torso",
+      "resolution": 64,
+      "path": "./light-torso-64.indexed.json.gz",
+      "checksum": "261137abcd83f31787e03ee4005367322c50f715052f733f6db106550b2fb326",
+      "bytes": 5005,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "42ad9b6f1f1f2402b62a0d0292cae9541f422ad11c1f7de294e62268d4234e1e",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "light-torso",
+      "resolution": 128,
+      "path": "./light-torso-128.indexed.json.gz",
+      "checksum": "e4f364d7353002cc404e648bb6d95193fa7e8e4985559d67510b999d2d746081",
+      "bytes": 17721,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "42ad9b6f1f1f2402b62a0d0292cae9541f422ad11c1f7de294e62268d4234e1e",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "long-torso",
+      "resolution": 64,
+      "path": "./long-torso-64.indexed.json.gz",
+      "checksum": "95a616c8a7b21ef93448c73be7f0fe20fe253b122e7b8566eaa1188a3c1e514b",
+      "bytes": 5149,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "ff779e532cdf992c0e844c65720ff75d47bd711977f710e9080cab1d648c1db3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "long-torso",
+      "resolution": 128,
+      "path": "./long-torso-128.indexed.json.gz",
+      "checksum": "bc673eb5036fa7456c5ff841aabafd47fb2f688876d39dfb0c39e85fd48eef4f",
+      "bytes": 18196,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "ff779e532cdf992c0e844c65720ff75d47bd711977f710e9080cab1d648c1db3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "reinforced-torso",
+      "resolution": 64,
+      "path": "./reinforced-torso-64.indexed.json.gz",
+      "checksum": "83ca81bbe1bc8c5641ad2174edb29550899f948f216f44e11771b8887e59f78a",
+      "bytes": 5323,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "2feead7db7b1b4a79870e02de728961a813f6bff6f0700e6558ce324ec30dc8f",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "reinforced-torso",
+      "resolution": 128,
+      "path": "./reinforced-torso-128.indexed.json.gz",
+      "checksum": "d04b0152c30ebfa6f437ab2383d0d2e81dbafad5e7944d48b2f8351abe741190",
+      "bytes": 19399,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "2feead7db7b1b4a79870e02de728961a813f6bff6f0700e6558ce324ec30dc8f",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     }
   ],
   "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
@@ -422,5 +488,6 @@
   "limbRefinement": "Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration.",
   "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.",
   "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.",
-  "wingRefinement": "Native indexed precursor and flight feathers; existing frame, root and dorsal folding contracts preserved."
+  "wingRefinement": "Native indexed precursor and flight feathers; existing frame, root and dorsal folding contracts preserved.",
+  "bodyFormRefinement": "Native indexed light, segmented long and reinforced torso tissue; exact physical registration and existing body mechanics."
 }
