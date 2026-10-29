@@ -9,3 +9,6 @@ body{background:#14291d;color:#e4ead3;font:14px/1.5 system-ui;background-image:l
 
 .lab-body-stage>.artboard::before{content:attr(data-label);position:absolute;top:-20px;left:0;right:0;text-align:center;font:600 11px Georgia;color:#e4d198;pointer-events:none}#referencePreview{background:radial-gradient(ellipse at 50% 60%,#607a484f,#102517 70%)}
 .lab-in-play{color:#cfe0b0;font-size:12px;border-left:2px solid #8fae6a;padding-left:8px}
+
+/* Keep anatomical comparisons useful on short screens; the page can scroll. */
+.lab-specimen{height:max(700px,calc(100vh - 195px))}.lab-body-stage{min-height:250px}.lab-specimen #assemblyStudyStatus{flex:none;font-size:12px;line-height:1.4;margin:5px 0}.lab-preview-expanded .lab-specimen{height:100%}@media(max-width:650px){.lab-specimen{height:700px}.lab-preview-expanded .lab-specimen{height:calc(100vh - 75px)}}
