@@ -1,0 +1,421 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "live": {
+    "metric": {
+      "seconds": 2.3573333333333335,
+      "rate": 192000,
+      "channels": 2,
+      "peak": 0.04028967395424843,
+      "rms": 0.009264939699118891
+    },
+    "calls": [
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 4.725
+      },
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 4.975
+      },
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 5.215
+      },
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 5.425
+      },
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 5.675
+      },
+      {
+        "profile": {
+          "surface": "mud",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 5.905
+      },
+      {
+        "profile": {
+          "surface": "vegetation",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 6.145
+      },
+      {
+        "profile": {
+          "surface": "vegetation",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 6.385
+      },
+      {
+        "profile": {
+          "surface": "vegetation",
+          "pitch": 1.000128380640739,
+          "weight": 0.9998349633906328,
+          "duration": 0.999908309631926,
+          "spacing": 0.9996332889673624,
+          "quiet": false
+        },
+        "sprint": false,
+        "time": 6.615
+      }
+    ]
+  },
+  "controlled": [
+    {
+      "name": "dry",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.0054221744649112225,
+        "rms": 0.00014199415229252066
+      }
+    },
+    {
+      "name": "vegetation",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "vegetation",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.005124242044985294,
+        "rms": 0.0001627191735131437
+      }
+    },
+    {
+      "name": "mud",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "mud",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.006296028383076191,
+        "rms": 0.0003024170338975113
+      }
+    },
+    {
+      "name": "snow",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "snow",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.006863932590931654,
+        "rms": 0.0002570211524717567
+      }
+    },
+    {
+      "name": "ice",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "ice",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.005426424089819193,
+        "rms": 0.00020392401511260216
+      }
+    },
+    {
+      "name": "water",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "water",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.007479861378669739,
+        "rms": 0.00038598215869102705
+      }
+    },
+    {
+      "name": "earth",
+      "size": 1,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "earth",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.0057329777628183365,
+        "rms": 0.00023031122569707791
+      }
+    },
+    {
+      "name": "small-dry",
+      "size": 0.5,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 1.2745606273192622,
+        "weight": 0.7320428479728127,
+        "duration": 0.8408964152537145,
+        "spacing": 0.5,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.004825633950531483,
+        "rms": 0.00011173333208686548
+      }
+    },
+    {
+      "name": "large-dry",
+      "size": 2,
+      "voice": false,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 0.7845840978967508,
+        "weight": 1.35,
+        "duration": 1.189207115002721,
+        "spacing": 2,
+        "quiet": false
+      },
+      "voiceProfile": null,
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.005929129663854837,
+        "rms": 0.00018447240086241786
+      }
+    },
+    {
+      "name": "small-voice",
+      "size": 0.5,
+      "voice": true,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 1.2745606273192622,
+        "weight": 0.7320428479728127,
+        "duration": 0.8408964152537145,
+        "spacing": 0.5,
+        "quiet": false
+      },
+      "voiceProfile": {
+        "sample": "genvo-call",
+        "rate": 1.3718598026097013,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      },
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.33398082852363586,
+        "rms": 0.02834541869153286
+      }
+    },
+    {
+      "name": "reference-voice",
+      "size": 1,
+      "voice": true,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 1,
+        "weight": 1,
+        "duration": 1,
+        "spacing": 1,
+        "quiet": false
+      },
+      "voiceProfile": {
+        "sample": "genvo-call",
+        "rate": 1.076339385671347,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      },
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.3401601314544678,
+        "rms": 0.032000948256577046
+      }
+    },
+    {
+      "name": "large-voice",
+      "size": 2,
+      "voice": true,
+      "rate": 22050,
+      "contact": {
+        "surface": "dry",
+        "pitch": 0.7845840978967508,
+        "weight": 1.35,
+        "duration": 1.189207115002721,
+        "spacing": 2,
+        "quiet": false
+      },
+      "voiceProfile": {
+        "sample": "genvo-call",
+        "rate": 0.8444787659376967,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      },
+      "stateExact": true,
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.33875513076782227,
+        "rms": 0.036096733426042665
+      }
+    }
+  ],
+  "scope": "Actual public keyboard movement and master recording; additional explicit controlled native OfflineAudioContext contact/size/voice listening palettes. No live terrain, anatomy, size or biological events are injected."
+}

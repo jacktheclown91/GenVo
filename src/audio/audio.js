@@ -1,3 +1,4 @@
+import {movementContact,contactEnvelope} from './movement-contact.js';
 import {audibleWildfire} from '../ecology/wildfire.js';
 import {audibleThunder} from '../ecology/thunderstorms.js';
 import {AUDIO_SCENES,activeStrategyBranch,cueForResult,handoffTheme,musicPattern,musicSceneFor,semitone,stalkerDangerBand,themeStageForGeneration} from './model.js';
@@ -186,8 +187,8 @@ export class AudioDirector{
     if(distance<1e-6)return;
     this.markInteractiveAudio();
     this.moveClock+=distance;
-    const sprint=!!input.sprint||p.intent==='flee',spacing=sprint?.65:.5;
-    if(this.moveClock>=spacing){this.moveClock%=spacing;this.playCue(sprint?'sprint':'move',{quiet:true})}
+    const sprint=!!input.sprint||p.intent==='flee',contact=movementContact(this.sim.world,p),spacing=(sprint?.65:.5)*contact.spacing;
+    if(this.moveClock>=spacing){this.moveClock%=spacing;this.playCue(sprint?'sprint':'move',{quiet:true,contact})}
   }
   updateWildlife(dt){
     const sim=this.sim,p=sim.player?.();if(!p||sim.paused)return;
@@ -257,6 +258,10 @@ export class AudioDirector{
   dangerPulse(time,intensity=.5){
     if(!this.ctx)return;const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type='sine';o.frequency.setValueAtTime(62,time);o.frequency.exponentialRampToValueAtTime(46,time+.11);g.gain.setValueAtTime(.0001,time);g.gain.exponentialRampToValueAtTime(.018+.025*intensity,time+.012);g.gain.exponentialRampToValueAtTime(.0001,time+.16);o.connect(g);g.connect(this.musicBus);o.start(time);o.stop(time+.18);
   }
+  playContact(contact,sprint=false,time=null){
+    if(!this.unlocked||!this.enabled||!this.ctx)return false;time??=this.ctx.currentTime+.005;
+    const e=contactEnvelope(contact,sprint);this.noise(time,e.seconds,e.peak,e.frequency);if(e.body)this.tone(e.bodyHz,e.bodyHz*.7,time,e.seconds,e.body,'triangle');if(contact.surface==='water')this.noise(time+.035,e.seconds*.65,e.peak*.35,e.frequency*2.2);
+  }
   playCue(name,data={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return;const t=this.ctx.currentTime+.005;
     if(!['move','sprint','confirm','deny','fire-crackle'].includes(name))this.foregroundCue(name==='thunder'?1.3:.65);
@@ -268,8 +273,7 @@ export class AudioDirector{
       case'jump':this.noise(t,.10,.035,1800);this.tone(140,360,t,.13,.035,'triangle');break;
       case'land':this.noise(t,.08,.045,650);this.tone(115,65,t,.09,.035,'triangle');break;
       case'splash':this.noise(t,.22,.075,1200);this.tone(420,110,t,.20,.03,'sine');break;
-      case'move':this.noise(t,.055,.025,1250);break;
-      case'sprint':this.noise(t,.08,.045,950);this.tone(95,72,t,.07,.02,'triangle');break;
+      case'move':case'sprint':this.playContact(data.contact||movementContact(this.sim?.world,this.sim?.player?.()),name==='sprint',t);break;
       case'drink':this.tone(720,410,t,.16,.055,'sine');this.tone(520,300,t+.09,.2,.04,'sine');break;
       case'eat':this.noise(t,.09,.09,1700);this.tone(180,125,t,.08,.025,'triangle');break;
       case'fight':this.tone(125,70,t,.12,.12,'triangle');this.noise(t,.09,.13,720);break;

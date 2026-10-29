@@ -117,3 +117,5 @@ Codex physical-size presentation heads-up: renderer.js will read adultSizeScale 
 Size integration follow-up: continuous draw sizes exposed singleton scratch-canvas replacement on alternating actors. Codex will retain a bounded LRU of scratch surfaces under the existing total 32 MiB budget instead of regenerating them per animal; no simulation performance policy changes. Native timing is presentation evidence only.
 
 Codex C7 heads-up: adding read-only Journal organism-study export and Creature Lab import for actual anatomy, inherited size, pigmentation and developmental age. No lineage record, conception, biology or save schema edits; historical conception sizes stay unknown. Shared files journal.js and creature-footprint.js plus Lab assembly UI. Study files are presentation-only and cannot load into Simulation.
+
+Codex anatomical audio heads-up: audio-only contact reading/synthesis will observe canonical liquid/ice support, snowpack, moisture, vegetation, mounted feet and inherited dimensions. Existing displacement/event and call capability gates remain authoritative; no biology or save changes.
