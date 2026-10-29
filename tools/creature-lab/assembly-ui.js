@@ -1,3 +1,4 @@
+import {wingStudyPose,wingStudyReading} from './wing-study.js';
 import {labStructuralStudy} from './structural-study.js';
 import {readOrganismStudy} from '../../src/render/organism-study.js';
 import {adultSizeScale} from '../../src/organisms/body-size.js';
@@ -56,10 +57,30 @@ function showStructure(){
  panel.append(detail,note);
 }
 function previewAnimal(body=plan,study=activeStudy){return study?{...study.animal,bodyPlan:body,dir:Number($('previewDirection').value)}:{id:1,species:'genvo',alive:true,age:60,dir:Number($('previewDirection').value),genes:Object.fromEntries(GENE_KEYS.map(k=>[k,1])),adaptations:[],bodyPlan:body}}
-function measure(body,dir,study=activeStudy){const key=JSON.stringify(study?.animal||null)+'|'+body.id+'|'+dir+'|'+artRevision;if(!boundsCache.has(key))boundsCache.set(key,workshopBounds(previewAnimal(body,study),dir,{authoredParts}));return boundsCache.get(key)}
-function renderPreview(){const action=$('previewAction').value,dir=Number($('previewDirection').value),moving=['walk','flee','hunt'].includes(action),bound=measure(plan,dir),other=reference?measure(reference,dir,referenceStudy):null;
+function measure(body,dir,study=activeStudy){
+  const wing=$('previewAction').value==='wing-study',animal=previewAnimal(body,study);
+  const key=JSON.stringify(study?.animal||null)+'|'+body.id+'|'+dir+'|'+artRevision+'|'+wing;
+  if(!boundsCache.has(key)){
+    const motion=wing?{action:'idle',moving:false,poseForFrame:frame=>({behavior:wingStudyPose(animal,frame)||{}})}:{};
+    boundsCache.set(key,workshopBounds(animal,dir,{authoredParts,...motion}));
+  }
+  return boundsCache.get(key);
+}
+function syncWingStudy(){
+  const reading=wingStudyReading(previewAnimal());
+  const pinned=reference?wingStudyReading(previewAnimal(reference,referenceStudy)):null;
+  const option=$('previewAction').querySelector('[value="wing-study"]');
+  option.disabled=!reading.available&&!pinned?.available;
+  option.title=option.disabled?'Requires an inherited flight wing; precursor displays remain available through Court.':'Inspect inherited wing articulation while the body stays grounded.';
+  if(option.disabled&&$('previewAction').value==='wing-study')$('previewAction').value='idle';
+  let label=$('assemblyWingStatus');
+  if(!label){label=document.createElement('p');label.id='assemblyWingStatus';label.className='lab-wing-study';label.setAttribute('role','status');$('assemblyStudyStatus').after(label)}
+  label.hidden=$('previewAction').value!=='wing-study';
+  label.textContent=reading.available?reading.text:'Pinned specimen: '+pinned?.text;
+}
+function renderPreview(){syncWingStudy();const action=$('previewAction').value,dir=Number($('previewDirection').value),moving=['walk','flee','hunt'].includes(action),bound=measure(plan,dir),other=reference?measure(reference,dir,referenceStudy):null;
  const width=Math.max(bound.w,other?.w||0),height=Math.max(bound.h,other?.h||0),S=Math.min(320/width,320/height,16)*view.zoom;view={...view,scale:S*adultSizeScale(previewAnimal()),cx:192-bound.x*S,cy:192-bound.y*S};
- function paint(canvas,body,b,age,study){const c=canvas.getContext('2d');c.clearRect(0,0,384,384);c.imageSmoothingEnabled=false;c.save();c.translate(192-b.x*S,192-b.y*S);const preview=developmentalPreview(previewAnimal(body,study),age);drawGenvoSprite(c,{animal:preview.animal,phenotype:preview.phenotype,scale:S*adultSizeScale(preview.animal),frame,moving,authoredParts,authoredTimeMs:frame*125,palette:creaturePalette(preview.phenotype),pose:{...preview.pose,dir,action}});c.restore();}
+ function paint(canvas,body,b,age,study){const c=canvas.getContext('2d');c.clearRect(0,0,384,384);c.imageSmoothingEnabled=false;c.save();c.translate(192-b.x*S,192-b.y*S);const preview=developmentalPreview(previewAnimal(body,study),age);drawGenvoSprite(c,{animal:preview.animal,phenotype:preview.phenotype,scale:S*adultSizeScale(preview.animal),frame,moving,authoredParts,authoredTimeMs:frame*125,palette:creaturePalette(preview.phenotype),pose:{...preview.pose,dir,action:action==='wing-study'?'idle':action,...(action==='wing-study'?{behavior:wingStudyPose(preview.animal,frame)||{}}:{})}});c.restore();}
  paint($('creaturePreview'),plan,bound,previewAge,activeStudy);if(reference){paint($('referencePreview'),reference,other,referenceAge,referenceStudy);const before=new Map(reference.nodes.map(n=>[n.id,n.partId])),changed=plan.nodes.filter(n=>before.get(n.id)!==n.partId).map(n=>n.partId.replaceAll('-',' ')),removed=reference.nodes.filter(n=>!plan.nodes.some(x=>x.id===n.id)).length;$('assemblyComparisonLabel').textContent=changed.length||removed?'Current changes: '+changed.join(', ')+(removed?' · '+removed+' removed':''):'Same mounted anatomy as the pinned reference';const currentSize=bodyDimensionsOf(previewAnimal()),pinnedSize=bodyDimensionsOf(previewAnimal(reference,referenceStudy));$('assemblyComparison').querySelector('figcaption').textContent='Pinned · adult length '+pinnedSize.adultScale.toFixed(3)+'×';$('assemblyComparisonLabel').textContent+=' · inherited adult length '+currentSize.adultScale.toFixed(3)+'× / pinned '+pinnedSize.adultScale.toFixed(3)+'× · pinned age '+referenceAge+'% of maturity';}
  const preview=developmentalPreview(previewAnimal(),previewAge);anchors=genvoAnchors({animal:preview.animal,phenotype:preview.phenotype,frame:0,pose:{...preview.pose,dir,action:'idle'}}).anchors;drawConnectionGuides();
  $('assemblyAgeStatus').textContent=preview.development.stage+' · '+Math.round(preview.development.growth*100)+'% adult linear growth · preview only';const dimensions=bodyDimensionsOf(preview.animal);board.dataset.label='Current · adult length '+dimensions.adultScale.toFixed(3)+'×';$('assemblyAgeStatus').textContent+=' · current '+dimensions.currentScale.toFixed(3)+'× / adult '+dimensions.adultScale.toFixed(3)+'×';$('assemblyStudyStatus').textContent=activeStudy?'Recorded organism #'+activeStudy.animal.id+' · inherited size and pigmentation · local preview only; the game is unchanged.':'Workshop anatomy · reference size; import an organism study to compare actual inherited size and pigmentation.';
