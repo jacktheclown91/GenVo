@@ -1,3 +1,4 @@
+import {labStructuralStudy} from './structural-study.js';
 import {readOrganismStudy} from '../../src/render/organism-study.js';
 import {adultSizeScale} from '../../src/organisms/body-size.js';
 import {bodyDimensionsOf} from '../../src/organisms/body-mass.js';
@@ -34,6 +35,26 @@ function refresh(){
 }
 // What this plan would protect in play, through the same lineage path the evolution editor uses.
 function showProtection(){let el=$('assemblyProtection');if(!el){el=document.createElement('p');el.id='assemblyProtection';el.className='lab-in-play';$('assemblyStatus').after(el)}const r=planProtectionInPlay(plan);el.hidden=!r;el.textContent=r?'In play: '+r.detail:''}
+// Cache the study across animation frames; selection, age and body edits refresh it.
+let structureKey='',structureReading=null;
+function showStructure(){
+ const animal=previewAnimal(),selection=$('attachmentSocket').value,partId=$('attachmentPart').value;
+ const key=JSON.stringify([animal,previewAge,selection,partId]);
+ if(key===structureKey)return;structureKey=key;
+ let selected=null;try{const [parent,socket]=JSON.parse(selection);selected={parent,socket,partId}}catch{}
+ structureReading=labStructuralStudy(animal,previewAge,selected);
+ let panel=$('assemblyStructure');if(!panel){panel=document.createElement('section');panel.id='assemblyStructure';panel.className='lab-structure';panel.setAttribute('aria-label','Structural study');$('assemblyStatus').before(panel)}
+ panel.replaceChildren();panel.dataset.state=structureReading.current.state;
+ const title=document.createElement('h3');title.textContent='Land support';
+ const summary=document.createElement('p');summary.id='assemblyStructureSummary';summary.setAttribute('role','status');summary.textContent=structureReading.summary;
+ const note=document.createElement('p');note.className='lab-structure-note';note.textContent='Study under current land-support rules. Water can carry swimming bodies; recorded worlds keep their own rules.';
+ const detail=document.createElement('details'),caption=document.createElement('summary'),facts=document.createElement('p');caption.textContent='Support at adult growth';facts.textContent=structureReading.adultSummary;detail.append(caption,facts);
+ for(const reason of Number.isFinite(structureReading.adult.stress)?structureReading.adult.reasons:[]){const p=document.createElement('p');p.textContent=reason;detail.append(p)}
+ if(structureReading.problem){const p=document.createElement('p');p.textContent=structureReading.problem;detail.append(p)}
+ panel.append(title,summary);
+ if(structureReading.candidate){const proposed=document.createElement('p');proposed.id='assemblyStructureCandidate';proposed.textContent=structureReading.candidate.text;panel.append(proposed)}
+ panel.append(detail,note);
+}
 function previewAnimal(body=plan,study=activeStudy){return study?{...study.animal,bodyPlan:body,dir:Number($('previewDirection').value)}:{id:1,species:'genvo',alive:true,age:60,dir:Number($('previewDirection').value),genes:Object.fromEntries(GENE_KEYS.map(k=>[k,1])),adaptations:[],bodyPlan:body}}
 function measure(body,dir,study=activeStudy){const key=JSON.stringify(study?.animal||null)+'|'+body.id+'|'+dir+'|'+artRevision;if(!boundsCache.has(key))boundsCache.set(key,workshopBounds(previewAnimal(body,study),dir,{authoredParts}));return boundsCache.get(key)}
 function renderPreview(){const action=$('previewAction').value,dir=Number($('previewDirection').value),moving=['walk','flee','hunt'].includes(action),bound=measure(plan,dir),other=reference?measure(reference,dir,referenceStudy):null;
@@ -42,6 +63,7 @@ function renderPreview(){const action=$('previewAction').value,dir=Number($('pre
  paint($('creaturePreview'),plan,bound,previewAge,activeStudy);if(reference){paint($('referencePreview'),reference,other,referenceAge,referenceStudy);const before=new Map(reference.nodes.map(n=>[n.id,n.partId])),changed=plan.nodes.filter(n=>before.get(n.id)!==n.partId).map(n=>n.partId.replaceAll('-',' ')),removed=reference.nodes.filter(n=>!plan.nodes.some(x=>x.id===n.id)).length;$('assemblyComparisonLabel').textContent=changed.length||removed?'Current changes: '+changed.join(', ')+(removed?' · '+removed+' removed':''):'Same mounted anatomy as the pinned reference';const currentSize=bodyDimensionsOf(previewAnimal()),pinnedSize=bodyDimensionsOf(previewAnimal(reference,referenceStudy));$('assemblyComparison').querySelector('figcaption').textContent='Pinned · adult length '+pinnedSize.adultScale.toFixed(3)+'×';$('assemblyComparisonLabel').textContent+=' · inherited adult length '+currentSize.adultScale.toFixed(3)+'× / pinned '+pinnedSize.adultScale.toFixed(3)+'× · pinned age '+referenceAge+'% of maturity';}
  const preview=developmentalPreview(previewAnimal(),previewAge);anchors=genvoAnchors({animal:preview.animal,phenotype:preview.phenotype,frame:0,pose:{...preview.pose,dir,action:'idle'}}).anchors;drawConnectionGuides();
  $('assemblyAgeStatus').textContent=preview.development.stage+' · '+Math.round(preview.development.growth*100)+'% adult linear growth · preview only';const dimensions=bodyDimensionsOf(preview.animal);board.dataset.label='Current · adult length '+dimensions.adultScale.toFixed(3)+'×';$('assemblyAgeStatus').textContent+=' · current '+dimensions.currentScale.toFixed(3)+'× / adult '+dimensions.adultScale.toFixed(3)+'×';$('assemblyStudyStatus').textContent=activeStudy?'Recorded organism #'+activeStudy.animal.id+' · inherited size and pigmentation · local preview only; the game is unchanged.':'Workshop anatomy · reference size; import an organism study to compare actual inherited size and pigmentation.';
+ showStructure();
  $('assemblyGuides').style.display=action==='idle'&&!playing&&$('showAssemblyGuides').checked?'':'none';$('assemblyViewStatus').textContent='Adult-scale framing · '+Math.round(view.zoom*100)+'% · current facing';
 }
 const stage=document.createElement('div');stage.className='lab-body-stage';const board=$('creaturePreview').closest('.artboard');board.dataset.label='Current anatomy';board.before(stage);stage.append(board);const toolbar=document.createElement('div');toolbar.className='lab-view-tools';stage.after(toolbar);
@@ -84,7 +106,7 @@ function drawConnectionGuides(){
  $('connectionLabel').textContent='Selected connection: '+($('attachmentSocket').selectedOptions[0]?.textContent||'none');
 }
 $('assemblyGuides').onclick=e=>{const rect=$('creaturePreview').getBoundingClientRect(),x=(e.clientX-rect.left)*384/rect.width,y=(e.clientY-rect.top)*384/rect.height,compatible=anchors.filter(a=>PARTS[$('attachmentPart').value]?.compatibleSocketTypes.includes(a.type)),nearest=compatible.map(a=>({a,d:Math.hypot(view.cx+a.x*view.scale-x,view.cy+a.y*view.scale-y)*rect.width/384})).sort((a,b)=>a.d-b.d)[0];if(nearest&&nearest.d<=22){$('attachmentSocket').value=JSON.stringify([nearest.a.parent,nearest.a.socket]);attachSelected(nearest.a)}};
-$('attachmentSocket').onchange=drawConnectionGuides;$('attachmentPart').onchange=drawConnectionGuides;
+$('attachmentSocket').onchange=$('attachmentPart').onchange=()=>{drawConnectionGuides();showStructure()};
 new ResizeObserver(()=>{if(anchors.length)drawConnectionGuides()}).observe($('creaturePreview'));
 window.__GENVO_LAB_ASSEMBLY__={get plan(){return plan},get view(){return view},get anchors(){return anchors},get reference(){return reference},get study(){return activeStudy?structuredClone(activeStudy):null},get referenceStudy(){return referenceStudy?structuredClone(referenceStudy):null},get artResolution(){return Number(artSelect.value)}};
 $('assemblyRoot').value='small-torso';$('assemblyRoot').onchange=()=>{try{commit(starterPlan($('assemblyRoot').value))}catch(e){message(e.message)}};
