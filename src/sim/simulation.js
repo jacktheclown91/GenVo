@@ -71,6 +71,7 @@ import {regionKey} from '../world/planet-regions.js';
 import {LIFE_HISTORY,breedingEnergyGate} from '../ecology/breeding-calibration.js';
 import {bodyMass,bodyMassFraction,basalResourceCosts,ANATOMICAL_MASS,LEGACY_MASS} from '../organisms/body-mass.js';
 import {BODY_SIZE,founderBodySize,inheritBodySize,toReserve,toAbsolute,mouthScale,massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
+import {INERTIA,inertiaEnabled,accelerationLimit,arrivalSpeed,planMotion,commitMotion,haltMotion,kineticWork,velocityOf} from '../organisms/motion.js';
 import {paternalInheritance} from '../ecology/gestation.js';
 import {conceptionFunding,birthFunding} from '../ecology/birth-investment.js';
 import {reproductiveMode,conceptionMode,eggSiteQuality,INCUBATION_DAYS,DUAL_ENERGY_UPKEEP,DUAL_WATER_UPKEEP} from '../reproduction/reproductive-anatomy.js';
@@ -160,7 +161,7 @@ export class Simulation{
     stormWeather=true,
     strangerResponses=true,
     dayClock=false,
-    metabolism=false,bodySize=false,
+    metabolism=false,bodySize=false,inertia=false,
     foodProperties=false,
     tissueWater=false,
     winterWater=false,
@@ -220,6 +221,8 @@ export class Simulation{
     if(metabolism)this.metabolismRules=metabolism==='fasting-1'?METABOLISM_REFERENCE_BODY:METABOLISM.policy;
     // Inherited body size is defined against fasting-2's own-body reserves.
     if(bodySize){if(bodySize!==true&&bodySize!==BODY_SIZE.policy)throw Error('Unknown body size policy.');if(this.metabolismRules!==METABOLISM.policy)throw Error('Body size requires fasting-2 metabolism.');this.bodySizeRules=BODY_SIZE.policy}
+    // Bodies carry velocity (acceleration, braking and turning) in worlds recording inertia/1.
+    if(inertia){if(inertia!==true&&inertia!==INERTIA.policy)throw Error('Unknown inertia policy.');this.inertiaRules=INERTIA.policy}
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
     if(tissueWater)this.tissueWaterRules=TISSUE_WATER.policy;
     if(winterWater)this.winterWaterRules=WINTER_WATER.policy;
@@ -524,15 +527,46 @@ export class Simulation{
     if(a.aerialMode==='glide'){const [dx,dy]=input?inputVector(input):[0,0];this.advanceGlide(a,1/Math.max(CFG.simHz,Number.isFinite(stepHz)?stepHz:CFG.simHz),dx,dy);a.intent='player';return true}
     if(a.torpor){const [vx,vy]=input?inputVector(input):[0,0];if(!vx&&!vy)return false;wakeTorpor(a,{reason:'Moving woke the creature.'})}
     const hz=Math.max(CFG.simHz,Number.isFinite(stepHz)?stepHz:CFG.simHz),stance=this.playerCombat.step(a,input,1/hz);
-    if(!input)return false;const [dx0,dy0]=inputVector(input);if(!dx0&&!dy0)return false;
+    if(!input)return this.brakePlayer(a,hz);const [dx0,dy0]=inputVector(input);if(!dx0&&!dy0)return this.brakePlayer(a,hz);
     const stepScale=CFG.simHz/hz,s=SPECIES[a.species],fx=adaptationEffects(a),dx=dx0,dy=dy0,sprint=stance.sprint,carrySlow=a.carryingFood?fx.carrySprint:1,injuryMove=this.injury.movementMultiplier(a)*stance.scale*conditionSpeed(this,a),landLifestyle=this.speciesLifestyle?.movementMultiplier?.(a,{swimming:false})||1,landBase=s.speed*a.genes.motion*carrySlow*injuryMove*movementEffect(this,a,landLifestyle);
     let prelimX=a.x+dx*landBase*(sprint?1.55*fx.sprintSpeed:1)/hz,prelimY=a.y+dy*landBase*(sprint?1.55*fx.sprintSpeed:1)/hz,preliminary=frontierStep(this.world,a.x,a.y,prelimX,prelimY),travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:preliminary.x,toY:preliminary.y,sprint});
-    if(!travel.allowed){this.pressure?.noteWaterBarrier?.(a);a.intent=a.hidden?'hide':'player';a.target=a.hidden?null:{dx,dy,sprint};a.dir=dirIndex(dx,dy);a.anim=(a.anim+stepScale)%8;return true}
-    const sprintFactor=travel.swimming?travel.sprint:(sprint?1.55*fx.sprintSpeed:1),lifestyleSpeed=travel.swimming?(this.speciesLifestyle?.movementMultiplier?.(a,{swimming:true})||1)/Math.max(.001,landLifestyle):1,sp=landBase*travel.speed*sprintFactor*lifestyleSpeed,endpoint=frontierStep(this.world,a.x,a.y,a.x+dx*sp/hz,a.y+dy*sp/hz),nx=endpoint.x,ny=endpoint.y,distance=Math.hypot(nx-a.x,ny-a.y),fraction=physicalFrontier(this.world)?Math.min(1,distance/(sp/hz||1)):1;
+    if(!travel.allowed){if(inertiaEnabled(this))haltMotion(a);this.pressure?.noteWaterBarrier?.(a);a.intent=a.hidden?'hide':'player';a.target=a.hidden?null:{dx,dy,sprint};a.dir=dirIndex(dx,dy);a.anim=(a.anim+stepScale)%8;return true}
+    const sprintFactor=travel.swimming?travel.sprint:(sprint?1.55*fx.sprintSpeed:1),lifestyleSpeed=travel.swimming?(this.speciesLifestyle?.movementMultiplier?.(a,{swimming:true})||1)/Math.max(.001,landLifestyle):1,sp=landBase*travel.speed*sprintFactor*lifestyleSpeed,plan=inertiaEnabled(this)?planMotion(a,dx*sp,dy*sp,1/hz,travel):null,endpoint=frontierStep(this.world,a.x,a.y,plan?a.x+plan.dx:a.x+dx*sp/hz,plan?a.y+plan.dy:a.y+dy*sp/hz),nx=endpoint.x,ny=endpoint.y,distance=Math.hypot(nx-a.x,ny-a.y),fraction=plan?(sp>0?distance*hz/sp:0):physicalFrontier(this.world)?Math.min(1,distance/(sp/hz||1)):1;
     if(a.hidden){const canShift=!travel.swimming&&fx.adaptiveCamouflage&&!sprint&&this.coverAt({x:nx,y:ny})>=.32;if(!canShift)a.hidden=false}
     a.intent=a.hidden?'hide':'player';a.target=a.hidden?null:{dx,dy,sprint};
-    if(fraction>0&&this.canOccupy(a,nx,ny)){const oldX=a.x,oldY=a.y;a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;a.energy-=massCostToReserve(a,.009*sp*fraction*bodyMass(a)/a.genes.metabolism*(PHYSIOLOGY_PARITY.enabled?1:CFG.manualMoveCostScale)*stepScale*(sprint?fx.sprintEnergy:1)*travel.energy*(this.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:travel.swimming})||1)*(a.hidden?1.10:1)*this.injury.movementCostMultiplier(a,{sprint}),SIZE_PHYSICS.transport);this.history.noteStep(a,stepScale*fraction);this.speciesLifestyle?.noteMovement?.(a,{swimming:travel.swimming,distance:sp/hz*fraction});if(!travel.swimming)this.breakOpeningSafetyOnContact(a)}
+    if(fraction>0&&this.canOccupy(a,nx,ny)){const oldX=a.x,oldY=a.y;a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;a.energy-=massCostToReserve(a,.009*sp*fraction*bodyMass(a)/a.genes.metabolism*(PHYSIOLOGY_PARITY.enabled?1:CFG.manualMoveCostScale)*stepScale*(sprint?fx.sprintEnergy:1)*travel.energy*(this.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:travel.swimming})||1)*(a.hidden?1.10:1)*this.injury.movementCostMultiplier(a,{sprint}),SIZE_PHYSICS.transport);this.history.noteStep(a,stepScale*fraction);this.speciesLifestyle?.noteMovement?.(a,{swimming:travel.swimming,distance:sp/hz*fraction});if(!travel.swimming)this.breakOpeningSafetyOnContact(a);if(plan){if(distance+1e-9<Math.hypot(plan.dx,plan.dy))haltMotion(a);else commitMotion(a,plan);a.energy-=massCostToReserve(a,kineticWork(plan,bodyMass(a)))}}else if(plan)haltMotion(a);
     a.dir=dirIndex(dx,dy);a.anim=(a.anim+stepScale*(travel.swimming?1.35:1))%8;return true;
+  }
+  // inertia/1: with no steering input the player's body brakes at its own limit
+  // (the same dynamics as wildlife) instead of stopping dead. Facing stays the
+  // last input direction, so aiming is unchanged.
+  brakePlayer(a,hz){
+    // An autonomous player is moved by the shared wildlife locomotion instead.
+    if(!inertiaEnabled(this)||!a.motion||this.playerAutonomy)return false;
+    const dt=1/hz,{vx,vy}=a.motion,travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:a.x+vx*dt,toY:a.y+vy*dt}),plan=planMotion(a,0,0,dt,travel);
+    const endpoint=frontierStep(this.world,a.x,a.y,a.x+plan.dx,a.y+plan.dy),nx=endpoint.x,ny=endpoint.y,distance=Math.hypot(nx-a.x,ny-a.y);
+    if(!travel.allowed||!this.canOccupy(a,nx,ny)||distance+1e-9<Math.hypot(plan.dx,plan.dy)){haltMotion(a);return false}
+    const oldX=a.x,oldY=a.y;a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;
+    if(plan.vx===0&&plan.vy===0)haltMotion(a);else commitMotion(a,plan);return true;
+  }
+  // A body that is not steering this tick keeps its momentum and brakes at its
+  // own limit (or matches a desired velocity, such as a courting partner's).
+  // Leaving the surface, or meeting an obstacle, stops it.
+  coastBody(a,dt,dvx=0,dvy=0){
+    if(!a.motion&&!dvx&&!dvy)return false;
+    if(a.airborne||a.perched||a.underground||a.climb||a.burrowWork||a.caveTransit||a.aerialMode){haltMotion(a);return false}
+    const {vx,vy}=velocityOf(a),travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:a.x+vx*dt,toY:a.y+vy*dt}),plan=planMotion(a,dvx,dvy,dt,travel),nx=a.x+plan.dx,ny=a.y+plan.dy;
+    if(!travel.allowed||!this.canOccupy(a,nx,ny)){haltMotion(a);return false}
+    const oldX=a.x,oldY=a.y;a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;
+    if(plan.vx===0&&plan.vy===0)haltMotion(a);else commitMotion(a,plan);return true;
+  }
+  coastUnsteered(steered){
+    for(const a of this.animals){
+      if(!a.alive||!a.motion||steered.has(a))continue;
+      if(a.player&&a.intent==='player')continue;
+      if(a.pursuitEngaged&&this.predator.isEngagedMover(a))continue;
+      this.coastBody(a,1/CFG.simHz);
+    }
   }
   breakOpeningSafetyOnContact(a){
     if(!this.isOpeningProtected(a))return false;
@@ -650,7 +684,7 @@ export class Simulation{
     for(const [a,b] of alarmed)if(!this.isManualPlayer(a)&&applyAlarm(a,b))this.stats.threatStages.wary++;
     for(const a of this.animals)if(a.alive&&!this.isManualPlayer(a)&&(a.intent==='escape'||a.intent==='group-alarm')&&a.target)a.target=escapeDestination(this,a,a.target,escapeThreats.get(a.id));
   }
-  phaseMovement({skipManualPlayer=false,locomotionOnly=false}={}){const ri=locomotionOnly?NO_INTERACTION:a=>this.resolveInteraction(a);for(const a of this.animals){if(!a.alive||a.torpor||a.climb||a.burrowWork||a.caveTransit)continue;if(a.underground){if(!a.player||this.playerAutonomy)this.undergroundDecisionStep(a);continue;}
+  phaseMovement({skipManualPlayer=false,locomotionOnly=false}={}){const ri=locomotionOnly?NO_INTERACTION:a=>this.resolveInteraction(a),inertial=inertiaEnabled(this),steered=new Set();for(const a of this.animals){if(!a.alive||a.torpor||a.climb||a.burrowWork||a.caveTransit)continue;if(a.underground){if(!a.player||this.playerAutonomy)this.undergroundDecisionStep(a);continue;}
     if(a.aerialMode==='jump'){if(!(skipManualPlayer&&a.player))this.advanceJump(a,1/CFG.simHz);continue}
     if(a.aerialMode==='glide'){if(!(skipManualPlayer&&a.player))this.advanceGlide(a,1/CFG.simHz,(a.target?.x??a.x)-a.x,(a.target?.y??a.y)-a.y);continue}
     // Wildlife can physically approach an elevated clutch, then take off and
@@ -671,7 +705,11 @@ export class Simulation{
       }
       if(a.perched){ri(a);continue}
     }
-    if(a.airborne&&!a.player&&a.intent!=='escape'&&a.intent!=='flee'&&(a.energy<18||!a.target||Math.hypot((a.target.x??a.x)-a.x,(a.target.y??a.y)-a.y)<1.6))land(a,this.world,{swimmer:canSwim(a)});if(a.refugeSiteId!=null&&a.intent!=='refuge')a.refugeSiteId=null;if((skipManualPlayer||locomotionOnly)&&a.player&&a.intent==='player'){ri(a);continue}if(a.pursuitEngaged&&this.predator.isEngagedMover(a))continue;const movement=this.activity.movementBudget(a);if(!movement.advance){if(ACTIVITY_REVIEW.continuousInteraction&&(a.intent==='drink'||isFeedingIntent(a.intent))&&atInteractionTarget(this,a))ri(a);continue}if(!this.activity.ambientMoveAllowed(a)){ri(a);continue}if(a.intent==='mate'&&a.target?.alive&&Math.hypot(a.x-a.target.x,a.y-a.target.y)<COURTSHIP_PERFORMANCE.radius){ri(a);continue}const s=SPECIES[a.species],moveScale=movement.scale||1;let dx=0,dy=0,sprint=false;if(a.intent==='player'&&a.target){dx=a.target.dx;dy=a.target.dy;sprint=a.target.sprint}else if(a.target){const routeTarget=landRouteTarget(this,a,a.target),tx=routeTarget.x,ty=routeTarget.y;dx=(tx??a.x)-a.x;dy=(ty??a.y)-a.y}const len=Math.hypot(dx,dy);if(len>.03){dx/=len;dy/=len;const fx=adaptationEffects(a),carrySlow=a.carryingFood?fx.carrySprint:1,predatorMove=this.predator.speedMultiplier(a),landLifestyle=this.speciesLifestyle?.movementMultiplier?.(a,{swimming:false})||1,landBase=s.speed*a.genes.motion*carrySlow*predatorMove*movementEffect(this,a,landLifestyle)*(HEALING_REVIEW.enabled&&a.injuryCare?.active?this.injury.movementMultiplier(a):1)*conditionSpeed(this,a),prelimX=a.x+dx*landBase*(sprint?1.55*fx.sprintSpeed:1)/CFG.simHz*moveScale,prelimY=a.y+dy*landBase*(sprint?1.55*fx.sprintSpeed:1)/CFG.simHz*moveScale;let travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:prelimX,toY:prelimY,sprint}),sprintFactor=travel.swimming?travel.sprint:(sprint?1.55*fx.sprintSpeed:1),lifestyleSpeed=travel.swimming?(this.speciesLifestyle?.movementMultiplier?.(a,{swimming:true})||1)/Math.max(.001,landLifestyle):1,sp=Math.min(landBase*travel.speed*sprintFactor*lifestyleSpeed,a.navigationRoute&&!a.navigationRoute.failed?len*CFG.simHz/Math.max(.001,moveScale):Infinity),nx=a.x+dx*sp/CFG.simHz*moveScale,ny=a.y+dy*sp/CFG.simHz*moveScale;this.specialization.maintainConcealment(a,nx,ny);if(!travel.allowed||!this.canOccupy(a,nx,ny)){const steer=this.steerAroundWater(a,dx,dy,landBase,moveScale);if(steer){dx=steer.dx;dy=steer.dy;nx=steer.x;ny=steer.y;travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:nx,toY:ny,sprint:false});sp=landBase}else{a.target=null;ri(a);continue}}const oldX=a.x,oldY=a.y;a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;noteAmbientMove(this,a,Math.hypot(nx-oldX,ny-oldY));a.energy-=massCostToReserve(a,.009*sp*bodyMass(a)/a.genes.metabolism*moveScale*travel.energy*(this.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:travel.swimming})||1),SIZE_PHYSICS.transport);this.speciesLifestyle?.noteMovement?.(a,{swimming:travel.swimming,distance:sp/CFG.simHz*moveScale});a.dir=dirIndex(dx,dy);a.anim=(a.anim+moveScale*(travel.swimming?1.35:1))%8;this.history.noteStep(a,moveScale)}ri(a)}}
+    if(a.airborne&&!a.player&&a.intent!=='escape'&&a.intent!=='flee'&&(a.energy<18||!a.target||Math.hypot((a.target.x??a.x)-a.x,(a.target.y??a.y)-a.y)<1.6))land(a,this.world,{swimmer:canSwim(a)});if(a.refugeSiteId!=null&&a.intent!=='refuge')a.refugeSiteId=null;if((skipManualPlayer||locomotionOnly)&&a.player&&a.intent==='player'){ri(a);continue}if(a.pursuitEngaged&&this.predator.isEngagedMover(a))continue;const movement=this.activity.movementBudget(a);if(!movement.advance){steered.add(a);if(ACTIVITY_REVIEW.continuousInteraction&&(a.intent==='drink'||isFeedingIntent(a.intent))&&atInteractionTarget(this,a))ri(a);continue}if(!this.activity.ambientMoveAllowed(a)){ri(a);continue}if(a.intent==='mate'&&a.target?.alive&&Math.hypot(a.x-a.target.x,a.y-a.target.y)<COURTSHIP_PERFORMANCE.radius){if(inertial){const v=velocityOf(a.target);this.coastBody(a,1/CFG.simHz,v.vx,v.vy);steered.add(a)}ri(a);continue}const s=SPECIES[a.species],moveScale=movement.scale||1;let dx=0,dy=0,sprint=false,arrive=false;if(a.intent==='player'&&a.target){dx=a.target.dx;dy=a.target.dy;sprint=a.target.sprint}else if(a.target){const routeTarget=landRouteTarget(this,a,a.target),tx=routeTarget.x,ty=routeTarget.y;dx=(tx??a.x)-a.x;dy=(ty??a.y)-a.y;arrive=routeTarget===a.target&&(a.target.alive===undefined||a.intent!=='hunt')&&Number.isFinite(tx)&&Number.isFinite(ty)}const len=Math.hypot(dx,dy);if(len>.03){dx/=len;dy/=len;const fx=adaptationEffects(a),carrySlow=a.carryingFood?fx.carrySprint:1,predatorMove=this.predator.speedMultiplier(a),landLifestyle=this.speciesLifestyle?.movementMultiplier?.(a,{swimming:false})||1,landBase=s.speed*a.genes.motion*carrySlow*predatorMove*movementEffect(this,a,landLifestyle)*(HEALING_REVIEW.enabled&&a.injuryCare?.active?this.injury.movementMultiplier(a):1)*conditionSpeed(this,a),prelimX=a.x+dx*landBase*(sprint?1.55*fx.sprintSpeed:1)/CFG.simHz*moveScale,prelimY=a.y+dy*landBase*(sprint?1.55*fx.sprintSpeed:1)/CFG.simHz*moveScale;let travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:prelimX,toY:prelimY,sprint}),sprintFactor=travel.swimming?travel.sprint:(sprint?1.55*fx.sprintSpeed:1),lifestyleSpeed=travel.swimming?(this.speciesLifestyle?.movementMultiplier?.(a,{swimming:true})||1)/Math.max(.001,landLifestyle):1,sp=Math.min(landBase*travel.speed*sprintFactor*lifestyleSpeed,a.navigationRoute&&!a.navigationRoute.failed?len*CFG.simHz/Math.max(.001,moveScale):Infinity),nx=a.x+dx*sp/CFG.simHz*moveScale,ny=a.y+dy*sp/CFG.simHz*moveScale;let plan=null;
+    // inertia/1: the decided direction and speed become a desired velocity. Toward a
+    // final fixed point the body brakes to stop on it instead of overshooting.
+    if(inertial){const dt=moveScale/CFG.simHz,want=arrive?arrivalSpeed(sp,len,accelerationLimit(a,{swimming:travel.swimming,onIce:travel.onIce,traction:travel.traction??1})):sp;plan=planMotion(a,dx*want,dy*want,dt,travel);if(arrive&&Math.hypot(plan.dx,plan.dy)>=len){plan.dx=dx*len;plan.dy=dy*len;plan.vx=0;plan.vy=0}nx=a.x+plan.dx;ny=a.y+plan.dy}
+    this.specialization.maintainConcealment(a,nx,ny);if(!travel.allowed||!this.canOccupy(a,nx,ny)){const steer=this.steerAroundWater(a,dx,dy,landBase,moveScale);if(steer){dx=steer.dx;dy=steer.dy;nx=steer.x;ny=steer.y;travel=movementProfile(a,this.world,{fromX:a.x,fromY:a.y,toX:nx,toY:ny,sprint:false});sp=landBase;if(plan){haltMotion(a);plan=planMotion(a,dx*landBase,dy*landBase,moveScale/CFG.simHz,travel);nx=a.x+plan.dx;ny=a.y+plan.dy;if(!this.canOccupy(a,nx,ny)){nx=a.x;ny=a.y;plan.vx=0;plan.vy=0}}}else{if(plan)haltMotion(a);a.target=null;ri(a);continue}}const oldX=a.x,oldY=a.y,costSpeed=plan?Math.hypot(nx-oldX,ny-oldY)*CFG.simHz/moveScale:sp;if(plan){steered.add(a);if(plan.vx===0&&plan.vy===0)haltMotion(a);else commitMotion(a,plan);a.energy-=massCostToReserve(a,kineticWork(plan,bodyMass(a)))}a.x=nx;a.y=ny;this.regionalEcology.notePageMove(a,oldX,oldY);a.movedTick=this.tickCount;noteAmbientMove(this,a,Math.hypot(nx-oldX,ny-oldY));a.energy-=massCostToReserve(a,.009*costSpeed*bodyMass(a)/a.genes.metabolism*moveScale*travel.energy*(this.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:travel.swimming})||1),SIZE_PHYSICS.transport);this.speciesLifestyle?.noteMovement?.(a,{swimming:travel.swimming,distance:costSpeed/CFG.simHz*moveScale});a.dir=plan&&Math.hypot(plan.vx,plan.vy)>.05?dirIndex(plan.vx,plan.vy):dirIndex(dx,dy);a.anim=(a.anim+moveScale*(travel.swimming?1.35:1))%8;this.history.noteStep(a,moveScale)}ri(a)}if(inertial)this.coastUnsteered(steered)}
   steerAroundWater(a,dx,dy,sp,moveScale=1){
     if(this.canSwim(a))return null;
     const step=sp/CFG.simHz*moveScale,target=a.target&&Number.isFinite(a.target.x)&&Number.isFinite(a.target.y)?a.target:null;const waypoint=planLandDetour(this,a,target);if(waypoint){const rx=waypoint.x-a.x,ry=waypoint.y-a.y,len=Math.hypot(rx,ry);if(len>.001){const sx=rx/len,sy=ry/len,x=a.x+sx*Math.min(step,len),y=a.y+sy*Math.min(step,len);if(this.canOccupy(a,x,y))return{x,y,dx:sx,dy:sy}}}let best=null,bestScore=Infinity;const base=Math.atan2(dy,dx);

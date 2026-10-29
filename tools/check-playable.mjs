@@ -101,6 +101,7 @@ const runtime=[
   'tests/body-size.mjs',
   'tests/body-size-reserves.mjs',
   'tests/body-size-physics.mjs',
+  'tests/inertia.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

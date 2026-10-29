@@ -3,15 +3,16 @@
 // heading changes, reversals and whether a land reversal sits within one step of the
 // body's own target (overshoot), observed speeds, distance per moving step, and hunt
 // attempts, kills and chase durations. Observation only; nothing is tuned.
-// Usage: node tools/measure-movement-dynamics.mjs [seed] [days]
+// Usage: node tools/measure-movement-dynamics.mjs [seed] [days] [--inertia]
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 
-const seed=process.argv[2]||'INERTIA-MEASURE',days=Number(process.argv[3]||15);
+const args=process.argv.slice(2).filter(a=>!a.startsWith('--')),inertia=process.argv.includes('--inertia');
+const seed=args[0]||'INERTIA-MEASURE',days=Number(args[1]||15);
 if(!(days>0&&days<=200))throw Error('Supply 1..200 days');
 const sim=new Simulation(seed,{player:true,autonomousPopulations:true,courtshipSimilarity:true,regionalFounding:'regional-founding-templates/2',
  dayClock:true,metabolism:true,foodProperties:true,tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true,
- bodySize:true,worldGenerator:'planetary/1',regionalFrontier:true});
+ bodySize:true,inertia,worldGenerator:'planetary/1',regionalFrontier:true});
 sim.setPlayerAutonomy?.(true);
 const last=new Map(),turn={steps:0,over30:0,over90:0,over150:0},speeds=[],intents={},land={reversals:0,withinOneStep:0};
 let attempts=0,kills=0,distance=0,moving=0;const chases=new Map(),chaseTicks=[];
@@ -35,7 +36,7 @@ while(sim.day<end){
 }
 speeds.sort((x,y)=>x-y);chaseTicks.sort((x,y)=>x-y);
 const q=f=>speeds.length?+speeds[Math.floor(f*(speeds.length-1))].toFixed(2):0,share=(n,d)=>d?+(n/d).toFixed(3):0;
-console.log(JSON.stringify({schema:'genvo.movement-dynamics/1',seed,days,simHz:CFG.simHz,seconds:Math.round((Date.now()-started)/1000),
+console.log(JSON.stringify({schema:'genvo.movement-dynamics/1',seed,days,inertia,simHz:CFG.simHz,seconds:Math.round((Date.now()-started)/1000),
  turning:{steps:turn.steps,over30:share(turn.over30,turn.steps),over90:share(turn.over90,turn.steps),over150:share(turn.over150,turn.steps)},
  landReversals:{...land,overshootShare:share(land.withinOneStep,land.reversals),perMovingStep:share(land.reversals,moving)},
  speedTilesPerSecond:{p50:q(.5),p90:q(.9),p99:q(.99)},tilesPerMovingStep:share(distance,moving),

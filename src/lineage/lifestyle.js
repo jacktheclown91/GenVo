@@ -56,7 +56,7 @@ export function movementProfile(animal,world,{fromX=animal?.x,fromY=animal?.y,to
   const aq=aquaticMovement(animal);
   if(!swimming){const terrain=terrainTravel(world,fromX,fromY,toX,toY),grip=inclineGrip(animal,terrain.grade);
     const footing=aridFooting(animal,world.moisture[world.idx(toX,toY)]),snow=snowFooting(animal,world,toX,toY);
-    return{allowed:true,swimming:false,swimmer,speed:landSpeedFactor(animal)*aq.land*terrain.speed*grip.speed*footing.speed*snow.speed,energy:terrain.energy*grip.energy*footing.energy*snow.energy,sprint:sprint?1.55:1,grade:terrain.grade,grip:grip.grip};}
+    return{allowed:true,swimming:false,swimmer,speed:landSpeedFactor(animal)*aq.land*terrain.speed*grip.speed*footing.speed*snow.speed,energy:terrain.energy*grip.energy*footing.energy*snow.energy,sprint:sprint?1.55:1,grade:terrain.grade,grip:grip.grip,traction:footing.speed*snow.speed};}
   const pf=partEffectFactors(animal),underwater=submerged(animal);
   return{allowed:true,swimming:true,swimmer:true,speed:(underwater?.9:1)*.66*(pad?pad.swimSpeed:1)*(pf?.swimSpeed??1)*aq.swimSpeed,energy:(underwater?1.2:1)*1.48*(pad?pad.swimEnergy:1)*(pf?.swimEnergy??1)*aq.swimEnergy,sprint:sprint?1.16:1};
 }

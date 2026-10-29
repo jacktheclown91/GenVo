@@ -34,7 +34,8 @@ const B=REGIONAL_DEMOGRAPHY_BEHAVIOR;
 const near=(sim,a,r,visit)=>{const w=sim.world,x0=Math.max(0,Math.floor(a.x-r)),x1=Math.min(w.n-1,Math.floor(a.x+r)),y0=Math.max(0,Math.floor(a.y-r)),y1=Math.min(w.n-1,Math.floor(a.y+r));
  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const px=x+.5,py=y+.5;if(Math.hypot(px-a.x,py-a.y)<=r)visit(px,py,w.idx(px,py))}};
 const reachable=(sim,a,x,y)=>canSwim(a)||sim.world.sameLand(a.x,a.y,x,y);
-function travel(sim,a,x,y,{move=true,trips=1}={}){
+// Archived travel is straight-line over long trips; bodies arrive at rest (inertia/1).
+function travel(sim,a,x,y,{move=true,trips=1}={}){if(a.motion)delete a.motion;
  const d=Math.hypot(x-a.x,y-a.y)*trips;if(!(d>0))return;
  a.energy-=massCostToReserve(a,B.moveEnergyPerCell*d*bodyMass(a)/a.genes.metabolism*(sim.speciesLifestyle?.movementEnergyMultiplier?.(a,{swimming:!!sim.world.water[sim.world.idx(x,y)]})||1),SIZE_PHYSICS.transport);
  if(move&&canOccupy(a,sim.world,x,y)){const ox=a.x,oy=a.y;a.x=x;a.y=y;a.movedTick=sim.tickCount;sim.regionalEcology.notePageMove(a,ox,oy)}
