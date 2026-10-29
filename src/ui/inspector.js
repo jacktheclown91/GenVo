@@ -3,6 +3,7 @@ import {processingCapacity,processingCapacityMessage} from '../sim/processing-ca
 import {actionCapabilities} from '../lineage/action-capabilities.js';
 import {creatureIdentity} from './creature-identity.js';
 import {escapePanel,knowledgeFold,updateKnowledgeHTML} from './knowledge-panel.js';
+import {populationOverviewHTML} from './population-overview.js';
 import {reproductiveCompatibility,reproductiveGenomeFor} from '../reproduction/reproductive-compatibility.js';
 import {reciprocalMateChoice,preferenceSummary,mateOptionAssessment,LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
 import {availableCourtshipMoves} from '../reproduction/courtship-performance.js';
@@ -63,13 +64,11 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
     const treeText=[evolutionaryTreeText(sim),speciesLeadershipText(sim)].join('\n\n');
     const history=`Births ${sim.stats.births} · Deaths ${sim.stats.deaths} · Incubating eggs ${(sim.eggs||[]).length} · Nests ${(sim.nests||[]).length}\nSeeds carried ${Math.round(sim.dispersal?.stats?.ingested||0)} · established ${Math.round((sim.dispersal?.stats?.germinated||0)*100)/100}\nMarsh fever cases ${sim.disease?.stats?.infections||0} · recoveries ${sim.disease?.stats?.recoveries||0} · deaths ${sim.stats.byCause.disease||0}`;
     renderReadablePanel(pop,`<header class="panel-head"><div><span>POPULATION</span><strong>Year ${sim.year}</strong></div><small>O · close</small></header>
-      <div class="panel-summary">
-        ${summaryCard('LIVING',`${total} animals`,rows.join(' · '))}
-        ${summaryCard('ACTIVE TAXON',activeTaxon,life?.label?`${life.label} lifestyle`:'lifestyle not established')}
-        ${summaryCard('RANGE',rangeStatus,`${Math.round((sustain?.food||0)*100)}% forage · ${sustain?.competitors||0} competitors`)}
-        ${summaryCard('LINEAGE GUIDANCE',dir.short||'Autonomous',`${reach?.adults||0} lineage adults · ${reach?.cells?.length||0} familiar cells`)}
-        ${summaryCard('ACTIVE FAMILY',`${familySummary.active} member${familySummary.active===1?'':'s'}`,`${familySummary.dependents} dependents · nearby relatives and actual care or partner bonds`)}
-      </div>
+      ${populationOverviewHTML({total,speciesRows:rows,activeTaxon,lifestyle:life?.label,
+        rangeStatus,forage:sustain?.food,competitors:sustain?.competitors||0,
+        familyActive:familySummary.active,dependents:familySummary.dependents,
+        adultLineage:reach?.adults||0,familiarCells:reach?.cells?.length||0,
+        guidance:dir.short||'Autonomous'})}
       ${sectionBlock('Evolution and lifestyles',evolution,false)}
       ${sectionBlock('Population centers and ecology',ecology,false)}
       ${sectionBlock('Evolutionary tree and leadership',treeText,false)}
