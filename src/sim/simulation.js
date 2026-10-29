@@ -126,7 +126,7 @@ import {MOVEMENT_PARITY} from '../ecology/movement-parity.js';
 const NO_INTERACTION=()=>{};
 // Render-time cache of "no living player" per actor list (never saved; see Simulation.player).
 const PLAYER_MISS=new WeakMap();
-import {SOIL_WATER,advanceSoilDay} from '../ecology/soil-water.js';
+import {SOIL_WATER,CLIMATE_WATER,advanceSoilDay} from '../ecology/soil-water.js';
 import {beginPageVegetationDay,visitLandByWorldPageSteps,completePageVegetationDay} from '../world/page-vegetation-work.js';
 import {drain} from './resumable.js';
 import {beginPageFaunaTick,visitLivingFaunaByPage,completePageFaunaTick} from '../ecology/page-fauna-work.js';
@@ -163,7 +163,7 @@ export class Simulation{
     stormWeather=true,
     strangerResponses=true,
     dayClock=false,
-    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,
+    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,climateWater=false,
     foodProperties=false,
     tissueWater=false,
     winterWater=false,
@@ -229,6 +229,8 @@ export class Simulation{
     if(structuralSupport){if(structuralSupport!==true&&structuralSupport!==STRUCTURAL_SUPPORT.policy)throw Error('Unknown structural support policy.');this.structuralSupportRules=STRUCTURAL_SUPPORT.policy}
     // Heat costs water and drought dormancy is available (arid-physiology/1).
     if(aridPhysiology){if(aridPhysiology!==true&&aridPhysiology!==ARID_PHYSIOLOGY.policy)throw Error('Unknown arid physiology policy.');this.aridPhysiologyRules=ARID_PHYSIOLOGY.policy}
+    // Temperature-driven evaporation for the soil water balance (climate-water/1).
+    if(climateWater){if(climateWater!==true&&climateWater!==CLIMATE_WATER.policy)throw Error('Unknown climate water policy.');this.climateWaterRules=CLIMATE_WATER.policy}
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
     if(tissueWater)this.tissueWaterRules=TISSUE_WATER.policy;
     if(winterWater)this.winterWaterRules=WINTER_WATER.policy;
@@ -583,7 +585,7 @@ export class Simulation{
     let hunter=null,best=1.7;for(const other of this.animals){if(!other.alive||!canHunt(other))continue;const d=Math.hypot(other.x-a.x,other.y-a.y);if(d<best&&this.world.sameLand(a.x,a.y,other.x,other.y)){hunter=other;best=d}}
     if(!hunter)return false;this.endOpeningGrace('approached stalker');this.lastPlayerAction={type:'danger-engaged',hunterId:hunter.id,tick:this.tickCount};return true;
   }
-  phaseClimate(){const dayInSeason=(this.day-1)%CFG.seasonDays;const seasonTemp=[.54,.78,.58,.30][this.seasonIndex];const rain=[.58,.35,.46,.26][this.seasonIndex];const anomaly=this.thermalRules===THERMAL_WEATHER.policy?advanceThermalWeather(this.thermalPattern,Math.floor(this.tickCount/CFG.dayTicks)):0,baseline=seasonTemp+.04*Math.sin(dayInSeason/CFG.seasonDays*Math.PI*2),temp=Math.max(-.5,Math.min(1.5,baseline+anomaly)),temperatureAnomaly=temp-baseline,draw=this.rng.next();if(WEATHER_PATTERNS.enabled){/* The sim.rng draw above is kept so every other random sequence is identical with weather patterns on or off; weather uses its own seeded stream. */const st=validWeatherState(this.weatherPattern)?this.weatherPattern:(this.weatherPattern=createWeatherState(this.seed));advanceWeatherTo(st,Math.floor(this.tickCount/CFG.dayTicks));this.climate={temp,rain:rain*st.factor,weatherFactor:st.factor,...(this.thermalRules===THERMAL_WEATHER.policy?{temperatureAnomaly}:{})};return}this.climate={temp,rain:rain*(.75+.5*draw),...(this.thermalRules===THERMAL_WEATHER.policy?{temperatureAnomaly}:{})}}
+  phaseClimate(){const dayInSeason=(this.day-1)%CFG.seasonDays;const seasonTemp=[.54,.78,.58,.30][this.seasonIndex];const rain=[.58,.35,.46,.26][this.seasonIndex];const anomaly=this.thermalRules===THERMAL_WEATHER.policy?advanceThermalWeather(this.thermalPattern,Math.floor(this.tickCount/CFG.dayTicks)):0,baseline=seasonTemp+.04*Math.sin(dayInSeason/CFG.seasonDays*Math.PI*2),temp=Math.max(-.5,Math.min(1.5,baseline+anomaly)),temperatureAnomaly=temp-baseline,draw=this.rng.next();if(WEATHER_PATTERNS.enabled){/* The sim.rng draw above is kept so every other random sequence is identical with weather patterns on or off; weather uses its own seeded stream. */const st=validWeatherState(this.weatherPattern)?this.weatherPattern:(this.weatherPattern=createWeatherState(this.seed));advanceWeatherTo(st,Math.floor(this.tickCount/CFG.dayTicks));this.climate={temp,rain:rain*st.factor,weatherFactor:st.factor,...(this.climateWaterRules?{evaporation:this.climateWaterRules}:{}),...(this.thermalRules===THERMAL_WEATHER.policy?{temperatureAnomaly}:{})};return}this.climate={temp,rain:rain*(.75+.5*draw),...(this.climateWaterRules?{evaporation:this.climateWaterRules}:{}),...(this.thermalRules===THERMAL_WEATHER.policy?{temperatureAnomaly}:{})}}
   phaseSoil(){if(this.tickCount%CFG.dayTicks!==0)return;const w=this.world;if(SOIL_WATER.enabled){advanceEnvironmentWater(w,this.climate,this.day);advanceSoilDay(w,this.climate,this.day);const ice=advanceSurfaceIce(w,this.climate,this.day);if(ice&&(ice.frozen||ice.thawed))w.buildHydrology();for(let i=0;i<w.len;i++)if(w.environment||!w.water[i])w.temperature[i]+=(localTemperature(w,this.climate,i)-w.temperature[i])*(w.water[i]?.04:.12);return}for(let i=0;i<w.len;i++){if(w.water[i]){w.moisture[i]=1;continue}const weather=Math.max(.05,Math.min(1,w.moisture[i]+this.climate.rain*.06-(.025+.035*this.climate.temp)));const groundwater=(w.seepage[i]||0)*.72;w.moisture[i]=Math.max(weather,groundwater);w.temperature[i]+=(this.climate.temp-w.temperature[i])*.12;}}
   phaseVegetation(options){drain(this.phaseVegetationSteps(options))}
   // Resumable form: pauses between stages, every 16 land rows and inside botanical reproduction.

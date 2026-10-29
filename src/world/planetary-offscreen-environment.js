@@ -70,7 +70,7 @@ export function advanceRemoteEnvironment(active,session,{maxDays=OFFSCREEN_ENVIR
   lastSoilClosure:0,lastSaltClosure:0};
  for(let i=0;i<steps;i++){
   const day=temp.day;
-  const {climate,weather}=planetaryWeatherForDay(temp.seed,day,temp.weatherPattern);
+  const {climate:baseClimate,weather}=planetaryWeatherForDay(temp.seed,day,temp.weatherPattern),climate=temp.climateWaterRules?{...baseClimate,evaporation:temp.climateWaterRules}:baseClimate;
   temp.weatherPattern=weather;
   // Reuse the real hydrological flows and their day-local conservation audits.
   const salt=advanceEnvironmentWater(temp.world,climate,day);

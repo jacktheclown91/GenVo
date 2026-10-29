@@ -104,6 +104,7 @@ const runtime=[
   'tests/inertia.mjs',
   'tests/structural-support.mjs',
   'tests/arid-physiology.mjs',
+  'tests/climate-water.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',
