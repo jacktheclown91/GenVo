@@ -1,4 +1,5 @@
 import {thermalDemand} from './thermal-demand.js';
+import {airTemperature} from './diurnal-temperature.js';
 import {COAT_MOISTURE} from '../lineage/coat-moisture.js';
 import {SEASONAL_COAT} from '../lineage/seasonal-coat.js';
 import {YOUNG_CLIMATE,youngClimateExposure} from './young-climate.js';
@@ -7,7 +8,7 @@ import {basalResourceCosts} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 export const THERMAL_REFUGE=Object.freeze({policy:'physiological-thermal-refuge/1',minimumLoad:.03,minimumRelief:.008,travelPenalty:.0015,radius:6});
 export function thermalSiteDemand(sim,a,x=a.x,y=a.y){
- const w=sim.world,i=w.idx(x,y),probe=Object.assign(Object.create(a),{x,y}),temperature=w.temperature[i],moisture=w.moisture[i],persistent=w.environment?.coatMoisturePolicy===COAT_MOISTURE.policy;
+ const w=sim.world,i=w.idx(x,y),probe=Object.assign(Object.create(a),{x,y}),temperature=airTemperature(sim,i),moisture=w.moisture[i],persistent=w.environment?.coatMoisturePolicy===COAT_MOISTURE.policy;
  const coat=persistent?{wetness:a.coatWetness??0,...(w.environment?.seasonalCoatPolicy===SEASONAL_COAT.policy?{density:a.coatDensity??SEASONAL_COAT.defaultDensity}:{})}:{wet:(sim.climate?.rain||0)>.65&&moisture>.6};
  const young=w.environment?.youngClimatePolicy===YOUNG_CLIMATE.policy?youngClimateExposure(a,temperature,moisture):null;
  const demand=thermalDemand(sim,a,{temperature,shelter:a.lineage?(sim.shelter?.thermalMultiplier?.(probe)??1):1,coat,young,sleep:torporMetabolism(a)});

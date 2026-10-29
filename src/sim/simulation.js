@@ -127,6 +127,7 @@ const NO_INTERACTION=()=>{};
 // Render-time cache of "no living player" per actor list (never saved; see Simulation.player).
 const PLAYER_MISS=new WeakMap();
 import {SOIL_WATER,CLIMATE_WATER,advanceSoilDay} from '../ecology/soil-water.js';
+import {DIURNAL,airTemperature} from '../ecology/diurnal-temperature.js';
 import {beginPageVegetationDay,visitLandByWorldPageSteps,completePageVegetationDay} from '../world/page-vegetation-work.js';
 import {drain} from './resumable.js';
 import {beginPageFaunaTick,visitLivingFaunaByPage,completePageFaunaTick} from '../ecology/page-fauna-work.js';
@@ -163,7 +164,7 @@ export class Simulation{
     stormWeather=true,
     strangerResponses=true,
     dayClock=false,
-    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,climateWater=false,
+    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,climateWater=false,diurnal=false,
     foodProperties=false,
     tissueWater=false,
     winterWater=false,
@@ -231,6 +232,8 @@ export class Simulation{
     if(aridPhysiology){if(aridPhysiology!==true&&aridPhysiology!==ARID_PHYSIOLOGY.policy)throw Error('Unknown arid physiology policy.');this.aridPhysiologyRules=ARID_PHYSIOLOGY.policy}
     // Temperature-driven evaporation for the soil water balance (climate-water/1).
     if(climateWater){if(climateWater!==true&&climateWater!==CLIMATE_WATER.policy)throw Error('Unknown climate water policy.');this.climateWaterRules=CLIMATE_WATER.policy}
+    // Air warms by day and cools by night around the daily mean (diurnal-temperature/1).
+    if(diurnal){if(diurnal!==true&&diurnal!==DIURNAL.policy)throw Error('Unknown diurnal temperature policy.');this.diurnalRules=DIURNAL.policy}
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
     if(tissueWater)this.tissueWaterRules=TISSUE_WATER.policy;
     if(winterWater)this.winterWaterRules=WINTER_WATER.policy;
@@ -848,7 +851,7 @@ export class Simulation{
       const attempt={tick:this.tickCount,day:this.day,parentIds:[a.id,b.id],accepted:true,conceived,compatibility:structuredClone(compatibility)};a.lastReproductiveAttempt=b.lastReproductiveAttempt=attempt;
       if(!conceived){learnCourtshipOutcome(this,a,b,true);a.reproCooldown=b.reproCooldown=8;a.lastCourtshipFailure={tick:this.tickCount,partnerId:b.id,reason:'Both accepted; no pregnancy formed. Recover before trying again.'};b.lastCourtshipFailure={tick:this.tickCount,partnerId:a.id,reason:a.lastCourtshipFailure.reason};a.courtshipPerformance=b.courtshipPerformance=null;a.target=b.target=null;a.intent=b.intent='idle';this.reproduction.endSelectedEncounter(a,b);return false}
       female.pregnant={fatherId:male.id,paternalInheritance:paternalInheritance(male,{population:conceptionPopulationEvidence(this,male)}),maternalInheritance:paternalInheritance(female,{population:conceptionPopulationEvidence(this,female)}),days:s.gestation,totalDays:s.gestation,startedDay:this.day,startedYear:this.year,mode:conceptionMode(female,this.world),dualAtConception:reproductiveMode(female)==='dual',compatibilityAtConception:structuredClone(compatibility)};Object.assign(female.pregnant,conceptionFunding(this.rng,female,male,s,female.pregnant.mode,{dual:female.pregnant.dualAtConception}));female.reproCooldown=s.gestation+8;male.reproCooldown=8;female.lastMate=male.id;male.lastMate=female.id;female.reproDrive=0;male.reproDrive=0;a.target=b.target=null;this.reproduction.onMated(a,b);this.cognition.onMate(a,b);this.disease.onMate(a,b);this.regionalEcology.noteMating(female,male);rememberBreedingSite(this,female,male);learnCourtshipOutcome(this,a,b,true);return true}
-  phaseMetabolism(){for(const a of this.animals){if(!a.alive)continue;const s=SPECIES[a.species],fx=adaptationEffects(a),basal=basalResourceCosts(a);const hold=checkCanopyHold(a,this.world);if(hold)a.lastFlightIncident={...hold,tick:this.tickCount};if(this.jumpingRules===JUMP.policy&&!a.player&&Number.isFinite(a.exertion))this.exertion.step(a,CFG.lifeStride/CFG.simHz,{moving:a.movedTick===this.tickCount});const fall=advanceFlight(a,this.world,CFG.lifeStride/CFG.simHz,{rain:this.climate.rain,swimmer:canSwim(a),moving:a.movedTick===this.tickCount});if(fall)a.lastFlightIncident={...fall,tick:this.tickCount};const cell=this.world.idx(a.x,a.y),temp=burrowTemperature(this.world,a,this.world.temperature[cell]),comfort=.55*a.genes.climate,thermalKind=temp>comfort?'heat':'cold';
+  phaseMetabolism(){for(const a of this.animals){if(!a.alive)continue;const s=SPECIES[a.species],fx=adaptationEffects(a),basal=basalResourceCosts(a);const hold=checkCanopyHold(a,this.world);if(hold)a.lastFlightIncident={...hold,tick:this.tickCount};if(this.jumpingRules===JUMP.policy&&!a.player&&Number.isFinite(a.exertion))this.exertion.step(a,CFG.lifeStride/CFG.simHz,{moving:a.movedTick===this.tickCount});const fall=advanceFlight(a,this.world,CFG.lifeStride/CFG.simHz,{rain:this.climate.rain,swimmer:canSwim(a),moving:a.movedTick===this.tickCount});if(fall)a.lastFlightIncident={...fall,tick:this.tickCount};const cell=this.world.idx(a.x,a.y),temp=burrowTemperature(this.world,a,airTemperature(this,cell)),comfort=.55*a.genes.climate,thermalKind=temp>comfort?'heat':'cold';
  const thermalShelter=a.lineage?this.shelter.thermalMultiplier(a):1;
  const moisture=this.world.moisture[cell],coatSeason=this.world.environment?.seasonalCoatPolicy===SEASONAL_COAT.policy
    ?advanceSeasonalCoat(a,{temperature:temp,comfort,maximumEnergy:s.maxEnergy,seasonTemperature:this.climate.temp}):null;

@@ -1,4 +1,5 @@
 import {learnedResourceTarget} from './learned-resource-target.js';
+import {airTemperature} from '../ecology/diurnal-temperature.js';
 import {toReserve,toAbsolute,mouthScale} from '../organisms/body-size.js';
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {isFeedingIntent} from '../ecology/feeding-intents.js';
@@ -426,7 +427,7 @@ export class FamilyController{
         if(!milkEligible(lactating,child))continue;
         if(caregiver.id!==lactating.id)continue;
         const milk=transferMilk(caregiver,child);if(milk.ok)child.lastMilkTick=this.sim.tickCount;
-        const cell=this.sim.world.idx(child.x,child.y),temp=this.sim.world.temperature[cell];
+        const cell=this.sim.world.idx(child.x,child.y),temp=airTemperature(this.sim,cell);
         const climateOption=this.sim.world.environment?.youngClimatePolicy===YOUNG_CLIMATE.policy
           ?{comfort:.55*child.genes.climate}:undefined;
         if(motherWarmth(caregiver,child,temp,climateOption))child.lastMaternalWarmthTick=this.sim.tickCount;
