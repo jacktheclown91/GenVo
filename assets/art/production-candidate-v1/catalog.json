@@ -1,6 +1,6 @@
 {
   "schema": "genvo.part-art-variants/1",
-  "version": 6,
+  "version": 7,
   "status": "production-candidate-creator-review",
   "native32Fallback": true,
   "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
@@ -371,11 +371,56 @@
       "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
       "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "proto-wing",
+      "resolution": 64,
+      "path": "./proto-wing-64.indexed.json.gz",
+      "checksum": "b7723384c12b66bb6f516e1e6dff8d874f75ba17e6b7b32ebda79e719baa07aa",
+      "bytes": 6176,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "b440ae23ce02fd7d0a4dc36d8104f5ee1173ea8b2f66cbd6481a00e636b74dd3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "proto-wing",
+      "resolution": 128,
+      "path": "./proto-wing-128.indexed.json.gz",
+      "checksum": "7eb0c6a3d76a5f0b3733372ade4dbef7873aee2e37dc455bb6aff024a429872c",
+      "bytes": 19530,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "b440ae23ce02fd7d0a4dc36d8104f5ee1173ea8b2f66cbd6481a00e636b74dd3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "flight-wing",
+      "resolution": 64,
+      "path": "./flight-wing-64.indexed.json.gz",
+      "checksum": "4430541c767a0da9c6ad0f533c2af5d13e4d0862fe6c12b025ca2294bbcc4366",
+      "bytes": 10026,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "0a85a6d6edb07bb81d6027fc2e8949fd1393378926ccaa49b2914d7271daf02e",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "flight-wing",
+      "resolution": 128,
+      "path": "./flight-wing-128.indexed.json.gz",
+      "checksum": "0c6c25ee2c00d33c510ddbdcf4f667dd942be0adca09919c9021fe583b085357",
+      "bytes": 31193,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "0a85a6d6edb07bb81d6027fc2e8949fd1393378926ccaa49b2914d7271daf02e",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     }
   ],
   "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
   "faceRefinement": "Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.",
   "limbRefinement": "Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration.",
   "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.",
-  "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved."
+  "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.",
+  "wingRefinement": "Native indexed precursor and flight feathers; existing frame, root and dorsal folding contracts preserved."
 }
