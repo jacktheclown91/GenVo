@@ -1,3 +1,4 @@
+import {WildlifeContactTracker} from './wildlife-contact.js';
 import {movementContact,contactEnvelope} from './movement-contact.js';
 import {audibleWildfire} from '../ecology/wildfire.js';
 import {audibleThunder} from '../ecology/thunderstorms.js';
@@ -22,13 +23,13 @@ export class AudioDirector{
     this.masterLevel=.72;this.musicLevel=.34;this.sfxLevel=.68;this.ambienceLevel=.42;
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
     this.lastFireAudioTick=-1;this.fireAudioState=null;this.thunderAudio=new WeakMap();this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
-    this.moveClock=0;this.movementAudio=null;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
+    this.moveClock=0;this.movementAudio=null;this.wildlifeContacts=new WildlifeContactTracker();this.sceneClock=0;this.currentScene=musicSceneFor(sim);
     this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;
     this.loadPrefs();
   }
   setSimulation(sim){
-    this.movementAudio=null;this.moveClock=0;
+    this.movementAudio=null;this.moveClock=0;this.wildlifeContacts.clear();
     this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     if(this.ctx)this.updateMix(this.currentScene);
   }
@@ -134,7 +135,7 @@ export class AudioDirector{
     this.sceneClock+=dt;
     if(this.sceneClock>=.22){this.sceneClock=0;this.currentScene=musicSceneFor(this.sim);this.updateMix(this.currentScene)}
     this.pollSimulationEvents();
-    if(this.unlocked&&this.enabled){this.scheduleMusic();this.updateMovement(dt,input);this.updateWildlife(dt)}
+    if(this.unlocked&&this.enabled){this.scheduleMusic();this.updateMovement(dt,input);this.updateWildlifeMovement(dt);this.updateWildlife(dt)}else this.wildlifeContacts.clear();
   }
   updateMix(scene){
     if(!this.ctx||!this.master)return;const t=this.ctx.currentTime,danger=scene.danger||0,duck=t<this.handoffDuckUntil?.56:1;
@@ -189,6 +190,9 @@ export class AudioDirector{
     this.moveClock+=distance;
     const sprint=!!input.sprint||p.intent==='flee',contact=movementContact(this.sim.world,p),spacing=(sprint?.65:.5)*contact.spacing;
     if(this.moveClock>=spacing){this.moveClock%=spacing;this.playCue(sprint?'sprint':'move',{quiet:true,contact})}
+  }
+  updateWildlifeMovement(dt){
+    for(const {animal,contact,sprint} of this.wildlifeContacts.sample(this.sim,dt)){const destination=this.spatialDestination(animal.x,animal.y,{radius:8,volume:.38});if(destination)this.playContact(contact,sprint,null,destination)}
   }
   updateWildlife(dt){
     const sim=this.sim,p=sim.player?.();if(!p||sim.paused)return;
@@ -258,9 +262,9 @@ export class AudioDirector{
   dangerPulse(time,intensity=.5){
     if(!this.ctx)return;const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type='sine';o.frequency.setValueAtTime(62,time);o.frequency.exponentialRampToValueAtTime(46,time+.11);g.gain.setValueAtTime(.0001,time);g.gain.exponentialRampToValueAtTime(.018+.025*intensity,time+.012);g.gain.exponentialRampToValueAtTime(.0001,time+.16);o.connect(g);g.connect(this.musicBus);o.start(time);o.stop(time+.18);
   }
-  playContact(contact,sprint=false,time=null){
+  playContact(contact,sprint=false,time=null,destination=this.sfxBus){
     if(!this.unlocked||!this.enabled||!this.ctx)return false;time??=this.ctx.currentTime+.005;
-    const e=contactEnvelope(contact,sprint);this.noise(time,e.seconds,e.peak,e.frequency);if(e.body)this.tone(e.bodyHz,e.bodyHz*.7,time,e.seconds,e.body,'triangle');if(contact.surface==='water')this.noise(time+.035,e.seconds*.65,e.peak*.35,e.frequency*2.2);
+    const e=contactEnvelope(contact,sprint);this.noise(time,e.seconds,e.peak,e.frequency,destination);if(e.body)this.tone(e.bodyHz,e.bodyHz*.7,time,e.seconds,e.body,'triangle',destination);if(contact.surface==='water')this.noise(time+.035,e.seconds*.65,e.peak*.35,e.frequency*2.2,destination);
   }
   playCue(name,data={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return;const t=this.ctx.currentTime+.005;
