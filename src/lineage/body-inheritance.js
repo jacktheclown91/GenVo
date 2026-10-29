@@ -78,13 +78,13 @@ function asymmetricOptions(plan){const out=[],present=new Set(plan.nodes.map(n=>
   for(const p of Object.values(PARTS))if(!p.tags.includes('exclusive')&&p.compatibleSocketTypes.includes('spur')&&p.developmentalPrerequisites.every(q=>present.has(q)))for(const n of paired)if(!plan.nodes.some(x=>x.parent===n.id))out.push(d=>place(d,p.id,n.id,'spur'));
   return out}
 // One reachable mutation of a plan, or the plan unchanged when none is viable.
-export function mutatePlan(rng,plan,{onMutation=null,gliding=true,marine=true,vision=true}={}){
+export function mutatePlan(rng,plan,{onMutation=null,gliding=true,marine=true,vision=true,structural=false}={}){
   const oneSided=DEVELOPMENTAL_SYMMETRY.enabled&&rng.chance(ASYMMETRIC_SHARE);
   const options=oneSided?asymmetricOptions(plan):mutationOptions(plan,{gliding,marine,vision});
   for(const loss of optionalLossChoices(plan,{asymmetric:oneSided})){const fn=d=>{d.plan=loss.plan;return{ok:true}};fn.loss=loss;options.push(fn)}
   if(!options.length)return plan;
   const ancestry=plan.nodes.map(n=>n.partId);if(ancestry.some(id=>PARTS[id]?.tags.includes('leg')))ancestry.push('walking-leg');
-  const index=rng.int(0,options.length-1),pick=options[index],d=createDraft({base:plan,ancestry,budget:Infinity});
+  const index=rng.int(0,options.length-1),pick=options[index],d=createDraft({base:plan,ancestry,budget:Infinity,structural});
   const r=pick(d),problems=r?.ok?draftProblems(d):[r?.reason||'operation rejected'],accepted=!!r?.ok&&!problems.length,result=accepted?d.plan:plan;
   onMutation?.({policy:'neutral-head-structure/1',operator:pick.loss?'delete':pick.headStructure?'head-structure':'add-or-replace',branch:oneSided?'asymmetric':'paired',choice:index,options:options.length,attempted:true,accepted,from:plan.id,to:result.id,targets:pick.loss?.targets||[],removed:accepted?pick.loss?.removed||[]:[],moved:accepted&&pick.headStructure?headStructureMoves(plan,result):[],problems});
   return result;
@@ -182,7 +182,7 @@ export function inheritBody(sim,child,mother,father){
   if(!recombined)recombined=recombinationReceipt(plan,inherited,singlePlanSelections(plan,[0]),'single-parent');
   child.bodyInheritance={schema:RECOMBINATION_RECEIPT,parents:parents.map((p,i)=>({id:p.id,bodyId:p.bodyPlan.id,recombinationBodyId:inherited[i].id,filteredExclusiveParts:!!p.elder})),recombined};
   let variation={policy:'neutral-head-structure/1',operator:'inherit',attempted:false,accepted:true,from:plan.id,to:plan.id,targets:[],removed:[],moved:[]};
-  if(sim.rng.chance(sim.bodyVariationChance??BODY_VARIATION.mutationChance))plan=mutatePlan(sim.rng,plan,{gliding:sim.glidingRules==='finite-height-gliding/1',marine:sim.marineFoodRules==='marine-food-web/1',vision:sim.visionRules==='anatomical-vision/1',onMutation:event=>{variation=event}});
+  if(sim.rng.chance(sim.bodyVariationChance??BODY_VARIATION.mutationChance))plan=mutatePlan(sim.rng,plan,{gliding:sim.glidingRules==='finite-height-gliding/1',marine:sim.marineFoodRules==='marine-food-web/1',vision:sim.visionRules==='anatomical-vision/1',structural:sim.structuralSupportRules==='structural-support/1',onMutation:event=>{variation=event}});
   const lostTraits=[...new Set(variation.removed.map(n=>PARTS[n.partId]?.legacy?.adaptation).filter(Boolean))];
   child.bodyVariation={...variation,parentBodies:parents.map(p=>({id:p.id,bodyId:p.bodyPlan.id})),finalBody:null};
   syncAnatomy(child);

@@ -1,5 +1,6 @@
 import {attachHeadPlan,detachHeadPlan} from './head-plan.js';
 import {partDef} from './part-registry.js';
+import {structuralProblem} from '../organisms/structural-support.js';
 import {makePlan,validatePlan,partCounts} from './body-plan.js';
 
 // Evolution Expansion Phase C (GDD v1, sections 5, 7.2 and 7.3; backlog EV-008): the editor draft.
@@ -18,9 +19,10 @@ const keyOf=p=>`${p.parent}|${p.socket}|${p.partId}`;
 
 // Phase G: parts the player has seen on wild GenVo8s cost 1 MP less (never below 1).
 export function partCost(draft,partId){const c=partDef(partId)?.mutationCost??0;return draft?.known?.has?.(partId)&&c>1?c-1:c}
-export function createDraft({base,ancestry=[],budget=8,known=null,unlocked=null}){
+// `structural` (structural-support/1 worlds): refuse anatomies that cannot carry themselves.
+export function createDraft({base,ancestry=[],budget=8,known=null,unlocked=null,structural=false}){
   const start=makePlan(placementsOf(base),{headMode:base.headMode});
-  return{base:start,plan:start,ancestry:new Set([...ancestry,...partsIn(start)]),budget,known:known?new Set(known):null,unlocked:unlocked?new Set(unlocked):null,history:[],future:[]};
+  return{base:start,plan:start,ancestry:new Set([...ancestry,...partsIn(start)]),budget,known:known?new Set(known):null,unlocked:unlocked?new Set(unlocked):null,history:[],future:[],...(structural?{structural:true}:{})};
 }
 function partsIn(plan){return plan.nodes.map(n=>n.partId)}
 
@@ -46,6 +48,7 @@ export function draftProblems(draft){
   if(legs<4)out.push('Needs at least four legs to stand and walk.');
   if(!mouths)out.push('Needs a mouth to feed.');
   if(!eyes)out.push('Needs at least one eye.');
+  if(draft.structural){const why=structuralProblem(draft.plan);if(why&&legs>=4)out.push(why)}
   const cost=draftCost(draft);if(cost>draft.budget)out.push(`Costs ${cost} MP, more than the ${draft.budget} MP available.`);
   return out;
 }

@@ -19,8 +19,9 @@ export const INERTIA=Object.freeze({policy:'inertia/1',rampSeconds:.2,referenceS
 export const REFERENCE_ACCELERATION=INERTIA.referenceSpeed/INERTIA.rampSeconds;
 export const inertiaEnabled=sim=>sim?.inertiaRules===INERTIA.policy;
 
-export function accelerationLimit(animal,{swimming=false,onIce=false,traction=1}={}){
- const muscle=REFERENCE_ACCELERATION/structuralScale(animal);
+// `support` (structural-support/1) scales the usable muscle limit of an overloaded body.
+export function accelerationLimit(animal,{swimming=false,onIce=false,traction=1,support=1}={}){
+ const muscle=REFERENCE_ACCELERATION/structuralScale(animal)*support;
  if(swimming)return muscle*INERTIA.waterPropulsion;
  const grip=onIce?INERTIA.iceTraction:Math.max(0,Math.min(1,Number.isFinite(traction)?traction:1));
  return Math.min(muscle,REFERENCE_ACCELERATION*INERTIA.groundTraction*grip);
@@ -48,7 +49,7 @@ export function speedOf(animal){const m=animal?.motion;return m?Math.hypot(m.vx,
 // Plan one step: where the body would go and its new velocity. Nothing changes
 // until commitMotion, so callers can still refuse an unoccupiable endpoint.
 export function planMotion(animal,desiredX,desiredY,dt,travel={}){
- const {vx,vy}=velocityOf(animal),accel=accelerationLimit(animal,{swimming:!!travel.swimming,onIce:!!travel.onIce,traction:travel.traction??1});
+ const {vx,vy}=velocityOf(animal),accel=accelerationLimit(animal,{swimming:!!travel.swimming,onIce:!!travel.onIce,traction:travel.traction??1,support:travel.support??1});
  return{...integrateMotion(vx,vy,desiredX,desiredY,accel,dt),from:{vx,vy},accel,dt};
 }
 export function commitMotion(animal,plan){

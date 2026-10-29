@@ -4,6 +4,7 @@ import {canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {massCostToReserve,SIZE_PHYSICS} from '../organisms/body-size.js';
 import {inertiaEnabled,planMotion,commitMotion,haltMotion,kineticWork} from '../organisms/motion.js';
+import {structuralSpeed} from '../organisms/structural-support.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
 import {partEffectFactors,WAVE1} from '../lineage/part-abilities.js';
 import {CFG} from '../sim/config.js';
@@ -379,7 +380,7 @@ export class PredatorEncounterController{
     const list=this.engaged;if(!list.length||!(dt>0))return;const player=this.sim.player(),P=CFG.stalkerPursuit;
     for(let i=0;i<list.length;i++){
       const h=list[i];if(!h.alive||!h.pursuitEngaged)continue;if(!MOVING_INTENTS.has(h.intent)){if(inertiaEnabled(this.sim)&&h.motion&&this.isEngagedMover(h))this.sim.coastBody(h,dt);continue}
-      const s=SPECIES[h.species],base=s.speed*(h.genes?.motion||1),st=h.playerHunt,laned=Number.isFinite(st?.aimDirX)&&Number.isFinite(st?.aimDirY);
+      const s=SPECIES[h.species],support=this.sim.supportFor?.(h)??null,base=s.speed*(h.genes?.motion||1)*(support?structuralSpeed(support):1),st=h.playerHunt,laned=Number.isFinite(st?.aimDirX)&&Number.isFinite(st?.aimDirY);
       let dx=0,dy=0,step=0,sp=0;
       if(h.intent==='charge-player'&&laned){
         // A committed charge runs its locked straight lane at full charge speed. It does not
@@ -402,7 +403,7 @@ export class PredatorEncounterController{
       // committed lane's end and the stand-offs from the player bound where it may be.
       let plan=null;
       if(inertiaEnabled(this.sim)){
-        plan=planMotion(h,dx*sp,dy*sp,dt,{});const go=Math.hypot(plan.dx,plan.dy),bound=step<sp*dt-1e-12?step:Infinity;
+        plan=planMotion(h,dx*sp,dy*sp,dt,{support:support?.acceleration??1});const go=Math.hypot(plan.dx,plan.dy),bound=step<sp*dt-1e-12?step:Infinity;
         if(go>bound){const k=bound/go;plan.dx*=k;plan.dy*=k;if(h.intent!=='charge-player'){plan.vx*=k;plan.vy*=k}}
         step=Math.hypot(plan.dx,plan.dy);if(step>0){dx=plan.dx/step;dy=plan.dy/step}else commitMotion(h,plan);
       }
