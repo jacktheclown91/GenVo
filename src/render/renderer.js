@@ -61,6 +61,7 @@ import {buildVisualWaterMask,LANDFORM_RESOLUTION,maskWaterAt} from './landform.j
 import {buildVisualHabitatMask,visualHabitatAt,buildSmoothedHabitatField,HABITAT_ZONE} from './habitat.js';
 import {visualCompositionAt} from './composition.js';
 import {visualLifeState} from './life.js';
+import {ThermalPresentation,applyThermalExpression} from './thermal-expression.js';
 import {behaviorVisualState,visualActionFromIntent} from './behavior.js';
 import {drawGenvoSprite,SPRITE_BATCH,beginSpriteBatch,endSpriteBatch,spriteBatchAfterFlush,spriteBatchBeforeFlush} from './genvo-draw.js';
 import {creaturePalette} from './creature-palette.js';
@@ -1066,6 +1067,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social,feeding});
+    const thermal=(this.thermalPresentation||=new ThermalPresentation()).sample(this.sim,a,this.encounters?.time||0,{action,moving,blocked:!!feeding||!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome});applyThermalExpression(behavior,thermal);
     const workMotion=(this.workMotion||=new WorkMotionPresentation()).sample(this.sim,a,this.encounters?.time||0);applyWorkMotion(behavior,workMotion);
     const aerial=(this.aerialPresentation||=new AerialPresentation()).sample(this.sim,a,this.encounters?.time||0);applyAerialPose(behavior,aerial);
     // Body and joints yield above support; contact shadows/toes stay on the ground.
@@ -1104,7 +1106,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
       eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
     });
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion||thermal),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')+(thermal?'|thermal'+thermal.cacheToken:'')});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 
