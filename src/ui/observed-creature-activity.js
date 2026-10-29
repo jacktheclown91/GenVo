@@ -1,3 +1,4 @@
+import {dormancyCaption} from './dormancy-presentation.js';
 import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {currentCourtshipMove} from '../reproduction/courtship-performance.js';
 
@@ -15,7 +16,7 @@ export function observedCreatureActivity(sim,observer,target){
   if(!observer?.alive||!target?.alive||observer.id===target.id||
      !Number.isFinite(target.x)||!Number.isFinite(target.y)||
      !visuallyObservable(sim,observer,target))return null;
-  if(target.torpor)return 'In deep winter torpor';
+  if(target.torpor)return dormancyCaption(target);
   const state=target.stranger;
   if(state?.id===observer.id){
     const active=state.untilTick>sim.tickCount;

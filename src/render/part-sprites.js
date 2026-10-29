@@ -1,3 +1,4 @@
+import {aridPartPigment} from './arid-presentation.js';
 import {pixel,pixelLine,snap} from './pixel-art.js';
 import {drawHead} from './head.js';
 import {artForPart} from './runtime-part-art.js';
@@ -113,11 +114,11 @@ const DRAW={
     const sx=b.x+k.perp.x*n*.65,sy=b.y+k.perp.y*n*.65;
     const ex=sx-k.fx*(2.5-Math.abs(n)*.22)+k.perp.x*n*.55,
           ey=sy-k.fy*(2.5-Math.abs(n)*.22)+k.perp.y*n*.55-1.1;
-    pixelLine(c,sx,sy,ex,ey,k.s,n%2?'#c86b3e':'#f2a45e',.8);
+    pixelLine(c,sx,sy,ex,ey,k.s,k.arid?.frillFlushed?(n%2?'#b9503c':'#ee8d65'):(n%2?'#c86b3e':'#f2a45e'),.8);
     pixel(c,snap(ex-.4),snap(ey-.4),.85,.85,k.s,'#ffe4a5');}},
   'wax-plates'(c,k){const f=flankAt(k);for(const n of [-1,0,1]){
     const x=f.x-k.fx*n*1.1,y=f.y-k.fy*n*1.1;
-    pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,'#817456');
+    pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,k.arid?.waxSealed?'#a39770':'#817456');
     pixel(c,snap(x-.55),snap(y-.55),1.25,.36,k.s,'#e6d7a3');}},
   // E8: two swept load-bearing wings, overhead only, flapping from the actual dorsal
   // mount. The stroke depends on existing gait/pose time, not simulation RNG.
@@ -386,7 +387,7 @@ export function drawPart(c,partId,k){
   if(anchor){
    const faceFactor=k.eye?.x!==undefined?.55:k.mouth?.x!==undefined?.72:PART_SPRITES[partId]?.layer==='face'?.7:1;
    const scale=k.s*(mount?.scale??(faceFactor/2));
-   const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
+   const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:aridPartPigment(partId,k.nativePigment,k.arid),
     rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:['patagium','gliding-membrane'].includes(partId)&&Number.isFinite(k.behavior?.glideSpread)?0:(k.authoredFrameIndex??null)};
    const fit=nativeCoveringFit(partId,k),rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX,oral=k.mouth&&authored.expressionScale!=='fixed'?k.behavior?.feedingMouthShape:null;let painted=false;c.save();try{if(rotation||paired||oral||fit){c.translate(args.x,args.y);if(fit)c.scale(fit.x,fit.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}if(oral){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(Math.max(.8,Math.min(1.15,oral.forward||1)),Math.max(.8,Math.min(1.15,oral.width||1)));c.rotate(-axis)}args.x=0;args.y=0}if(!oral&&k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
   }

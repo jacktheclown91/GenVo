@@ -1,0 +1,304 @@
+{
+  "status": "PASS",
+  "subject": "arid",
+  "seed": "GENVO8-TEST-A",
+  "comparison": {
+    "arid": {
+      "policy": "arid-physiology/1",
+      "heat": 0,
+      "frillFlushed": false,
+      "waxSealed": true,
+      "aestivating": false
+    },
+    "environment": {
+      "temperature": 0.47412219643592834,
+      "moisture": 0.4402424395084381
+    },
+    "study": {
+      "format": "genvo.organism-study/1",
+      "source": {
+        "seed": "GENVO8-TEST-A",
+        "day": 1
+      },
+      "animal": {
+        "id": 197,
+        "species": "genvo",
+        "age": 30,
+        "genes": {
+          "body": 0.9098660482559353,
+          "motion": 1.0518574275542052,
+          "metabolism": 1.0132714194245638,
+          "digestion": 0.9678439370822162,
+          "senses": 0.9481260931119323,
+          "climate": 1.0350425716023892,
+          "immunity": 0.9368618577253074,
+          "temperament": 1.0103243772871793
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 1,
+          "chroma": 3,
+          "tone": 1,
+          "marking": 0,
+          "density": 3,
+          "accent": 7
+        },
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "adaptations": [],
+        "sex": "M",
+        "massPolicy": "relative-anatomical-load/1",
+        "bodySize": {
+          "schema": 1,
+          "alleles": [
+            -0.03450084861833602,
+            0.019231091532856223
+          ]
+        },
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "soft-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/dorsal",
+              "partId": "heat-frill",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "dorsal"
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/flank.left",
+              "partId": "wax-plates",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "flank.left"
+            },
+            {
+              "id": "root/flank.right",
+              "partId": "fat-pad",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "flank.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-b9620a06"
+        },
+        "alive": true
+      }
+    },
+    "timings": [
+      {
+        "label": "native32",
+        "medianMs": 7.899999998509884,
+        "p90Ms": 15.600000001490116,
+        "samples": 10
+      },
+      {
+        "label": "before64",
+        "medianMs": 9.200000002980232,
+        "p90Ms": 31.399999998509884,
+        "samples": 10
+      },
+      {
+        "label": "current64",
+        "medianMs": 4.700000002980232,
+        "p90Ms": 13.700000002980232,
+        "samples": 10
+      },
+      {
+        "label": "closeup128",
+        "medianMs": 6.100000001490116,
+        "p90Ms": 14.899999998509884,
+        "samples": 10
+      }
+    ],
+    "stateExact": true,
+    "plan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "soft-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/dorsal",
+          "partId": "heat-frill",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "dorsal"
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/flank.left",
+          "partId": "wax-plates",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "flank.left"
+        },
+        {
+          "id": "root/flank.right",
+          "partId": "fat-pad",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "flank.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-b9620a06"
+    },
+    "parts": [
+      "soft-torso",
+      "heat-frill",
+      "simple-eye",
+      "simple-eye",
+      "wax-plates",
+      "fat-pad",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "grazing-mouth"
+    ],
+    "position": {
+      "x": 45.5,
+      "y": 107.5
+    },
+    "decodedRgbaBytesPerVariant": 1048576
+  },
+  "movement": {
+    "distance": 2.0493626201219186,
+    "start": {
+      "x": 45.5,
+      "y": 107.5
+    },
+    "end": {
+      "x": 43.45063737987808,
+      "y": 107.5
+    },
+    "tick": 23
+  },
+  "errors": [],
+  "scope": "Public recorded sandbox-founder import; real supported anatomy and ordinary keyboard movement in a new planetary world. Same paused world/camera across native32/prior64/conditional64/128 art. No living actor, food, position or weather injection. 128 capture uses the same gameplay footprint; Lab closeups are separate.",
+  "creatorAcceptance": false
+}
