@@ -18,6 +18,16 @@ try{
  assert.equal(fs.existsSync(path.join(temp,'references/generated-sprite-sheets/genvo8-walk.png')),false,'derived sprites not shipped');
  assert.equal(fs.existsSync(path.join(temp,'assets/audio-source')),false,'lossless audio sources are not browser assets');
  assert.equal(fs.existsSync(path.join(temp,'assets/art/catalog.json')),true,'installed native part artwork must be in public build');
+ // itch.io HTML5 limit: at most 1,000 extracted files (itch.io/docs/creators/html5).
+ const shipped=[];(function walk(rel){for(const e of fs.readdirSync(path.join(temp,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);e.isDirectory()?walk(p):shipped.push(p)}})('.');
+ assert.ok(shipped.length<=1000,`itch.io HTML5 ZIPs hold at most 1,000 files; the export has ${shipped.length}`);
+ // Authoring art stays out, and nothing the game or Lab runs asks for it.
+ assert.equal(fs.existsSync(path.join(temp,'assets/art/experiments')),false,'resolution experiments are not shipped');
+ assert.equal(shipped.some(p=>/^assets\/art\/parts\/[^/]+\.png$/.test(p)),false,'per-part PNG previews are not shipped');
+ const runtime=[...reachable,...fs.readdirSync(path.join(root,'tools/creature-lab')).filter(n=>n.endsWith('.js')).map(n=>'tools/creature-lab/'+n)].filter(p=>p.endsWith('.js')).map(p=>fs.readFileSync(path.join(root,p),'utf8')).join(' ');
+ assert.equal(/experiments\/|entry\.png|part\.png|\.png\b['"]?\s*\]/.test(runtime),false,'no shipped code reads an excluded authoring file');
+ const catalog=JSON.parse(fs.readFileSync(path.join(root,'assets/art/catalog.json'),'utf8'));
+ for(const entry of catalog.parts)for(const key of ['indexed','path'])assert.ok(fs.existsSync(path.join(temp,'assets/art',entry[key])),entry.partId+' '+key+' is shipped');
  const catalogPath='assets/scenarios/catalog.json';
  assert.deepEqual(fs.readFileSync(path.join(temp,catalogPath)),fs.readFileSync(path.join(root,catalogPath)),'export the exact curated catalog');
  const scenarios=validateScenarioCatalog(JSON.parse(fs.readFileSync(path.join(temp,catalogPath),'utf8')));

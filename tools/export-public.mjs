@@ -29,8 +29,10 @@ for(const scenario of scenarios){
   throw Error(`Scenario file integrity check failed: ${scenario.id}`);
  files.push(scenario.file);
 }
+// Review frames, resolution experiments and per-part PNG previews are authoring
+// material: the game loads compiled indexed art and the Lab loads part JSON.
 for(const dirname of ['assets/audio','assets/ui','assets/art','tools/creature-lab']){
- function walk(rel){for(const e of fs.readdirSync(path.join(root,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);if(p==='assets/art/production-review')continue;if(e.isDirectory())walk(p);else if(e.isFile())files.push(p)}}
+ function walk(rel){for(const e of fs.readdirSync(path.join(root,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);if(p==='assets/art/production-review'||p==='assets/art/experiments'||/^assets\/art\/parts\/[^/]+\.png$/.test(p))continue;if(e.isDirectory())walk(p);else if(e.isFile())files.push(p)}}
  walk(dirname);
 }
 for(const rel of files){const src=path.join(root,rel),dst=path.join(out,rel);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.copyFileSync(src,dst)}
