@@ -23,7 +23,10 @@ step(sim);const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fix
 const restored=restoreSimulationSnapshot(structuredClone(saved));step(sim);step(restored);
 const snapshot=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'test'}));
 assert.deepEqual(snapshot(restored),snapshot(sim),'full state resumes exactly');
-const legacy=structuredClone(saved);delete legacy.world.terrain;const old=restoreSimulationSnapshot(legacy);assert.equal(old.world.terrain,undefined,'old save never receives new terrain');
+// A pre-terrain save predates every underground layer too (natural caves, excavated
+// passages and their rules), so the legacy fixture is a fresh world's snapshot with
+// terrain and those later layers removed; no creature has burrowed at tick 0.
+const legacy=structuredClone(createSimulationSnapshot(new Simulation('TOPOGRAPHY-RESUME',{player:false}),{savedAt:'fixed',reason:'test'}));delete legacy.world.terrain;delete legacy.world.subsurface;for(const k of ['caveRules','caveRuleMigrations','burrowingRules','diggingRules'])delete legacy.core[k];const old=restoreSimulationSnapshot(legacy);assert.equal(old.world.terrain,undefined,'old save never receives new terrain');
 assert.equal(restoreSimulationSnapshot(snapshot(old)).world.terrain,undefined,'legacy mode survives subsequent saves');
 const corrupt=structuredClone(saved);corrupt.world.terrain.elevation[0]=NaN;assert.throws(()=>restoreSimulationSnapshot(corrupt),/terrain elevation/);
 console.log('Topography: deterministic drainage, downhill conservative flow, finite budgets, exact resume and legacy compatibility PASS');

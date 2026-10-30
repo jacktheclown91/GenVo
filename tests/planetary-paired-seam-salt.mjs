@@ -125,6 +125,14 @@ v2Environment.schema=2;
 delete v2Environment.boundaryWaterPolicy;
 delete v2Environment.blockedBoundaries;
 delete v2Environment.volume;
+// Nor did it carry anything later schemas (3 to 6) introduced: finite surface ice and the
+// environment and soil rules recorded with them.
+for(const k of ['ice','iceBroken','iceDay','iceRevision','iceTotals'])delete v2Environment[k];
+for(const k of Object.keys(v2Environment))if(/Policy$|Eligibility$/.test(k))delete v2Environment[k];
+// A schema-2 region cannot exist under the surface-ice rule (every region must hold ice
+// stocks), so the whole v2-era save predates surface ice: no ice rule or stocks anywhere.
+for(const owner of [v2,...v2.core.planetaryTravel.sessions.map(x=>x.snapshot)]){delete owner.core.surfaceIceRules;delete owner.core.surfaceIceRuleMigrations;for(const k of ['icePolicy','ice','iceBroken','iceDay','iceRevision','iceTotals'])delete owner.world.environment[k]}
+{const archived=v2.core.planetaryTravel.sessions[0].snapshot;delete archived.world.soilWater?.springPolicy;delete archived.world.soilWater?.seamGroundwaterPolicy;for(const a of archived.animals||[]){delete a.coatWetness;delete a.coatDensity}}
 for(const row of v2Environment.daily){
  delete row.waterBefore;delete row.waterAfter;delete row.waterInput;
  delete row.waterOutput;delete row.waterClosure;

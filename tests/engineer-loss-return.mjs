@@ -59,8 +59,9 @@ if(mode==='free-world'){
  assert.ok(staged>0,'Unassisted wildlife engineer the world before intervention');
  // Causal continuation: once the interruption has ended, an eligible digger (digging forelimbs, root-eating
  // mouth, hungry, fertile undug land, no near meal) chooses to dig and completes a dig with soil effects.
+ // Finite digging also needs a real root or bulb meal in the ground, so the cell must naturally hold one.
  {const digger=sim.animals.find(a=>a.alive&&a.species==='rootling'&&hasPart(a,'digging-forelimb')&&a.age>=1);assert.ok(digger,'a living digger remains');
-  const w=sim.world;let cell=null;for(let y=8;y<w.n-8&&!cell;y++)for(let x=8;x<w.n-8;x++){const i=w.idx(x+.5,y+.5);if(!w.water[i]&&w.isPlayable(x+.5,y+.5)&&w.fertility[i]>=.5&&sim.canOccupy(digger,x+.5,y+.5)&&!sim.partAbilities.dug?.[i]){cell={x:x+.5,y:y+.5,i};break}}
+  const w=sim.world;let cell=null;for(let y=8;y<w.n-8&&!cell;y++)for(let x=8;x<w.n-8;x++){const i=w.idx(x+.5,y+.5);if(!w.water[i]&&w.isPlayable(x+.5,y+.5)&&w.fertility[i]>=.5&&sim.canOccupy(digger,x+.5,y+.5)&&!sim.partAbilities.dug?.[i]&&sim.partAbilities.rootMealAt(digger,x+.5,y+.5)){cell={x:x+.5,y:y+.5,i};break}}
   assert.ok(cell);Object.assign(digger,{x:cell.x,y:cell.y,energy:SPECIES_ROOT.maxEnergy*.4,hydration:SPECIES_ROOT.maxHydration*.8,health:100,digUntilTick:0,intent:'explore',target:null});
   assert.equal(sim.partAbilities.digDecision(digger)?.kind,'roots','a hungry eligible digger on fertile undug land chooses to dig after the interruption');
   digger.intent='dig';digger.target={x:digger.x,y:digger.y,kind:'roots'};const e0=digger.energy,before=work;sim.resolveInteraction(digger);
@@ -83,7 +84,7 @@ if(mode==='free-world'){
  // island of cells to attribute new plant establishment only to prepared soil.
  const w=sim.world;let x=0,y=0;
  for(let cy=12;cy<w.n-12&&!x;cy++)for(let cx=12;cx<w.n-12;cx++){
-  const i=w.idx(cx,cy);if(!w.water[i]&&w.fertility[i]>.68&&w.moisture[i]>.14&&w.moisture[i]<.56){x=cx;y=cy;break}
+  const i=w.idx(cx,cy);if(!w.water[i]&&w.fertility[i]>.68&&w.moisture[i]>.14&&w.moisture[i]<.56&&sim.partAbilities.rootMealAt(descendant,cx+.2,cy+.2)){x=cx;y=cy;break}
  }
  assert.ok(x>0,'Experimental plot requires naturally suitable exposed ground');
  const i=w.idx(x,y);w.plants.thistlepod[i]=0;w.seedBank.thistlepod[i]=0;reconcileSeedCell(sim.dispersal,'thistlepod',i);sim.dispersal.active.thistlepod.delete(i);// canonical cohort reconciliation keeps the seed genotype ledger equal to the cleared stock

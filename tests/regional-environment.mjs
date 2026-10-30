@@ -25,6 +25,9 @@ assert.ok(localTemperature(small,climate,2)<localTemperature(small,climate,0));a
 const sim=new Simulation('REGIONAL-RESUME',{player:false,worldGenerator:'coastal/1'}),step=s=>{const d=s.day;while(s.day===d)s.update(null)};step(sim);
 const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'environment-test'}));
 const saved=snap(sim),resumed=restoreSimulationSnapshot(structuredClone(saved));step(sim);step(resumed);assert.deepEqual(snap(resumed),snap(sim),'complete regional history resumes exactly');
-const legacy=structuredClone(saved);delete legacy.world.environment;const old=restoreSimulationSnapshot(legacy);assert.equal(old.world.environment,undefined,'older saves are not retrofitted');step(old);assert.equal(restoreSimulationSnapshot(snap(old)).world.environment,undefined);
+// A save from before the regional environment also predates diving (which reads its
+// bathymetry), so the legacy fixture is a fresh world's snapshot, before any creature
+// dives, with the environment and the diving rule removed.
+const legacy=snap(new Simulation('REGIONAL-RESUME',{player:false,worldGenerator:'coastal/1'}));delete legacy.world.environment;for(const k of Object.keys(legacy.core))if(/^diving/.test(k))delete legacy.core[k];const old=restoreSimulationSnapshot(legacy);assert.equal(old.world.environment,undefined,'older saves are not retrofitted');step(old);assert.equal(restoreSimulationSnapshot(snap(old)).world.environment,undefined);
 const corrupt=structuredClone(saved);corrupt.world.environment.salt[land[0]]=1;assert.throws(()=>restoreSimulationSnapshot(corrupt),/topology mismatch/);
 console.log('Regional environment: connected freshwater/sea, persistent climate, potable-water separation, salt/water accounting and exact resume PASS');

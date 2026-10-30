@@ -34,7 +34,6 @@ export function initializeEnvironment(w){
  return w.environment;
 }
 export function validateEnvironment(w,e){
- validateSurfaceIce(w,e);
  if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5&&e?.schema!==6)throw Error('Invalid environment schema.');
  if(e.schema>=2&&w.generator!=='planetary/1')throw Error('Planetary boundary version requires planetary geography.');
  validateBoundaryWaterPolicy(w,e);
@@ -57,6 +56,8 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&(!(e.volume instanceof Float64Array)||e.volume.length!==w.len||
     e.volume.some(v=>!Number.isFinite(v)||v<0||v>2)))
   throw Error('Invalid planetary water-volume field.');
+ // The frozen/liquid partition is checked once the water-volume field itself is valid.
+ validateSurfaceIce(w,e);
  for(let i=0;i<w.len;i++){
   const water=e.schema>=3?e.volume[i]:e.depth[i];
   if(w.water[i]?(e.depth[i]<=0||water<=0||e.salt[i]>water*2+1e-12):

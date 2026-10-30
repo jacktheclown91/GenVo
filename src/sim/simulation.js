@@ -144,6 +144,9 @@ const DIRS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 // A tick the browser is running across frames (see beginTick). Kept outside the
 // instance so it never enters saves, copies or travel.
 const pendingTicks=new WeakMap(),pendingRegionalJobs=new WeakMap();
+// starter-partner/1 (new games): the default starting partner stands on the founder's
+// own landmass. Applied once at creation; worlds built without it stay exactly original.
+export const STARTER_PARTNER=Object.freeze({policy:'same-land-partner/1'});
 export class Simulation{
   constructor(seed='GENVO8-0001',{
     player=true,
@@ -186,8 +189,10 @@ export class Simulation{
     seedViability=worldGenerator==='planetary/1',
     breedingSupport=worldGenerator==='planetary/1',
     plantLifecycle=false,
-    regionalFrontier=false
+    regionalFrontier=false,
+    starterPartner=false
   }={}){
+    if(starterPartner!==false&&starterPartner!==STARTER_PARTNER.policy)throw Error('Unknown starter partner policy.');
     if(regionalFrontier)this.regionalFrontierRules=REGIONAL_FRONTIER.policy;
     if(marineFood)this.marineFoodRules=MARINE_FOOD.policy;
     if(regionalDispersal)this.regionalDispersalRules=REGIONAL_DISPERSAL.policy;
@@ -311,7 +316,7 @@ export class Simulation{
     this.lastDefenseReceipt=null;
     if(bootstrap){
       this.spawnInitial();
-      this.prepareStarterMate();
+      this.prepareStarterMate({sameLand:starterPartner===STARTER_PARTNER.policy});
       this.rebuildSpatial();
       this.regionalEcology.resetPageResidency();
       this.reproduction.refreshSelection();
@@ -342,11 +347,18 @@ export class Simulation{
     }
     return best;
   }
-  prepareStarterMate(){
+  prepareStarterMate({sameLand=false}={}){
     const founder=this.player();if(!founder)return;const s=SPECIES[founder.species];
-    let mate=this.animals.filter(a=>a.alive&&a.species===founder.species&&a.id!==founder.id).sort((a,b)=>Math.hypot(a.x-founder.x,a.y-founder.y)-Math.hypot(b.x-founder.x,b.y-founder.y))[0];
+    // With the same-land rule, prefer the nearest partner on the founder's landmass.
+    const w=this.world,reachable=a=>!sameLand||w.sameLand(founder.x,founder.y,a.x,a.y);
+    let mate=this.animals.filter(a=>a.alive&&a.species===founder.species&&a.id!==founder.id).sort((a,b)=>Number(reachable(b))-Number(reachable(a))||Math.hypot(a.x-founder.x,a.y-founder.y)-Math.hypot(b.x-founder.x,b.y-founder.y))[0];
     if(!mate)return;mate.sex=founder.sex==='F'?'M':'F';mate.age=s.maturity+this.rng.range(1,4);mate.energy=s.maxEnergy*.88;mate.hydration=s.maxHydration*.88;mate.health=100;mate.reproCooldown=0;
-    const d=Math.hypot(mate.x-founder.x,mate.y-founder.y);if(d>16){const ang=this.rng.range(0,Math.PI*2);const tx=founder.x+Math.cos(ang)*10,ty=founder.y+Math.sin(ang)*10;if(!this.world.water[this.world.idx(tx,ty)]){mate.x=tx;mate.y=ty}}
+    const d=Math.hypot(mate.x-founder.x,mate.y-founder.y);if(d>16||!reachable(mate)){const ang=this.rng.range(0,Math.PI*2);
+    if(!sameLand){const tx=founder.x+Math.cos(ang)*10,ty=founder.y+Math.sin(ang)*10;if(!w.water[w.idx(tx,ty)]){mate.x=tx;mate.y=ty}}
+    // The drawn bearing at 10 tiles first; failing that, its rotations and shorter reaches
+    // on open ground, always on the founder's own land.
+    else search:for(const r of [10,7,4])for(let k=0;k<16;k++){const t=ang+k*Math.PI/8,tx=founder.x+Math.cos(t)*r,ty=founder.y+Math.sin(t)*r,first=r===10&&k===0;
+      if(w.water[w.idx(tx,ty)]||!w.sameLand(founder.x,founder.y,tx,ty)||!first&&(!w.isPlayable(tx,ty)||!this.canOccupy(mate,tx,ty)))continue;mate.x=tx;mate.y=ty;break search}}
     this.starterMateId=mate.id;
   }
   isOpeningProtected(a){return !PHYSIOLOGY_PARITY.enabled&&!!(a&&!this.openingGraceEnded&&this.day<=this.openingGraceUntilDay&&(a.lineage||a.id===this.starterMateId))}

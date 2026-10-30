@@ -4,7 +4,8 @@ import {CFG} from '../src/sim/config.js';
 import {regionKey} from '../src/world/planet-regions.js';
 import {REGIONAL_REPLAY} from '../src/world/planetary-offscreen-biology.js';
 import {advanceEnvironmentWater,saltStorage,validateEnvironment} from '../src/world/environment.js';
-import {PLANETARY_BOUNDARY_WATER,boundaryWaterExchange} from '../src/world/planetary-boundary-water.js';
+import {PLANETARY_BOUNDARY_WATER,boundaryWaterExchange,boundaryOpenness} from '../src/world/planetary-boundary-water.js';
+import {liquidVolume} from '../src/world/surface-ice.js';
 import {syncPlanetaryBoundaryOwnership,reconcilePlanetarySaltSeams} from '../src/world/planetary-seam-salt.js';
 
 const seed='GENVO8-TEST-A',origin={x:0,y:2560},n=128;
@@ -50,16 +51,19 @@ assert.equal(boundaryWaterExchange(neighbor.environment,j,neighbor.environment.s
 validateEnvironment(active,active.environment);
 validateEnvironment(neighbor,neighbor.environment);
 assert.deepEqual(syncPlanetaryBoundaryOwnership(sim),assigned,'repeated sync is idempotent');
-const external=e=>e.volume.reduce((sum,v,i)=>sum+(e.boundary[i]&&!e.blockedBoundaries[i]?v*.08:0),0);
+// The outside reservoir exchanges with each border cell's open share of its
+// external sides: a partly paired corner keeps its unpaired side open.
+const external=(e,w)=>e.volume.reduce((sum,v,i)=>{const open=e.boundary[i]?boundaryOpenness(e,i,w):null;
+ return sum+(open?liquidVolume(e,i,v)*.08*open.fraction:0)},0);
 const whole=e=>e.volume.reduce((sum,v,i)=>sum+(e.boundary[i]?v*.08:0),0);
-const expectedA=external(active.environment),expectedB=external(neighbor.environment);
+const expectedA=external(active.environment,active),expectedB=external(neighbor.environment,neighbor);
 assert.ok(expectedA<whole(active.environment)&&expectedB<whole(neighbor.environment),
  'each real shared seam excludes imported water from the outside reservoir');
 
 // Force a finite physical contrast, not a synthetic food or organism outcome.
 neighbor.environment.volume[j]=Math.max(.02,neighbor.environment.volume[j]*.5);
 neighbor.environment.salt[j]=neighbor.environment.volume[j]*.01;
-const newExpectedB=external(neighbor.environment);
+const newExpectedB=external(neighbor.environment,neighbor);
 const climate={temp:.5,rain:0};
 const aRow=advanceEnvironmentWater(active,climate,1),bRow=advanceEnvironmentWater(neighbor,climate,1);
 assert.ok(Math.abs(aRow.boundaryWaterInput-expectedA)<1e-7);

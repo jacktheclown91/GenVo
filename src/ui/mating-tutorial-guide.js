@@ -19,13 +19,16 @@ export function matingTutorialState(sim,ui={}){
  }
  const candidates=reproduction.eligibleMates().filter(a=>
   reproduction.courtshipAvailability({targetId:a.id}).enabled);
- const preferred=[ui.courtTargetId,ui.contextTargetId,sim.starterMateId,reproduction.selectedMateId];
+ // A resident chosen from the living world has no founding partner: the default
+ // starter mate belongs to the world's generated founder, not to this animal.
+ const starterId=sim.creatureStart?.kind==='existing-resident'?null:sim.starterMateId;
+ const preferred=[ui.courtTargetId,ui.contextTargetId,starterId,reproduction.selectedMateId];
  const mate=preferred.map(id=>candidates.find(a=>a.id===id)).find(Boolean)||candidates[0];
  if(!mate){
   const radius=Math.max(12,24*(actor.genes?.senses??1));
   const nearby=sim.animals.filter(a=>a.alive&&a.id!==actor.id&&
    Math.hypot(a.x-actor.x,a.y-actor.y)<=radius).sort((a,b)=>
-    Number(b.id===sim.starterMateId)-Number(a.id===sim.starterMateId)||
+    Number(b.id===starterId)-Number(a.id===starterId)||
     Number(b.sex!==actor.sex)-Number(a.sex!==actor.sex)||
     Math.hypot(a.x-actor.x,a.y-actor.y)-Math.hypot(b.x-actor.x,b.y-actor.y)||a.id-b.id);
   const reason=nearby.length?reproduction.courtshipAvailability({targetId:nearby[0].id}).reason:null;

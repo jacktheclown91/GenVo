@@ -107,7 +107,9 @@ const seed='GENVO8-TEST-A';
 const sim=new Simulation(seed,{player:false,bootstrap:false,
  worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
 assert.equal(sim.world.environment.terrainSedimentPolicy,policy);
-const i=sim.world.terrain.elevation.findIndex((v,index)=>!sim.world.water[index]&&v>.02&&v<.9);
+// Any land cell that stays positive after the 0.001 edit below; this region's plain
+// lies below 0.005, so no fixed elevation band is assumed.
+const i=sim.world.terrain.elevation.findIndex((v,index)=>!sim.world.water[index]&&v>.002&&v<.9);
 assert.ok(i>=0);
 sim.world.terrain.elevation[i]=Math.fround(sim.world.terrain.elevation[i]-.001);
 deriveDrainage(sim.world);
@@ -116,7 +118,8 @@ const restored=restoreSimulationSnapshot(structuredClone(save));
 assert.equal(restored.world.terrain.elevation[i],sim.world.terrain.elevation[i]);
 assert.equal(restored.world.environment.terrainSedimentPolicy,policy);
 const older=structuredClone(save);
-delete older.world.environment.terrainSedimentPolicy;
+// A save from before terrain sediment also predates the wetbed sediment built on it.
+delete older.world.environment.terrainSedimentPolicy;delete older.world.environment.wetbedSedimentPolicy;
 assert.equal(restoreSimulationSnapshot(older).world.environment.terrainSedimentPolicy,undefined);
 const forged=structuredClone(save);
 forged.world.environment.terrainSedimentPolicy='unreviewed-erosion/99';

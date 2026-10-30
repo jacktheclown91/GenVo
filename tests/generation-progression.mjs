@@ -89,7 +89,14 @@ function g3Descendant(sim,g2,kind){
   sim.generationProgress.active=null;sim.generationProgress.unlocks.add('kin-network');
   const extra=sim.spawnAnimal('genvo',g2.x+1.5,g2.y+1,[g2,founder]);extra.age=SPECIES.genvo.maturity+5;extra.energy=SPECIES.genvo.maxEnergy*.95;extra.hydration=SPECIES.genvo.maxHydration*.95;extra.health=100;sim.lineage.registerBirth(extra,[g2,founder]);
   sim.shelter.shelters.length=0;sim.shelter.nextId=2;sim.shelter.shelters.push({id:1,ownerId:founder.id,x:founder.x,y:founder.y,integrity:100,weatherSeal:1,foodStore:7,capacity:28,kind:'primary',constructedDay:sim.day,constructedYear:sim.year,lastUsedTick:sim.tickCount});
-  addFamiliarCells(sim,[founder,g2,extra],6,{cx:8,cy:8});
+  // Stage the learned outer ground where no real predator currently presses (nests refuse
+  // known danger), nearest the original block at (8,8) on the founder's landmass.
+  const size0=sim.territory.cellSize,safe=(cx,cy)=>{const x=(cx+.5)*size0,y=(cy+.5)*size0;if(!sim.world.isPlayable(x,y)||sim.world.water[sim.world.idx(x,y)]||!sim.world.sameLand(founder.x,founder.y,x,y))return false;
+   const eco=sim.sustainability.sampleCell({key:`${cx},${cy}`,cx,cy,x,y},{cache:false});return !(eco?.danger>0)};
+  let origin=null;for(let cy=1;cy+1<sim.world.n/size0-1;cy++)for(let cx=1;cx+3<sim.world.n/size0-1;cx++){
+   if(![[0,0],[1,0],[2,0],[3,0],[0,1],[1,1]].every(([dx,dy])=>safe(cx+dx,cy+dy)))continue;const d=Math.hypot(cx-8,cy-8);if(!origin||d<origin.d)origin={cx,cy,d}}
+  assert.ok(origin,'the world has predator-free learned ground');
+  addFamiliarCells(sim,[founder,g2,extra],6,origin);
   const g3=g3Descendant(sim,g2,'colony');
   // Find learned outer ground that can physically support the new nest.
   let site=null;const size=sim.territory.cellSize,occupied=sim.expansion.occupiedCells();

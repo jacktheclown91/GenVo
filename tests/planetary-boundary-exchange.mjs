@@ -80,6 +80,14 @@ assert.deepEqual(snap(restored),snap(sim),'natural physical and biological conti
 // Their missing boundary stocks must not be invented or silently migrated.
 const old=structuredClone(initial);
 old.world.environment.schema=1;
+// A schema-1 environment predates finite surface ice (schema 3 and later), so the
+// historical owner carries neither the ice stocks nor the recorded ice rule.
+for(const k of ['icePolicy','ice','iceBroken','iceDay','iceRevision','iceTotals'])delete old.world.environment[k];
+// Every environment rule recorded by later schemas (3 to 6) is absent from a schema-1 owner.
+for(const k of Object.keys(old.world.environment))if(/Policy$|Eligibility$/.test(k))delete old.world.environment[k];
+for(const a of old.animals){delete a.coatWetness;delete a.coatDensity}
+delete old.world.soilWater?.springPolicy;delete old.world.soilWater?.seamGroundwaterPolicy;
+delete old.core.surfaceIceRules;delete old.core.surfaceIceRuleMigrations;
 old.world.environment.boundary.fill(0);
 delete old.world.environment.totals.boundaryInput;
 delete old.world.environment.totals.boundaryOutput;

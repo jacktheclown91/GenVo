@@ -22,6 +22,12 @@ if(!process.argv[2]){
 const fixture=new Simulation('EJ-ROOT-CHOICE',{player:false});
 const digger=fixture.animals.find(a=>a.alive&&a.species==='rootling');
 assert.ok(digger);
+// Finite digging needs a real root or bulb meal underfoot: stand the digger on
+// the nearest naturally grown one (no food is created).
+{const w=fixture.world;let best=null;
+ for(let i=0;i<w.len;i++){const x=i%w.n+.5,y=Math.floor(i/w.n)+.5;if(!fixture.canOccupy(digger,x,y)||!fixture.partAbilities.rootMealAt(digger,x,y))continue;
+  const d=Math.hypot(x-digger.x,y-digger.y);if(!best||d<best.d)best={d,x,y}}
+ assert.ok(best,'the world grows a diggable root meal');Object.assign(digger,{x:best.x,y:best.y});}
 const spot=fixture.world.idx(digger.x,digger.y);
 fixture.world.water[spot]=0;
 fixture.world.fertility[spot]=.7;

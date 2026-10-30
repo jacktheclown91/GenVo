@@ -102,7 +102,9 @@ const committed=s=>s?.phase==='windup'||s?.phase==='charge';
 
 // Real-time pursuit: faster than walking, slower than sprinting, and it tires.
 {
-  const env=arena('GENVO8-V128-CHASE',{distance:9.5});const {sim,p,h}=env;sim.predator.beginStalk(h,p,9.5);h.intent='stalk-player';
+  // Start inside the Stalker's 9-tile base sight: atmospheric haze can shorten it, and a target
+  // beyond sight is searched for, not chased.
+  const env=arena('GENVO8-V128-CHASE',{distance:8});const {sim,p,h}=env;sim.predator.beginStalk(h,p,8);h.intent='stalk-player';
   for(let i=0;i<CFG.controlHz;i++){sim.playerControlStep({},CFG.controlHz);if(i%8===7)sim.update({},{externalPlayerControl:true})}
   assert.equal(h.playerHunt?.pursuit,'chase');assert.equal(h.intent,'chase-player');
   const hx=h.x,px=p.x;for(let i=0;i<CFG.controlHz;i++){sim.playerControlStep({right:true},CFG.controlHz);if(i%8===7)sim.update({right:true},{externalPlayerControl:true})}

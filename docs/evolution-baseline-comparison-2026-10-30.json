@@ -1,0 +1,339 @@
+{
+ "schema": "genvo.evolution-baseline-comparison/1",
+ "label": "Current-source comparison. NOT a baseline; the historical baseline is unchanged.",
+ "date": "2026-10-30",
+ "baselineVersion": "1.60.2",
+ "currentVersion": "1.65.0",
+ "seeds": [
+  "EVO-A",
+  "EVO-B",
+  "EVO-C"
+ ],
+ "matrixMatches": true,
+ "matrixDiffs": [],
+ "natural": {
+  "EVO-A": {
+   "baseline": {
+    "days": 60,
+    "living": 3,
+    "highestGeneration": 2,
+    "deaths": 1,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {
+     "efficient-gut": 1
+    },
+    "landSpeed": {
+     "min": 2.168291,
+     "median": 2.26002,
+     "max": 2.286184
+    },
+    "forageRange": {
+     "min": 9.417181,
+     "median": 9.954938,
+     "max": 10.027939
+    },
+    "threatSense": {
+     "min": 4.823061,
+     "median": 5.090883,
+     "max": 5.121266
+    },
+    "metabolism": {
+     "min": 0.967509,
+     "median": 0.977949,
+     "max": 1.015212
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1.06
+    }
+   },
+   "current": {
+    "days": 60,
+    "living": 5,
+    "highestGeneration": 2,
+    "deaths": 24,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": 1.972815,
+     "median": 2.034576,
+     "max": 2.243386
+    },
+    "forageRange": {
+     "min": 8.498522,
+     "median": 8.876444,
+     "max": 9.262045
+    },
+    "threatSense": {
+     "min": 4.669407,
+     "median": 4.983236,
+     "max": 5.383792
+    },
+    "metabolism": {
+     "min": 0.950356,
+     "median": 0.970051,
+     "max": 1.030658
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1
+    }
+   },
+   "delta": {
+    "days": 0,
+    "living": 2,
+    "highestGeneration": 0,
+    "deaths": 23,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": -0.195476,
+     "median": -0.225444,
+     "max": -0.042798
+    },
+    "forageRange": {
+     "min": -0.918659,
+     "median": -1.078494,
+     "max": -0.765894
+    },
+    "threatSense": {
+     "min": -0.153654,
+     "median": -0.107647,
+     "max": 0.262526
+    },
+    "metabolism": {
+     "min": -0.017153,
+     "median": -0.007898,
+     "max": 0.015446
+    },
+    "waterUse": {
+     "min": 0,
+     "median": 0,
+     "max": -0.06
+    }
+   }
+  },
+  "EVO-B": {
+   "baseline": {
+    "days": 60,
+    "living": 1,
+    "highestGeneration": 1,
+    "deaths": 3,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": 2.153843,
+     "median": 2.153843,
+     "max": 2.153843
+    },
+    "forageRange": {
+     "min": 8.46146,
+     "median": 8.46146,
+     "max": 8.46146
+    },
+    "threatSense": {
+     "min": 5.188794,
+     "median": 5.188794,
+     "max": 5.188794
+    },
+    "metabolism": {
+     "min": 0.973092,
+     "median": 0.973092,
+     "max": 0.973092
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1
+    }
+   },
+   "current": {
+    "days": 60,
+    "living": 4,
+    "highestGeneration": 2,
+    "deaths": 17,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": 1.871645,
+     "median": 1.968452,
+     "max": 2.062414
+    },
+    "forageRange": {
+     "min": 8.3899,
+     "median": 9.150564,
+     "max": 9.168519
+    },
+    "threatSense": {
+     "min": 4.521487,
+     "median": 4.923874,
+     "max": 4.992692
+    },
+    "metabolism": {
+     "min": 0.938513,
+     "median": 0.972227,
+     "max": 1.027819
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1
+    }
+   },
+   "delta": {
+    "days": 0,
+    "living": 3,
+    "highestGeneration": 1,
+    "deaths": 14,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": -0.282198,
+     "median": -0.185391,
+     "max": -0.091429
+    },
+    "forageRange": {
+     "min": -0.07156,
+     "median": 0.689104,
+     "max": 0.707059
+    },
+    "threatSense": {
+     "min": -0.667307,
+     "median": -0.26492,
+     "max": -0.196102
+    },
+    "metabolism": {
+     "min": -0.034579,
+     "median": -0.000865,
+     "max": 0.054727
+    },
+    "waterUse": {
+     "min": 0,
+     "median": 0,
+     "max": 0
+    }
+   }
+  },
+  "EVO-C": {
+   "baseline": {
+    "days": 60,
+    "living": 5,
+    "highestGeneration": 2,
+    "deaths": 4,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": 2.178793,
+     "median": 2.214144,
+     "max": 2.298727
+    },
+    "forageRange": {
+     "min": 9.85419,
+     "median": 10.021378,
+     "max": 10.282912
+    },
+    "threatSense": {
+     "min": 4.466692,
+     "median": 4.618698,
+     "max": 4.800315
+    },
+    "metabolism": {
+     "min": 0.953229,
+     "median": 0.981411,
+     "max": 1.019627
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1
+    }
+   },
+   "current": {
+    "days": 60,
+    "living": 1,
+    "highestGeneration": 1,
+    "deaths": 25,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": 2.009554,
+     "median": 2.009554,
+     "max": 2.009554
+    },
+    "forageRange": {
+     "min": 10.155308,
+     "median": 10.155308,
+     "max": 10.155308
+    },
+    "threatSense": {
+     "min": 4.701714,
+     "median": 4.701714,
+     "max": 4.701714
+    },
+    "metabolism": {
+     "min": 1.017145,
+     "median": 1.017145,
+     "max": 1.017145
+    },
+    "waterUse": {
+     "min": 1,
+     "median": 1,
+     "max": 1
+    }
+   },
+   "delta": {
+    "days": 0,
+    "living": -4,
+    "highestGeneration": -1,
+    "deaths": 21,
+    "withForm": 0,
+    "withProto": 0,
+    "withLifestyle": 0,
+    "adaptations": {},
+    "landSpeed": {
+     "min": -0.169239,
+     "median": -0.20459,
+     "max": -0.289173
+    },
+    "forageRange": {
+     "min": 0.301118,
+     "median": 0.13393,
+     "max": -0.127604
+    },
+    "threatSense": {
+     "min": 0.235022,
+     "median": 0.083016,
+     "max": -0.098601
+    },
+    "metabolism": {
+     "min": 0.063916,
+     "median": 0.035734,
+     "max": -0.002482
+    },
+    "waterUse": {
+     "min": 0,
+     "median": 0,
+     "max": 0
+    }
+   }
+  }
+ }
+}

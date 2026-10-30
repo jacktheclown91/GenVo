@@ -108,8 +108,9 @@ const unknown=structuredClone(snapshot);
 unknown.world.environment.coatMoisturePolicy='unsupported-coat/99';
 assert.throws(()=>restoreSimulationSnapshot(unknown),/Invalid planetary coat-moisture policy/);
 const old=structuredClone(snapshot);
-delete old.world.environment.coatMoisturePolicy;
-for(const a of old.animals)delete a.coatWetness;
+// A save from before coat moisture also predates the seasonal coat built on it.
+delete old.world.environment.coatMoisturePolicy;delete old.world.environment.seasonalCoatPolicy;
+for(const a of old.animals){delete a.coatWetness;delete a.coatDensity}
 const historic=restoreSimulationSnapshot(old);
 assert.equal(historic.world.environment.coatMoisturePolicy,undefined);
 assert.equal(historic.animals.find(a=>a.id===subject.id).coatWetness,undefined);

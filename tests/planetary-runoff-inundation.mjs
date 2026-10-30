@@ -14,13 +14,19 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 const seed='GENVO8-TEST-A',origin={x:0,y:2560},climate={temp:.7,rain:.4};
 const equal=(a,b,label)=>assert.ok(isDeepStrictEqual(a,b),label);
 const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'flood-topology'}));
-const candidate=w=>{
- const n=w.n;
+// The first naturally connected inland shoreline, or with warmest set the one
+// with the highest regional temperature offset: cold land stores precipitation
+// as snow, and snowy land is deliberately never inundated.
+const candidate=(w,{warmest=false}={})=>{
+ const n=w.n;let best=-1;
  for(let i=n+1;i<w.len-n-1;i++){
   const x=i%n;
   if(x<=1||x>=n-2||w.water[i])continue;
-  if(w.water[i-1]||w.water[i+1]||w.water[i-n]||w.water[i+n])return i;
+  if(!(w.water[i-1]||w.water[i+1]||w.water[i-n]||w.water[i+n]))continue;
+  if(!warmest)return i;
+  if(best<0||w.environment.temperatureOffset[i]>w.environment.temperatureOffset[best])best=i;
  }
+ if(best>=0)return best;
  throw Error('No naturally connected inland shoreline');
 };
 // An existing dry shoreline has a truly owned overland water stock.
@@ -61,7 +67,12 @@ validateEnvironment(world,world.environment);
 // Saved topology, runoff stores and immersion receipts are authoritative
 // even though the immutable global planet generator still marks the cell dry.
 const sim=new Simulation(seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin});
-const ci=candidate(sim.world);
+// This region opens below the snow line; snowy land is never inundated, so wait
+// for the season to warm and the candidate's own snow to melt (real time, no edits).
+const ci=candidate(sim.world,{warmest:true});
+for(let d=0;d<60&&!(sim.world.soilWater?.lastDay?.climateTemp>.45&&!(sim.world.soilWater.snowpack[ci]>1e-8));d++)
+ for(let t=0;t<CFG.dayTicks;t++)sim.update(null);
+assert.ok(sim.world.soilWater&&!(sim.world.soilWater.snowpack[ci]>1e-8),'the season thaws the candidate shoreline');
 sim.world.environment.overland[ci]=1.2;
 for(let t=0;t<CFG.dayTicks+4;t++)sim.update(null);
 assert.equal(sim.world.water[ci],1);

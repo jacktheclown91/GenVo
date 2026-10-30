@@ -1,9 +1,15 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {TutorialController} from '../src/ui/tutorial.js';
+import {observedSurvivalThreat} from '../src/ui/survival-threat-guide.js';
 
 const sim=new Simulation('GENVO8-SHELTER-OBJECTIVE',{player:true});
 const p=sim.player();
+// A nearby predator rightly takes priority over the shelter goal; stand the player on
+// open land where no predator is in view, so this test reads the shelter objective.
+if(observedSurvivalThreat(sim,p)){const w=sim.world;let spot=null;
+ for(let y=8;y<w.n-8&&!spot;y++)for(let x=8;x<w.n-8;x++){const sx=x+.5,sy=y+.5;if(!sim.canOccupy(p,sx,sy))continue;Object.assign(p,{x:sx,y:sy});sim.rebuildSpatial();if(!observedSurvivalThreat(sim,p)){spot={x:sx,y:sy};break}}
+ assert.ok(spot,'open land without a predator in view exists');}
 const mate=sim.animals.find(a=>a.id!==p.id&&a.species==='genvo'&&a.alive);
 assert.ok(mate,'mate exists for objective setup');
 p.lastMate=mate.id;
