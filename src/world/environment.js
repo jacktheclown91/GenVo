@@ -1,7 +1,7 @@
 // Physical fields for new worlds. Normalized model units, not biome membership bonuses.
 import {coordNoise} from '../core/rng.js';
 import {SURFACE_ICE,liquidVolume,validateSurfaceIce} from './surface-ice.js';
-import {CLIMATE_WATER,poolEvaporation,riverDischarge,temperaturePotential} from './climate-water.js';
+import {CLIMATE_WATER,bankSpill,poolEvaporation,riverDischarge,temperaturePotential} from './climate-water.js';
 import {recordPageSaltTransfer,finishPageSaltTransfers,validatePageSaltTransfers} from './page-salt-transfers.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
 import {regionalRainfall} from './weather-fronts.js';
@@ -79,7 +79,7 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&['pairedWaterInput','pairedWaterOutput'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid paired water totals.');
- if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
+ if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','bankSpill','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
@@ -93,7 +93,7 @@ export function validateEnvironment(w,e){
       (!Number.isFinite(row[k])||row[k]<0)))
    throw Error('Invalid paired planetary salt receipt.');
   if(e.schema>=3){
-   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
+   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','bankSpill','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
       (!Number.isFinite(row[k])||row[k]<0)))
     throw Error('Invalid planetary rainfall or overland receipt.');
    if(e.schema>=4&&['internalWaterMoved','internalSaltMoved','internalWetEdges'].some(k=>k in row&&
@@ -133,6 +133,24 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // open outlet (closed basins, or sides owned by paired regions, whose seams move
 // water themselves) keep their water.
 const levelOf=(e,i)=>e.floodOrigin?.[i]===1?PLANETARY_INTERNAL_WATER.minWet:e.depth[i];
+// climate-water/5: a fresh runoff pool standing above a dry neighbour's ground
+// pours half of its largest overtopping per day onto its lower banks, shared by
+// how far each is overtopped, as ponded (overland) water. Every pool spills from
+// the same day-start surface, so the order of cells does not matter. Generated
+// water (level with its banks in incised channels) and salty water stay.
+function spillOverBanks(w,salt){
+ const e=w.environment,n=w.n,ground=w.terrain.elevation,moves=[];let spilled=0;
+ for(let i=0;i<w.len;i++){
+  if(!w.water[i]||e.floodOrigin[i]!==1||salt[i]!==0)continue;
+  const liquid=liquidVolume(e,i,e.volume[i]),spare=liquid-PLANETARY_INTERNAL_WATER.minWet;if(!(spare>0))continue;
+  const head=ground[i]+liquid,x=i%n,banks=[];let top=0,sum=0;
+  for(const j of [x>0?i-1:-1,x<n-1?i+1:-1,i-n,i+n]){if(j<0||j>=w.len||w.water[j])continue;const drop=head-ground[j];if(drop>0){banks.push(j,drop);sum+=drop;if(drop>top)top=drop}}
+  if(!sum)continue;const out=Math.min(spare,top)*CLIMATE_WATER.spillFraction;
+  for(let k=0;k<banks.length;k+=2)moves.push(i,banks[k],out*banks[k+1]/sum);
+ }
+ for(let k=0;k<moves.length;k+=3){const amount=moves[k+2];e.volume[moves[k]]-=amount;e.overland[moves[k+1]]+=amount;spilled+=amount}
+ return spilled;
+}
 function dischargeRivers(w,salt){
  const e=w.environment,n=w.n,seen=new Uint8Array(w.len),stack=[],body=[];let water=0,saltOut=0;
  for(let s=0;s<w.len;s++){
@@ -213,6 +231,8 @@ export function advanceEnvironmentWater(w,climate,day){
   }}
  const internal=advanceInternalPlanetaryWater(w,next,{incised:discharge});
  if(discharge){const out=dischargeRivers(w,next);dischargeWater=out.water;dischargeSalt=out.salt;t.saltOutput+=out.salt}
+ // Spilled water stays in the region's surface water (pools to ponded land water).
+ const spilled=e.schema>=5&&bankSpill(climate)&&e.floodOrigin?spillOverBanks(w,next):0;
  if((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)){
   t.boundaryWaterInput+=boundaryWaterInput;
   t.boundaryWaterOutput+=boundaryWaterOutput;
@@ -224,6 +244,7 @@ export function advanceEnvironmentWater(w,climate,day){
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
   if(surfaceEvaporation)t.surfaceEvaporation=(t.surfaceEvaporation||0)+surfaceEvaporation;
   if(dischargeWater){t.riverDischarge=(t.riverDischarge||0)+dischargeWater;t.dischargeSalt=(t.dischargeSalt||0)+dischargeSalt}
+  if(spilled)t.bankSpill=(t.bankSpill||0)+spilled;
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
@@ -235,7 +256,7 @@ export function advanceEnvironmentWater(w,climate,day){
   ...internal,waterBefore,waterAfter,
   waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput+surfaceEvaporation+dischargeWater,
   waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-surfaceEvaporation-dischargeWater-(waterAfter-waterBefore),
-  surfaceRainInput,surfaceRainOutput,...(surfaceEvaporation?{surfaceEvaporation}:{}),...(dischargeWater?{riverDischarge:dischargeWater,dischargeSalt}:{})
+  surfaceRainInput,surfaceRainOutput,...(surfaceEvaporation?{surfaceEvaporation}:{}),...(dischargeWater?{riverDischarge:dischargeWater,dischargeSalt}:{}),...(spilled?{bankSpill:spilled}:{})
  }:internal||{waterBefore,waterAfter:waterBefore,waterInput:0,waterOutput:0,waterClosure:0}):{}),
  pageTransfers:finishPageSaltTransfers(pageLedger)
 };e.daily.push(row);if(e.daily.length>64)e.daily.shift();e.lastDay=row;w.buildHydrology?.();return row;

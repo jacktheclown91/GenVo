@@ -110,7 +110,7 @@ A year-long classification of the `/3` field (seed S9-YEAR-2, every 15 days) fou
 - **Ponded water never left the land.** Runoff waiting on dry land (`overland`) could only move downhill (65% a day) or stay. It never soaked into the soil or evaporated, although the soil under it was never saturated (room for about 1,900 units at day 101). The land store grew from 1,567 to 6,646 units in 125 days, more than ten times all open water. About 1,470 units sat in about 12 terrain sinks, where the inundation rule skips cells holding more than 2.
 - **Pools grew outward.** A pool at the 2.0 cap refuses runoff, so ponded water piled up beside it, crossed the inundation threshold and flooded the next cell. By day 361, 530 of 1,016 pools sat in 28 closed lakes, the largest 373 cells, and every shore pool stood above its lowest bank.
 
-`climate-water/4`, now the new-game rule:
+`climate-water/4` (kept for worlds saved with it; `/5` below is the new-game rule):
 - **Run-on infiltration.** Each soil day a land cell's ponded water joins its rain under the same infiltration law; what the soil cannot take runs on downhill as before.
 - **Ponded evaporation.** The ponded water evaporates first at the open-water potential; the soil beneath gets what potential is left.
 - **Ledgers.** The water leaves the open-water ledger as `pondedRunOn` and enters the soil ledger as `runOn` on the same day. Both close: the soil ledger under 10⁻⁵, the combined rain and runoff ledger under 10⁻⁶.
@@ -133,6 +133,34 @@ A year-long classification of the `/3` field (seed S9-YEAR-2, every 15 days) fou
 Open water no longer grows; seasonal pools come and go (11 at day 91, 172 at day 151, 136 at day 361). Two things remain:
 - **Midsummer heat kills animals far from water.** 39 animals died of thirst on days 167–169, during a heat spike (0.65 to 0.85), near the valley's northern edge. They were 10–55 tiles from water and none was beside a recently dried pool. Under `/3` the north still held runoff pools that should not have lasted. This is an observation; nothing was tuned.
 - **Lakes in closed sinks stand above their banks.** About 135 deep pools (median 1.5) in closed sinks persist. On flat ground their surface stands above the dry land beside them, because water does not yet spill onto lower land. That is the next open-water question.
+
+## `climate-water/5` — pools spill over their banks (S9 finding 2, October 30)
+
+Under `/4` about 135 deep runoff pools (median 1.5) persisted in closed sinks all year. On flat ground their surface stood up to 2 units above the dry land beside them, because standing water never moved onto lower land.
+
+`climate-water/5`, now the new-game rule:
+- **Bank spill.** A fresh runoff pool whose surface (ground plus liquid water) stands above a dry neighbour's ground pours half of its largest overtopping per day onto those lower banks, shared by how far each is overtopped. The water lands as ponded water, which then soaks in, evaporates or runs downhill under `/4`.
+- **Order-independent.** Every pool spills from the same day-start surface.
+- **What doesn't spill.** Generated water, which stands level with its banks in incised channels, and salty water, whose salt has no land store.
+- **Ledger.** Spilled water stays surface water (pools to ponded land water), so the open-water ledger needs no new input or output. It is recorded as `bankSpill`.
+
+`tests/climate-water.mjs` adds a controlled case. A runoff pool 1.50 above its banks on flat ground spills 1.47 and stands 0.07 above them after 10 days; under `/4` it stays 1.50 above. The ledger closes every day.
+
+**Year field, S9-YEAR-2, 365 days:**
+
+| | `/4` | `/5` |
+| --- | --- | --- |
+| Open-water cells, day 361 (538 generated) | 674 | 542 |
+| Runoff pools flooded; receded; open at day 366 | 446; 310; 136 | 614; 612; 2 |
+| Pool life, p10 / p50 / p90 (days) | 9 / 36 / 68 | 5 / 16 / 56 |
+| Largest overtopping, day 361 | 2.0 | 0.09 |
+| Drinks on runoff water | about 14,000 | about 8,000 |
+| Alive at day 366 (from 188); births | 62; 74 | 50; 92 |
+| Deaths: dehydration, predation, starvation | 55, 40, 42 | 63, 66, 49 |
+
+Seasonal pools now form in wet spells and dry within weeks; the region's open water returns to its generated network each dry season. Nothing was tuned. Still open:
+- **Water hidden in land sinks.** About 660 units of ponded water sit in about a dozen terrain sinks on saturated land. Inundation skips a cell holding more than 2, and ponded water only runs downhill, so it neither becomes a visible pond nor spreads.
+- **Midsummer thirst** far from the valley's permanent water, as under `/4`.
 
 ## Not yet
 

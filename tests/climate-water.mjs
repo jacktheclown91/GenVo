@@ -121,7 +121,7 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
   return{gained:dry.reduce((s,k,j)=>s+w.moisture[k]-m0[j],0)/dry.length,dryLeft:dry.reduce((s,k)=>s+w.environment.overland[k],0)/dry.length,
    runoff:soil.runoff,runOn:soil.runOn||0,pondedRunOn:row.pondedRunOn||0,soilClosure:Math.abs(soil.closure),waterClosure:Math.abs(row.waterClosure)};
  };
- const four=pond(CLIMATE_WATER.policy),three=pond(CLIMATE_WATER.discharge),wetPonded=20*.3;
+ const four=pond(CLIMATE_WATER.runOn),three=pond(CLIMATE_WATER.discharge),wetPonded=20*.3;
  assert.ok(four.runOn>0&&Math.abs(four.runOn-four.pondedRunOn)<1e-9,'ponded water leaves the open-water ledger into the soil ledger');
  assert.ok(four.gained>three.gained+.05,`dry soil takes up ponded water (${four.gained.toFixed(3)} against ${three.gained.toFixed(3)})`);
  assert.ok(four.dryLeft<three.dryLeft,`less water stays ponded on dry land (${four.dryLeft.toFixed(3)} against ${three.dryLeft.toFixed(3)})`);
@@ -130,4 +130,30 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
  assert.equal(three.runOn,0,'climate-water/3 ponded water never enters the soil');
  console.log(`  run-on: dry soil +${four.gained.toFixed(3)} moisture, ponded water ${four.dryLeft.toFixed(3)} left on dry land against ${three.dryLeft.toFixed(3)} under /3`);
 }
-console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge, /4 ponded run-on): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed; /4 ponded water evaporates and soaks into unsaturated soil, saturated soil passes it on, ledgers closed');
+// 8. climate-water/5, bank spill: a deep runoff pool on flat ground, standing above the dry
+// land beside it, pours over its banks as ponded water and becomes shallow within days; the
+// open-water ledger closes every day (spilled water stays surface water). Under /4 it keeps
+// standing above its banks.
+{
+ const spill=policy=>{
+  const sim=new Simulation('CLIMATE-WATER-SPILL',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();if(!w.soilWater)initializeSoilWater(w);
+  let i=-1;for(let k=w.n*6;k<w.len-w.n*6&&i<0;k++){const x=k%w.n;if(x<6||x>w.n-7||w.water[k]||w.soilWater.snowpack?.[k]>0)continue;
+   const near=[k-1,k+1,k-w.n,k+w.n,k-2,k+2,k-2*w.n,k+2*w.n,k-1-w.n,k+1-w.n,k-1+w.n,k+1+w.n];if(near.some(j=>w.water[j]))continue;
+   if([k-1,k+1,k-w.n,k+w.n].every(j=>w.terrain.elevation[j]<w.terrain.elevation[k]+1.4))i=k}
+  assert.ok(i>=0,'a dry flat-ground cell away from water');w.environment.overland[i]=1.5;
+  w.setSurfaceWater([{i,water:1,depth:1.5,salinity:0,source:'overland'}],{reason:'rainfall-runoff-inundation'});
+  let day=0,spilled=0,worst=0;const bank=()=>w.terrain.elevation[i]+w.environment.volume[i]-Math.min(...[i-1,i+1,i-w.n,i+w.n].filter(j=>!w.water[j]).map(j=>w.terrain.elevation[j]));
+  const before=bank();
+  for(;day<10&&w.water[i];day++){sim.climate={temp:.38,rain:0,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+   const row=w.environment.lastDay;spilled+=row.bankSpill||0;worst=Math.max(worst,Math.abs(row.waterClosure));sim.day++}
+  return{before,after:w.water[i]?bank():0,liquid:w.water[i]?w.environment.volume[i]:0,receded:!w.water[i],spilled,worst,days:day};
+ };
+ const five=spill(CLIMATE_WATER.policy),four=spill(CLIMATE_WATER.runOn);
+ assert.ok(five.before>1,`the pool starts well above its banks (${five.before.toFixed(2)})`);
+ assert.ok(five.spilled>1,`it pours over its banks (${five.spilled.toFixed(2)})`);
+ assert.ok(five.receded||five.after<.1,`and no longer stands above them (${five.after.toFixed(3)}, ${five.days} days)`);
+ assert.ok(five.worst<1e-6,`open-water ledger closes every day (${five.worst.toExponential(1)})`);
+ assert.equal(four.spilled,0,'climate-water/4 pools do not spill');assert.ok(four.after>1,`and keep standing above their banks (${four.after.toFixed(2)})`);
+ console.log(`  spill: ${five.before.toFixed(2)} above the banks, ${five.spilled.toFixed(2)} spilled, ${five.receded?'receded':five.after.toFixed(3)+' above'} after ${five.days} days; under /4 ${four.after.toFixed(2)} above`);
+}
+console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge, /4 ponded run-on, /5 bank spill): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed; /4 ponded water evaporates and soaks into unsaturated soil, saturated soil passes it on, ledgers closed; /5 a deep pool on flat ground spills over its banks and stops standing above them, ledger closed');

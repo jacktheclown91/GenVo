@@ -25,13 +25,20 @@
 //    what the soil cannot take runs on downhill as before. Without it ponded water
 //    could only move downhill or wait, so it built up on unsaturated land and kept
 //    flooding new pools.
+//  - climate-water/5: the same, and runoff pools spill over their banks. A fresh
+//    runoff pool whose surface (ground plus liquid water) stands above a dry
+//    neighbour's ground pours half of the largest overtopping per day onto those
+//    lower banks, shared by how far each is overtopped, as ponded water that then
+//    soaks in, evaporates or runs downhill. Without it a pool on flat ground could
+//    stand up to two units above the land beside it.
 // The rule travels in the day's climate (climate.evaporation) so every soil and
 // open-water day, resident or archived, follows its own world's recorded rule.
-export const CLIMATE_WATER=Object.freeze({policy:'climate-water/4',discharge:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25});
-const RULES=[CLIMATE_WATER.soil,CLIMATE_WATER.pools,CLIMATE_WATER.discharge,CLIMATE_WATER.policy];
+export const CLIMATE_WATER=Object.freeze({policy:'climate-water/5',runOn:'climate-water/4',discharge:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25,spillFraction:.5});
+const RULES=[CLIMATE_WATER.soil,CLIMATE_WATER.pools,CLIMATE_WATER.discharge,CLIMATE_WATER.runOn,CLIMATE_WATER.policy];
 const rank=climate=>RULES.indexOf(climate?.evaporation)+1;
 export const climateWaterPolicy=value=>RULES.includes(value);
 export function temperaturePotential(temperature){return CLIMATE_WATER.perDegree*Math.max(0,temperature-CLIMATE_WATER.freezing)}
 export const poolEvaporation=climate=>rank(climate)>=2;
 export const riverDischarge=climate=>rank(climate)>=3;
 export const pondedRunOn=climate=>rank(climate)>=4;
+export const bankSpill=climate=>rank(climate)>=5;
