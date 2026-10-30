@@ -5,6 +5,7 @@ import {SPECIES} from '../src/organisms/species.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
 import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {markRegionalOwnerDirty} from '../src/world/regional-revision.js';
+import {seedTableReuse} from '../src/world/planetary-offscreen-biology.js';
 import {REGIONAL_WARM,regionalWarmSwitch,regionalWarmStats,takeWarmRegion,keepWarmRegion,warmCandidate,clearWarmRegions,warmRegionCount} from '../src/world/regional-warm-cache.js';
 
 // Capacity: canonical neighbours displace far regions, never the reverse.
@@ -31,12 +32,14 @@ const build=()=>{let s=new Simulation('PLANET-B0-A',{player:true,worldGenerator:
 regionalWarmSwitch.enabled=true;const warm=build();regionalWarmSwitch.enabled=false;const cold=build();
 // Three days: each day's seam transaction publishes into the archived regions and
 // applies the same edits to their warm Simulations, which then stay valid.
-const before={...regionalWarmStats};
+const before={...regionalWarmStats},reusedBefore=seedTableReuse.reused;seedTableReuse.verify=true;
 for(let i=0;i<3*CFG.dayTicks+CFG.lifeStride;i++){regionalWarmSwitch.enabled=true;warm.update();regionalWarmSwitch.enabled=false;cold.update()}
 regionalWarmSwitch.enabled=true;
 assert.ok(warmRegionCount()>=1,'resident regions were kept warm');
 assert.ok(regionalWarmStats.reused-before.reused>=3*CFG.dayTicks/CFG.lifeStride,`warm Simulations continued across seam days (${regionalWarmStats.reused-before.reused} strides)`);
 assert.equal(regionalWarmStats.invalidated-before.invalidated,0,'no seam day forced a cold restore');
+// Unchanged seed banks reuse their last packed table; each reuse was re-packed and equal.
+assert.ok(seedTableReuse.reused-reusedBefore>=CFG.dayTicks/CFG.lifeStride,`unchanged seed banks reused their published table (${seedTableReuse.reused-reusedBefore} passes)`);seedTableReuse.verify=false;
 assert.equal(digest(createSimulationSnapshot(warm,{savedAt:'t',reason:'t'})),digest(createSimulationSnapshot(cold,{savedAt:'t',reason:'t'})),'warm replay is value-identical to snapshot replay');
 // A published warm checkpoint is independent of the live warm Simulation.
 const session=warm.planetaryTravel.sessions[0],published=session.snapshot.world.plants.sunmoss[0];

@@ -1,3 +1,4 @@
+import {touchSeedBank} from './seed-bank-epoch.js';
 import {PLANTS} from '../sim/config.js';
 
 // Seed viability (seed-viability/1, creator direction 2026-10-22). A seed is a
@@ -23,7 +24,7 @@ function idHash(s){let h=2166136261;for(let k=0;k<s.length;k++){h^=s.charCodeAt(
 const unitDraw=(...parts)=>parts.reduce((h,p)=>mix(h^p),0x5eed)/4294967296;
 // Returns the mass sent to litter (0 when every pooled seed survives).
 export function settleSeedCell(d,kind,i){
- const rows=d.floraState.seeds[kind]?.get(i),unit=seedUnit(kind);if(!rows||!(unit>0))return 0;
+ const rows=d.floraState.seeds[kind]?.get(i),unit=seedUnit(kind);if(!rows||!(unit>0))return 0;touchSeedBank(d);
  const small=[];let pool=0;for(const [id,r] of rows)if(r.amount<unit){small.push([id,r]);pool+=r.amount}
  if(!small.length)return 0;
  const w=d.sim.world,day=d.sim.day,kindHash=idHash(kind),expected=pool/unit,whole=Math.floor(expected);

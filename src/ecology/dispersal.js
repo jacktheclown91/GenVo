@@ -1,3 +1,4 @@
+import {touchSeedBank} from './seed-bank-epoch.js';
 import {initializeBotanicalReproduction,advanceBotanicalReproduction,advanceBotanicalReproductionSteps,contactBotanicalFlower,dropBotanicalPollen} from './botanical-reproduction.js';
 import {mouthOf} from './functional-diet.js';
 import {plantHandling,plantHandlingAffordable,plantHandlingEnergyCost,plantHandlingCostAffordable} from './plant-handling.js';
@@ -134,7 +135,7 @@ export class PlantDispersalController{
   }
   advanceDay(){
     this.advanceAnimalCargo();
-    const viable=seedViabilityEnabled(this.sim);for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of set){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(viable){const dead=settleSeedCell(this,kind,i);if(dead>0)bank[i]=this.floraState.seeds[kind].get(i)?.size?Math.max(0,next-dead):0}if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
+    const viable=seedViabilityEnabled(this.sim);for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of set){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(viable){const dead=settleSeedCell(this,kind,i);if(dead>0)bank[i]=this.floraState.seeds[kind].get(i)?.size?Math.max(0,next-dead):0}if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);touchSeedBank(this);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
   }
 }
 function hashKind(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}

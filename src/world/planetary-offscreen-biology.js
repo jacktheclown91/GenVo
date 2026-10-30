@@ -17,6 +17,17 @@ export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {independentSnapshotCopySteps} from '../persistence/snapshot-copy.js';
 import {packFloraSeedColumnsSteps} from '../persistence/flora-seed-codec.js';
+import {seedBankEpoch} from '../ecology/seed-bank-epoch.js';
+// A warm Simulation's last published seed table and the seed-bank count it was
+// packed at. The bank changes only on its vegetation day, so most passes reuse it.
+const publishedSeeds=new WeakMap();
+// Diagnostics: reused tables, and a test switch that also packs afresh and requires equality.
+export const seedTableReuse={reused:0,verify:false};
+// Structural equality of two packed seed tables (typed arrays, arrays, Maps, plain objects).
+function sameTable(a,b){if(Object.is(a,b))return true;if(typeof a!=='object'||typeof b!=='object'||!a||!b||Object.getPrototypeOf(a)!==Object.getPrototypeOf(b))return false;
+ if(ArrayBuffer.isView(a)){if(a.length!==b.length)return false;for(let i=0;i<a.length;i++)if(!Object.is(a[i],b[i]))return false;return true}
+ if(a instanceof Map){if(a.size!==b.size)return false;for(const [k,v] of a)if(!b.has(k)||!sameTable(v,b.get(k)))return false;return true}
+ const ka=Object.keys(a),kb=Object.keys(b);if(ka.length!==kb.length)return false;for(let i=0;i<ka.length;i++)if(ka[i]!==kb[i]||!sameTable(a[ka[i]],b[kb[i]]))return false;return true}
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
 
@@ -149,7 +160,13 @@ export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTi
  // an independent deep copy; otherwise the restored region is discarded.
  // The seed table is packed resumably first from the same unchanged bank, with
  // the same ownership option the capture itself would use.
- const seeds=temp.dispersal?.floraState?.seeds,seedTable=seeds?yield* packFloraSeedColumnsSteps(seeds,{ownedMetadata:!keep}):null;yield;
+ const seeds=temp.dispersal?.floraState?.seeds,epoch=seeds?seedBankEpoch(temp.dispersal):0,previous=keep&&reused?publishedSeeds.get(temp):null;
+ // Packed tables are read-only once published, so consecutive checkpoints may share
+ // one when the bank they describe is unchanged.
+ const reuse=!!seeds&&!!previous&&previous.seeds===seeds&&previous.epoch===epoch;
+ const seedTable=!seeds?null:reuse?previous.table:yield* packFloraSeedColumnsSteps(seeds,{ownedMetadata:!keep});yield;
+ if(reuse){seedTableReuse.reused++;if(seedTableReuse.verify&&!sameTable(seedTable,yield* packFloraSeedColumnsSteps(seeds,{ownedMetadata:!keep})))throw Error('Reused seed table differs from the live seed bank.')}
+ if(keep&&seeds)publishedSeeds.set(temp,{seeds,epoch,table:seedTable});
  const copy=keep?yield* publishWarmCopySteps(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,seedTable})):createSimulationSnapshot(temp,{
   reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,seedTable,
   // The restored region is exclusively owned and discarded after publication.

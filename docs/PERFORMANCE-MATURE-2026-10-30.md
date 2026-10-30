@@ -49,22 +49,32 @@ The Node two-region run went from 94.7 s to 76.0 s for 200 ticks, with zero inva
 
 The remaining frame over 1 s is an archived region's first cold restore after loading, before it has a warm simulation.
 
-## Remaining limit and next step
+## Seed-bank table reuse (second pass)
 
-Throughput is still below the 8 tick/s target, because every pass republishes each region's 859,000-cohort seed bank (about 1.1 s of packing and 0.4 s of copying per region pass).
+Measuring what actually changes settled the design. On the mature world, over 12 consecutive 6-tick passes, the seed bank changed in exactly one: the pass containing the day boundary, where 45,508 of 45,592 cells changed. In the other 11, not one cell changed. Chunked or incremental packing would not help, but reusing the previous pass's packed table would let 7 of every 8 passes skip packing entirely.
 
-Exact shortcuts were ruled out:
-- The cohort records and their metadata arrays are changed in place in several places (deposits merge into existing cohorts), so a cheap exact change check is not available.
-- Cohorts are genetically distinct, so merging them would change the biology.
+- **Change counter** (`ecology/seed-bank-epoch.js`, new). Every function that can create, alter or delete a seed cohort bumps a counter on its dispersal controller: `seedCell` (through which reconciliation, addition, scaling and selection all pass), establishment, initialization, `settleSeedCell` and the daily decay's cell deletion. These are the only writers, in `flora-inheritance.js`, `seed-viability.js` and `dispersal.js`. The counter lives in a module-level WeakMap, so it never enters a save.
+- **Reuse** (`world/planetary-offscreen-biology.js`). A warm publication reuses its previous packed table when it is the same warm simulation and the same seed bank, and the counter is unchanged. Packed tables are read-only once published (a detached restore decodes them into independent rows), so consecutive checkpoints may share one.
+- **Proof.** `tests/regional-warm-cache.mjs` turns on a verify switch, under which every reuse also packs afresh and must be structurally identical. The test asserts that reuse happened, and the three-region world stays value-identical to restoring every stride across three days.
 
-The next step is a design decision: **incremental seed-bank publication**.
-- Track changed cells at every seed-bank write.
-- Publish only the changed cells' columns, reusing unchanged columns from the previous checkpoint.
-- Encode that in a seed-column format `/3` that `/2` readers can still read.
+The Node two-region run went from 76.0 s to 33.0 s for 200 ticks: 56 of 64 passes reused their table.
 
-That removes most of the per-pass cost, but it touches roughly 20 write sites and the save format, so it needs its own parity tests.
+**Browser, mature world (quiet machine, two runs each):**
 
-Making the first cold restore resumable (spread across frames) would remove the last freeze over 1 s.
+| | Previous `main` `8cbd631a` | Seed-table reuse |
+| --- | --- | --- |
+| Ticks/s | 3.6–3.9 | **7.1–7.2** |
+| p95 frame | 50 ms | 67–83 ms (more simulation per frame) |
+| p99 frame | 83–100 ms | 100 ms |
+| Frames over 250 ms (per 60 s) | 3 | 3–4 |
+| Worst frame | 1.72–1.82 s | 1.72–1.73 s |
+
+Across the day: from 3.2 to 7.2 ticks/s, against the 8 tick/s target.
+
+## Remaining
+
+- **Snapshot copy.** Each pass still deep-copies the region's other state, about 250 ms per pass in Node. Most of it is plant reproduction structures: pollen 16,000 entries, flowers 23,000, embryos 12,000, bank genomes, producer origins and 41,700 genomes. Some of these change during the day (animal contact with flowers), so reuse would need change tracking at many more write sites.
+- **First cold restore.** One freeze of about 1.7 s remains: an archived region's first cold restore after loading. Restoring the archived regions behind the loading screen, or making the restore resumable, would remove it.
 
 ## Test sweep
 
