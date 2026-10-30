@@ -47,4 +47,23 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
  const plainSnap=structuredClone(createSimulationSnapshot(plain,{savedAt:'fixed',reason:'climate-water'}));plainSnap.core.climate={...plainSnap.core.climate,evaporation:CLIMATE_WATER.policy};
  assert.throws(()=>restoreSimulationSnapshot(plainSnap),/disagrees with its recorded climate water rule/);
 }
-console.log('Climate water /1 PASS: evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged');
+// 5. Scenario D, climate-water/2: a rainfall-runoff pool (funded inundation) evaporates on warm,
+// dry days, closes its water ledger every day, and recedes back to land through the existing
+// funded-channel recession. Under /1 the same pool does not evaporate.
+{
+ const pool=policy=>{
+  const sim=new Simulation('CLIMATE-WATER-POOL',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();
+  let i=-1;for(let k=w.n*4;k<w.len-w.n*4&&i<0;k++){const x=k%w.n;if(x<4||x>w.n-5||w.water[k])continue;if(w.water[k-1]||w.water[k+1]||w.water[k-w.n]||w.water[k+w.n]){if(!(w.soilWater?.snowpack?.[k]>0))i=k}}
+  assert.ok(i>=0,'a land cell beside water');w.environment.overland[i]=.2;w.setSurfaceWater([{i,water:1,depth:.2,salinity:0,source:'overland'}],{reason:'rainfall-runoff-inundation'});
+  // Topology changes replace the environment record: always read the current one.
+  assert.equal(w.environment.floodOrigin[i],1,'a runoff pool');const start=w.environment.volume[i];let evaporated=0,day=0,worst=0;
+  for(;day<40&&w.water[i];day++){sim.climate={temp:.95,rain:.05,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+   const row=w.environment.lastDay;evaporated+=row.surfaceEvaporation||0;worst=Math.max(worst,Math.abs(row.waterClosure??0));sim.day++}
+  return{start,evaporated,receded:!w.water[i],days:day,worst,volume:w.environment.volume[i]};
+ };
+ const two=pool(CLIMATE_WATER.policy),one=pool(CLIMATE_WATER.soil);
+ assert.ok(two.evaporated>0,'the pool evaporates');assert.ok(two.receded,`the pool dries and recedes to land (${two.days} days)`);
+ assert.ok(two.worst<1e-6,`open-water ledger closes every day (${two.worst.toExponential(1)})`);
+ assert.equal(one.evaporated,0,'climate-water/1 pools do not evaporate');assert.ok(!one.receded||one.days>two.days,'and do not dry faster');
+}
+console.log('Climate water PASS (/1 soil, /2 runoff pools): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D)');

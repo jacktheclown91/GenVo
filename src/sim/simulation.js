@@ -127,6 +127,7 @@ const NO_INTERACTION=()=>{};
 // Render-time cache of "no living player" per actor list (never saved; see Simulation.player).
 const PLAYER_MISS=new WeakMap();
 import {SOIL_WATER,CLIMATE_WATER,advanceSoilDay} from '../ecology/soil-water.js';
+import {climateWaterPolicy} from '../world/climate-water.js';
 import {DIURNAL,airTemperature} from '../ecology/diurnal-temperature.js';
 import {beginPageVegetationDay,visitLandByWorldPageSteps,completePageVegetationDay} from '../world/page-vegetation-work.js';
 import {drain} from './resumable.js';
@@ -231,7 +232,7 @@ export class Simulation{
     // Heat costs water and drought dormancy is available (arid-physiology/1).
     if(aridPhysiology){if(aridPhysiology!==true&&aridPhysiology!==ARID_PHYSIOLOGY.policy)throw Error('Unknown arid physiology policy.');this.aridPhysiologyRules=ARID_PHYSIOLOGY.policy}
     // Temperature-driven evaporation for the soil water balance (climate-water/1).
-    if(climateWater){if(climateWater!==true&&climateWater!==CLIMATE_WATER.policy)throw Error('Unknown climate water policy.');this.climateWaterRules=CLIMATE_WATER.policy}
+    if(climateWater){if(climateWater!==true&&!climateWaterPolicy(climateWater))throw Error('Unknown climate water policy.');this.climateWaterRules=climateWater===true?CLIMATE_WATER.policy:climateWater}
     // Air warms by day and cools by night around the daily mean (diurnal-temperature/1).
     if(diurnal){if(diurnal!==true&&diurnal!==DIURNAL.policy)throw Error('Unknown diurnal temperature policy.');this.diurnalRules=DIURNAL.policy}
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
