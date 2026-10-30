@@ -53,6 +53,7 @@ import {currentCourtshipMove} from '../reproduction/courtship-performance.js';
 import {SPECIES,phenotypeFor} from '../organisms/species.js';
 import {stalkerProfileFor} from '../organisms/stalker-profile.js';
 import {developmentFor} from '../family/family.js';
+import {inheritedVisualScale,inheritedGaitLength} from './inherited-size-presentation.js';
 import {nearestThreat,nearbyFood} from '../ui/readability.js';
 import {buildVisualWaterMask,LANDFORM_RESOLUTION,maskWaterAt} from './landform.js';
 import {buildVisualHabitatMask,visualHabitatAt,buildSmoothedHabitatField,HABITAT_ZONE} from './habitat.js';
@@ -1013,7 +1014,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   playerGaitVisual(a,gaitPerTile){const g=this.motion.sample({...a,id:'gait:'+a.id,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile});return{...this.playerVisual,gaitPhase:g.gaitPhase,recentlyMoving:g.recentlyMoving}}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
+    const inheritedScale=inheritedVisualScale(a),scale=this.zoom*inheritedScale,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(inheritedGaitLength(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),a),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(a.player?!!visual.recentlyMoving:!!visual.recentlyMoving&&targetTravel);if(a.player)this.lastPlayerDrawMoving=moving;
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
