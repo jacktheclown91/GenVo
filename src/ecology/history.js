@@ -2,6 +2,7 @@ import {CFG,PLANTS} from '../sim/config.js';
 import {ANATOMICAL_MASS,massPolicy,bodyMass} from '../organisms/body-mass.js';
 import {remainingPreyBiomass} from './prey-biomass.js';
 import {SPECIES} from '../organisms/species.js';
+import {returnGrazedMinerals} from './grazing-nutrients.js';
 
 // Environmental memory. These fields record consequences already produced by the simulation
 // so the renderer can show years of use. Since v1.33.3 one of them feeds back: ground grazed
@@ -24,8 +25,10 @@ export class EnvironmentalHistoryController{
     if(!animal?.alive)return;this.sim.discovery?.noteMovementTrace(animal);const i=this.sim.world.idx(animal.x,animal.y),mass=massPolicy(animal)===ANATOMICAL_MASS?bodyMass(animal):(SPECIES[animal.species]?.mass||1);this.activate(i);
     this.traffic[i]=Math.min(2.2,this.traffic[i]+.010*Math.sqrt(Math.max(.25,mass))*Math.max(0,weight));
   }
-  notePlantConsumption(kind,x,y,amount){
-    if(!PLANTS[kind]||kind==='rotcap'||!(amount>0))return;const i=this.sim.world.idx(x,y);this.activate(i,{previous:this.biomassAt(i)});
+  // digested: the tissue actually eaten, whose minerals return under grazing-nutrients/1
+  // (crop meals discard coat to litter and carry viable seeds away).
+  notePlantConsumption(kind,x,y,amount,digested=amount){
+    if(!PLANTS[kind]||!(amount>0))return;const i=this.sim.world.idx(x,y);returnGrazedMinerals(this.sim,i,digested);if(kind==='rotcap')return;this.activate(i,{previous:this.biomassAt(i)});
     this.grazing[i]=Math.min(2.2,this.grazing[i]+amount*1.55);
   }
   noteDeath(animal){

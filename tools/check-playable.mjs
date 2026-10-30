@@ -112,6 +112,7 @@ const runtime=[
   'tests/size-evolution.mjs',
   'tests/morphology-integration.mjs',
   'tests/perceived-threat-escape.mjs',
+  'tests/breeding-nutrients.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

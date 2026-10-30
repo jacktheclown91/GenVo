@@ -48,6 +48,10 @@ At founding density the gate refuses about 90% of free females. At low density i
 
 The decline is partly legitimate ecology: founders start well above the region's renewable food, and an overshoot followed by a decline is expected. Extinction within two years in every seed is not: at the reduced density the region could feed, the population produces almost no young, because of the gate thresholds above and the shortage of mates. The hunter rule (finding 6) is a clear defect: no predator can breed under any conditions. The need overstatement (finding 5) and the production mismatch (finding 4) are inconsistencies between the gate and the bodies and plants it describes. `breeding-support/1` was set by creator direction (October 22), so changes to it await a creator decision.
 
+## Outcome
+
+The creator chose to build both fixes together: `grazing-nutrients/1` and `breeding-support/2` ([design and results](BREEDING-SUPPORT-2-DESIGN-2026-10-30.md)). The re-assessment there also withdraws finding 6 as a defect: realised prey turnover is lower than the gate assumes, so predators genuinely cannot breed at these prey numbers. With both rules, reproducing populations persist through two years in all three seeds (37, 92 and 87 alive at day 731, against 0, 3 and 5).
+
 ## Not yet
 
 - Active against archived regional populations (the brief asks for both); these fields stay in the start region.

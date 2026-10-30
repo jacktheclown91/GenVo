@@ -22,7 +22,7 @@ if(!(days>0&&days<=1000))throw Error('Supply 1..1000 days');
 const common={player:true,worldGenerator:'planetary/1',regionalFrontier:true,autonomousPopulations:true,courtshipSimilarity:true,dayClock:true,metabolism:true,
  foodProperties:true,tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true};
 const sim=new Simulation(seed,baseline?{...common,regionalFounding:'regional-founding-templates/2'}:{...common,regionalFounding:'regional-founding-templates/3',
- bodySize:'body-size/2',inertia:true,structuralSupport:true,aridPhysiology:true,climateWater:true,diurnal:true,autonomousEvolution:true});
+ bodySize:'body-size/2',inertia:true,structuralSupport:true,aridPhysiology:true,climateWater:true,diurnal:true,autonomousEvolution:true,grazingNutrients:true,breedingSupport:'breeding-support/2'});
 sim.setPlayerAutonomy(true);
 const w=sim.world,ponds=new Map(),closed=[];let flooded=0,receded=0,maxClosure=0,drinksOnPonds=0,drinksTotal=0;
 const set=w.setSurfaceWater.bind(w);

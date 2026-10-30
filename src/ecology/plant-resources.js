@@ -7,6 +7,7 @@ import {snowLightFactor,snowGrowthFactor} from '../world/snowpack.js';
 import {PLANTS} from '../sim/config.js';
 import {SOIL_WATER,plantAvailableWater} from './soil-water.js';
 import {retainedReserveShare,seedRain} from './perennial-regrowth.js';
+import {notePlantRegrowth,rollPlantRegrowth,validatePlantRegrowth} from './plant-regrowth.js';
 export const PLANT_RESOURCE_UNITS=Object.freeze({waterPerBiomass:.5,mineralPerBiomass:.1,energyPerBiomass:1,waterCapacity:2,energyCapacity:.25});
 export const LAND_PRODUCERS=Object.freeze(Object.keys(PLANTS).filter(k=>k!=='rotcap'));
 export function initializePlantResources(w){
@@ -18,12 +19,13 @@ export function validatePlantResources(w,r){
   if(r?.schema!==1||r.units!=='normalized-prototype/1')throw Error('Invalid plant resource schema.');
   for(const a of [r.water,r.minerals,...LAND_PRODUCERS.map(k=>r.energy?.[k])])if(!(a instanceof Float64Array)||a.length!==w.len||[...a].some(v=>!Number.isFinite(v)||v<0))throw Error('Invalid finite plant resource stores.');
   for(const k of LAND_PRODUCERS)if(!(r.limits?.[k] instanceof Uint8Array)||r.limits[k].length!==w.len||r.limits[k].some(v=>v>4))throw Error('Invalid plant growth limits.');
+  validatePlantRegrowth(w,r.regrowth);
 }
 export function producerBoundary(s,kind,i,amount,direction,reason){if(!(amount>0)||!PLANTS[kind])return;const r=s.world.plantResources,key=direction==='in'?'biomassImported':'biomassExported';r.totals[key]=(r.totals[key]||0)+amount;if(wNear(s.world,i,s.player?.()||{x:-1,y:-1}))record(s,{type:'transfer',kind,i,amount,direction,reason});}
 // With perennial regrowth the root share of the reserve stays when standing tissue is removed.
 export function exportPlantReserve(s,kind,i,before,after){const r=s.world.plantResources,energy=r?.energy[kind];if(energy&&after<before&&before>0){const exported=energy[i]*(1-after/before)*(1-retainedReserveShare(s));energy[i]-=exported;r.totals.reserveExport=(r.totals.reserveExport||0)+exported;}}
 function record(s,entry){const r=s.world.plantResources;r.receipts.push({...entry,tick:s.tickCount,day:s.day});if(r.receipts.length>48)r.receipts.shift()}
-export function advancePlantInputs(s){const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS;r.day=s.day;
+export function advancePlantInputs(s){const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS;r.day=s.day;rollPlantRegrowth(s,LAND_PRODUCERS);
   for(let i=0;i<w.len;i++){if(w.water[i])continue;if(SOIL_WATER.enabled){const before=r.water[i];r.water[i]=plantAvailableWater(w,i,u.waterCapacity);r.totals.soilExchange=(r.totals.soilExchange||0)+r.water[i]-before;}else{const before=r.water[i],rain=Math.max(0,s.climate.rain)*.06,shore=(w.seepage[i]||0)*.02,evap=Math.min(before+rain+shore,.025+.035*Math.max(0,s.climate.temp)),next=before+rain+shore-evap,runoff=Math.max(0,next-u.waterCapacity);r.water[i]=Math.min(u.waterCapacity,next);r.totals.rain+=rain;r.totals.shoreInflow+=shore;r.totals.evaporation+=evap;r.totals.runoff+=runoff;}
     const total=LAND_PRODUCERS.reduce((v,k)=>v+w.plants[k][i],0),flux=Math.max(0,1-localRain(w,s.climate,i)*.45)*.04;
     // A real standing woody canopy intercepts light before it reaches plants
@@ -73,6 +75,6 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
   const total=requests.reduce((a,b)=>a+b.demand,0),waterScale=total>0?r.water[i]/(total*u.waterPerBiomass):1,mineralScale=total>0?r.minerals[i]/(total*u.mineralPerBiomass):1,scale=Math.min(1,waterScale,mineralScale),sharedLimit=scale<1?(waterScale<=mineralScale?2:3):0;
   for(const q of requests){const {e,initial,current,desired,demand}=q,{kind,p,d,plants}=e;let next=desired;
     if(next>current)next=fundPlantGrowth(s,kind,i,current,desired,{cap:demand*scale,sharedLimit});else{r.limits[kind][i]=0;if(next<current)returnPlantLoss(s,kind,i,current-next);}
-    dispersal.noteGrowth(kind,i,initial,next);plants[i]=next;if(d?.localRelease&&next>=(d.mature??p.carry*.45)&&(!lifecycle||canFlower(kind,dispersal.genomeAt(kind,i)?.traits?.waterNeed??p.waterNeed,m,temp)))dispersal.releaseLocal(kind,i,next);
+    dispersal.noteGrowth(kind,i,initial,next);notePlantRegrowth(s,kind,i,current,next);plants[i]=next;if(d?.localRelease&&next>=(d.mature??p.carry*.45)&&(!lifecycle||canFlower(kind,dispersal.genomeAt(kind,i)?.traits?.waterNeed??p.waterNeed,m,temp)))dispersal.releaseLocal(kind,i,next);
   }
 }
