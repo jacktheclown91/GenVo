@@ -25,7 +25,7 @@ assert.equal(JSON.stringify(world),beforeWorld,'reading expression does not edit
 const wet=aridVisualReading(sim(.4,.8),a);
 assert.equal(wet.frillFlushed,false,'cool air does not flush radiator');
 assert.equal(wet.waxSealed,false,'wet soil does not trigger wax sheen');
-assert.equal(aridVisualReading(sim(.9,.2,undefined),a),null,'legacy rule is unchanged');
+assert.equal(aridVisualReading(sim(.9,.2,null),a),null,'legacy rule is unchanged');
 assert.equal(aridVisualReading({aridPhysiologyRules:null},a),null,'recorded old rules have no expression');
 assert.equal(aridVisualReading(world,animal([])),null,'unrelated creature avoids extra physiology sampling');
 assert.equal(aridVisualReading(world,{...animal(),alive:false}),null,'dead animals are not newly animated');
