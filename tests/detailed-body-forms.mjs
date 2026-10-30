@@ -7,7 +7,7 @@ const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url);
 const catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',folder)));
 const before=JSON.parse(fs.readFileSync(new URL('../docs/body-form-detail-2026-10-29/before/catalog.json',import.meta.url)));
 assert.equal(catalog.parts.length,before.parts.length+6);
-for(const old of before.parts)assert.deepEqual(catalog.parts.find(e=>e.partId===old.partId&&e.resolution===old.resolution),old,'all preceding34 variants and their declared budgets remain exact');
+for(const old of before.parts.filter(e=>!['flight-wing','proto-wing'].includes(e.partId)))assert.deepEqual(catalog.parts.find(e=>e.partId===old.partId&&e.resolution===old.resolution),old,'preceding non-wing variants remain exact; revised wings have independent coverage');
 const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaled(x,r)])):typeof v==='number'?v*r:v;
 let frames=0;
 const contours=new Map();
@@ -37,4 +37,4 @@ for(const id of BODY_FORM_PARTS)for(const resolution of [64,128]){
   }
 }
 for(const resolution of [64,128])assert.equal(new Set(BODY_FORM_PARTS.map(id=>contours.get(id+'-'+resolution))).size,3,'distinct anatomical contours');
-console.log('Detailed body forms PASS: '+frames+' native torso frames, three distinct contours, reproducible recipe, exact roots/rigs/palettes/timing, all8 directions, inherited tint and original34 variants unchanged.');
+console.log('Detailed body forms PASS: '+frames+' native torso frames, three distinct contours, reproducible recipe, exact roots/rigs/palettes/timing, all8 directions, inherited tint and preceding non-wing variants unchanged (wing-root revision checked separately).');

@@ -36,14 +36,26 @@ function tissue(id,u,v,index,pixel,dx,dy){
     const paint=feather(x,y,start,end,k<3?1.35:1.65,pixel/scale,dx,dy,id==='flight-wing');
     if(paint!==null)tone=paint;
   }
-  // Short layered coverts join the feather fans to their real dorsal root.
-  for(let row=0;row<2;row++)for(let k=0;k<4;k++){
-    const cx=2.8-k*1.6-row*.5,cy=2.6+row*1.55;
-    const q=ellipse(x,y,cx,cy,1.65,1.65);
-    if(q<1)tone=q>.86?1:dy<0?3:2;
+  // Small overlapping coverts bridge the panel hinges. Keep the dorsal root
+  // compact so a flat strip cannot cover most of the actual torso underneath.
+  for(let row=2;row>=0;row--)for(let k=0;k<4;k++){
+    const cx=2.6-k*1.55-(row%2)*.45,cy=1.35+row*1.45;
+    const q=ellipse(x,y,cx,cy,1.22,1.4);
+    if(q<1){
+      tone=q>.86?1:dy<0?3:2;
+      if(q<.72&&x<cx&&dy<0)tone=4;
+      if(Math.abs(x-cx)<pixel*.38&&y>cy-.7&&y<cy+.85)tone=dy<0?3:1;
+    }
   }
-  const root=ellipse(u,v,0,0,5.5*scale,1.85);
-  if(root<1)tone=root>.83?1:dy<0?3:2;
+  const root=ellipse(u,v,-.35*scale,0,4.45*scale,1.7);
+  if(root<1){
+    const height=Math.sqrt(Math.max(0,1-root*root));
+    const light=.45+.62*height-.18*dy/2-.10*dx/5;
+    tone=root>.87?1:light<.7?2:light<1?3:4;
+    // Fine feather overlap follows the attachment, instead of one solid bar.
+    const crease=Math.abs(Math.sin((u/scale+.2)*Math.PI/1.6));
+    if(root<.88&&Math.abs(v)>.38&&crease<pixel*.22)tone=Math.max(1,tone-1);
+  }
   return tone;
 }
 
@@ -60,7 +72,7 @@ export function authorWingPart(source,resolution){
     }
     frames.push({state:'idle',facing,index,durationMs:source.frames.find(f=>f.facing===facing&&f.index===index).durationMs,indices,alpha});
   }
-  return {partId:source.partId,version:3,width:resolution,height:resolution,
+  return {partId:source.partId,version:4,width:resolution,height:resolution,
     displayScale:(source.displayScale??1)/ratio,rootAnchorPx:source.rootAnchorPx.map(v=>v*ratio),
     ...(source.rig?{rig:{...source.rig,rootRect:scaled(source.rig.rootRect,ratio),panels:scaled(source.rig.panels,ratio)}}:{}),
     regions:source.regions.map(({id,protected:fixed,colors})=>({id,protected:fixed,colors})),frames};

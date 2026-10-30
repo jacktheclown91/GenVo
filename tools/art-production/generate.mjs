@@ -20,7 +20,7 @@ if(limbRefinement)Object.assign(catalog,{...previous,version:4,parts:[],limbRefi
 if(torsoRefinement)Object.assign(catalog,{...previous,version:5,parts:[],torsoRefinement:'Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.'});
 if(headRefinement)Object.assign(catalog,{...previous,version:6,parts:[],headRefinement:'Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.'});
 if(wingRefinement){
-  Object.assign(catalog,{...previous,version:7,parts:[],wingRefinement:'Native indexed precursor and flight feathers; existing frame, root and dorsal folding contracts preserved.'});
+  Object.assign(catalog,{...previous,version:9,parts:[],wingRefinement:'Native indexed precursor/flight feathers with compact layered root coverts; existing frame, registration and folding contracts preserved.'});
   for(const partId of ['proto-wing','flight-wing'])for(const resolution of [64,128]){
     if(previous.parts.some(e=>e.partId===partId&&e.resolution===resolution))continue;
     const source=JSON.parse(fs.readFileSync('assets/art/parts/'+partId+'.indexed.json','utf8'));
