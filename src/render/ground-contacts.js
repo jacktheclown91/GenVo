@@ -3,6 +3,7 @@ const DIRECTIONS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 const GROUNDED_ACTIONS=new Set(['idle','move','rest','forage','seek-water','prowl','flee','listen','scan']);
 const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
 const mix=(a,b,t)=>({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
+const angleDelta=(from,to)=>((to-from+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI;
 
 // Ephemeral artwork contacts, never physical collision or organism state. Units
 // are the existing sprite-art units per tile. A stationary actor keeps its normal
@@ -53,7 +54,7 @@ class ContactFrame{
     this.cacheToken=mode==='freeze'?this.state.serial+':'+this.state.time+':'+this.state.x+':'+this.state.y:null;
     this.needsRestPose=!this.state.legs?.size;
     const vector=DIRECTIONS[this.state.dir&7],length=Math.hypot(...vector);
-    this.forward.x=vector[0]/length;this.forward.y=vector[1]/length;this.perp.x=-this.forward.y;this.perp.y=this.forward.x;
+    this.forward.x=vector[0]/length;this.forward.y=vector[1]/length;this.perp.x=-this.forward.y;this.perp.y=this.forward.x;this.heading=Math.atan2(this.forward.y,this.forward.x);
     this.memo.clear();this.bodyResult=null;return this;
   }
   carriage(candidate,neutral=candidate){
@@ -77,20 +78,23 @@ class ContactFrame{
     s.legs??=new Map();let entry=s.legs.get(key);
     if(!entry){
       const neutral=world(restFoot);
-      entry={anchor:neutral,last:neutral,planted:true,startVersion:-1,settleVersion:-1};s.legs.set(key,entry);
+      const seed=DIRECTIONS[this.seedDir&7],heading=Math.atan2(seed[1],seed[0]);
+      entry={anchor:neutral,last:neutral,planted:true,startVersion:-1,settleVersion:-1,heading,headingTime:s.time,footForward:{x:Math.cos(heading),y:Math.sin(heading)}};s.legs.set(key,entry);
     }
-    let displayed=candidate,planted=!!leg.planted,lift=leg.liftAmount||0;
+    let displayed=candidate,planted=!!leg.planted,lift=leg.liftAmount||0,heading=entry.heading;
     if(this.mode==='freeze'){
       displayed=entry.last;planted=entry.planted;lift=entry.lastLift||0;
     }else if(this.mode==='settle'){
       if(entry.settleVersion!==s.settleVersion){
-        entry.settleVersion=s.settleVersion;entry.from=entry.last;entry.stopPlanted=entry.planted;
+        entry.settleVersion=s.settleVersion;entry.from=entry.last;entry.stopPlanted=entry.planted;entry.fromHeading=entry.heading;
         entry.recoverAt=s.modeStart+((Math.floor(key/2)%2)*55);
       }
       const t=Math.max(0,Math.min(1,(s.time-entry.recoverAt)/180));
       displayed=mix(entry.from,candidate,smooth(t));
       const distance=Math.hypot(entry.from.x-candidate.x,entry.from.y-candidate.y)*u;
-      if(distance>.06&&t>0&&t<1){displayed.y-=Math.sin(Math.PI*t)*.65/u;planted=false;lift=Math.max(lift,Math.sin(Math.PI*t)*.35);}
+      const turn=angleDelta(entry.fromHeading,this.heading);
+      heading=entry.fromHeading+turn*smooth(t);
+      if((distance>.06||Math.abs(turn)>.05)&&t>0&&t<1){displayed.y-=Math.sin(Math.PI*t)*.65/u;planted=false;lift=Math.max(lift,Math.sin(Math.PI*t)*.35);}
       else{planted=t===0?entry.stopPlanted:!!leg.planted;if(t===0)lift=entry.lastLift||0;}
       if(t===1){entry.anchor=candidate;if(entry.completedVersion!==s.settleVersion){entry.completedVersion=s.settleVersion;this.owner.stats.recovered++;}}
     }else if(entry.forced){
@@ -112,13 +116,23 @@ class ContactFrame{
       if(entry.startVersion!==s.startVersion){entry.startVersion=s.startVersion;entry.startFrom=entry.last;}
       const t=smooth((s.time-s.modeStart)/120);displayed=mix(entry.startFrom,candidate,t);
     }
+    // A planted sole keeps its world heading while the body turns above it.
+    // Swing/recovery rotates the tissue, without changing the contact authority.
+    if(this.mode==='walk'){
+      if(!planted){
+        const elapsed=Math.max(0,s.time-entry.headingTime);
+        heading+=angleDelta(heading,this.heading)*(1-Math.exp(-elapsed/55));
+      }else if(!entry.planted)heading=this.heading;
+    }
+    if(heading!==entry.heading){entry.heading=heading;entry.footForward={x:Math.cos(heading),y:Math.sin(heading)};}
+    entry.headingTime=s.time;
     const finalFoot=local(displayed);
     if(this.mode==='walk'&&planted){
       const check=world(finalFoot);this.owner.stats.maxHoldDrift=Math.max(this.owner.stats.maxHoldDrift,Math.hypot(check.x-entry.anchor.x,check.y-entry.anchor.y));
     }
     entry.last=displayed;entry.planted=planted;entry.lastLift=lift;
     const joint=articulatedKnee({root,foot:finalFoot,forward:this.forward,perp:this.perp,side:leg.side,liftAmount:lift});joint.y-=.9+lift*.6;
-    const result={root,knee:joint,foot:finalFoot,leg:{...leg,planted,liftAmount:lift}};
+    const result={root,knee:joint,foot:finalFoot,leg:{...leg,planted,liftAmount:lift,footForward:entry.footForward}};
     this.memo.set(key,result);return result;
   }
 }

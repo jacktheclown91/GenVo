@@ -273,19 +273,19 @@ function standardLimb(c,k){
   pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,distal);
   pixel(c,snap(knee.x),snap(knee.y),1,1,s,leg.front>.15?p.light:p.body);
   forwardToe(c,k,.8,1,lifted>.62?p.light:p.shade);pixel(c,snap(foot.x),snap(foot.y),.5,.5,s,p.light);
-  if(lifted<.42&&Math.abs(leg.side)>.55){const side=Math.sign(leg.side),perp=k.perp||{x:0,y:1};pixel(c,snap(foot.x+perp.x*side),snap(foot.y+perp.y*side),1,1,s,p.shade)}
+  if(lifted<.42&&Math.abs(leg.side)>.55){const side=Math.sign(leg.side),axis=k.leg?.footForward,perp=axis?{x:-axis.y,y:axis.x}:k.perp||{x:0,y:1};pixel(c,snap(foot.x+perp.x*side),snap(foot.y+perp.y*side),1,1,s,p.shade)}
 }
 // v1.59.0: each leg type has its own articulation (its gait, stride and lift, lives in
 // creature-assembler LEG_GAIT; the shapes are here).
 const toe=(c,k,x,y,w,h,col)=>pixel(c,snap(x),snap(y),w,h,k.s,col);
 // Fallback foot tissue follows body forward; contact geometry stays fixed.
 function forwardToe(c,k,length,width,color){
-  const {foot,s}=k,fx=k.fx??1,fy=k.fy??0;
+  const {foot,s}=k,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
   pixelLine(c,foot.x-fx*.25,foot.y-fy*.25,foot.x+fx*length,foot.y+fy*length,s,color,width);
 }
 export const LIMB_ART={
   // Climber: jointed weight-bearing limb, thick forearm and paired recurved digits.
-  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;
+  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0,perp={x:-fy,y:fx};
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.8);
     pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,p.body,1.3);
     pixel(c,snap(knee.x-.5),snap(knee.y-.5),1.4,1.2,s,p.light);
@@ -294,8 +294,8 @@ export const LIMB_ART={
       pixelLine(c,ax,ay,tx,ty,s,'#d7b889',.75);
       pixel(c,snap(tx-fx*.5+sg*perp.x*.3),snap(ty-fy*.5+sg*perp.y*.3),.65,.65,s,'#f5e4bf')}},
   // Runner: a slender limb, a light springy shin and a long forward-reaching toe.
-  'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
-    pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+k.fx*1.4,foot.y+k.fy*1.4,s,p.shade,.5);toe(c,k,foot.x+k.fx*1.4,foot.y+k.fy*1.4,.5,.5,p.light)},
+  'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,axis=leg?.footForward,fx=axis?.x??k.fx,fy=axis?.y??k.fy,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
+    pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+fx*1.4,foot.y+fy*1.4,s,p.shade,.5);toe(c,k,foot.x+fx*1.4,foot.y+fy*1.4,.5,.5,p.light)},
   // Sturdy: a thick column with a low knee and a broad flat foot.
   'sturdy-leg'(c,k){const {root,knee,foot,s,p}=k,mid={x:(root.x+foot.x)/2,y:(root.y+foot.y)/2},kn={x:(knee.x+mid.x)/2,y:(knee.y+mid.y)/2};
     pixelLine(c,root.x,root.y,kn.x,kn.y,s,p.shade,2);pixelLine(c,kn.x,kn.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(kn.x-.5),snap(kn.y-.5),1.5,1,s,p.light);forwardToe(c,k,.65,2.5,p.shade);forwardToe(c,k,.65,1.5,p.light)},
@@ -304,7 +304,7 @@ export const LIMB_ART={
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.5);pixelLine(c,knee.x,knee.y,hock.x,hock.y,s,p.body,.5);pixelLine(c,hock.x,hock.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,1);
     pixel(c,snap(hock.x),snap(hock.y),.5,.5,s,p.light);forwardToe(c,k,1,.5,p.shade)},
   // Webbed: the standard limb ending in a spread paddle of three webbed toes.
-  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;for(const d of [-1,0,1]){const x=foot.x+perp.x*d*.8,y=foot.y+perp.y*d*.8;pixelLine(c,x,y,x+fx,y+fy,s,'#2f6f86',.7)}pixelLine(c,foot.x-perp.x,foot.y-perp.y,foot.x+perp.x,foot.y+perp.y,s,'#7fc8c8',.5)},
+  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0,perp={x:-fy,y:fx};for(const d of [-1,0,1]){const x=foot.x+perp.x*d*.8,y=foot.y+perp.y*d*.8;pixelLine(c,x,y,x+fx,y+fy,s,'#2f6f86',.7)}pixelLine(c,foot.x-perp.x,foot.y-perp.y,foot.x+perp.x,foot.y+perp.y,s,'#7fc8c8',.5)},
   // Padded: the standard limb on a round soft pad that lifts only a little.
   'padded-leg'(c,k){standardLimb(c,k);const {foot,s,p}=k;toe(c,k,foot.x-1,foot.y,2,1,p.shade);toe(c,k,foot.x-.5,foot.y,1,.5,p.light)},
   // Broad, joint-following arid contact pad; not a free-floating terrain sprite.
@@ -324,7 +324,7 @@ export function drawLimb(c,partId,k){
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
     // The geometry is paired across the body; its asymmetric tissue must be too.
     mirrorTransverse:(k.leg?.side||0)<0,
-    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!Number.isFinite(k.behavior?.climbHeight)&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?{x:k.fx??1,y:k.fy??0}:null,
+    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!Number.isFinite(k.behavior?.climbHeight)&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?(k.leg?.footForward||{x:k.fx??1,y:k.fy??0}):null,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
     // Ground contact and water feathering select each mounted foot independently.
     frameIndex:k.leg?.swimFeather!=null?(k.leg.swimFeather>.25?1:0):k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
@@ -352,7 +352,9 @@ export function artMount(partId,k){
    const fraction=({barb:0,'hook-spur':0,'sensory-bristle':0,'kick-spur':0,
      'dew-claw':.55,claw:1,'heel-spike':1,'grip-pad':1})[partId]??1;
    return {x:k.knee.x+dx*fraction-dx/length*.25,y:k.knee.y+dy*fraction-dy/length*.25,
-     scale:.22,mirrorX:(k.leg?.side||0)<0};
+     scale:.22,mirrorX:(k.leg?.side||0)<0,
+     // Only foot-mounted tissue follows a planted sole; knee/shin spurs keep their joint.
+     rotation:fraction===1&&k.leg?.footForward?Math.atan2(k.leg.footForward.y,k.leg.footForward.x)-Math.atan2(k.fy??0,k.fx??1):0};
  }
  if(sockets.includes('tail')){
    const at=authored('tail'),radius=ellipseRadius(k.fx,k.fy);
