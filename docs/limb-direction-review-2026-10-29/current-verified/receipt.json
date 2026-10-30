@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "resolution": "32",
+      "planExact": true
+    },
+    {
+      "resolution": "64",
+      "planExact": true
+    },
+    {
+      "resolution": "128",
+      "planExact": true
+    }
+  ],
+  "errors": [],
+  "timings": [
+    {
+      "resolution": 32,
+      "corrected": false,
+      "medianMs": 1.5,
+      "p95Ms": 1.8000000044703484,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 32,
+      "corrected": true,
+      "medianMs": 1.3000000044703484,
+      "p95Ms": 1.6000000014901161,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 64,
+      "corrected": false,
+      "medianMs": 1.1000000014901161,
+      "p95Ms": 1.3000000044703484,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 64,
+      "corrected": true,
+      "medianMs": 1,
+      "p95Ms": 1.3999999985098839,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 128,
+      "corrected": false,
+      "medianMs": 1.1000000014901161,
+      "p95Ms": 1.2999999970197678,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 128,
+      "corrected": true,
+      "medianMs": 1.2000000029802322,
+      "p95Ms": 1.7000000029802322,
+      "samples": 30,
+      "spritesPerSample": 4
+    }
+  ],
+  "timingScope": "Matched uncached four-sprite CPU composition; reused diagnostic canvas. Not full-world FPS.",
+  "scope": "Actual Lab public import and resolution controls; asymmetric bilateral fixture, unchanged plans. Eight-facing sheet uses the same canonical draw function.",
+  "creatorAcceptance": false
+}

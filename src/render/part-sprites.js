@@ -272,12 +272,17 @@ function standardLimb(c,k){
   // The lower leg stays visible while the foot is raised, so a coarse gait never flickers.
   pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,distal);
   pixel(c,snap(knee.x),snap(knee.y),1,1,s,leg.front>.15?p.light:p.body);
-  const toeX=snap(foot.x),toeY=snap(foot.y);pixel(c,toeX-.5,toeY,1.5,1,s,lifted>.62?p.light:p.shade);pixel(c,toeX,toeY,.5,.5,s,p.light);
-  if(lifted<.42&&Math.abs(leg.side)>.55)pixel(c,toeX+Math.sign(leg.side),toeY,1,1,s,p.shade);
+  forwardToe(c,k,.8,1,lifted>.62?p.light:p.shade);pixel(c,snap(foot.x),snap(foot.y),.5,.5,s,p.light);
+  if(lifted<.42&&Math.abs(leg.side)>.55){const side=Math.sign(leg.side),perp=k.perp||{x:0,y:1};pixel(c,snap(foot.x+perp.x*side),snap(foot.y+perp.y*side),1,1,s,p.shade)}
 }
 // v1.59.0: each leg type has its own articulation (its gait, stride and lift, lives in
 // creature-assembler LEG_GAIT; the shapes are here).
 const toe=(c,k,x,y,w,h,col)=>pixel(c,snap(x),snap(y),w,h,k.s,col);
+// Fallback foot tissue follows body forward; contact geometry stays fixed.
+function forwardToe(c,k,length,width,color){
+  const {foot,s}=k,fx=k.fx??1,fy=k.fy??0;
+  pixelLine(c,foot.x-fx*.25,foot.y-fy*.25,foot.x+fx*length,foot.y+fy*length,s,color,width);
+}
 export const LIMB_ART={
   // Climber: jointed weight-bearing limb, thick forearm and paired recurved digits.
   'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;
@@ -293,13 +298,13 @@ export const LIMB_ART={
     pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+k.fx*1.4,foot.y+k.fy*1.4,s,p.shade,.5);toe(c,k,foot.x+k.fx*1.4,foot.y+k.fy*1.4,.5,.5,p.light)},
   // Sturdy: a thick column with a low knee and a broad flat foot.
   'sturdy-leg'(c,k){const {root,knee,foot,s,p}=k,mid={x:(root.x+foot.x)/2,y:(root.y+foot.y)/2},kn={x:(knee.x+mid.x)/2,y:(knee.y+mid.y)/2};
-    pixelLine(c,root.x,root.y,kn.x,kn.y,s,p.shade,2);pixelLine(c,kn.x,kn.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(kn.x-.5),snap(kn.y-.5),1.5,1,s,p.light);toe(c,k,foot.x-1.25,foot.y,2.5,1,p.shade);toe(c,k,foot.x-1.25,foot.y,2.5,.5,p.light)},
+    pixelLine(c,root.x,root.y,kn.x,kn.y,s,p.shade,2);pixelLine(c,kn.x,kn.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(kn.x-.5),snap(kn.y-.5),1.5,1,s,p.light);forwardToe(c,k,.65,2.5,p.shade);forwardToe(c,k,.65,1.5,p.light)},
   // Spring: a digitigrade leg with a raised hock, so it folds and kicks like a hopping animal.
   'spring-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0,v=Math.max(.5,Math.min(1,k.size??.65)),hock={x:knee.x+(foot.x-knee.x)*.55-k.fx*(1+v),y:knee.y+(foot.y-knee.y)*.55-k.fy*(1+v)-.5};
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.5);pixelLine(c,knee.x,knee.y,hock.x,hock.y,s,p.body,.5);pixelLine(c,hock.x,hock.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,1);
-    pixel(c,snap(hock.x),snap(hock.y),.5,.5,s,p.light);toe(c,k,foot.x-.5,foot.y,1.5,.5,p.shade)},
+    pixel(c,snap(hock.x),snap(hock.y),.5,.5,s,p.light);forwardToe(c,k,1,.5,p.shade)},
   // Webbed: the standard limb ending in a spread paddle of three webbed toes.
-  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,perp=k.perp||{x:0,y:1};for(const d of [-1,0,1])pixel(c,snap(foot.x+perp.x*d*.8),snap(foot.y+perp.y*d*.8+.5),.5,1,s,'#2f6f86');pixel(c,snap(foot.x-1),snap(foot.y+.5),2,.5,s,'#7fc8c8')},
+  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;for(const d of [-1,0,1]){const x=foot.x+perp.x*d*.8,y=foot.y+perp.y*d*.8;pixelLine(c,x,y,x+fx,y+fy,s,'#2f6f86',.7)}pixelLine(c,foot.x-perp.x,foot.y-perp.y,foot.x+perp.x,foot.y+perp.y,s,'#7fc8c8',.5)},
   // Padded: the standard limb on a round soft pad that lifts only a little.
   'padded-leg'(c,k){standardLimb(c,k);const {foot,s,p}=k;toe(c,k,foot.x-1,foot.y,2,1,p.shade);toe(c,k,foot.x-.5,foot.y,1,.5,p.light)},
   // Broad, joint-following arid contact pad; not a free-floating terrain sprite.

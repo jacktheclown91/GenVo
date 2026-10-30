@@ -1,0 +1,158 @@
+{
+  "plan": {
+    "schema": "genvo8.bodyplan/0",
+    "registryVersion": 0,
+    "nodes": [
+      {
+        "id": "root",
+        "partId": "small-torso",
+        "partVersion": 1,
+        "parent": null,
+        "socket": null
+      },
+      {
+        "id": "root/eye.left",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.left"
+      },
+      {
+        "id": "root/eye.right",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.right"
+      },
+      {
+        "id": "root/flank.left",
+        "partId": "armor-plate",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.left"
+      },
+      {
+        "id": "root/flank.right",
+        "partId": "armor-plate",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.right"
+      },
+      {
+        "id": "root/limb.1",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.1"
+      },
+      {
+        "id": "root/limb.1/spur",
+        "partId": "claw",
+        "partVersion": 1,
+        "parent": "root/limb.1",
+        "socket": "spur"
+      },
+      {
+        "id": "root/limb.3",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.3"
+      },
+      {
+        "id": "root/limb.3/spur",
+        "partId": "claw",
+        "partVersion": 1,
+        "parent": "root/limb.3",
+        "socket": "spur"
+      },
+      {
+        "id": "root/limb.5",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.5"
+      },
+      {
+        "id": "root/limb.5/spur",
+        "partId": "claw",
+        "partVersion": 1,
+        "parent": "root/limb.5",
+        "socket": "spur"
+      },
+      {
+        "id": "root/limb.7",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.7"
+      },
+      {
+        "id": "root/limb.7/spur",
+        "partId": "claw",
+        "partVersion": 1,
+        "parent": "root/limb.7",
+        "socket": "spur"
+      },
+      {
+        "id": "root/mouth",
+        "partId": "grazing-mouth",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "mouth"
+      }
+    ],
+    "id": "bp0-c7bb93ce"
+  },
+  "serialized": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-c7bb93ce\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/flank.left\",\"partId\":\"armor-plate\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"flank.left\"},{\"id\":\"root/flank.right\",\"partId\":\"armor-plate\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"flank.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.1/spur\",\"partId\":\"claw\",\"partVersion\":1,\"parent\":\"root/limb.1\",\"socket\":\"spur\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.3/spur\",\"partId\":\"claw\",\"partVersion\":1,\"parent\":\"root/limb.3\",\"socket\":\"spur\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.5/spur\",\"partId\":\"claw\",\"partVersion\":1,\"parent\":\"root/limb.5\",\"socket\":\"spur\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/limb.7/spur\",\"partId\":\"claw\",\"partVersion\":1,\"parent\":\"root/limb.7\",\"socket\":\"spur\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+  "timings": [
+    {
+      "resolution": 32,
+      "corrected": false,
+      "medianMs": 2,
+      "p95Ms": 2.600000001490116,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 32,
+      "corrected": true,
+      "medianMs": 1.3999999985098839,
+      "p95Ms": 1.5999999940395355,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 64,
+      "corrected": false,
+      "medianMs": 1.1000000014901161,
+      "p95Ms": 2.100000001490116,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 64,
+      "corrected": true,
+      "medianMs": 1.1000000014901161,
+      "p95Ms": 1.3000000044703484,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 128,
+      "corrected": false,
+      "medianMs": 1.2000000029802322,
+      "p95Ms": 1.7999999970197678,
+      "samples": 30,
+      "spritesPerSample": 4
+    },
+    {
+      "resolution": 128,
+      "corrected": true,
+      "medianMs": 1.2000000029802322,
+      "p95Ms": 1.8000000044703484,
+      "samples": 30,
+      "spritesPerSample": 4
+    }
+  ]
+}
