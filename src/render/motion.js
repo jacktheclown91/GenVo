@@ -29,6 +29,14 @@ export class VisualMotionTracker{
     s.lastOutX=out.x;s.lastOutY=out.y;
     out.segmentDistance=segmentDistance;out.moving=segmentDistance>.001&&out.progress<.9995;out.recentlyMoving=now-s.lastMoveAt<=Math.max(70,Math.min(150,s.stepMs*.9));out.gaitPhase=s.gait;out.moveX=s.x1-s.x0;out.moveY=s.y1-s.y0;out.headingX=s.headingX;out.headingY=s.headingY;return out;
   }
+  // Read the position the next sample will resolve without advancing gait or
+  // recording travel. Ground decoration is painted before the actor batch.
+  positionAt(animal,now=performance.now()){
+    const state=this.states.get(animal.id);
+    if(!state)return{x:animal.x,y:animal.y};
+    const position=resolve(state,now,state.stepMs,state.response);
+    return{x:position.x,y:position.y};
+  }
   prune(tick,maxAge=32){for(const [id,s] of this.states)if(tick-s.lastSeen>maxAge)this.states.delete(id)}
   clear(){this.states.clear()}
 }

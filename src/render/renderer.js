@@ -1,3 +1,4 @@
+import {FoliageContactField,foliageFringeHash} from './foliage-contact.js';
 import {drawDaylight} from './daylight.js';
 import {drawUnderwaterView,submergedActorOpacity,showDiveSurfaceCue} from './underwater-presentation.js';
 import {WetSurfaceArt} from './wet-surface-art.js';
@@ -867,17 +868,23 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
   drawForegroundHabitat(tile,startX,startY,cols,rows){
     const c=this.ctx,w=this.sim.world,u=this.zoom,animals=this.visibleAnimals||[];
+    let nearPush;
+    const field=this.foliageContacts||(this.foliageContacts=new FoliageContactField());
+    if(field.prepare(this.sim,{startX:startX-2,startY:startY-2,cols:cols+4,rows:rows+4,animals,
+      positionFor:a=>a.player&&this.playerVisual?this.playerVisual:this.motion.positionAt(a,this.renderNow)}))nearPush=(x,y)=>field.at(x,y);
+    if(!nearPush){
     // v1.57.0: visible animals are linked into a tile grid (reused typed arrays, nothing allocated per
     // frame), so each fringe tile checks only the creatures on the 3x3 tiles around it instead of all
     // of them. On large screens the old per-tile scan was the single biggest cost.
     const gx0=startX-2,gy0=startY-2,GW=cols+4,GH=rows+4,GN=GW*GH;if(!this.dispHead||this.dispHead.length<GN)this.dispHead=new Int32Array(GN*2);if(!this.dispNext||this.dispNext.length<animals.length)this.dispNext=new Int32Array(Math.max(128,animals.length*2));
     const head=this.dispHead,next=this.dispNext;head.fill(-1,0,GN);for(let k=0;k<animals.length;k++){const a=animals[k];if(!a.alive)continue;const tx=Math.floor(a.x)-gx0,ty=Math.floor(a.y)-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;const ti=ty*GW+tx;next[k]=head[ti];head[ti]=k}
-    const nearPush=(x,y)=>{let best=null,bestD=1.15;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const tx=x+dx-gx0,ty=y+dy-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;for(let k=head[ty*GW+tx];k>=0;k=next[k]){const a=animals[k],ddx=(x+.5)-a.x,ddy=(y+.5)-a.y,d=Math.hypot(ddx,ddy);if(d>=bestD)continue;bestD=d;const len=Math.max(.001,d);best={animal:a,distance:d,x:ddx/len,y:ddy/len,strength:Math.max(0,1-d/1.15)}}}return best};
+    nearPush=(x,y)=>{let best=null,bestD=1.15;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const tx=x+dx-gx0,ty=y+dy-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;for(let k=head[ty*GW+tx];k>=0;k=next[k]){const a=animals[k],ddx=(x+.5)-a.x,ddy=(y+.5)-a.y,d=Math.hypot(ddx,ddy);if(d>=bestD)continue;bestD=d;const len=Math.max(.001,d);best={animal:a,distance:d,x:ddx/len,y:ddy/len,strength:Math.max(0,1-d/1.15)}}}return best};
+    }
     // The foreground fringe now reacts to nearby bodies. Plant biomass stays canonical;
     // only the rendered stems/branches bend away from animals passing through them.
     for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){
       const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=w.idx(x,y);if(w.water[i])continue;
-      const marsh=w.plants.marshroot?.[i]||0,bramble=w.plants.bramble?.[i]||0,moss=w.plants.sunmoss?.[i]||0,comp=visualCompositionAt(w,x+.5,y+.5,this.habitatField),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=hash2(x,y,1213),push=nearPush(x,y),profile=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),playerContact=!!push?.animal?.player,lean=push?Math.round(push.x*(playerContact?4:3)*push.strength):0,flatten=push?Math.round(push.strength*(playerContact?3:2)):0,season=this.sim.season,fgAlpha=foregroundAlphaFor(profile,{playerContact});
+      const marsh=w.plants.marshroot?.[i]||0,bramble=w.plants.bramble?.[i]||0,moss=w.plants.sunmoss?.[i]||0,comp=visualCompositionAt(w,x+.5,y+.5,this.habitatField),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=foliageFringeHash(x,y),push=nearPush(x,y),profile=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),playerContact=!!push?.animal?.player,lean=push?Math.round(push.x*(playerContact?4:3)*push.strength):0,flatten=push?Math.round(push.strength*(playerContact?3:2)):0,season=this.sim.season,fgAlpha=foregroundAlphaFor(profile,{playerContact});
       if(comp.openness<.66&&marsh>.48&&w.moisture[i]>.58&&h>.44){
         const reed=season==='WINTER'?['#b3a77b','#cabd91']:season==='AUTUMN'?['#7b8052','#a08f59']:['#688755','#91a566'];
         c.save();c.globalAlpha=.72*fgAlpha;for(let k=0;k<3;k++){const ox=(3+Math.floor(hash2(x+k,y-k,1217)*10)),ht=Math.max(2,2+Math.floor(hash2(y+k,x-k,1223)*3)-flatten),base=16,shift=lean+(k===1?Math.sign(lean||1):0);c.fillStyle=k===1?reed[1]:reed[0];c.fillRect(px+ox*u,py+(base-Math.ceil(ht*.55))*u,u,Math.ceil(ht*.55)*u);c.fillRect(px+(ox+shift)*u,py+(base-ht)*u,u,Math.max(u,Math.floor(ht*.55)*u))}c.restore();
