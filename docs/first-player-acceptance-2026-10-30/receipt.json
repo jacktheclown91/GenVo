@@ -1,0 +1,66 @@
+{
+ "scope": "Real game in headless Chromium. Input through the visible controls; time only advanced by ordinary updates. The giant step is a labelled diagnostic staging.",
+ "steps": [
+  {
+   "name": "tutorial water step",
+   "drink": "no Drink on the water radial"
+  },
+  {
+   "name": "courtship",
+   "tutorialSteps": [
+    "mate",
+    "court",
+    "approach",
+    "play",
+    "watch",
+    "unavailable"
+   ],
+   "walkSteps": 1,
+   "conceived": true,
+   "playerSex": "M",
+   "playerPregnant": false,
+   "partnerId": 113,
+   "gestationDays": 16,
+   "day": 1
+  },
+  {
+   "name": "creature lab",
+   "labChoice": "kept the old body",
+   "paused": false
+  },
+  {
+   "name": "birth",
+   "childId": 197,
+   "day": 17,
+   "daysAfterConception": 16,
+   "species": "genvo",
+   "parentIds": [
+    113,
+    109
+   ],
+   "playerAlive": true,
+   "journalMentionsYoung": false
+  },
+  {
+   "name": "touch-only play",
+   "Drink": "raised hydration",
+   "Eat": "raised energy",
+   "tapCreature": "context opened",
+   "overflowX": false
+  },
+  {
+   "name": "giant body (diagnostic staging)",
+   "id": 196,
+   "species": "bankjaw",
+   "before": 1.01468874517205,
+   "after": 2.6,
+   "x": 103.82509493688525,
+   "y": 104.89078058931328,
+   "moved": 0.14,
+   "alive": true,
+   "reach": null
+  }
+ ],
+ "gaps": [],
+ "errors": []
+}
