@@ -1,3 +1,4 @@
+import {drawDaylight} from './daylight.js';
 import {drawUnderwaterView,submergedActorOpacity,showDiveSurfaceCue} from './underwater-presentation.js';
 import {WetSurfaceArt} from './wet-surface-art.js';
 import {SwimMotionPresentation,applySwimMotion} from './swim-motion.js';
@@ -192,6 +193,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      else{for(const entry of actors)draw(entry);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    drawDaylight(this);
     drawUnderwaterView(this);
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);

@@ -1,0 +1,163 @@
+{
+  "errors": [],
+  "phases": [
+    {
+      "name": "night",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 6.399999998509884,
+          "maxMs": 40.79999999701977,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 4.799999997019768,
+          "maxMs": 33.100000001490116,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.020833333333333332,
+        "daylight": 0,
+        "night": true,
+        "label": "Night",
+        "shade": 0.2,
+        "warmth": 0
+      },
+      "tick": 5,
+      "day": 1,
+      "clock": "SpringDay 1Y1NightPaused",
+      "stateExact": true
+    },
+    {
+      "name": "dawn",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 2.9000000059604645,
+          "maxMs": 31.30000000447035,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 4.0999999940395355,
+          "maxMs": 32,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.26666666666666666,
+        "daylight": 0.10452846326765344,
+        "night": false,
+        "label": "Dawn",
+        "shade": 0.17909430734646933,
+        "warmth": 0.04419359803016313
+      },
+      "tick": 64,
+      "day": 1,
+      "clock": "SpringDay 1Y1Dawn",
+      "stateExact": true
+    },
+    {
+      "name": "noon",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 2.899999998509884,
+          "maxMs": 25.299999997019768,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 3,
+          "maxMs": 25.5,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.5,
+        "daylight": 1,
+        "night": false,
+        "label": "Day",
+        "shade": 0,
+        "warmth": 0
+      },
+      "tick": 120,
+      "day": 1,
+      "clock": "SpringDay 1Y1Day",
+      "stateExact": true
+    },
+    {
+      "name": "dusk",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 2.9000000059604645,
+          "maxMs": 29.200000002980232,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 3.0999999940395355,
+          "maxMs": 36.100000001490116,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.7375,
+        "daylight": 0.07845909572784462,
+        "night": false,
+        "label": "Dusk",
+        "shade": 0.1843081808544311,
+        "warmth": 0.04902008310249313
+      },
+      "tick": 177,
+      "day": 1,
+      "clock": "SpringDay 1Y1Dusk",
+      "stateExact": true
+    },
+    {
+      "name": "late-night",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 2.7000000029802322,
+          "maxMs": 28,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 2.7999999970197678,
+          "maxMs": 28.69999999552965,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.8625,
+        "daylight": 0,
+        "night": true,
+        "label": "Night",
+        "shade": 0.2,
+        "warmth": 0
+      },
+      "tick": 207,
+      "day": 1,
+      "clock": "SpringDay 1Y1Night",
+      "stateExact": true
+    }
+  ],
+  "creatorAcceptance": false,
+  "legacy": {
+    "policy": null,
+    "presentation": null,
+    "phaseLabels": 0
+  },
+  "status": "PASS",
+  "scope": "Actual public Winged flier start/6 takeoff, natural clock progression and public pause/resume, matched-state color treatment at night/dawn/noon/dusk/night, exact full saved-state comparisons. No tick, climate, position, anatomy or event injection. Actual recorded mature world retains neutral legacy presentation. Short CPU render observations, not full performance acceptance."
+}

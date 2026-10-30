@@ -1,3 +1,4 @@
+import {daylightPresentation} from '../render/daylight.js';
 import {renderProcessingNotice} from './processing-notice-view.js';
 import {processingCapacity,processingCapacityMessage} from '../sim/processing-capacity.js';
 import {actionCapabilities} from '../lineage/action-capabilities.js';
@@ -36,7 +37,8 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
   if(capacityNotice)renderProcessingNotice(capacityNotice,capacity,capacityMessage);
   const p=sim.player(),counts=sim.population(),day=((sim.day-1)%CFG.seasonDays)+1;
   const gestation=p?gestationLabel(sim.family.pregnancyProgress(p),p.pregnant?.mode):'';
-  const clockMarkup=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${sim.paused?'<em>Paused</em>':''}${gestation?`<span class="gestation-mark"> · ${gestation}</span>`:''}`;
+  const phase=daylightPresentation(sim);
+  const clockMarkup=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${phase?`<span class="day-phase">${phase.label}</span>`:''}${sim.paused?'<em>Paused</em>':''}${gestation?`<span class="gestation-mark"> · ${gestation}</span>`:''}`;
   if(clock&&clock.innerHTML!==clockMarkup)clock.innerHTML=clockMarkup;
   if(p){
     const spec=SPECIES[p.species],dev=developmentFor(p),preg=sim.family.pregnancyProgress(p),children=sim.family.livingChildren(p),safe=sim.isOpeningProtected?.(p);

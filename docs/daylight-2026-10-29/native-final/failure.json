@@ -1,0 +1,75 @@
+{
+  "errors": [],
+  "phases": [
+    {
+      "name": "night",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 23.5,
+          "maxMs": 31.19999999552965,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 21.69999999552965,
+          "maxMs": 35.100000001490116,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.025,
+        "daylight": 0,
+        "night": true,
+        "label": "Night",
+        "shade": 0.2,
+        "warmth": 0
+      },
+      "tick": 6,
+      "day": 1,
+      "clock": "SpringDay 1Y1NightPaused",
+      "stateExact": true
+    },
+    {
+      "name": "dawn",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 24.200000002980232,
+          "maxMs": 26.399999998509884,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 25.5,
+          "maxMs": 33.69999999552965,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.275,
+        "daylight": 0.156434465040231,
+        "night": false,
+        "label": "Dawn",
+        "shade": 0.16871310699195383,
+        "warmth": 0.035290858725761765
+      },
+      "tick": 66,
+      "day": 1,
+      "clock": "SpringDay 1Y1DawnPaused",
+      "stateExact": true
+    }
+  ],
+  "creatorAcceptance": false,
+  "diagnostic": {
+    "tick": 119,
+    "paused": true,
+    "stage": "step-food",
+    "blocked": true,
+    "frontHidden": true,
+    "body": "NOTICE\nThe family line ended\n\nNo grown descendant survived to take over. Press R to start a new run.\n\nClose"
+  },
+  "failure": "page.waitForFunction: Timeout 30000ms exceeded."
+}
