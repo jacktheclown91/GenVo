@@ -15,7 +15,7 @@ function record(){
  }};
 }
 let checks=0;
-for(const id of ['walking-leg','runner-leg','sturdy-leg'])for(const resolution of [32,64,128]){
+for(const id of ['walking-leg','runner-leg','sturdy-leg','padded-leg'])for(const resolution of [32,64,128]){
  let asset;
  if(resolution===32){const source=JSON.parse(fs.readFileSync('assets/art/parts/'+id+'.json'));asset=await compileSourceRgbaPart({...source,frames:source.frames.map(f=>({...f,rgba:Buffer.from(f.rgbaBase64,'base64')}))});}
  else asset=JSON.parse(gunzipSync(fs.readFileSync('assets/art/production-candidate-v1/'+id+'-'+resolution+'.indexed.json.gz')));

@@ -4,10 +4,12 @@ import {gunzipSync} from 'node:zlib';
 import {compileIndexedPart,recolorIndexedFrame} from '../src/render/indexed-part-art.js';
 const root=new URL('../assets/art/production-candidate-v1/',import.meta.url),catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',root))),old=JSON.parse(fs.readFileSync(new URL('../docs/limb-refinement-2026-10-28/before/catalog.json',import.meta.url))),ids=['walking-leg','runner-leg','sturdy-leg'];
 const scaled=(v,r)=>Array.isArray(v)?v.map(x=>scaled(x,r)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,scaled(x,r)])):typeof v==='number'?v*r:v;
+// The later tail recipe owns balance-tail's intentionally revised tissue.
+await import('./detailed-tails.mjs');
 let count=0;const areas={};
 const originalBatch=catalog.parts.filter(e=>old.parts.some(p=>p.partId===e.partId&&p.resolution===e.resolution));
 assert.equal(originalBatch.length,old.parts.length,'every original batch entry remains present');
-for(const e of originalBatch){if(!ids.includes(e.partId)){if(['small-torso','soft-torso','dome-torso','head-base'].includes(e.partId))continue;assert.deepEqual(e,old.parts.find(p=>p.partId===e.partId&&p.resolution===e.resolution),'unrelated candidate art stays exact');continue}
+for(const e of originalBatch){if(!ids.includes(e.partId)){if(['small-torso','soft-torso','dome-torso','head-base','balance-tail'].includes(e.partId))continue;assert.deepEqual(e,old.parts.find(p=>p.partId===e.partId&&p.resolution===e.resolution),'unrelated candidate art stays exact');continue}
  const asset=await compileIndexedPart(JSON.parse(gunzipSync(fs.readFileSync(new URL(e.path,root))))),native=JSON.parse(fs.readFileSync(new URL('../assets/art/parts/'+e.partId+'.indexed.json',import.meta.url))),ratio=e.resolution/32;
  assert.equal(asset.checksum,e.checksum);assert.deepEqual(asset.rig,scaled(native.rig,ratio));assert.deepEqual(asset.regions,native.regions);assert.deepEqual(asset.rootAnchorPx,scaled(native.rootAnchorPx,ratio));assert.equal(asset.displayScale*ratio,native.displayScale);
  for(let facing=0;facing<8;facing++){const planted=asset.frames.find(f=>f.facing===facing&&f.index===0),recovering=asset.frames.find(f=>f.facing===facing&&f.index===1);assert.notDeepEqual(planted.alpha,recovering.alpha,'actual digital pads flex during recovery');assert.equal(planted.durationMs,native.frames.find(f=>f.facing===facing&&f.index===0).durationMs);
@@ -17,4 +19,4 @@ for(const e of originalBatch){if(!ids.includes(e.partId)){if(['small-torso','sof
 }
 for(const r of [64,128])assert.ok(areas['runner-leg-'+r]<areas['walking-leg-'+r]&&areas['walking-leg-'+r]<areas['sturdy-leg-'+r],'distinct runner/walker/sturdy silhouettes');
 assert.ok(originalBatch.reduce((n,e)=>n+e.bytes,0)<=old.parts.reduce((n,e)=>n+e.bytes,0),'detail does not increase shipped candidate bytes');
-console.log('Detailed limbs PASS: '+count+' native frames, distinct silhouettes, flexing toes, exact rigs/pivots/palettes/timing, no clipping, inherited tints and other16 retained variants (torso/head revisions checked separately).');
+console.log('Detailed limbs PASS: '+count+' native frames, distinct silhouettes, flexing toes, exact rigs/pivots/palettes/timing, no clipping, inherited tints and other16 retained variants (torso/head and later tail revisions checked separately).');

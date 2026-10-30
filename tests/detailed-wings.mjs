@@ -52,7 +52,7 @@ let canvasBytes=0;
 for(const resolution of [64,128]){
   const canvases=[],createCanvas=()=>{const c={width:0,height:0,getContext(){return {createImageData(w,h){return {data:new Uint8ClampedArray(w*h*4)}},putImageData(){}}}};canvases.push(c);return c;};
   const result=await loadPartArtVariant(new URL('catalog.json',folder),{resolution,createCanvas,fetcher:async url=>new Response(fs.readFileSync(url))});
-  assert.equal(result.parts.size,21);
+  assert.equal(result.parts.size,22);
   const renderer=result.parts.get('flight-wing'),prepared=canvases.length;
   let draws=0,depth=0;
   const c={save(){depth++},restore(){depth--},translate(x,y){assert.ok(Number.isFinite(x+y))},rotate(a){assert.ok(Number.isFinite(a))},scale(x,y){assert.ok(Number.isFinite(x+y))},drawImage(){draws++}};

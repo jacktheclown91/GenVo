@@ -7,14 +7,23 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 let playwright;try{playwright=require('playwright')}catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));}
 const root=process.cwd(),out=path.join(root,'assets/art/production-candidate-v1');
+const paddedRefinement=process.argv.includes('--refine-padded');
 const tailRefinement=process.argv.includes('--refine-tails');
-const refinement=process.argv.includes('--refine-coverings'),faceRefinement=process.argv.includes('--refine-faces'),limbRefinement=process.argv.includes('--refine-limbs'),torsoRefinement=process.argv.includes('--refine-torsos'),headRefinement=process.argv.includes('--refine-heads'),wingRefinement=process.argv.includes('--refine-wings'),bodyFormRefinement=process.argv.includes('--refine-body-forms'),revision=tailRefinement||bodyFormRefinement||wingRefinement||headRefinement||refinement||faceRefinement||limbRefinement||torsoRefinement;
-if([tailRefinement,refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement].filter(Boolean).length>1)throw Error('Choose one coherent artwork revision.');
+const refinement=process.argv.includes('--refine-coverings'),faceRefinement=process.argv.includes('--refine-faces'),limbRefinement=process.argv.includes('--refine-limbs'),torsoRefinement=process.argv.includes('--refine-torsos'),headRefinement=process.argv.includes('--refine-heads'),wingRefinement=process.argv.includes('--refine-wings'),bodyFormRefinement=process.argv.includes('--refine-body-forms'),revision=paddedRefinement||tailRefinement||bodyFormRefinement||wingRefinement||headRefinement||refinement||faceRefinement||limbRefinement||torsoRefinement;
+if([paddedRefinement,tailRefinement,refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement].filter(Boolean).length>1)throw Error('Choose one coherent artwork revision.');
 const previous=JSON.parse(fs.readFileSync(revision?path.join(out,'catalog.json'):'assets/art/experiments/resolution-v1/catalog.json','utf8'));
-const painted=new Set(tailRefinement?['balance-tail','paddle-tail']:bodyFormRefinement?['light-torso','long-torso','reinforced-torso']:wingRefinement?['proto-wing','flight-wing']:headRefinement?['head-base']:torsoRefinement?['small-torso','soft-torso','dome-torso']:limbRefinement?['walking-leg','runner-leg','sturdy-leg']:faceRefinement?['simple-eye','compound-eye','grazing-mouth','beak-mouth']:refinement?['fur-mantle','feather-mantle','shell-back']:['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
+const painted=new Set(paddedRefinement?['padded-leg']:tailRefinement?['balance-tail','paddle-tail']:bodyFormRefinement?['light-torso','long-torso','reinforced-torso']:wingRefinement?['proto-wing','flight-wing']:headRefinement?['head-base']:torsoRefinement?['small-torso','soft-torso','dome-torso']:limbRefinement?['walking-leg','runner-leg','sturdy-leg']:faceRefinement?['simple-eye','compound-eye','grazing-mouth','beak-mouth']:refinement?['fur-mantle','feather-mantle','shell-back']:['fur-mantle','feather-mantle','shell-back','head-base','walking-leg','runner-leg','sturdy-leg']);
 const catalog={schema:'genvo.part-art-variants/1',version:1,status:'production-candidate-creator-review',
   native32Fallback:true,author:'Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.',
   generation:'Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.',parts:[]};
+if(paddedRefinement){
+  Object.assign(catalog,{...previous,version:11,parts:[],paddedRefinement:'Native indexed rounded supporting muscle, ankle folds and separate soft digital cushions; exact inherited rig and materials.'});
+  for(const resolution of [64,128]){
+    if(previous.parts.some(e=>e.partId==='padded-leg'&&e.resolution===resolution))continue;
+    const source=JSON.parse(fs.readFileSync('assets/art/parts/padded-leg.indexed.json','utf8'));
+    previous.parts.push({partId:'padded-leg',resolution,sourceChecksum:source.checksum});
+  }
+}
 if(refinement)Object.assign(catalog,{...previous,version:2,parts:[],refinement:'Three single-view covering masters, explicit fixed registration; preceding masters retained.'});
 if(faceRefinement)Object.assign(catalog,{...previous,version:3,parts:[],faceRefinement:'Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.'});
 if(limbRefinement)Object.assign(catalog,{...previous,version:4,parts:[],limbRefinement:'Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration.'});
@@ -53,19 +62,19 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{
  browser=await playwright.chromium.launch();const page=await browser.newPage();
  await page.goto('http://127.0.0.1:'+server.address().port+'/tools/art-resolution/index.html');
- const results=await page.evaluate(async({ids,refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement,tailRefinement})=>{
+ const results=await page.evaluate(async({ids,refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement,tailRefinement,paddedRefinement})=>{
   const {compileIndexedPart,recolorIndexedFrame}=await import('/src/render/indexed-part-art.js');
   const results=[];
   for(const id of ids){
    const source=await (await fetch('/assets/art/parts/'+id+'.indexed.json')).json();
-   if(tailRefinement||faceRefinement||limbRefinement||torsoRefinement||headRefinement||wingRefinement||bodyFormRefinement){
+   if(paddedRefinement||tailRefinement||faceRefinement||limbRefinement||torsoRefinement||headRefinement||wingRefinement||bodyFormRefinement){
     const {authorFacePart}=await import('/tools/art-production/face-recipes.mjs');
     const {authorLimbPart}=await import('/tools/art-production/limb-recipes.mjs');
     const {authorTorsoPart}=await import('/tools/art-production/torso-recipes.mjs');
     const {authorHeadPart}=await import('/tools/art-production/head-recipes.mjs');
     const {authorWingPart}=await import('/tools/art-production/wing-recipes.mjs');
     const {authorTailPart}=await import('/tools/art-production/tail-recipes.mjs');
-    for(const resolution of [64,128]){const asset=await compileIndexedPart((tailRefinement?authorTailPart:bodyFormRefinement?authorTorsoPart:wingRefinement?authorWingPart:headRefinement?authorHeadPart:torsoRefinement?authorTorsoPart:limbRefinement?authorLimbPart:authorFacePart)(source,resolution)),atlas=document.createElement('canvas');atlas.width=resolution*8;atlas.height=resolution*2;const ac=atlas.getContext('2d');for(const frame of asset.frames){const rgba=ac.createImageData(resolution,resolution);rgba.data.set(recolorIndexedFrame(asset,frame.key));ac.putImageData(rgba,frame.facing*resolution,frame.index*resolution);}results.push({id,resolution,asset,png:atlas.toDataURL('image/png'),codeAuthored:true,sourceChecksum:source.checksum});}
+    for(const resolution of [64,128]){const asset=await compileIndexedPart((paddedRefinement?authorLimbPart:tailRefinement?authorTailPart:bodyFormRefinement?authorTorsoPart:wingRefinement?authorWingPart:headRefinement?authorHeadPart:torsoRefinement?authorTorsoPart:limbRefinement?authorLimbPart:authorFacePart)(source,resolution)),atlas=document.createElement('canvas');atlas.width=resolution*8;atlas.height=resolution*2;const ac=atlas.getContext('2d');for(const frame of asset.frames){const rgba=ac.createImageData(resolution,resolution);rgba.data.set(recolorIndexedFrame(asset,frame.key));ac.putImageData(rgba,frame.facing*resolution,frame.index*resolution);}results.push({id,resolution,asset,png:atlas.toDataURL('image/png'),codeAuthored:true,sourceChecksum:source.checksum});}
     continue;
    }
    const masterId=id.endsWith('-leg')?'walking-leg':id;
@@ -136,7 +145,7 @@ try{
    image.close();
   }
   return results;
- },{ids:[...painted],refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement,tailRefinement});
+ },{ids:[...painted],refinement,faceRefinement,limbRefinement,torsoRefinement,headRefinement,wingRefinement,bodyFormRefinement,tailRefinement,paddedRefinement});
  for(const entry of previous.parts){
   if(revision&&!painted.has(entry.partId)){catalog.parts.push(entry);continue;}
   const {partId,resolution}=entry,file=partId+'-'+resolution+'.indexed.json.gz';let bytes,checksum,kind,master;

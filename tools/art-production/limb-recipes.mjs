@@ -1,20 +1,32 @@
 // Native indexed anatomical tissue for the existing two-bone mounting contract.
-export const LIMB_PARTS=Object.freeze(['walking-leg','runner-leg','sturdy-leg']);
+export const LIMB_PARTS=Object.freeze(['walking-leg','runner-leg','sturdy-leg','padded-leg']);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 function ellipse(x,y,cx,cy,rx,ry){return Math.hypot((x-cx)/rx,(y-cy)/ry)}
 function crossSection(id,x,row){
- const runner=id==='runner-leg',sturdy=id==='sturdy-leg';
+ const runner=id==='runner-leg',sturdy=id==='sturdy-leg',padded=id==='padded-leg';
  if(row===0){
-  const muscle=runner?2.65:sturdy?5.05:4.15,shaft=runner?1.15:sturdy?2.9:1.8;
+  const muscle=runner?2.65:sturdy?5.05:padded?4.7:4.15,shaft=runner?1.15:sturdy?2.9:padded?2.25:1.8;
   const belly=muscle*Math.sqrt(Math.max(0,1-((x-9)/8.1)**2));
   const tendon=x>=7&&x<=27?shaft*(1-.25*clamp((x-16)/10,0,1)):0;
-  const joint=(runner?1.9:sturdy?3.75:2.6)*Math.sqrt(Math.max(0,1-((x-26.1)/(runner?2.6:3.1))**2));
+  const joint=(runner?1.9:sturdy?3.75:padded?3.2:2.6)*Math.sqrt(Math.max(0,1-((x-26.1)/(runner?2.6:3.1))**2));
   return Math.max(belly,tendon,joint);
  }
- const shaft=runner?1.3:sturdy?3.15:2.0;
- return x>=3&&x<=23?shaft*(.8+.2*Math.cos((x-5)*.17)):0;
+ const shaft=runner?1.3:sturdy?3.15:padded?2.3:2.0;
+ return x>=3&&x<=23?shaft*(padded?1:(.8+.2*Math.cos((x-5)*.17))):0;
 }
 function footShape(id,x,y,index){
+ if(id==='padded-leg'){
+  // A broad compliant heel joins three rounded digital cushions. No claws,
+  // webbing or fur are implied by this bare padded-limb anatomy.
+  const heel=1-ellipse(x,y,21.5,0,3.2,2.8);
+  let cushion=-1;
+  for(const offset of [-2.6,0,2.6]){
+   const center=25.7-(index?.8:0),spread=offset*(index?.83:1);
+   cushion=Math.max(cushion,1-ellipse(x,y,center,spread,2.4,index?.86:1.0));
+  }
+  return Math.max(heel,cushion);
+ }
+
  const sturdy=id==='sturdy-leg',runner=id==='runner-leg';
  const heel=ellipse(x,y,21.6,0,sturdy?3.3:2.4,sturdy?3.0:runner?1.5:2.1);
  if(heel<=1)return 1-heel;
@@ -34,6 +46,21 @@ function toneAt(id,x,y,row,index,facing,pixel){
  const edge=atFoot&&x>23?foot:width-Math.abs(y);
  if(edge<(atFoot&&x>23?.12:.28))return 0;
  const lightSide=Math.cos((facing-2)*Math.PI/4)>=0?-1:1,v=y*lightSide;
+ if(id==='padded-leg'){
+  // Soft tissue reads through broad quiet planes, not the wiry fascicles of
+  // runners. Keep native ankle and digital creases distinct at game zoom.
+  if(row===1&&x>23){
+   if(foot<.16)return 0;
+   if(x<24.4&&Math.abs(y)<2.4)return 1;
+   return v<-.3?3:v<.65?2:1;
+  }
+  if(row===0&&x>23&&Math.abs(ellipse(x,y,26.1,0,2.8,2.7)-.75)<pixel*.15)return 1;
+  if(row===1&&x>19&&Math.abs(x-22.2-y*.3)<pixel*.7)return 1;
+  const plane=v/Math.max(.5,width);
+  if(row===0&&x>24.5&&x<27&&v>-.9&&v<-.4)return 4;
+  return plane>.48?1:plane>-.45?2:3;
+ }
+
  if(row===0){
   // Shoulder/hip insertion, bundled muscle belly and patellar fold are separate surfaces.
   const cap=ellipse(x,y,26.1,0,id==='runner-leg'?2:2.8,id==='sturdy-leg'?3.5:2.3);

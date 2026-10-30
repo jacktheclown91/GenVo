@@ -1,6 +1,6 @@
 {
   "schema": "genvo.part-art-variants/1",
-  "version": 10,
+  "version": 11,
   "status": "production-candidate-creator-review",
   "native32Fallback": true,
   "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
@@ -503,6 +503,28 @@
       "sourceChecksum": "bcf9bd01b8c970ad5b9b26ec80e678b5a322f38fede05a7304a6f82c5d3421cf",
       "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "padded-leg",
+      "resolution": 64,
+      "path": "./padded-leg-64.indexed.json.gz",
+      "checksum": "2abff203b3d571ded423a58cb537aad4773d40cf64f7ab44d05d0b4c85485270",
+      "bytes": 3470,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "06b2882d887fd64be51117dd01d136a5e7bd759abc1c023fa5694a60bebda1f0",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "padded-leg",
+      "resolution": 128,
+      "path": "./padded-leg-128.indexed.json.gz",
+      "checksum": "35b09338fd6c2a05df7d7067faebb8eff2bb78d4a11bd4450fc3003d693276a5",
+      "bytes": 12836,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "06b2882d887fd64be51117dd01d136a5e7bd759abc1c023fa5694a60bebda1f0",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     }
   ],
   "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
@@ -512,5 +534,6 @@
   "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.",
   "wingRefinement": "Native indexed precursor/flight feathers with compact layered root coverts; existing frame, registration and folding contracts preserved.",
   "bodyFormRefinement": "Native indexed light, segmented long and reinforced torso tissue; exact physical registration and existing body mechanics.",
-  "tailRefinement": "Native indexed tapered balance tail and protected paddle membrane; existing attachment, pigmentation and pose-driven sweep."
+  "tailRefinement": "Native indexed tapered balance tail and protected paddle membrane; existing attachment, pigmentation and pose-driven sweep.",
+  "paddedRefinement": "Native indexed rounded supporting muscle, ankle folds and separate soft digital cushions; exact inherited rig and materials."
 }

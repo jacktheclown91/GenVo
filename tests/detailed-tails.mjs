@@ -6,7 +6,7 @@ import {authorTailPart,TAIL_PARTS} from '../tools/art-production/tail-recipes.mj
 const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url);
 const catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',folder)));
 const before=JSON.parse(fs.readFileSync(new URL('../docs/tail-detail-2026-10-29/before/catalog.json',import.meta.url)));
-assert.equal(catalog.parts.length,before.parts.length+2);
+assert.equal(catalog.parts.filter(e=>e.partId!=='padded-leg').length,before.parts.length+2,'Original tail batch remains intact; padded limbs have their own asset gate');
 for(const old of before.parts.filter(e=>e.partId!=='balance-tail'))assert.deepEqual(catalog.parts.find(e=>e.partId===old.partId&&e.resolution===old.resolution),old,'Other38 existing variants remain exact');
 const tailEntries=catalog.parts.filter(e=>TAIL_PARTS.includes(e.partId));
 assert.equal(tailEntries.length,4);
