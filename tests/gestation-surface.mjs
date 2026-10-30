@@ -1,3 +1,4 @@
+import {locomotionCacheToken} from '../src/render/locomotion-style.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
@@ -36,7 +37,7 @@ for(let step=0;step<=16;step++){
 }
 assert.deepEqual(gestationSurfaceSize(10,8,0),{width:10,height:8});
 for(const actor of [null,{alive:false,pregnant:{mode:'live'}},{alive:true},{alive:true,pregnant:{mode:'egg'}}])assert.equal(gestationFullness({family:{pregnancyProgress(){throw Error('Ineligible actor queried')}}},actor),0);
-const source=fs.readFileSync(new URL('../src/render/renderer.js',import.meta.url),'utf8'),key=Function('return ('+source.match(/^function spriteKey\([^\n]+/m)[0]+')')(),base={growth:1,action:'idle',stage:'adult'};
+const source=fs.readFileSync(new URL('../src/render/renderer.js',import.meta.url),'utf8'),key=Function('locomotionCacheToken','return ('+source.match(/^function spriteKey\([^\n]+/m)[0]+')')(locomotionCacheToken),base={growth:1,action:'idle',stage:'adult'};
 assert.notEqual(key(mother,{body:'#aaa'},0,0,false,base,{gestation:0}),key(mother,{body:'#aaa'},0,0,false,base,life),'Cached native sprites must distinguish actual tissue progress');
 for(let n=0;n<100;n++)gestationFullness(sim,mother);
 assert.equal(sim.rng.state,rng);assert.equal(snap(),before,'Presentation cannot write any canonical state');

@@ -31,6 +31,10 @@ function sameArchiveAfterPhysicalPairing(actual,reference,message){
  // Only the canonical paired water-boundary mask may differ from the old
  // pre-travel full-clone archive; every other archived byte remains identical.
  normalized.world.environment.blockedBoundaries=boundary.slice();
+ // climate-water/6: the same pairing also records which region sides are owned by a
+ // resident neighbour (west 1, east 2, north 4, south 8), land and water alike.
+ const sides=actual?.world?.environment?.pairedSides;
+ if(sides!==undefined){assert.ok(Number.isSafeInteger(sides)&&sides>0&&sides<=15,'paired sides record an actual pairing');normalized.world.environment.pairedSides=sides}
  same(actual,normalized,message);
 }
 function assertReciprocalEastWest(west,east){
