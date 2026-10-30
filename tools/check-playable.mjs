@@ -111,6 +111,7 @@ const runtime=[
   'tests/size-visibility-spacing.mjs',
   'tests/size-evolution.mjs',
   'tests/morphology-integration.mjs',
+  'tests/perceived-threat-escape.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',

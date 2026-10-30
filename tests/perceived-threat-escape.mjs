@@ -7,12 +7,17 @@ import {SPECIES} from '../src/organisms/species.js';
 // movedTick 0 marks it as just having moved (these scenes decide at tick 0).
 const stageHunting=(h,prey)=>{const a=Math.atan2(prey.y-h.y,prey.x-h.x);Object.assign(h,{intent:'hunt',target:prey,dir:(Math.round(a/(Math.PI/4))+2+8)%8,movedTick:0})};
 import {escapeDestination} from '../src/world/escape-route.js';
-function scene(species,unseen=false,refuge=false){
+import {burrowingAnatomy} from '../src/lineage/burrowing.js';
+// Since excavated-subsurface/1 (October 20) wildlife with two real digging forelimbs takes a burrow refuge
+// before running, so these route scenes stage a running body (digging forelimbs become walking legs) unless
+// `digger` keeps the generated anatomy.
+function scene(species,unseen=false,refuge=false,digger=false){
   const sim=new Simulation('PERCEIVED-ESCAPE-'+species,{player:false}),w=sim.world;
   w.water.fill(0);if(refuge)for(let y=0;y<w.n;y++)w.water[w.idx(41,y)]=1;
   w.buildLandRegions();w.buildHydrology();
   const prey=sim.animals.find(a=>a.species===species),allHunters=sim.animals.filter(a=>a.species==='needlejaw'),hunters=allHunters.slice(0,2);
   const swimmer=structuredClone(prey.bodyPlan);
+  if(!digger)for(const n of swimmer.nodes)if(n.partId==='digging-forelimb')n.partId='walking-leg';
   if(refuge)for(const n of swimmer.nodes)if(/^root\/limb\.\d+$/.test(n.id))n.partId='webbed-leg';
   Object.assign(prey,{x:40.5,y:40.5,age:SPECIES[species].maturity+2,energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration,bodyPlan:swimmer,adaptations:[],ecoLifestyle:null});
   prey.genes.senses=1;
@@ -39,8 +44,12 @@ for(const species of ['mosskip','rootling','genvo']){
   assert.equal(sim.rng.state,state,'route scoring draws no simulation RNG');
   assert.equal(prey.energy,energy);assert.equal(prey.health,health);assert.deepEqual(sim.population(),population);
 }
+// The generated rootling in this seed has two digging forelimbs: it takes the burrow refuge instead of running.
+const digger=scene('rootling',false,false,true);
+assert.ok(burrowingAnatomy(digger.prey),'the generated rootling can dig');
+assert.equal(digger.prey.intent,'burrow','a digging body takes the burrow refuge under the excavated-subsurface rule');
 const wet=scene('mosskip',false,true);
 assert.equal(wet.prey.intent,'escape');
 assert.ok(wet.sim.world.water[wet.sim.world.idx(wet.prey.target.x,wet.prey.target.y)],'a real webbed body retains a refuge unavailable to both hunters');
 assert.ok(wet.hunters.every(h=>!wet.sim.canReach(h,wet.prey.target.x,wet.prey.target.y)),'predator body access is still authoritative');
-console.log('escape considers simultaneously perceived predators: PASS');
+console.log('escape considers simultaneously perceived predators; a digging body takes the burrow refuge first: PASS');
