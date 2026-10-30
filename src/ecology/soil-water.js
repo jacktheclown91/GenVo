@@ -13,7 +13,7 @@ import {syncCaveAir} from '../world/cave-air.js';
 //   plant uptake : producers fund growth from this soil water (src/ecology/plant-resources.js)
 // fieldCapacity comes from the generated terrain wetness (fine, organic low-lying soils retain more water).
 import {localRain,localTemperature} from '../world/environment.js';
-import {CLIMATE_WATER,climateWaterPolicy,pondedRunOn,temperaturePotential} from '../world/climate-water.js';
+import {CLIMATE_WATER,climateWaterPolicy,deepFlood,pondedRunOn,temperaturePotential} from '../world/climate-water.js';
 import {coldSurfaceExchange,validateSnowpack} from '../world/snowpack.js';
 import {exchangeTerrainGroundwater} from '../world/topography.js';
 import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
@@ -124,7 +124,7 @@ export function advanceSoilDay(w,climate,day){
   if(Object.hasOwn(s,'pendingCaveDrinking'))s.pendingCaveDrinking=0;if(Object.hasOwn(s,'pendingSnowEaten'))s.pendingSnowEaten=0;
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
   if(runoff){
-    const routed=routePlanetaryRunoff(w,runoff,day);
+    const routed=routePlanetaryRunoff(w,runoff,day,deepFlood(climate)?{deepFlood:true}:{});
     s.lastDay.surfaceRunoffCaptured=routed.received;
     s.lastDay.surfaceRunoffDelivered=routed.delivered;
     s.lastDay.overlandMoved=routed.moved;

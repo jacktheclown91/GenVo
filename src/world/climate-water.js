@@ -31,10 +31,22 @@
 //    lower banks, shared by how far each is overtopped, as ponded water that then
 //    soaks in, evaporates or runs downhill. Without it a pool on flat ground could
 //    stand up to two units above the land beside it.
+//  - climate-water/6: the same, and deep ponded water floods. A land cell due to
+//    flood (a closed basin, or beside water) that holds more ponded water than an
+//    open-water cell can (2 units) floods at that capacity and passes the excess
+//    to its dry neighbours as ponded water, so the pond widens over the next days.
+//    Without it runoff collected in closed sinks beyond the limit and stayed
+//    hidden, never becoming a pond. Runoff also leaves across the region's border:
+//    ponded water on a border land cell with no downhill neighbour inside the
+//    region moves on at the daily downhill share (0.65) across a side whose
+//    planetary geography beyond is open water or lower ground, unless a resident
+//    neighbouring region owns that side (paired seams move runoff themselves). It
+//    is recorded as edgeRunoffOutput. Without it runoff piled up on the region's
+//    edge, out of sight, whenever no neighbour was resident.
 // The rule travels in the day's climate (climate.evaporation) so every soil and
 // open-water day, resident or archived, follows its own world's recorded rule.
-export const CLIMATE_WATER=Object.freeze({policy:'climate-water/5',runOn:'climate-water/4',discharge:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25,spillFraction:.5});
-const RULES=[CLIMATE_WATER.soil,CLIMATE_WATER.pools,CLIMATE_WATER.discharge,CLIMATE_WATER.runOn,CLIMATE_WATER.policy];
+export const CLIMATE_WATER=Object.freeze({policy:'climate-water/6',bankSpill:'climate-water/5',runOn:'climate-water/4',discharge:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25,spillFraction:.5});
+const RULES=[CLIMATE_WATER.soil,CLIMATE_WATER.pools,CLIMATE_WATER.discharge,CLIMATE_WATER.runOn,CLIMATE_WATER.bankSpill,CLIMATE_WATER.policy];
 const rank=climate=>RULES.indexOf(climate?.evaporation)+1;
 export const climateWaterPolicy=value=>RULES.includes(value);
 export function temperaturePotential(temperature){return CLIMATE_WATER.perDegree*Math.max(0,temperature-CLIMATE_WATER.freezing)}
@@ -42,3 +54,5 @@ export const poolEvaporation=climate=>rank(climate)>=2;
 export const riverDischarge=climate=>rank(climate)>=3;
 export const pondedRunOn=climate=>rank(climate)>=4;
 export const bankSpill=climate=>rank(climate)>=5;
+export const deepFlood=climate=>rank(climate)>=6;
+export const edgeOutflow=climate=>rank(climate)>=6;

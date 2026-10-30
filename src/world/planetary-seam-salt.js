@@ -88,10 +88,10 @@ export function syncPlanetaryBoundaryOwnership(sim){
  const regions=[ownedActive(sim),...(sim.planetaryTravel.sessions||[])
   .filter(session=>session.biologicalMode==='canonical-ticks/1')
   .map(session=>regionOf(sim,session)).filter(Boolean)];
- const claimed=new Map(),expected=PLANETARY_BOUNDARY_WATER.pairedPolicy;
+ const claimed=new Map(),sides=new Map(),expected=PLANETARY_BOUNDARY_WATER.pairedPolicy;
  for(const r of regions)if(r.env?.boundaryWaterPolicy===expected){
   validateBoundaryWaterPolicy({generator:'planetary/1',n:128,len:128*128},r.env);
-  claimed.set(r.key,new Uint8Array(128*128));
+  claimed.set(r.key,new Uint8Array(128*128));sides.set(r.key,0);
  }
  let cells=0;
  if(sim.regionalReplayPolicy===REGIONAL_REPLAY.synchronized){
@@ -100,6 +100,7 @@ export function syncPlanetaryBoundaryOwnership(sim){
    if(!dir||!claimed.has(left.key)||!claimed.has(right.key))continue;
    const lhs=claimed.get(left.key),rhs=claimed.get(right.key);
    const bits=dir==='east'?[2,1]:dir==='west'?[1,2]:dir==='south'?[8,4]:[4,8];
+   sides.set(left.key,sides.get(left.key)|bits[0]);sides.set(right.key,sides.get(right.key)|bits[1]);
    for(const [i,j] of seams(left,right,dir)){
     if(!left.water[i]||!right.water[j]||!left.env.boundary[i]||!right.env.boundary[j])continue;
     if(!lhs[i])cells++;
@@ -114,14 +115,17 @@ export function syncPlanetaryBoundaryOwnership(sim){
  for(const r of regions){
   const mask=claimed.get(r.key);
   if(!mask)continue;
-  const current=r.env.blockedBoundaries;
-  if(current.length===mask.length&&current.every((v,i)=>v===mask[i]))continue;
+  // Paired sides (land and water) are recorded once a region has had one, so
+  // never-paired worlds keep their saved environment unchanged.
+  const current=r.env.blockedBoundaries,side=sides.get(r.key),sideChange=side!==(r.env.pairedSides??0);
+  if(current.length===mask.length&&current.every((v,i)=>v===mask[i])&&!sideChange)continue;
+  const published=sideChange||r.env.pairedSides!==undefined?{blockedBoundaries:mask,pairedSides:side}:{blockedBoundaries:mask};
   if(r.session){
    const snap=r.session.snapshot;
    markRegionalOwnerDirty(r.session);
    r.session.snapshot={...snap,world:{...snap.world,
-    environment:{...r.env,blockedBoundaries:mask}}};
-  }else r.env.blockedBoundaries=mask;
+    environment:{...r.env,...published}}};
+  }else Object.assign(r.env,published);
  }
  return{pairedCells:cells,regions:claimed.size};
 }

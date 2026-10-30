@@ -39,15 +39,15 @@ S9 of the creator's brief validates compatibility, ecological consequences, save
 
 `tools/measure-year-validation.mjs` (new) runs a new-game world for a year and records population, births, deaths by cause, soil closure, runoff pools, drinking on them, recession and cost. `--baseline` runs the pre-morphology new-game rules.
 
-| Seed S9-YEAR-2, 365 days | Pre-morphology rules | New rules, `climate-water/2` | New rules, `climate-water/3` | New rules, `climate-water/4` | New rules, `climate-water/5` |
-| --- | --- | --- | --- | --- | --- |
-| Alive, day 1 → day 366 | 188 → 20 | 188 → 62 | 188 → 63 | 188 → 62 | 188 → 50 |
-| Births | 39 | 83 | 104 | 74 | 92 |
-| Deaths: wildfire, age, starvation, predation | 92, 24, 27, 34 | 0, 60, 57, 55 | 31, 57, 56, 44 | 0, 53, 42, 40 | 0, 44, 49, 66 |
-| Deaths: dehydration, drowning | 18, 7 | 24, 13 | 26, 15 | 55, 9 | 63, 7 |
-| Flooded cells; receded; still open | 347; 0; 347 | 1,454; 0; 1,454 | 1,550; 520; 1,030 | 446; 310; 136 | 614; 612; 2 |
-| River discharge; pool evaporation (moisture units) | none | none; not recorded | 10,100; 2,718 | 4,822; 539 | 4,798; 235 |
-| Worst daily soil closure | 5.8×10⁻⁶ | 1.2×10⁻⁵ | 9.9×10⁻⁶ | 1.9×10⁻⁵ | 1.5×10⁻⁵ |
+| Seed S9-YEAR-2, 365 days | Pre-morphology rules | New rules, `climate-water/2` | New rules, `climate-water/3` | New rules, `climate-water/4` | New rules, `climate-water/5` | New rules, `climate-water/6` |
+| --- | --- | --- | --- | --- | --- | --- |
+| Alive, day 1 → day 366 | 188 → 20 | 188 → 62 | 188 → 63 | 188 → 62 | 188 → 50 | 188 → 53 |
+| Births | 39 | 83 | 104 | 74 | 92 | 88 |
+| Deaths: wildfire, age, starvation, predation | 92, 24, 27, 34 | 0, 60, 57, 55 | 31, 57, 56, 44 | 0, 53, 42, 40 | 0, 44, 49, 66 | 0, 39, 95, 41 |
+| Deaths: dehydration, drowning | 18, 7 | 24, 13 | 26, 15 | 55, 9 | 63, 7 | 41, 8 |
+| Flooded cells; receded; still open | 347; 0; 347 | 1,454; 0; 1,454 | 1,550; 520; 1,030 | 446; 310; 136 | 614; 612; 2 | 705; 693; 12 |
+| River discharge; pool evaporation (moisture units) | none | none; not recorded | 10,100; 2,718 | 4,822; 539 | 4,798; 235 | 4,793; 389 |
+| Worst daily soil closure | 5.8×10⁻⁶ | 1.2×10⁻⁵ | 9.9×10⁻⁶ | 1.9×10⁻⁵ | 1.5×10⁻⁵ | 1.6×10⁻⁵ |
 
 S9-YEAR-1 (`climate-water/1`) went from 188 to 25, with 25 births and 40 wildfire deaths.
 
@@ -61,7 +61,7 @@ S9-YEAR-1 (`climate-water/1`) went from 188 to 25, with 25 births and 40 wildfir
    - `climate-water/3` (now the new-game rule, see the [S5 doc](MORPHOLOGY-S5-CLIMATE-WATER-2026-10-29.md)) adds river discharge and incised channels: water bodies with an open border outlet drain their net surplus downstream, and generated water stands level with its banks instead of a full depth above them.
    - `/3` result: pools dried and receded (520 in the year), but open water still grew, from 124 cells at day 31 to 1,030 at day 366.
    - The cause: water ponded on land never soaked in or evaporated, even on unsaturated soil. It built up (1,567 to 6,646 units in 125 days) and kept flooding new cells beside full pools. `climate-water/4` (the new-game rule) lets ponded water evaporate and soak in under the soil's own infiltration law. Open water then stays seasonal: 674 water cells at day 361 against 1,554, and 136 pools still open against 1,030.
-   - Under `/4`, 39 animals died of thirst during a midsummer heat spike (days 167–169) in the valley's north, 10–55 tiles from water. Under `/3` that area still held runoff pools that should not have lasted. About 135 deep pools in closed sinks still stood above their banks on flat ground. `climate-water/5` (the new-game rule) lets runoff pools spill onto lower banks as ponded water: 612 of 614 pools receded within the year (median life 16 days), and open water ends the year at 542 cells against 538 generated. Alive at day 366 fell to 50 (62 under `/4`) with more births (92 against 74); thirst and predation deaths rose. About 660 units of ponded water remain hidden in a dozen saturated land sinks, which inundation skips above 2 units. Nothing was tuned.
+   - Under `/4`, 39 animals died of thirst during a midsummer heat spike (days 167–169) in the valley's north, 10–55 tiles from water. Under `/3` that area still held runoff pools that should not have lasted. About 135 deep pools in closed sinks still stood above their banks on flat ground. `climate-water/5` (the new-game rule) lets runoff pools spill onto lower banks as ponded water: 612 of 614 pools receded within the year (median life 16 days), and open water ends the year at 542 cells against 538 generated. Alive at day 366 fell to 50 (62 under `/4`) with more births (92 against 74); thirst and predation deaths rose. About 660 units of ponded water remained hidden, all of it in sinks on the region's border where runoff could not leave. `climate-water/6` lets that runoff leave across unpaired sides whose geography beyond is water or lower ground, and lets overfull sinks flood: land-ponded water at day 361 falls from 794 to 134 units, leaving one closed hollow on the east border (about 110 units). Nothing was tuned.
 3. **Restore key order (pre-existing, harmless).** A restored world's `core` lists its keys in a different order; the data is equal by value. Tests compare by value.
 4. **`perceived-threat-escape.mjs` fails, as it did before this work** (`10e49daf`), and is outside the gate.
 
@@ -79,7 +79,7 @@ No presentation files were changed. The only shared-file edits are one-line `SUR
 
 ## Not yet
 
-- Ponded water hidden in saturated land sinks (finding 2).
+- One closed hollow against the east border holds about 110 units of ponded water (finding 2).
 - Midsummer thirst far from permanent water in the start valley's north (finding 2).
 - Population persistence over a year (finding 1).
 - Deserts and the climate pass (S5).

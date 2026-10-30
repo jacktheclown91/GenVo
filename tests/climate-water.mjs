@@ -148,7 +148,7 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
    const row=w.environment.lastDay;spilled+=row.bankSpill||0;worst=Math.max(worst,Math.abs(row.waterClosure));sim.day++}
   return{before,after:w.water[i]?bank():0,liquid:w.water[i]?w.environment.volume[i]:0,receded:!w.water[i],spilled,worst,days:day};
  };
- const five=spill(CLIMATE_WATER.policy),four=spill(CLIMATE_WATER.runOn);
+ const five=spill(CLIMATE_WATER.bankSpill),four=spill(CLIMATE_WATER.runOn);
  assert.ok(five.before>1,`the pool starts well above its banks (${five.before.toFixed(2)})`);
  assert.ok(five.spilled>1,`it pours over its banks (${five.spilled.toFixed(2)})`);
  assert.ok(five.receded||five.after<.1,`and no longer stands above them (${five.after.toFixed(3)}, ${five.days} days)`);
@@ -156,4 +156,50 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
  assert.equal(four.spilled,0,'climate-water/4 pools do not spill');assert.ok(four.after>1,`and keep standing above their banks (${four.after.toFixed(2)})`);
  console.log(`  spill: ${five.before.toFixed(2)} above the banks, ${five.spilled.toFixed(2)} spilled, ${five.receded?'receded':five.after.toFixed(3)+' above'} after ${five.days} days; under /4 ${four.after.toFixed(2)} above`);
 }
-console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge, /4 ponded run-on, /5 bank spill): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed; /4 ponded water evaporates and soaks into unsaturated soil, saturated soil passes it on, ledgers closed; /5 a deep pool on flat ground spills over its banks and stops standing above them, ledger closed');
+// 9. climate-water/6, deep flooding: ponded water collected in a closed land sink beyond what an
+// open-water cell holds (2 units) floods the sink at that capacity and passes the excess to its
+// dry neighbours, so a visible pond forms and widens; the ledger closes every day. Under /5 the
+// water stays hidden on land.
+{
+ const sink=policy=>{
+  const sim=new Simulation('S9-YEAR-2',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();if(!w.soilWater)initializeSoilWater(w);
+  let i=-1;for(let k=w.n;k<w.len-w.n&&i<0;k++){const x=k%w.n;if(x<2||x>w.n-3||w.water[k]||w.terrain.downstream[k]!==-1||w.soilWater.snowpack?.[k]>0)continue;
+   if(![k-1,k+1,k-w.n,k+w.n].some(j=>w.water[j]))i=k}
+  assert.ok(i>=0,'an interior land sink');w.environment.overland[i]=6;const near=[i,i-1,i+1,i-w.n,i+w.n];
+  let spread=0,worst=0,day=0,firstPond=-1;
+  for(;day<10;day++){sim.climate={temp:.38,rain:0,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+   const row=w.environment.lastDay;spread+=row.deepFloodSpread||0;worst=Math.max(worst,Math.abs(row.waterClosure));if(firstPond<0&&w.water[i])firstPond=day;sim.day++}
+  return{ponded:firstPond>=0,firstPond,pondCells:near.filter(j=>w.water[j]).length,hidden:w.water[i]?0:w.environment.overland[i],spread,worst};
+ };
+ const six=sink(CLIMATE_WATER.policy),five=sink(CLIMATE_WATER.bankSpill);
+ assert.ok(six.ponded&&six.firstPond===0,`the sink floods as a pond on the first day (${six.firstPond})`);
+ assert.ok(six.spread>1,`its excess beyond 2 passes to its neighbours (${six.spread.toFixed(2)})`);
+ assert.ok(six.worst<1e-6,`open-water ledger closes every day (${six.worst.toExponential(1)})`);
+ assert.ok(!five.ponded&&five.hidden>2,`under /5 the water stays hidden on land (${five.hidden.toFixed(2)})`);assert.equal(five.spread,0);
+ console.log(`  deep flood: pond on day ${six.firstPond}, ${six.spread.toFixed(2)} passed on, ${six.pondCells} of 5 cells around the sink wet after 10 days; under /5 ${five.hidden.toFixed(2)} hidden`);
+}
+// 10. climate-water/6, border outflow: ponded water on a border land cell with no downhill
+// neighbour inside the region leaves across an open side whose planetary geography beyond is
+// open water or lower ground, recorded as edgeRunoffOutput; the ledger closes every day. A side
+// owned by a resident neighbouring region (paired) keeps it for the seam exchange, and /5 keeps it.
+{
+ const edge=(policy,paired=false)=>{
+  const sim=new Simulation('S9-YEAR-2',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();if(!w.soilWater)initializeSoilWater(w);
+  const e=w.environment,n=w.n,o=w.regionOrigin||{x:0,y:0};let i=-1,bit=0;
+  for(let k=0;k<w.len&&i<0;k++){const x=k%n,y=(k/n)|0;if(w.water[k]||w.terrain.downstream[k]!==-1||w.soilWater.snowpack?.[k]>0)continue;
+   for(const [b,dx,dy,on] of [[1,-1,0,x===0],[2,1,0,x===n-1],[4,0,-1,y===0],[8,0,1,y===n-1]]){if(!on)continue;const s=w.planet.sample(o.x+x+dx+.5,o.y+y+dy+.5);if(s.water||s.elevation<w.terrain.elevation[k]){i=k;bit=b;break}}}
+  assert.ok(i>=0,'a border sink with lower ground or water beyond');
+  if(paired){const x=i%n,y=(i/n)|0;e.pairedSides=(x===0?1:0)|(x===n-1?2:0)|(y===0?4:0)|(y===n-1?8:0)}
+  e.overland[i]=5;let out=0,worst=0;
+  for(let day=0;day<5;day++){sim.climate={temp:.38,rain:0,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+   const row=w.environment.lastDay;out+=row.edgeRunoffOutput||0;worst=Math.max(worst,Math.abs(row.waterClosure));sim.day++}
+  return{out,worst,left:w.water[i]?null:w.environment.overland[i]};
+ };
+ const six=edge(CLIMATE_WATER.policy),paired=edge(CLIMATE_WATER.policy,true),five=edge(CLIMATE_WATER.bankSpill);
+ assert.ok(six.out>3,`ponded water leaves across the open border (${six.out.toFixed(2)} of 5)`);
+ assert.ok(six.worst<1e-6,`open-water ledger closes every day (${six.worst.toExponential(1)})`);
+ assert.equal(paired.out,0,'a side owned by a resident neighbouring region keeps its runoff for the seam');
+ assert.equal(five.out,0,'climate-water/5 water never leaves across the border');
+ console.log(`  border: ${six.out.toFixed(2)} of 5 left in 5 days; paired side 0; under /5 0 (${five.left?.toFixed(2)} left on the edge)`);
+}
+console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge, /4 ponded run-on, /5 bank spill, /6 deep flooding and border outflow): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed; /4 ponded water evaporates and soaks into unsaturated soil, saturated soil passes it on, ledgers closed; /5 a deep pool on flat ground spills over its banks and stops standing above them, ledger closed; /6 water hoarded in a land sink floods as a pond and widens, and border runoff leaves across unpaired open sides, ledgers closed');

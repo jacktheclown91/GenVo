@@ -31,6 +31,10 @@ export function validateBoundaryWaterPolicy(world,environment){
    if(mask[i]>15||(mask[i]&~allowed)!==0||!environment.boundary[i])
     throw Error('Invalid paired boundary ownership mask.');
   }
+  // Region sides owned by a resident neighbouring region (west 1, east 2,
+  // north 4, south 8), land and water alike.
+  if(environment.pairedSides!==undefined&&(!Number.isSafeInteger(environment.pairedSides)||environment.pairedSides<0||environment.pairedSides>15))
+   throw Error('Invalid paired region sides.');
  }
  const totals=environment.totals;
  for(const key of ['boundaryWaterInput','boundaryWaterOutput',

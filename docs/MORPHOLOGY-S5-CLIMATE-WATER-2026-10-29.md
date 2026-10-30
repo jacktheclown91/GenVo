@@ -138,7 +138,7 @@ Open water no longer grows; seasonal pools come and go (11 at day 91, 172 at day
 
 Under `/4` about 135 deep runoff pools (median 1.5) persisted in closed sinks all year. On flat ground their surface stood up to 2 units above the dry land beside them, because standing water never moved onto lower land.
 
-`climate-water/5`, now the new-game rule:
+`climate-water/5` (kept for worlds saved with it; `/6` below is the new-game rule):
 - **Bank spill.** A fresh runoff pool whose surface (ground plus liquid water) stands above a dry neighbour's ground pours half of its largest overtopping per day onto those lower banks, shared by how far each is overtopped. The water lands as ponded water, which then soaks in, evaporates or runs downhill under `/4`.
 - **Order-independent.** Every pool spills from the same day-start surface.
 - **What doesn't spill.** Generated water, which stands level with its banks in incised channels, and salty water, whose salt has no land store.
@@ -161,6 +161,32 @@ Under `/4` about 135 deep runoff pools (median 1.5) persisted in closed sinks al
 Seasonal pools now form in wet spells and dry within weeks; the region's open water returns to its generated network each dry season. Nothing was tuned. Still open:
 - **Water hidden in land sinks.** About 660 units of ponded water sit in about a dozen terrain sinks on saturated land. Inundation skips a cell holding more than 2, and ponded water only runs downhill, so it neither becomes a visible pond nor spreads.
 - **Midsummer thirst** far from the valley's permanent water, as under `/4`.
+
+## `climate-water/6` — runoff leaves across the border; deep sinks flood (October 30)
+
+Under `/5` about 660 units of ponded water sat hidden on land. Logging every sink showed where: all of it lay in sinks on the region's own border (x or y = 0 or 127), 39–94 units each. Runoff that reaches the edge finds no downhill neighbour inside the region. The flood rule never floods border cells, and runoff only crosses into a neighbouring region when that region is resident and paired, which in the start valley never happens. A first attempt (spilling ponded water from sinks onto their neighbours) only made water circulate between the sink and its flat neighbours, and was discarded.
+
+`climate-water/6`, now the new-game rule:
+- **Border outflow.** Ponded water on a border land cell with no downhill neighbour inside the region moves on at the daily downhill share (0.65), leaving the region across a side whose planetary geography beyond is open water or lower ground. It is recorded as `edgeRunoffOutput`, an output of the open-water ledger.
+- **Paired sides stay with the seam.** A side owned by a resident neighbouring region keeps its runoff for the existing paired seam exchange, so the two systems never compete. Boundary ownership now records each region's paired sides (`pairedSides`: west 1, east 2, north 4, south 8), land and water alike. It is written only once a region has been paired, so worlds that never pair keep their saved environment unchanged.
+- **Deep flooding.** A land cell due to flood (a closed basin, or beside water) that holds more ponded water than an open-water cell can (2 units) floods at that capacity and passes the excess to its dry neighbours as ponded water. Before, such a cell never flooded.
+- **Versions.** Worlds saved under `/1`–`/5` are unchanged.
+
+`tests/climate-water.mjs` adds two controlled cases:
+- A closed land sink holding 6 units floods as a pond on the first day and passes 2.99 units to its neighbours; under `/5` 4.02 units stay hidden.
+- Ponded water on a border sink with lower ground beyond leaves across the border (4.27 of 5 units in 5 days). On a paired side none leaves, and under `/5` none leaves. Both ledgers close every day.
+
+**Year field, S9-YEAR-2, 365 days:**
+
+| | `/5` | `/6` |
+| --- | --- | --- |
+| Ponded water on land, day 361 | 794 | 134 |
+| Runoff pools flooded; receded; open at day 366 | 614; 612; 2 | 705; 693; 12 |
+| Pool life, p10 / p50 / p90 (days) | 5 / 16 / 56 | 6 / 21 / 72 |
+| Alive at day 366 (from 188); births | 50; 92 | 53; 88 |
+| Deaths: starvation, dehydration, predation | 49, 63, 66 | 95, 41, 41 |
+
+What remains: about 110 units sit in one sink on the east border where the ground beyond rises. That is a true closed hollow against the border, and the model allows no open water on border cells. The `/6` year had a late starvation burst (48 deaths on days 271–331). The population demography fields (stabilization P0) show every seed declining through the year toward what the vegetation renews, so this is not attributed to `/6`.
 
 ## Not yet
 

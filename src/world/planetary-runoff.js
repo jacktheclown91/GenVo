@@ -12,10 +12,14 @@ import {PLANETARY_CHANNEL_TOPOLOGY,planChannelRecession} from './planetary-chann
 // channel remains in its dry-land basin; this pass does NOT create new lakes.
 export const PLANETARY_RUNOFF=Object.freeze({schema:1,moveFraction:.65,
  shallowChannelThreshold:.25,closedBasinThreshold:.65,maxNewWetCellsPerDay:8});
-function floodFromRunoff(w,day){
+// deepFlood (climate-water/6): a cell holding more than an open-water cell can
+// (2 units) floods at that capacity and passes the excess to its dry neighbours
+// as ponded water, so the pond widens over the next days instead of the water
+// staying hidden on land. Without it such a cell never floods.
+function floodFromRunoff(w,day,deepFlood=false){
  const e=w.environment;
  if(e?.schema!==6)return null;
- const n=w.n,changes=[];
+ const n=w.n,changes=[];let spread=0;
  for(let i=n;i<w.len-n&&changes.length<PLANETARY_RUNOFF.maxNewWetCellsPerDay;i++){
   if(w.water[i])continue;
   // Inundating a snowy land cell would leave an independent finite snow
@@ -26,14 +30,20 @@ function floodFromRunoff(w,day){
   // A new border cell would need a paired external geography authority.
   if(x===0||x===n-1)continue;
   const amount=e.overland[i],downstream=w.terrain.downstream[i];
-  if(amount<PLANETARY_RUNOFF.shallowChannelThreshold||amount>2)continue;
+  if(amount<PLANETARY_RUNOFF.shallowChannelThreshold||amount>2&&!deepFlood)continue;
   const connected=!!(w.water[i-1]||w.water[i+1]||w.water[i-n]||w.water[i+n]);
   const basin=downstream===-1&&amount>=PLANETARY_RUNOFF.closedBasinThreshold;
   if(!connected&&!basin)continue;
+  if(amount>2){
+   const banks=[i-1,i+1,i-n,i+n].filter(j=>!w.water[j]&&j%n!==0&&j%n!==n-1&&!changes.some(c=>c.i===j));
+   if(!banks.length)continue;
+   const excess=amount-2;for(const j of banks)e.overland[j]+=excess/banks.length;e.overland[i]=2;spread+=excess;
+  }
   // A new waterway is funded solely by the water already held in this cell,
   // not a generator reset, external import, or extra rainfall credit.
-  changes.push({i,water:1,depth:amount,salinity:0,source:'overland'});
+  changes.push({i,water:1,depth:Math.min(amount,2),salinity:0,source:'overland'});
  }
+ if(spread){e.totals.deepFloodSpread=(e.totals.deepFloodSpread||0)+spread;e.lastDay.deepFloodSpread=spread}
  if(!changes.length)return null;
  const receipt=w.setSurfaceWater(changes,{reason:'rainfall-runoff-inundation'});
  const row=w.environment.lastDay,t=w.environment.totals;
@@ -47,7 +57,7 @@ export function totalPlanetarySurfaceWater(w){
  const e=w.environment;
  return sum(e?.volume||[])+sum(e?.overland||[]);
 }
-export function routePlanetaryRunoff(w,runoff,day){
+export function routePlanetaryRunoff(w,runoff,day,{deepFlood=false}={}){
  const e=w.environment;
  if(e?.schema<5)return null;
  if(!(runoff instanceof Float64Array)||runoff.length!==w.len||
@@ -195,7 +205,7 @@ export function routePlanetaryRunoff(w,runoff,day){
    actual.totals.recededCells=(actual.totals.recededCells||0)+edits.length;
   }
  }
- const inundation=floodFromRunoff(w,day);
+ const inundation=floodFromRunoff(w,day,deepFlood);
  // The next day's runoff must use the new real elevation, not the previous
  // land's cached drainage graph. No new water topology is inferred here.
  if(eroding&&terrainDelta.size)deriveDrainage(w);
