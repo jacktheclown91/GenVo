@@ -10,7 +10,7 @@ S8 of the creator's brief asks that wild populations inherit, keep or lose the n
 - **Gap 1: evidence.** Inherited-physical evidence (`inherited-parts/1`) counted body parts only. Size divergence could never contribute to recognising a new species.
 - **Gap 2: the evolved library.** Library entries stored a representative anatomy but not size. Founding from a naturally evolved configuration therefore restarted near 1×.
 - **Wild anatomy varies in ordinary new games.** In an 80-day run there were 5 accepted body mutations in 18 births, and 7 offspring with a plan unlike either parent's.
-- **Autonomous evolution (species recognition) is not enabled in new games.** `SURVIVAL_OPT_IN` does not pass `autonomousEvolution`; it runs in the field tools. Turning it on for new games is a creator decision, outside this change.
+- **Autonomous evolution (species recognition) was not enabled in new games**; it ran only in the field tools. The creator enabled it on October 29 (below).
 
 ## Implemented
 
@@ -56,8 +56,17 @@ What this shows honestly:
   - library founders centred on the recorded size and spread, and a real library entry recording its cohort's size.
 - The inherited-anatomy, proto-speciation, recognition, autonomous-evolution `/1`–`/3` compatibility, cross-region `/4`, evolved library and founding suites all pass unchanged.
 
+## Species recognition in new games (creator decision, October 29: "Enable it")
+
+`SURVIVAL_OPT_IN` now records `autonomousEvolution` (`autonomous-evolution/4`, cross-region references) for new games, alongside the autonomous populations it requires. Saved worlds keep whatever they recorded.
+- **Construction:** it builds and runs on both world types `main.js` creates (the first legacy-generator world and planetary worlds).
+- **Cost:** measured sequentially over 40 days of the same world, it adds no measurable time (79 s with recognition against 82–84 s without).
+- **Biology:** in 60-day soaks it left seed 1 identical (148 alive, 25 births), and seeds 2 and 3 within spread (130/8 and 156/2).
+- **Browser:** a headless new game records it and runs with no page errors.
+
+The recognition gates and thresholds are unchanged. A new species is recognised only when real inherited divergence, of parts or now size, meets them.
+
 ## Not yet
 
-- **Species recognition in new games** needs `autonomousEvolution` enabled for them. That is a creator decision; the field tools already enable it.
 - **Longer fields.** Seeing natural size change will take runs of years, not days, and more breeding species. The tool is ready for them.
 - **Size-dependent mate choice.** Mate preferences already include log body mass, which carries size. Mating feasibility between very different sizes is a later step.
