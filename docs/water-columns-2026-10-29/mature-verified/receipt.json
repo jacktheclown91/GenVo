@@ -1,0 +1,44 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "result": {
+    "changedPixels": 108,
+    "surveyChangedPixels": 0,
+    "playerAnchorOmitted": true,
+    "timings": [
+      {
+        "label": "before",
+        "medianMs": 29.399999998509884,
+        "p95Ms": 45.5,
+        "samples": 18
+      },
+      {
+        "label": "current",
+        "medianMs": 33.100000001490116,
+        "p95Ms": 45.399999998509884,
+        "samples": 18
+      }
+    ],
+    "best": {
+      "i": 5931,
+      "x": 43,
+      "y": 46,
+      "kind": "neutral",
+      "liquid": 2
+    },
+    "hasVolume": true,
+    "shallowCount": 0,
+    "dryCount": 0,
+    "survey": {
+      "x0": 35,
+      "y0": 38,
+      "width": 16,
+      "height": 16
+    },
+    "stateExact": true,
+    "day": 101,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "scope": "Actual world gameplay and actual shallow-cell terrain survey with unchanged owned liquid/ice/topology. Before disables only live column tint. The player anchor overlay is omitted equally in both renders to isolate environmental pixels; creatures remain rendered. Controlled palette is an isolated scalar artwork fixture, not a staged natural pool or depletion history."
+  },
+  "status": "PASS"
+}

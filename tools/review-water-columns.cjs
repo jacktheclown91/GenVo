@@ -1,0 +1,42 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{
+ const root=process.cwd(),out=path.resolve(process.argv[2]||'docs/wet-surfaces-2026-10-29/native');if(fs.existsSync(out))throw Error('Use a fresh directory');fs.mkdirSync(out,{recursive:true});const receipt={errors:[],creatorAcceptance:false};
+ const server=http.createServer((req,res)=>{const pathname=decodeURIComponent(new URL(req.url,'http://local').pathname),f=path.resolve(root,'.'+(pathname==='/'?'/index.html':pathname));if(!f.startsWith(root+path.sep))return res.writeHead(403).end();fs.readFile(f,(e,b)=>{if(e)return res.writeHead(404).end();if(pathname==='/src/render/water-column-art.js')b=Buffer.from(b.toString('utf8').replace('export function drawWaterColumn(ctx,{world,x,y,mask,px,py,u}){','export function drawWaterColumn(ctx,{world,x,y,mask,px,py,u}){if(globalThis.__columnBefore)return false;'));res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.gz':'application/gzip','.png':'image/png'})[path.extname(f)]||'application/octet-stream');res.end(b)})});
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch();
+ try{
+  const page=await browser.newPage({viewport:{width:1280,height:800}});page.on('pageerror',e=>receipt.errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForFunction(()=>window.__GENVO8__?.saveManager);
+  await page.getByRole('button',{name:'New World',exact:true}).click();if(!process.argv.includes('--new'))await page.locator('#newWorldStartingPoint').selectOption('catalog:mature-valley-d100');else{if(await page.locator('#newWorldAdvanced').getAttribute('open')===null)await page.locator('#newWorldAdvanced summary').click();await page.locator('#newWorldSeed').fill('AUDIO-RAIN-3');}await page.getByRole('button',{name:'Begin World',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden&&window.__GENVO8__.sim.player(),null,{timeout:60000});await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
+  for(let i=0;i<8;i++){if(!await page.evaluate(()=>{const t=window.__GENVO8__.tutorial;return t.worldInputBlocked()&&['welcome','briefing'].includes(t.stage)}))break;await page.keyboard.press('Enter')}await page.waitForTimeout(500);await page.keyboard.press('p');await page.waitForFunction(()=>window.__GENVO8__.sim.paused);await page.waitForFunction(()=>{const g=window.__GENVO8__;return !g.sim.familyControlStatus?.()?.unlocked||g.sim.familyControlExplained;},null,{timeout:20000});
+
+  const result=await page.evaluate(async()=>{
+   const g=window.__GENVO8__,w=g.sim.world,{waterColumnReading,drawWaterColumn}=await import('/src/render/water-column-art.js'),{Renderer}=await import('/src/render/renderer.js'),{createSimulationSnapshot}=await import('/src/persistence/save-manager.js'),{encodeSnapshotGraph}=await import('/src/persistence/scenario-codec.js');
+   const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(g.sim,{savedAt:'water-column-art'}))),before=snapshot(),readings=[];let best=null;
+   for(let i=0;i<w.len;i++){const reading=waterColumnReading(w,i);if(reading){readings.push({i,...reading});if(reading.kind==='shallow'&&(!best||reading.alpha>best.alpha))best={i,x:i%w.n,y:Math.floor(i/w.n),...reading}}}
+   const hasVolume=!!w.environment?.volume;if(!best){const i=w.water.findIndex(v=>v===1);if(i<0)throw Error('No actual water geometry in recorded world');best={i,x:i%w.n,y:Math.floor(i/w.n),kind:'neutral',liquid:w.environment?.volume?.[i]??null};}
+   const playerAnchor=g.renderer.drawPlayerAnchor;g.renderer.drawPlayerAnchor=()=>{};
+   const images={},pixels={},cv=document.createElement('canvas'),survey=new Renderer(cv,g.sim,{terrainOnly:true});cv.width=cv.height=512;survey.ctx=cv.getContext('2d');survey.ctx.imageSmoothingEnabled=false;survey.zoom=2;
+   const x0=Math.max(0,Math.min(w.n-16,best.x-8)),y0=Math.max(0,Math.min(w.n-16,best.y-8));
+   for(const old of [true,false]){
+    window.__columnBefore=old;g.renderer.render();images[(old?'before':'current')+'-gameplay']=g.renderer.canvas.toDataURL();pixels[old?'before':'current']=g.renderer.ctx.getImageData(0,0,g.renderer.canvas.width,g.renderer.canvas.height).data;
+    survey.resetWorldCaches();survey.prepareTerrainOnly();survey.ctx.clearRect(0,0,512,512);survey.groundPassOnly=true;
+    for(let y=0;y<16;y++)for(let x=0;x<16;x++){const wx=x0+x,wy=y0+y;survey.drawTile(x*32,y*32,32,w.idx(wx,wy),wx,wy)}
+    survey.groundPassOnly=false;
+    for(let y=0;y<16;y++)for(let x=0;x<16;x++){const wx=x0+x,wy=y0+y;survey.drawOrganicWaterMotion(x*32,y*32,2,wx,wy,survey.visualWaterMask(wx,wy),0)}
+    for(let y=-1;y<=16;y++)for(let x=-1;x<=16;x++){const wx=x0+x,wy=y0+y;if(wx<0||wy<0||wx>=w.n||wy>=w.n)continue;const i=w.idx(wx,wy);if(w.water[i])continue;const v=survey.vegetationLayer(i,wx,wy);if(v)survey.ctx.drawImage(v,x*32-18,y*32-18,68,68)}
+    images[(old?'before':'current')+'-actual-shallow-survey']=cv.toDataURL();pixels[old?'surveyBefore':'surveyCurrent']=survey.ctx.getImageData(0,0,512,512).data;
+   }
+   let changedPixels=0;for(let i=0;i<pixels.current.length;i+=4)if(pixels.current[i]!==pixels.before[i]||pixels.current[i+1]!==pixels.before[i+1]||pixels.current[i+2]!==pixels.before[i+2])changedPixels++;
+   let surveyChangedPixels=0;for(let i=0;i<pixels.surveyCurrent.length;i+=4)if(pixels.surveyCurrent[i]!==pixels.surveyBefore[i]||pixels.surveyCurrent[i+1]!==pixels.surveyBefore[i+1]||pixels.surveyCurrent[i+2]!==pixels.surveyBefore[i+2])surveyChangedPixels++;
+   const times={before:[],current:[]};for(let round=0;round<24;round++)for(const old of round%2?[false,true]:[true,false]){window.__columnBefore=old;const t=performance.now();g.renderer.render();if(round>=6)times[old?'before':'current'].push(performance.now()-t)}
+   const timings=Object.entries(times).map(([label,t])=>{t.sort((a,b)=>a-b);return{label,medianMs:t[9],p95Ms:t[17],samples:t.length}});window.__columnBefore=false;g.renderer.drawPlayerAnchor=playerAnchor;
+   const palette=document.createElement('canvas');palette.width=768;palette.height=160;const c=palette.getContext('2d'),mask=new Uint8Array(1024).fill(1);mask.full=true;mask.empty=false;
+   for(const [i,volume] of [0,.01,.1,.3,.6,1].entries()){c.fillStyle='#1b4351';c.fillRect(i*128,30,128,128);drawWaterColumn(c,{world:{water:[1],idx:()=>0,environment:{volume:[volume]}},x:0,y:0,mask,px:i*128,py:30,u:8});c.fillStyle='#ddd3b8';c.font='14px sans-serif';c.fillText('Liquid '+volume,i*128+8,20)}
+   images['controlled-column-palette']=palette.toDataURL();
+   if(snapshot()!==before)throw Error('Column presentation changed canonical world state');
+   return{images,changedPixels,surveyChangedPixels,playerAnchorOmitted:true,timings,best,hasVolume,shallowCount:readings.filter(r=>r.kind==='shallow').length,dryCount:readings.filter(r=>r.kind==='dry').length,survey:{x0,y0,width:16,height:16},stateExact:true,day:g.sim.day,seed:g.sim.seed,scope:'Actual world gameplay and actual shallow-cell terrain survey with unchanged owned liquid/ice/topology. Before disables only live column tint. The player anchor overlay is omitted equally in both renders to isolate environmental pixels; creatures remain rendered. Controlled palette is an isolated scalar artwork fixture, not a staged natural pool or depletion history.'};
+  });
+  for(const [name,png] of Object.entries(result.images))fs.writeFileSync(path.join(out,name+'.png'),Buffer.from(png.split(',')[1],'base64'));delete result.images;
+  receipt.result=result;if(process.argv.includes('--new'))assert.ok(result.shallowCount>0);else if(!result.shallowCount)assert.equal(result.surveyChangedPixels,0,'Recorded deep-world terrain remains pixel-identical; unrelated live interface marks are reported separately');assert.deepEqual(receipt.errors,[]);receipt.status='PASS';fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify(receipt,null,2));console.log(JSON.stringify(result));
+ }catch(e){receipt.failure=e.message;fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify(receipt,null,2));throw e}finally{await browser.close();await new Promise(r=>server.close(r))}
+})().catch(e=>{console.error(e);process.exitCode=1});

@@ -776,7 +776,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawOrganicWaterMotion(px,py,u,x,y,mask,hash){
-    drawWaterSurfaceMarks(this.ctx,{world:this.sim.world,x,y,mask,px,py,u,seconds:this.sim.tickCount/CFG.simHz})
+    drawWaterSurfaceMarks(this.ctx,{world:this.sim.world,x,y,mask,px,py,u,seconds:this.sim.tickCount/CFG.simHz,column:!this.groundPassOnly})
   }
 
   paintOrganicWaterBase(c,px,py,u,x,y,mask,hash,reach){

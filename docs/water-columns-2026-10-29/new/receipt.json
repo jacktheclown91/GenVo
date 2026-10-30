@@ -1,0 +1,43 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "result": {
+    "changedPixels": 10386,
+    "timings": [
+      {
+        "label": "before",
+        "medianMs": 6.399999998509884,
+        "p95Ms": 86.70000000298023,
+        "samples": 18
+      },
+      {
+        "label": "current",
+        "medianMs": 6.5,
+        "p95Ms": 77.70000000298023,
+        "samples": 18
+      }
+    ],
+    "best": {
+      "i": 9,
+      "x": 9,
+      "y": 0,
+      "kind": "shallow",
+      "liquid": 0.20000000298023224,
+      "alpha": 0.13333333134651182,
+      "color": "#9c9770"
+    },
+    "shallowCount": 682,
+    "dryCount": 0,
+    "survey": {
+      "x0": 1,
+      "y0": 0,
+      "width": 16,
+      "height": 16
+    },
+    "stateExact": true,
+    "day": 1,
+    "seed": "AUDIO-RAIN-3",
+    "scope": "Actual world gameplay and actual shallow-cell terrain survey with unchanged owned liquid/ice/topology. Before disables only live column tint. Controlled palette is an isolated scalar artwork fixture, not a staged natural pool or depletion history."
+  },
+  "status": "PASS"
+}
