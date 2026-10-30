@@ -7,16 +7,19 @@
 // subtrees the capture itself just built and nothing else holds; they pass through.
 import {drain} from '../sim/resumable.js';
 const deepFrozen=new WeakSet();
+// Frozen objects already found not deeply frozen (a mutable descendant). A later
+// descendant freeze could make one shareable; copying it instead stays a valid copy.
+const notDeepFrozen=new WeakSet();
 // A frozen cycle is never shared, so no object is cached on an unproven assumption.
 function isDeepFrozen(v,visiting=new Set()){
  if(deepFrozen.has(v))return true;
- if(!Object.isFrozen(v)||ArrayBuffer.isView(v)||v instanceof Map||v instanceof Set||visiting.has(v))return false;
+ if(notDeepFrozen.has(v)||!Object.isFrozen(v)||ArrayBuffer.isView(v)||v instanceof Map||v instanceof Set||visiting.has(v))return false;
  const proto=Object.getPrototypeOf(v);if(proto!==Object.prototype&&proto!==Array.prototype)return false;
  visiting.add(v);
  for(const key of Reflect.ownKeys(v)){
-  const d=Object.getOwnPropertyDescriptor(v,key);if(!('value' in d)||typeof key==='symbol'||!d.enumerable&&!(Array.isArray(v)&&key==='length'))return false;
-  const x=d.value;if(x!==null&&typeof x==='object'&&!isDeepFrozen(x,visiting))return false;
-  if(typeof x==='function'||typeof x==='symbol')return false;
+  const d=Object.getOwnPropertyDescriptor(v,key);if(!('value' in d)||typeof key==='symbol'||!d.enumerable&&!(Array.isArray(v)&&key==='length')){notDeepFrozen.add(v);return false}
+  const x=d.value;if(x!==null&&typeof x==='object'&&!isDeepFrozen(x,visiting)){if(!visiting.has(x))notDeepFrozen.add(v);return false}
+  if(typeof x==='function'||typeof x==='symbol'){notDeepFrozen.add(v);return false}
  }
  visiting.delete(v);deepFrozen.add(v);return true;
 }

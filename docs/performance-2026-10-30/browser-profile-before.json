@@ -1,0 +1,774 @@
+{
+ "frameMs": {
+  "count": 929,
+  "median": 33.30000000000291,
+  "p95": 50.10000000000218,
+  "p99": 166.6999999999971,
+  "worst": 1933.2999999999993
+ },
+ "ticksPerSecond": 3.197287150296718,
+ "profile": {
+  "topFunctions": [
+   [
+    "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+    8.4
+   ],
+   [
+    "plainArrayType src/persistence/flora-seed-codec.js:137",
+    6.9
+   ],
+   [
+    "(program) (native):0",
+    6.4
+   ],
+   [
+    "stringRef src/persistence/flora-seed-codec.js:144",
+    6.2
+   ],
+   [
+    "encodeTyped src/persistence/flora-seed-codec.js:145",
+    6.2
+   ],
+   [
+    "isDeepFrozen src/persistence/snapshot-copy.js:11",
+    4.2
+   ],
+   [
+    "(garbage collector) (native):0",
+    4
+   ],
+   [
+    "copy src/persistence/snapshot-copy.js:30",
+    3.8
+   ],
+   [
+    "restoreDetachedSimulationSnapshot src/persistence/save-manager.js:378",
+    3.8
+   ],
+   [
+    "copyObject src/persistence/snapshot-copy.js:47",
+    3.1
+   ],
+   [
+    "stageRemoteBiologySteps src/world/planetary-offscreen-biology.js:93",
+    2.3
+   ],
+   [
+    "unpackSeedColumns2 src/persistence/flora-seed-codec.js:171",
+    2.2
+   ],
+   [
+    "drawImage (native):0",
+    2.1
+   ],
+   [
+    "intern src/persistence/flora-seed-codec.js:34",
+    1.7
+   ],
+   [
+    "identity src/ecology/botanical-genetics.js:60",
+    1.4
+   ],
+   [
+    "getBoundingClientRect (native):0",
+    1.3
+   ],
+   [
+    "validSexualFloraGenome src/ecology/botanical-genetics.js:65",
+    1
+   ],
+   [
+    "clearRail src/ui/notification-center.js:12",
+    1
+   ],
+   [
+    "value src/persistence/flora-seed-codec.js:184",
+    0.9
+   ],
+   [
+    "buildHydrology src/world/world.js:97",
+    0.8
+   ],
+   [
+    "anatomicalAdultMass src/organisms/body-mass.js:27",
+    0.7
+   ],
+   [
+    "idx src/world/world.js:60",
+    0.7
+   ],
+   [
+    "(idle) (native):0",
+    0.6
+   ],
+   [
+    "cropYield src/ecology/dispersal.js:51",
+    0.6
+   ],
+   [
+    "surveyAt src/ecology/carrying.js:24",
+    0.5
+   ],
+   [
+    "freezeBotanical src/ecology/botanical-genetics.js:14",
+    0.5
+   ],
+   [
+    "options src/gameplay/foraging.js:65",
+    0.5
+   ],
+   [
+    "adultFloraGenome src/ecology/flora-inheritance.js:15",
+    0.5
+   ],
+   [
+    "overlapOf src/ecology/dietary-demand.js:41",
+    0.5
+   ],
+   [
+    "initializeFloraInheritance src/ecology/flora-inheritance.js:8",
+    0.4
+   ],
+   [
+    "validFloraGenome src/ecology/flora-genotype.js:22",
+    0.4
+   ],
+   [
+    "paintOrganicLandBase src/render/renderer.js:728",
+    0.4
+   ],
+   [
+    "(anon) src/lineage/aquatic.js:25",
+    0.4
+   ],
+   [
+    "querySelectorAll (native):0",
+    0.3
+   ],
+   [
+    "(anon) src/ecology/botanical-genetics.js:20",
+    0.3
+   ],
+   [
+    "structuredClone (native):0",
+    0.3
+   ],
+   [
+    "botanicalFloraGenome src/ecology/botanical-genetics.js:61",
+    0.3
+   ],
+   [
+    "internOrder src/persistence/flora-seed-codec.js:80",
+    0.3
+   ],
+   [
+    "(anon) src/ecology/functional-diet.js:25",
+    0.3
+   ],
+   [
+    "add src/ecology/flora-genome-lifetime.js:11",
+    0.3
+   ]
+  ],
+  "topFiles": [
+   [
+    "src/persistence/flora-seed-codec.js",
+    33.3
+   ],
+   [
+    "(native)",
+    16.1
+   ],
+   [
+    "src/persistence/snapshot-copy.js",
+    11.1
+   ],
+   [
+    "src/ecology/botanical-genetics.js",
+    5.2
+   ],
+   [
+    "src/persistence/save-manager.js",
+    3.9
+   ],
+   [
+    "src/world/planetary-offscreen-biology.js",
+    2.4
+   ],
+   [
+    "src/world/world.js",
+    2.1
+   ],
+   [
+    "src/render/renderer.js",
+    2
+   ],
+   [
+    "src/ecology/flora-inheritance.js",
+    1.5
+   ],
+   [
+    "src/sim/simulation.js",
+    1.5
+   ],
+   [
+    "src/ecology/dispersal.js",
+    1.4
+   ],
+   [
+    "src/ecology/botanical-reproduction.js",
+    1.1
+   ],
+   [
+    "src/ecology/functional-diet.js",
+    1
+   ],
+   [
+    "src/ui/notification-center.js",
+    1
+   ],
+   [
+    "src/ecology/dietary-demand.js",
+    1
+   ],
+   [
+    "src/gameplay/discovery.js",
+    0.9
+   ],
+   [
+    "src/organisms/body-mass.js",
+    0.9
+   ],
+   [
+    "src/ecology/carrying.js",
+    0.8
+   ],
+   [
+    "src/lineage/aquatic.js",
+    0.7
+   ],
+   [
+    "src/ecology/flora-genotype.js",
+    0.7
+   ],
+   [
+    "src/ecology/plant-resources.js",
+    0.7
+   ],
+   [
+    "src/gameplay/foraging.js",
+    0.7
+   ],
+   [
+    "src/family/family.js",
+    0.6
+   ],
+   [
+    "src/ecology/flora-genome-lifetime.js",
+    0.6
+   ],
+   [
+    "src/lineage/lifestyle.js",
+    0.5
+   ]
+  ],
+  "longRuns": [
+   {
+    "ms": 5717,
+    "top": [
+     [
+      "restoreDetachedSimulationSnapshot src/persistence/save-manager.js:378",
+      545
+     ],
+     [
+      "(native)",
+      534
+     ],
+     [
+      "isDeepFrozen src/persistence/snapshot-copy.js:11",
+      418
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      354
+     ],
+     [
+      "unpackSeedColumns2 src/persistence/flora-seed-codec.js:171",
+      329
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      273
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      5180
+     ],
+     [
+      "(native)",
+      534
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js",
+      1
+     ],
+     [
+      "planetaryWalkIntent src/world/planetary-walkthrough.js",
+      1
+     ]
+    ]
+   },
+   {
+    "ms": 3949,
+    "top": [
+     [
+      "restoreDetachedSimulationSnapshot src/persistence/save-manager.js:378",
+      543
+     ],
+     [
+      "(native)",
+      367
+     ],
+     [
+      "isDeepFrozen src/persistence/snapshot-copy.js:11",
+      337
+     ],
+     [
+      "unpackSeedColumns2 src/persistence/flora-seed-codec.js:171",
+      286
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      165
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      146
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      3581
+     ],
+     [
+      "(native)",
+      367
+     ]
+    ]
+   },
+   {
+    "ms": 2485,
+    "top": [
+     [
+      "(native)",
+      266
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      169
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      142
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      128
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      108
+     ],
+     [
+      "identity src/ecology/botanical-genetics.js:60",
+      77
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      2219
+     ],
+     [
+      "(native)",
+      266
+     ]
+    ]
+   },
+   {
+    "ms": 2379,
+    "top": [
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      301
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      271
+     ],
+     [
+      "(native)",
+      260
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      241
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      211
+     ],
+     [
+      "copy src/persistence/snapshot-copy.js:30",
+      149
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      2119
+     ],
+     [
+      "(native)",
+      260
+     ]
+    ]
+   },
+   {
+    "ms": 2366,
+    "top": [
+     [
+      "(native)",
+      408
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      276
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      237
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      236
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      217
+     ],
+     [
+      "stageRemoteBiologySteps src/world/planetary-offscreen-biology.js:93",
+      84
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1958
+     ],
+     [
+      "(native)",
+      408
+     ]
+    ]
+   },
+   {
+    "ms": 2218,
+    "top": [
+     [
+      "(native)",
+      243
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      172
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      127
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      125
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      111
+     ],
+     [
+      "identity src/ecology/botanical-genetics.js:60",
+      80
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1975
+     ],
+     [
+      "(native)",
+      243
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js",
+      1
+     ]
+    ]
+   },
+   {
+    "ms": 2180,
+    "top": [
+     [
+      "restoreDetachedSimulationSnapshot src/persistence/save-manager.js:378",
+      540
+     ],
+     [
+      "unpackSeedColumns2 src/persistence/flora-seed-codec.js:171",
+      277
+     ],
+     [
+      "(native)",
+      168
+     ],
+     [
+      "value src/persistence/flora-seed-codec.js:184",
+      127
+     ],
+     [
+      "validSexualFloraGenome src/ecology/botanical-genetics.js:65",
+      118
+     ],
+     [
+      "identity src/ecology/botanical-genetics.js:60",
+      113
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      2010
+     ],
+     [
+      "(native)",
+      168
+     ],
+     [
+      "value src/persistence/flora-seed-codec.js",
+      1
+     ]
+    ]
+   },
+   {
+    "ms": 2155,
+    "top": [
+     [
+      "isDeepFrozen src/persistence/snapshot-copy.js:11",
+      456
+     ],
+     [
+      "(native)",
+      230
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      202
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      179
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      153
+     ],
+     [
+      "copy src/persistence/snapshot-copy.js:30",
+      151
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1922
+     ],
+     [
+      "(native)",
+      230
+     ],
+     [
+      "observe src/main.js",
+      1
+     ],
+     [
+      "copyObject src/persistence/snapshot-copy.js",
+      1
+     ]
+    ]
+   },
+   {
+    "ms": 2005,
+    "top": [
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      303
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      242
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      234
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      224
+     ],
+     [
+      "(native)",
+      216
+     ],
+     [
+      "copy src/persistence/snapshot-copy.js:30",
+      85
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1791
+     ],
+     [
+      "(native)",
+      216
+     ]
+    ]
+   },
+   {
+    "ms": 1759,
+    "top": [
+     [
+      "isDeepFrozen src/persistence/snapshot-copy.js:11",
+      359
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      149
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      142
+     ],
+     [
+      "(native)",
+      138
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      135
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      109
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1620
+     ],
+     [
+      "(native)",
+      138
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js",
+      1
+     ]
+    ]
+   },
+   {
+    "ms": 1678,
+    "top": [
+     [
+      "(native)",
+      214
+     ],
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      183
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      176
+     ],
+     [
+      "copy src/persistence/snapshot-copy.js:30",
+      147
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      142
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      141
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1465
+     ],
+     [
+      "(native)",
+      214
+     ]
+    ]
+   },
+   {
+    "ms": 1527,
+    "top": [
+     [
+      "packFloraSeedColumnsSteps src/persistence/flora-seed-codec.js:158",
+      195
+     ],
+     [
+      "(native)",
+      154
+     ],
+     [
+      "plainArrayType src/persistence/flora-seed-codec.js:137",
+      108
+     ],
+     [
+      "stringRef src/persistence/flora-seed-codec.js:144",
+      105
+     ],
+     [
+      "encodeTyped src/persistence/flora-seed-codec.js:145",
+      91
+     ],
+     [
+      "copy src/persistence/snapshot-copy.js:30",
+      76
+     ]
+    ],
+    "roots": [
+     [
+      "frame src/main.js",
+      1372
+     ],
+     [
+      "(native)",
+      154
+     ]
+    ]
+   }
+  ]
+ }
+}

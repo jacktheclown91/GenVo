@@ -1,6 +1,7 @@
 import {captureSeamReadset,seamReadsetUnchanged} from './planetary-seam-readset.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
+import {peekWarmRegion,rekeyWarmRegion} from './regional-warm-cache.js';
 import {syncCaveAir} from './cave-air.js';
 import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 // Genuine paired dissolved-salt transport between two independently owned
@@ -385,9 +386,12 @@ export function* planetarySeamTransaction(sim){
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
  validatePlanetarySeamLedger(nextLedger);
 
- for(const r of regions){
-  const {incoming,outgoing,water,runoff,groundwater,minerals,sediment,wetbed}=sums.get(r.key),e=r.env;
-  if(r.session)markRegionalOwnerDirty(r.session);
+
+ // One region's share of the published seam: its cell deltas, its own ledger rows
+ // and totals. Applied to the owner's world and, when the archived owner has a valid
+ // warm Simulation, to that Simulation's world too, so it stays equal to its checkpoint.
+ const applyRegion=(r,sum,ledgerSession,day)=>{
+  const {incoming,outgoing,water,runoff,groundwater,minerals,sediment,wetbed}=sum,e=r.env;
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
   for(const [i,delta] of waterChanges.get(r.key))e.volume[i]+=delta;
   for(const [i,delta] of overlandChanges.get(r.key))e.overland[i]+=delta;
@@ -413,7 +417,7 @@ export function* planetarySeamTransaction(sim){
    upd(soil.lastDay);
    if(soil.daily?.at(-1)!==soil.lastDay&&soil.daily?.at(-1)?.day===day)upd(soil.daily.at(-1));
   }
-  if(!incoming&&!outgoing&&!water.incoming&&!water.outgoing)continue;
+  if(!incoming&&!outgoing&&!water.incoming&&!water.outgoing)return;
   e.totals.saltInput+=incoming;e.totals.saltOutput+=outgoing;
   e.totals.pairedInput=(e.totals.pairedInput||0)+incoming;
   e.totals.pairedOutput=(e.totals.pairedOutput||0)+outgoing;
@@ -468,9 +472,21 @@ export function* planetarySeamTransaction(sim){
   };
   update(row);
   if(e.daily.at(-1)!==row)update(e.daily.at(-1));
-  if(r.session?.environmentalLedger){
-   r.session.environmentalLedger.saltInput+=incoming;
-   r.session.environmentalLedger.saltOutput+=outgoing;
+  if(ledgerSession?.environmentalLedger){
+   ledgerSession.environmentalLedger.saltInput+=incoming;
+   ledgerSession.environmentalLedger.saltOutput+=outgoing;
+  }
+ };
+ for(const r of regions){
+  const warm=r.session?peekWarmRegion(r.session):null;
+  if(r.session)markRegionalOwnerDirty(r.session);
+  applyRegion(r,sums.get(r.key),r.session,day);
+  if(warm){
+   const w=warm.world;
+   applyRegion({key:r.key,origin:w.regionOrigin,water:w.water,env:w.environment,terrain:w.terrain,soil:w.soilWater,subsurface:w.subsurface,minerals:w.plantResources?.minerals,session:null},sums.get(r.key),null,day);
+   // As a restore from the updated checkpoint would: drainage, land regions, hydrology.
+   if(w.terrain)deriveDrainage(w);w.buildLandRegions();w.buildHydrology();
+   rekeyWarmRegion(r.session,warm);
   }
   // The active World uses derived hydrological connectivity for drinkability
   // and shore behavior. Archived Worlds rebuild that view on restoration.

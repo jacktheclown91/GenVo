@@ -1,0 +1,34 @@
+{
+  "schema": "genvo.mature-regions-browser/1",
+  "root": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\.claude\\worktrees\\claude-systems",
+  "seconds": 60,
+  "started": "2026-10-30T13:11:34.458Z",
+  "scope": "Headless Chromium native loop; controlled frontier placement on the bundled Day 100 world; not GPU or creator acceptance",
+  "errors": [],
+  "setup": {
+    "policy": "synchronized-strides/1",
+    "regions": 2,
+    "tick": 4800
+  },
+  "frameMs": {
+    "count": 1585,
+    "median": 33.30000000000291,
+    "p95": 50.10000000000218,
+    "p99": 83.40000000000146,
+    "worst": 1716.6000000000004
+  },
+  "framesOver": {
+    "ms250": 3,
+    "ms1000": 1
+  },
+  "longTaskWorst": 1714,
+  "ticksAdvanced": 234,
+  "elapsedMs": 60019.79999999702,
+  "ticksPerSecond": 3.8987134245700856,
+  "paused": false,
+  "tick": 5034,
+  "remote": [
+    5028,
+    5028
+  ]
+}
