@@ -4,9 +4,9 @@ import {gunzipSync} from 'node:zlib';
 const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url),oldRoot=new URL('../docs/wing-root-refinement-2026-10-29/before/',import.meta.url);
 const catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',folder))),before=JSON.parse(fs.readFileSync(new URL('catalog.json',oldRoot)));
 let frames=0;
-for(const entry of catalog.parts){
+for(const entry of catalog.parts.filter(e=>!['balance-tail','paddle-tail'].includes(e.partId))){
   const oldEntry=before.parts.find(e=>e.partId===entry.partId&&e.resolution===entry.resolution);
-  if(!['flight-wing','proto-wing'].includes(entry.partId)){assert.deepEqual(entry,oldEntry,'other36 variants remain exact');continue}
+  if(!['flight-wing','proto-wing'].includes(entry.partId)){assert.deepEqual(entry,oldEntry,'other34 non-tail variants remain exact');continue}
   const now=JSON.parse(gunzipSync(fs.readFileSync(new URL(entry.path,folder)))),old=JSON.parse(gunzipSync(fs.readFileSync(new URL(oldEntry.path,oldRoot))));
   assert.deepEqual(now.rig,old.rig);assert.deepEqual(now.rootAnchorPx,old.rootAnchorPx);assert.deepEqual(now.regions,old.regions);assert.equal(now.displayScale,old.displayScale);
   const ratio=entry.resolution/32;
@@ -22,4 +22,4 @@ for(const entry of catalog.parts){
     assert.ok(changed>entry.resolution,'actual proximal tissue changed');frames++;
   }
 }
-console.log('Wing root refinement PASS: '+frames+' changed proximal frames, exact outer feathers/rig/materials/timing registration and other36 retained variants.');
+console.log('Wing root refinement PASS: '+frames+' changed proximal frames, exact outer feathers/rig/materials/timing registration and other34 retained non-tail variants.');

@@ -1,0 +1,39 @@
+{
+  "schema": "genvo.part-art-variants/1",
+  "version": 9,
+  "status": "production-candidate-creator-review",
+  "native32Fallback": true,
+  "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
+  "generation": "Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.",
+  "parts": [
+    {
+      "partId": "balance-tail",
+      "resolution": 64,
+      "path": "./balance-tail-64.indexed.json.gz",
+      "checksum": "8e88c716084b915de12ac907a2843dd31d2fd25d501e52b0a2f40ae8f2465ef2",
+      "bytes": 2681,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "balance-tail",
+      "resolution": 128,
+      "path": "./balance-tail-128.indexed.json.gz",
+      "checksum": "b5cecd04be888aac5d65c629f8c53324f060854630c10ac94f189801712d9645",
+      "bytes": 6810,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    }
+  ],
+  "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
+  "faceRefinement": "Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.",
+  "limbRefinement": "Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration.",
+  "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.",
+  "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.",
+  "wingRefinement": "Native indexed precursor/flight feathers with compact layered root coverts; existing frame, registration and folding contracts preserved.",
+  "bodyFormRefinement": "Native indexed light, segmented long and reinforced torso tissue; exact physical registration and existing body mechanics."
+}

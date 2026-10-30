@@ -1,6 +1,6 @@
 {
   "schema": "genvo.part-art-variants/1",
-  "version": 9,
+  "version": 10,
   "status": "production-candidate-creator-review",
   "native32Fallback": true,
   "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
@@ -182,8 +182,8 @@
       "partId": "balance-tail",
       "resolution": 64,
       "path": "./balance-tail-64.indexed.json.gz",
-      "checksum": "8e88c716084b915de12ac907a2843dd31d2fd25d501e52b0a2f40ae8f2465ef2",
-      "bytes": 2681,
+      "checksum": "269485aa887a1dba9b33f40795c9302f6c7729b58251fc414c8d5337405f8478",
+      "bytes": 2612,
       "decodedRgbaBytes": 262144,
       "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
       "kind": "code-authored-indexed",
@@ -365,8 +365,8 @@
       "partId": "balance-tail",
       "resolution": 128,
       "path": "./balance-tail-128.indexed.json.gz",
-      "checksum": "b5cecd04be888aac5d65c629f8c53324f060854630c10ac94f189801712d9645",
-      "bytes": 6810,
+      "checksum": "e5eaa174f33e3fb7c24a56317f5f5e3581db364364cc6f181905e6e747333b91",
+      "bytes": 7203,
       "decodedRgbaBytes": 1048576,
       "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
       "kind": "code-authored-indexed",
@@ -481,6 +481,28 @@
       "sourceChecksum": "2feead7db7b1b4a79870e02de728961a813f6bff6f0700e6558ce324ec30dc8f",
       "kind": "code-authored-indexed",
       "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "paddle-tail",
+      "resolution": 64,
+      "path": "./paddle-tail-64.indexed.json.gz",
+      "checksum": "7c3521b2e6ff95147953769ed8fbbabc7d22a59b85532fd4ab8f19dac7f7ba7f",
+      "bytes": 4012,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "bcf9bd01b8c970ad5b9b26ec80e678b5a322f38fede05a7304a6f82c5d3421cf",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "paddle-tail",
+      "resolution": 128,
+      "path": "./paddle-tail-128.indexed.json.gz",
+      "checksum": "f0179da153d595c300ff529d3a7879b3891351b9eef485178f8a9f52c5e81018",
+      "bytes": 13693,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "bcf9bd01b8c970ad5b9b26ec80e678b5a322f38fede05a7304a6f82c5d3421cf",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
     }
   ],
   "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
@@ -489,5 +511,6 @@
   "torsoRefinement": "Native indexed compact shoulder/haunch, soft flank and domed scute surfaces; unchanged physical registration.",
   "headRefinement": "Native indexed rounded cranial and cheek volume; separate eyes/mouths and exact head registration preserved.",
   "wingRefinement": "Native indexed precursor/flight feathers with compact layered root coverts; existing frame, registration and folding contracts preserved.",
-  "bodyFormRefinement": "Native indexed light, segmented long and reinforced torso tissue; exact physical registration and existing body mechanics."
+  "bodyFormRefinement": "Native indexed light, segmented long and reinforced torso tissue; exact physical registration and existing body mechanics.",
+  "tailRefinement": "Native indexed tapered balance tail and protected paddle membrane; existing attachment, pigmentation and pose-driven sweep."
 }

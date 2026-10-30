@@ -9,7 +9,7 @@ const folder=new URL('../assets/art/production-candidate-v1/',import.meta.url);
 const catalog=JSON.parse(fs.readFileSync(new URL('catalog.json',folder)));
 const before=JSON.parse(fs.readFileSync(new URL('../docs/wing-detail-2026-10-29/before/catalog.json',import.meta.url)));
 assert.equal(catalog.parts.filter(e=>WING_PARTS.includes(e.partId)).length,4);
-for(const old of before.parts)assert.deepEqual(catalog.parts.find(e=>e.partId===old.partId&&e.resolution===old.resolution),old,'all original30 variants remain exact, including original byte budgets');
+for(const old of before.parts.filter(e=>e.partId!=='balance-tail'))assert.deepEqual(catalog.parts.find(e=>e.partId===old.partId&&e.resolution===old.resolution),old,'original28 non-tail variants remain exact, including original byte budgets');
 let frames=0,protectedQuills=0;
 for(const id of WING_PARTS)for(const resolution of [64,128]){
   const source=JSON.parse(fs.readFileSync(new URL('../assets/art/parts/'+id+'.indexed.json',import.meta.url)));
@@ -52,7 +52,7 @@ let canvasBytes=0;
 for(const resolution of [64,128]){
   const canvases=[],createCanvas=()=>{const c={width:0,height:0,getContext(){return {createImageData(w,h){return {data:new Uint8ClampedArray(w*h*4)}},putImageData(){}}}};canvases.push(c);return c;};
   const result=await loadPartArtVariant(new URL('catalog.json',folder),{resolution,createCanvas,fetcher:async url=>new Response(fs.readFileSync(url))});
-  assert.equal(result.parts.size,20);
+  assert.equal(result.parts.size,21);
   const renderer=result.parts.get('flight-wing'),prepared=canvases.length;
   let draws=0,depth=0;
   const c={save(){depth++},restore(){depth--},translate(x,y){assert.ok(Number.isFinite(x+y))},rotate(a){assert.ok(Number.isFinite(a))},scale(x,y){assert.ok(Number.isFinite(x+y))},drawImage(){draws++}};
@@ -64,4 +64,4 @@ for(const resolution of [64,128]){
   canvasBytes+=canvases.reduce((n,c)=>n+c.width*c.height*4,0);
 }
 assert.ok(canvasBytes<=32*1024*1024,'combined untinted prepared variant canvases, including wing panel copies, remain below32MiB');
-console.log('Detailed wings PASS: '+frames+' native frames, real feather detail, exact roots/palettes/timing/folding, no clipped facings, unchanged original30 variants, precursor capabilities preserved; prepared canvas bytes='+canvasBytes+'.');
+console.log('Detailed wings PASS: '+frames+' native frames, real feather detail, exact roots/palettes/timing/folding, no clipped facings, unchanged original28 non-tail variants, precursor capabilities preserved; prepared canvas bytes='+canvasBytes+'.');
