@@ -49,3 +49,175 @@
 
 /* Requested detail screens need a quiet reading surface over the live world. */
 #frontEnd .front-frame:has(.menu-view:is([data-screen="settings"],[data-screen="worlds"],[data-screen="credits"]):not([hidden])){background:#0c1912f5;border-right:1px solid #cbb57440}
+
+/*
+ * Main-menu identity pass (2026-10-30).
+ * The running world is the hero illustration. Remove interchangeable iconography
+ * instead of adding decoration or another menu-control system.
+ * The two entry paths remain the existing FrontEnd commands.
+ */
+#frontEnd .brand-mark{display:none}
+#frontEnd .front-brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:9px;
+  filter:none;
+}
+#frontEnd .brand-divider{
+  width:144px;
+  max-width:144px;
+  height:2px;
+  background:#b8b78b;
+  opacity:.72;
+}
+#frontEnd .brand-caption{
+  margin:0;
+  max-width:30ch;
+  color:#d6d8bc;
+  font:italic 18px/1.4 Georgia,serif;
+}
+#frontEnd .front-footer .leaf-emblem{display:none}
+#frontEnd .menu-navigation button{
+  display:flex;
+  justify-content:flex-start;
+  gap:0;
+  min-height:51px;
+  padding:11px 12px 11px 14px;
+  border:0;
+  border-left:3px solid transparent;
+  border-bottom:1px solid #8f9d7d55;
+  background:transparent;
+  color:#e1e5d5;
+  font:normal 22px/1.25 Georgia,serif;
+  transition:background 140ms ease,color 140ms ease,border-color 140ms ease;
+}
+#frontEnd .menu-navigation button::before,
+#frontEnd .menu-navigation button > span[aria-hidden="true"]{display:none}
+#frontEnd .menu-navigation button.menu-primary:not(:disabled){
+  border-left-color:#d8c18a;
+  color:#f3e4b9;
+  background:linear-gradient(90deg,#bba46a24,transparent 86%);
+  font-weight:600;
+}
+#frontEnd .menu-navigation button:hover,
+#frontEnd .menu-navigation button:focus-visible{
+  padding-left:14px;
+  color:#fff5d5;
+  background:linear-gradient(90deg,#b9a46c2e,transparent 95%);
+  border-left-color:#e3ce9c;
+  border-bottom-color:#b1ae806e;
+}
+#frontEnd .menu-navigation button:disabled{
+  opacity:.45;
+  cursor:default;
+}
+#frontEnd .menu-navigation button:disabled:hover{
+  padding-left:14px;
+  border-left-color:transparent;
+  background:transparent;
+}
+#frontEnd[data-mode="title"]:has(.menu-view[data-screen="home"]:not([hidden])){
+  background:
+    linear-gradient(90deg,#06110deb 0%,#07140edc 30%,#07140fa8 50%,#07140f28 78%,#07140f0c 100%);
+}
+#frontEnd .front-frame:has(.menu-view[data-screen="home"]:not([hidden])){
+  width:min(580px,100%);
+  padding:38px 42px 38px clamp(30px,7vw,105px);
+  background:linear-gradient(90deg,#07140a96,#07140a18 94%);
+  border-right:1px solid #c9c08f30;
+}
+#frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .brand-word{
+  font-size:clamp(69px,7.8vw,108px);
+  letter-spacing:-.065em;
+}
+#frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .front-brand{
+  margin-bottom:33px;
+}
+#frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .menu-view{width:min(366px,100%)}
+#frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .front-footer{display:none}
+#frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .front-footnote{
+  margin:14px 0 0 17px;
+  font-size:12px;
+  line-height:1.5;
+  color:#b8c5ad;
+}
+/* First-time players have no Continue action; New World becomes their lead action. */
+#frontEnd [data-screen="home"] [data-action="continue"]:disabled{display:none}
+#frontEnd [data-screen="home"]:has([data-action="continue"]:disabled) [data-screen-target="new"]{
+  border-left-color:#d8c18a;
+  color:#f3e4b9;
+  background:linear-gradient(90deg,#bba46a24,transparent 86%);
+  font-weight:600;
+}
+/* Keep the actual starter sprite sheets prominent, not an abstract part symbol. */
+#frontEnd #newWorldCreatureCards button{
+  gap:8px;
+  padding:12px;
+  background:linear-gradient(155deg,#1b2c1f,#101d15);
+  border-color:#8190716b;
+}
+#frontEnd #newWorldCreatureCards button::before{
+  height:96px;
+  background-position:center;
+  background-size:contain;
+  image-rendering:pixelated;
+}
+#frontEnd #newWorldCreatureCards button b{
+  font:normal 18px/1.2 Georgia,serif;
+  color:#efe9cb;
+}
+#frontEnd #newWorldCreatureCards button span{
+  font:12px/1.5 Verdana,sans-serif;
+  color:#c2c9b8;
+}
+#frontEnd .start-cards button[aria-checked="true"]{
+  border-color:#ebd097;
+  box-shadow:inset 0 -3px #cfb781;
+}
+#frontEnd #newWorldCreatureCards button[aria-checked="true"]::after{
+  content:"CHOSEN";
+  top:8px;
+  right:8px;
+  padding:3px 5px;
+  background:#233a25;
+  color:#f3ddb1;
+  font:700 9px/1.2 Verdana,sans-serif;
+  letter-spacing:.08em;
+}
+#frontEnd #newWorldStartCards button[aria-checked="true"]::after{content:none}
+#frontEnd #newWorldStartCards button{min-height:80px}
+/* Reachable controls and scrolling at compact embedded sizes and 200% zoom. */
+@media(max-width:900px){
+  #frontEnd #newWorldCreatureCards button::before{height:78px}
+}
+@media(max-width:680px){
+  #frontEnd[data-mode="title"]:has(.menu-view[data-screen="home"]:not([hidden])){
+    background:linear-gradient(0deg,#07130ff5 0%,#07130fe8 64%,#07130f59 100%);
+  }
+  #frontEnd .front-frame:has(.menu-view[data-screen="home"]:not([hidden])){
+    width:100%;
+    max-height:92dvh;
+    margin:0;
+    padding:24px clamp(20px,5vw,30px) 30px;
+    border-right:0;
+    border-top:1px solid #c9c08f30;
+    background:#08160fb8;
+  }
+  #frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .brand-word{
+    font-size:clamp(58px,13vw,78px);
+  }
+  #frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .front-brand{margin-bottom:19px}
+  #frontEnd .menu-navigation button{min-height:48px;font-size:20px}
+  #frontEnd #newWorldCreatureCards button::before{height:76px}
+}
+@media(max-height:550px){
+  #frontEnd .front-frame:has(.menu-view[data-screen="home"]:not([hidden])){padding-top:15px;padding-bottom:15px}
+  #frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .front-brand{margin-bottom:12px}
+  #frontEnd:has(.menu-view[data-screen="home"]:not([hidden])) .brand-word{font-size:58px}
+  #frontEnd .menu-navigation button{min-height:44px}
+  #frontEnd .brand-caption{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  #frontEnd .menu-navigation button{transition:none}
+}
