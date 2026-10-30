@@ -185,7 +185,7 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
   const face={...profile.face,eyeForward:profile.face.eyeForward+faceShift,mouthForward:profile.face.mouthForward+faceShift+.35};
   if(L){const proj=pt=>({f:(pt.x-bx)*fx+(pt.y-by)*fy,s:(pt.x-bx)*perp.x+(pt.y-by)*perp.y});if(L.mouth)face.mouthForward=proj(L.mouth).f;if(L['eye.right']){const e=proj(L['eye.right']);face.eyeForward=e.f;face.eyeSpread=Math.abs(e.s)}}
   const expressionNode=(socket,index=0)=>asm.faceNodes[socket]||a.bodyPlan?.nodes.filter(n=>n.parent==='root'&&n.socket===socket)[index]?.id;
-  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
+  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression,arid:pose.arid||null};
   // Gait articulation (renderer-owned): the torso twists about its centre while walking, so the
   // head end and tail end swing to opposite sides and dorsal tissue rolls past the outline.
   // Whole-pixel canvas offsets keep pixel art crisp; feet are never moved (contacts stay planted).
