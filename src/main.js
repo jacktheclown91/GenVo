@@ -4,6 +4,7 @@ import {preparePlanetarySeams,cancelPlanetarySeams} from './world/planetary-seam
 import {PlanetaryPreparation} from './world/planetary-preparation.js';
 import {advanceNextDemographicRegion} from './world/planetary-demography.js';
 import {clearWarmRegions} from './world/regional-warm-cache.js';
+import {prewarmRegion} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
@@ -316,7 +317,8 @@ async function loadSavedLineage(){
   try{
     const loaded=await saveManager.load();
     if(!loaded){showSaveStatus('No saved checkpoint found',{error:true});return false}
-    installSimulation(loaded,{resume:true});closeGameMenus();showSaveStatus([birthRuleMigrationMessage(loaded),ecologyRuleMigrationMessage(loaded)].filter(Boolean).join(' ')||'World restored',{duration:6000});return true;
+    // Restore archived regions now, inside loading, so the first in-game replay stride continues them warm.
+    installSimulation(loaded,{resume:true});for(const s of loaded.planetaryTravel?.sessions||[])prewarmRegion(s);closeGameMenus();showSaveStatus([birthRuleMigrationMessage(loaded),ecologyRuleMigrationMessage(loaded)].filter(Boolean).join(' ')||'World restored',{duration:6000});return true;
   }catch(error){console.error(error);showSaveStatus('Could not load saved checkpoint',{error:true,duration:3500});return false}
 }
 saveNowButton?.addEventListener('click',()=>saveManager.saveNow('manual').catch(error=>console.error(error)));

@@ -10,7 +10,7 @@ import {CFG} from '../sim/config.js';
 import {drain} from '../sim/resumable.js';
 import {dayTicksFor} from '../sim/day-clock.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
-import {takeWarmRegion,warmCandidate,keepWarmRegion} from './regional-warm-cache.js';
+import {takeWarmRegion,warmCandidate,keepWarmRegion,peekWarmRegion} from './regional-warm-cache.js';
 import {dispersalContextFor,setDispersalContext,deliverEmigrants,takeEmigrants} from './planetary-dispersal.js';
 import {REGIONAL_REPLAY,regionalBiologyOrder,POPULATION_MODE} from './regional-replay-order.js';
 export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
@@ -187,6 +187,14 @@ export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTi
 // The packed seed table was just built by this capture with copied metadata;
 // only the rest of the checkpoint needs separating from the warm Simulation.
 function* publishWarmCopySteps(captured){yield;return yield* independentSnapshotCopySteps(captured,{owned:[captured.controllers?.dispersal?.floraState?.seeds]})}
+// Restore a canonical archived region from its checkpoint and keep it warm, as its
+// next replay pass would otherwise do itself. Callers run this behind the loading
+// scene so the first in-game pass continues warm instead of stalling. The warm
+// cache's fingerprint still discards it if the checkpoint changes meanwhile.
+export function prewarmRegion(session){
+ if(session?.biologicalMode!=='canonical-ticks/1'||!warmCandidate(session)||peekWarmRegion(session))return false;
+ keepWarmRegion(session,restoreDetachedSimulationSnapshot(session.snapshot));return true;
+}
 export function advanceRemoteBiology(active,session,options){return drain(advanceRemoteBiologySteps(active,session,options))}
 export function* advanceRemoteBiologySteps(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
  const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=yield* stageRemoteBiologySteps(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal,

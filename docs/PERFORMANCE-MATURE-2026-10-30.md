@@ -74,7 +74,23 @@ Across the day: from 3.2 to 7.2 ticks/s, against the 8 tick/s target.
 ## Remaining
 
 - **Snapshot copy.** Each pass still deep-copies the region's other state, about 250 ms per pass in Node. Most of it is plant reproduction structures: pollen 16,000 entries, flowers 23,000, embryos 12,000, bank genomes, producer origins and 41,700 genomes. Some of these change during the day (animal contact with flowers), so reuse would need change tracking at many more write sites.
-- **First cold restore.** One freeze of about 1.7 s remains: an archived region's first cold restore after loading. Restoring the archived regions behind the loading screen, or making the restore resumable, would remove it.
+- **Saves.** The worst remaining frame (567 ms) is a save (a lineage-milestone save takes 655 ms). Saves capture the active world and both regions; making the capture resumable is the next responsiveness step.
+
+## No more freezes over one second (load prewarm)
+
+Timing the long frames against the save manager showed where the last 1.7 s freeze came from. It appeared about one second after a loaded world first appears: each archived region's first replay pass restored it cold. Loading now restores each archived region right after installing the loaded world (`prewarmRegion`, `planetary-offscreen-biology.js`; one call in `main.js` `loadSavedLineage`) and hands it to the warm cache. The first in-game stride then continues warm.
+- **Exactness.** The prewarmed simulation is the same restore the pass would have made, and the warm cache's fingerprint still discards it if the checkpoint changes. `tests/regional-warm-cache.mjs` asserts that prewarming fills the cache once per canonical region and that the next stride continues warm.
+- **Cost.** About 1.7 s per archived region moves into the load action.
+
+**Browser, mature world, quiet machine, two runs:**
+
+| Measure | Result |
+| --- | --- |
+| Frames over 1 s | none (was 1) |
+| Worst frame | 567 ms, a save (was 1.72–1.75 s) |
+| Frames over 250 ms (per 60 s) | 3–4 |
+| p99 frame | 100 ms |
+| Ticks/s | 7.19 |
 
 ## Test sweep
 

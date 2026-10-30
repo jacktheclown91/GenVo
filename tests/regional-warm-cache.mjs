@@ -5,7 +5,7 @@ import {SPECIES} from '../src/organisms/species.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
 import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {markRegionalOwnerDirty} from '../src/world/regional-revision.js';
-import {seedTableReuse} from '../src/world/planetary-offscreen-biology.js';
+import {seedTableReuse,prewarmRegion} from '../src/world/planetary-offscreen-biology.js';
 import {REGIONAL_WARM,regionalWarmSwitch,regionalWarmStats,takeWarmRegion,keepWarmRegion,warmCandidate,clearWarmRegions,warmRegionCount} from '../src/world/regional-warm-cache.js';
 
 // Capacity: canonical neighbours displace far regions, never the reverse.
@@ -45,4 +45,11 @@ assert.equal(digest(createSimulationSnapshot(warm,{savedAt:'t',reason:'t'})),dig
 const session=warm.planetaryTravel.sessions[0],published=session.snapshot.world.plants.sunmoss[0];
 const live=takeWarmRegion(session);assert.ok(live);live.world.plants.sunmoss[0]=published+5;
 assert.equal(session.snapshot.world.plants.sunmoss[0],published,'warm ticks can never alter an archived checkpoint');
-console.log('Regional warm cache PASS: canonical-priority capacity, invalidation on publication/policy/replacement, value-identical three-region replay and independent published checkpoints.');
+// Loading: prewarming restores each archived region behind the loading scene, so
+// the first replay stride continues it warm instead of restoring cold mid-play.
+clearWarmRegions();const statsBefore={...regionalWarmStats};
+for(const s of warm.planetaryTravel.sessions)assert.equal(prewarmRegion(s),s.biologicalMode==='canonical-ticks/1','canonical archived regions are prewarmed');
+for(const s of warm.planetaryTravel.sessions)assert.equal(prewarmRegion(s),false,'an already warm region is not restored again');
+for(let i=0;i<CFG.lifeStride;i++)warm.update();
+assert.ok(regionalWarmStats.reused>statsBefore.reused&&regionalWarmStats.invalidated===statsBefore.invalidated,'the first stride after prewarming continued warm');
+console.log('Regional warm cache PASS: canonical-priority capacity, invalidation on publication/policy/replacement, value-identical three-region replay, warm seam days, verified seed-table reuse, prewarming on load and independent published checkpoints.');
