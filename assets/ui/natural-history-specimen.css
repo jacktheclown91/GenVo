@@ -1,10 +1,10 @@
 /* Natural-history Field Guide and specimen sheet; no other game UI roots. */
-#fieldGuide{position:absolute;inset:12px 12px 12px auto;width:min(860px,64vw);max-height:none;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;padding:18px 20px;background:#102017;color:#d9dec6;font:13px/1.5 Verdana,sans-serif;border:1px solid #879268;border-radius:2px;box-shadow:0 4px 18px #06110b99;clip-path:none}
+#fieldGuide{position:absolute;inset:12px 12px 12px auto;width:min(860px,64vw);max-height:none;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;padding:18px 20px;background:#102017;color:#d9dec6;font:14px/1.5 Verdana,sans-serif;border:1px solid #879268;border-radius:2px;box-shadow:0 4px 18px #06110b99;clip-path:none}
 #fieldGuide[hidden]{display:none}
 #fieldGuide .fg-head{flex:0 0 auto;align-items:flex-start;gap:14px;border-bottom:1px solid #596447;padding:0 0 12px;margin:0}
 #fieldGuide .fg-head h2{font:700 25px/1.15 Georgia,serif;color:#eee3bd;text-shadow:none}
-#fieldGuide .fg-head p{font:12px/1.5 Verdana,sans-serif;color:#bdc8a2;margin:6px 0 0}
-#fieldGuide button{border:1px solid #72815a;border-radius:2px;background:#20351f;color:#e8dfb7;font:700 11px/1.4 Verdana,sans-serif;cursor:pointer;filter:none;box-shadow:none;min-height:40px;padding:8px 12px}
+#fieldGuide .fg-head p{font:13px/1.5 Verdana,sans-serif;color:#bdc8a2;margin:6px 0 0}
+#fieldGuide button{border:1px solid #72815a;border-radius:2px;background:#20351f;color:#e8dfb7;font:700 13px/1.4 Verdana,sans-serif;cursor:pointer;filter:none;box-shadow:none;min-height:44px;padding:8px 12px}
 #fieldGuide button:focus-visible,#fieldGuide summary:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
 #fieldGuide .fg-head button{background:#394625;border-color:#a99d62}
 #fieldGuide .fg-tabs{flex:0 0 auto;gap:6px;padding:10px 0;margin:0;border-bottom:1px solid #596447;flex-wrap:wrap}
@@ -12,36 +12,36 @@
 #fieldGuide .fg-tabs button.active{color:#f2df9d;background:#394625;border-color:#b0a46b;filter:none}
 #fieldGuide .fg-body{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017;padding-right:8px;padding-top:6px}
 #fieldGuide .fg-body h3{font:700 18px/1.35 Georgia,serif;color:#e4d7aa;margin:10px 0 6px}
-#fieldGuide .fg-body h3 span{font:12px Verdana,sans-serif;color:#bdc8a2}
-#fieldGuide .fg-note{font:12px/1.5 Verdana,sans-serif;color:#bdc8a2;margin:0 0 10px}
+#fieldGuide .fg-body h3 span{font:13px Verdana,sans-serif;color:#bdc8a2}
+#fieldGuide .fg-note{font:13px/1.5 Verdana,sans-serif;color:#bdc8a2;margin:0 0 10px}
 #fieldGuide .fg-creatures .fg-cards{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;gap:8px;padding:2px 2px 12px}
 #fieldGuide .fg-cards figure{box-sizing:border-box;flex:0 0 116px;width:116px;min-width:0;background:#1b2c1e;border:1px solid #626f4e;border-radius:2px;box-shadow:none;padding:6px}
 #fieldGuide .fg-creatures .fg-cards figure.specimen-selected{border-color:#d1bd78;background:#2a3b22}
-#fieldGuide .fg-cards figcaption{font:700 11px/1.5 Verdana,sans-serif;color:#e8dfb7;overflow-wrap:anywhere}
+#fieldGuide .fg-cards figcaption{font:700 13px/1.5 Verdana,sans-serif;color:#e8dfb7;overflow-wrap:anywhere}
 #fieldGuide .fg-creatures .fg-cards button{display:block;width:100%;padding:0;border:0;background:transparent;min-height:76px}
-#fieldGuide .fg-protection{font:10px/1.4 Verdana,sans-serif;color:#cad4b6}
+#fieldGuide .fg-protection{font:12px/1.4 Verdana,sans-serif;color:#cad4b6}
 #fieldGuide .fg-protection.on{color:#c4dea0}#fieldGuide .fg-protection.off{color:#ebbd97}
-#fieldGuide .fg-protection-notes{font:12px/1.5 Verdana,sans-serif;color:#d4ddbd;border-top:1px solid #596447;padding-top:12px}
+#fieldGuide .fg-protection-notes{font:13px/1.5 Verdana,sans-serif;color:#d4ddbd;border-top:1px solid #596447;padding-top:12px}
 #fieldGuide .fg-protection-notes dt{color:#e4d7aa}
 #fieldGuide .specimen-sheet{margin:8px 0 14px;border-top:1px solid #879268;padding-top:12px}
 #fieldGuide .specimen-sheet>header{margin-bottom:12px}
-#fieldGuide .specimen-sheet>header small{font:700 10px/1.5 Verdana,sans-serif;color:#bdc8a2;letter-spacing:1.5px}
+#fieldGuide .specimen-sheet>header small{font:700 12px/1.5 Verdana,sans-serif;color:#bdc8a2;letter-spacing:1.5px}
 #fieldGuide .specimen-sheet>header h3{font:700 24px/1.2 Georgia,serif;margin:3px 0;color:#eee3bd;overflow-wrap:anywhere}
-#fieldGuide .specimen-sheet>header p{font:12px/1.5 Verdana,sans-serif;color:#c2cbaa;margin:4px 0 0}
+#fieldGuide .specimen-sheet>header p{font:13px/1.5 Verdana,sans-serif;color:#c2cbaa;margin:4px 0 0}
 #fieldGuide .specimen-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
 #fieldGuide .specimen-drawing{position:sticky;top:0;min-width:0;margin:0;padding:12px 8px;background:#1b2c1e;border-top:1px solid #626f4e;border-bottom:1px solid #626f4e;text-align:center}
 #fieldGuide .specimen-drawing canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
-#fieldGuide .specimen-drawing figcaption{font:11px/1.5 Verdana,sans-serif;color:#c2cbaa;margin-top:8px}
+#fieldGuide .specimen-drawing figcaption{font:12px/1.5 Verdana,sans-serif;color:#c2cbaa;margin-top:8px}
 #fieldGuide .specimen-facing{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px}
-#fieldGuide .specimen-facing span{font:11px/1.4 Verdana,sans-serif;color:#d4ddbd}
+#fieldGuide .specimen-facing span{font:12px/1.4 Verdana,sans-serif;color:#d4ddbd}
 #fieldGuide .specimen-facing button{min-width:40px}
 #fieldGuide .specimen-record{background:#e5dcb7;color:#283c2a;border-radius:2px;padding:12px;min-width:0}
 #fieldGuide .specimen-record h4{font:700 16px/1.35 Georgia,serif;margin:0 0 8px;color:#253a28}
-#fieldGuide .specimen-record p{font:12px/1.6 Verdana,sans-serif;color:#334932;margin:0 0 12px}
-#fieldGuide .specimen-record small{font:11px/1.5 Verdana,sans-serif;color:#40553a;display:block;margin:-5px 0 12px}
+#fieldGuide .specimen-record p{font:13px/1.6 Verdana,sans-serif;color:#334932;margin:0 0 12px}
+#fieldGuide .specimen-record small{font:12px/1.5 Verdana,sans-serif;color:#40553a;display:block;margin:-5px 0 12px}
 #fieldGuide .specimen-parts{list-style:none;padding:0;margin:0 0 14px}
-#fieldGuide .specimen-parts li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #a9af8a;padding:5px 0;font:12px/1.5 Verdana,sans-serif;color:#334932}
-#fieldGuide .specimen-parts b{font:700 12px Verdana,sans-serif;color:#253a28}
+#fieldGuide .specimen-parts li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #a9af8a;padding:5px 0;font:13px/1.5 Verdana,sans-serif;color:#334932}
+#fieldGuide .specimen-parts b{font:700 13px Verdana,sans-serif;color:#253a28}
 #fieldGuide .specimen-source{border-top:1px solid #a9af8a;padding-top:10px}
 #fieldGuide .fg-places .fg-cards figure{flex-basis:160px;width:160px}
 #fieldGuide .fg-places figure small,#fieldGuide .fg-trials li small{font:12px/1.5 Verdana,sans-serif;color:#c2cbaa}
@@ -50,6 +50,11 @@
 @media(max-width:1100px){#fieldGuide{width:min(780px,76vw)}}
 @media(max-width:760px){#fieldGuide{inset:6px;width:calc(100vw - 12px);padding:14px}#fieldGuide .specimen-layout{grid-template-columns:1fr}#fieldGuide .specimen-drawing{position:static}#fieldGuide .specimen-drawing canvas{width:min(100%,320px);margin:auto}#fieldGuide .fg-tabs button{padding:8px}}
 
+#fieldGuide .fg-protection-archive{margin:12px 0;border-top:1px solid #596447;padding-top:4px}
+#fieldGuide .fg-protection-archive>summary{cursor:pointer;min-height:44px;padding:11px 8px;font:700 13px/1.5 Verdana,sans-serif;color:#e4d7aa}
+#fieldGuide .fg-protection-archive>summary:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
+#fieldGuide .fg-protection-archive .fg-protection-notes{margin:4px 0 14px;padding:10px 6px 0}
+#fieldGuide .specimen-sheet>header h3:focus{outline:2px solid #e8d487;outline-offset:2px}
 #fieldGuide .specimen-catalog{margin:8px 0 12px;border-bottom:1px solid #596447;padding-bottom:8px}
 #fieldGuide .specimen-catalog>summary{cursor:pointer;min-height:40px;box-sizing:border-box;padding:10px 8px;font:700 12px/1.5 Verdana,sans-serif;color:#e4d7aa;background:#1b2c1e;border:1px solid #626f4e;border-radius:2px}
 #fieldGuide .specimen-catalog[open]>.fg-note{margin:10px 0}
