@@ -3,7 +3,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {ARID_PHYSIOLOGY} from '../src/ecology/arid-physiology.js';
-import {aridVisualReading,applyAestivationPosture,drawNativeAridAccent} from '../src/render/arid-expression.js';
+import {aridVisualReading,applyAestivationPosture} from '../src/render/arid-expression.js';
+import {drawNativeAridAccent} from '../src/render/arid-surface-art.js';
 
 const animal=(parts=['heat-frill','wax-plates'])=>({
  alive:true,torpor:false,bodyPlan:{nodes:parts.map((partId,i)=>({id:'root/test.'+i,partId}))},
