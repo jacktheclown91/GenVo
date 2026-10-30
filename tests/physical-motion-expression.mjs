@@ -44,6 +44,13 @@ applyPhysicalMotionExpression(posed,brake);
 assert.ok(posed.bodyLean>before.bodyLean,'the physical reading composes with existing behaviors');
 assert.equal(before.bodyLean,.2,'existing behavior state was not overwritten');
 assert.ok(Object.isFrozen(brake),'read-only presentation receipt');
+const frozenMotion=Object.freeze({schema:1,vx:2.15,vy:0,ax:-5,ay:0});
+const frozenBody=Object.freeze({motion:frozenMotion});
+const frozenSim=Object.freeze({inertiaRules:'inertia/1'});
+const snapshot=JSON.stringify(frozenBody);
+physicalMotionExpression(frozenSim,frozenBody,{dir:2,moving:true});
+assert.equal(JSON.stringify(frozenBody),snapshot,'visual reads do not edit simulation-owned motion');
+
 
 const trace={calls:[],save(){this.calls.push('save')},restore(){this.calls.push('restore')},
  fillRect(...args){this.calls.push(args)}};
