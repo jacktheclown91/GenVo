@@ -1,4 +1,5 @@
 import {pixel,pixelLine,snap} from './pixel-art.js';
+import {drawNativeAridAccent} from './arid-surface-art.js';
 import {drawHead} from './head.js';
 import {artForPart} from './runtime-part-art.js';
 import {partDef} from '../lineage/part-registry.js';
@@ -112,12 +113,12 @@ const DRAW={
     const sx=b.x+k.perp.x*n*.65,sy=b.y+k.perp.y*n*.65;
     const ex=sx-k.fx*(2.5-Math.abs(n)*.22)+k.perp.x*n*.55,
           ey=sy-k.fy*(2.5-Math.abs(n)*.22)+k.perp.y*n*.55-1.1;
-    pixelLine(c,sx,sy,ex,ey,k.s,n%2?'#c86b3e':'#f2a45e',.8);
-    pixel(c,snap(ex-.4),snap(ey-.4),.85,.85,k.s,'#ffe4a5');}},
+    pixelLine(c,sx,sy,ex,ey,k.s,k.arid?.frillFlushed?(n%2?'#b84d4b':'#e97852'):(n%2?'#c86b3e':'#f2a45e'),.8);
+    pixel(c,snap(ex-.4),snap(ey-.4),.85,.85,k.s,k.arid?.frillFlushed?'#ffcb99':'#ffe4a5');}},
   'wax-plates'(c,k){const f=flankAt(k);for(const n of [-1,0,1]){
     const x=f.x-k.fx*n*1.1,y=f.y-k.fy*n*1.1;
-    pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,'#817456');
-    pixel(c,snap(x-.55),snap(y-.55),1.25,.36,k.s,'#e6d7a3');}},
+    pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,k.arid?.waxSealed?'#978967':'#817456');
+    pixel(c,snap(x-.55),snap(y-.55),1.25,.36,k.s,k.arid?.waxSealed?'#fff0c7':'#e6d7a3');}},
   // E8: two swept load-bearing wings, overhead only, flapping from the actual dorsal
   // mount. The stroke depends on existing gait/pose time, not simulation RNG.
   'flight-wing'(c,k){const b=backTop(k),phase=k.frameInt??0,spread=k.behavior?.flightSpread??(k.behavior?.crestSpread>0?.95:.75),lift=((phase%8+8)%8)/8,beat=.8+.2*Math.cos(lift*Math.PI*2);
@@ -375,7 +376,7 @@ export function artMount(partId,k){
 export function drawPart(c,partId,k){
  const authored=k.authoredParts?.[partId]||artForPart(partId);
  if(authored?.rig?.kind==='dorsal-display'&&typeof c.drawImage==='function'){
-  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null}))return true;
+  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null})){drawNativeAridAccent(c,partId,k,at);return true;}
  }
  if(authored&&!authored.rig&&typeof c.drawImage==='function'){
   const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward}:null));
@@ -384,7 +385,7 @@ export function drawPart(c,partId,k){
    const scale=k.s*(mount?.scale??(faceFactor/2));
    const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
     rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null};
-   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX;let painted=false;c.save();try{if(rotation||paired){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
+   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX;let painted=false;c.save();try{if(rotation||paired){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted){drawNativeAridAccent(c,partId,k,mount);return true;}
   }
  }
  const fn=DRAW[partId];if(fn)fn(c,k);return !!fn;
