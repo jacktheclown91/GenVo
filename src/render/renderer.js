@@ -53,7 +53,7 @@ import {currentCourtshipMove} from '../reproduction/courtship-performance.js';
 import {SPECIES,phenotypeFor} from '../organisms/species.js';
 import {stalkerProfileFor} from '../organisms/stalker-profile.js';
 import {developmentFor} from '../family/family.js';
-import {inheritedVisualScale,inheritedGaitLength} from './inherited-size-presentation.js';
+import {inheritedVisualScale,inheritedGaitLength,inheritedViewMargin} from './inherited-size-presentation.js';
 import {nearestThreat,nearbyFood} from '../ui/readability.js';
 import {buildVisualWaterMask,LANDFORM_RESOLUTION,maskWaterAt} from './landform.js';
 import {buildVisualHabitatMask,visualHabitatAt,buildSmoothedHabitatField,HABITAT_ZONE} from './habitat.js';
@@ -169,7 +169,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      // distant creature in a large living ecosystem.
      const visible=this.sim.animals.filter(a=>a.alive&&
        !!a.underground===!!observer?.underground&&
-       Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2&&
+       Math.abs(a.x-this.camera.x)<cols/2+inheritedViewMargin(a)&&Math.abs(a.y-this.camera.y)<rows/2+inheritedViewMargin(a)&&
        visuallyObservable(this.sim,observer,a,8,playerView)).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
     const regional=visibleRegionalFauna(this.sim,this.borderTerrain);this.regionalFauna=regional;
     const actors=regional.length?[...visible.map(actor=>({actor,y:actor.y})),...regional].sort((a,b)=>a.y-b.y):visible,draw=regional.length?(entry=>entry.owner?drawRegionalAnimal(this,entry,tile):this.drawAnimal(entry.actor,tile)):(actor=>this.drawAnimal(actor,tile));
