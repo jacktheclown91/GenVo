@@ -11,15 +11,21 @@ export const PLANETARY_INTERNAL_WATER=Object.freeze({
 });
 const sum=field=>{let total=0;for(const amount of field)total+=amount;return total;};
 
-export function advanceInternalPlanetaryWater(w,salt){
+// incised (climate-water/3): generated water fills a channel cut its own
+// generated depth into the ground, so its bed is the elevation less that depth and
+// bankfull water stands level with its banks. Runoff-made cells (floodOrigin 1)
+// lie on the ground. Without it the bed is the ground elevation everywhere.
+export function advanceInternalPlanetaryWater(w,salt,{incised=false}={}){
  const e=w.environment;
  if(e?.schema!==4&&e?.schema!==5&&e?.schema!==6)return null;
  if(!(e.volume instanceof Float64Array)||!(salt instanceof Float64Array)||
    salt.length!==w.len||e.volume.length!==w.len)
   throw Error('Invalid internal planetary water authority.');
- const start=sum(e.volume),n=w.n,bed=w.terrain?.elevation;
- if(!(bed instanceof Float32Array)||bed.length!==w.len)
+ const start=sum(e.volume),n=w.n,ground=w.terrain?.elevation;
+ if(!(ground instanceof Float32Array)||ground.length!==w.len)
   throw Error('Missing planetary drainage elevation.');
+ let bed=ground;
+ if(incised){bed=new Float64Array(ground);for(let i=0;i<w.len;i++)if(w.water[i]&&e.floodOrigin?.[i]!==1)bed[i]-=e.depth[i]}
  const volume=new Float64Array(e.volume);
  let moved=0,saltMoved=0,edges=0;
  const pair=(i,j)=>{

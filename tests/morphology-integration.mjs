@@ -16,7 +16,7 @@ const RULES={player:true,worldGenerator:'planetary/1',regionalFrontier:true,auto
  regionalFounding:'regional-founding-templates/3',dayClock:true,metabolism:true,foodProperties:true,tissueWater:true,winterWater:true,escapeLanding:true,
  tissueEnergy:true,perennialRegrowth:true,bodySize:'body-size/2',inertia:true,structuralSupport:true,aridPhysiology:true,climateWater:true,diurnal:true,autonomousEvolution:true};
 const EXPECTED={bodySizeRules:'body-size/2',inertiaRules:'inertia/1',structuralSupportRules:'structural-support/1',aridPhysiologyRules:'arid-physiology/1',
- climateWaterRules:'climate-water/2',diurnalRules:'diurnal-temperature/1',regionalFoundingRules:'regional-founding-templates/3',autonomousEvolutionRules:'autonomous-evolution/4'};
+ climateWaterRules:'climate-water/3',diurnalRules:'diurnal-temperature/1',regionalFoundingRules:'regional-founding-templates/3',autonomousEvolutionRules:'autonomous-evolution/4'};
 let homeCount=0;
 const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'morphology-integration'}));
 const sig=s=>snapshotSignature(snap(s));
@@ -28,7 +28,7 @@ function journey(seed){
  // The rules are visible in the living home world, not only recorded.
  const home=sim.animals.filter(x=>x.alive&&!x.player);
  assert.ok(home.length>0&&home.every(x=>x.bodySize),'every home body carries inherited size');assert.ok(home.some(x=>x.motion),'bodies carry velocity');
- assert.equal(sim.climate?.evaporation,'climate-water/2','daily climate carries the evaporation rule');homeCount=home.length;
+ assert.equal(sim.climate?.evaporation,'climate-water/3','daily climate carries the evaporation rule');homeCount=home.length;
  const a=sim.player();let trip=null;
  for(let y=8.5;y<118.5&&!trip;y++){a.x=sim.world.n;a.y=y;sim.rebuildSpatial();const s=planetaryTravelAvailability(sim);if(s.enabled&&s.direction==='east'){const t=crossPlanetaryBorder(sim);if(t.ok)trip=t}}
  assert.ok(trip,'a real eastern crossing');sim=trip.simulation;sim.setPlayerAutonomy(true);

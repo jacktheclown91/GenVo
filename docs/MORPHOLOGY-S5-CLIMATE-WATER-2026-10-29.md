@@ -90,6 +90,20 @@ The S9 year-long validation found that **open water never evaporated**. Rain add
 
 `tests/climate-water.mjs` adds Scenario D. A pool created through the real funded-inundation path evaporates on warm, dry days, closes its ledger every day (under 10⁻⁶), and recedes to land through recession. A `/1` pool does not evaporate.
 
+## `climate-water/3` — river discharge (S9 finding 2, October 29)
+
+Under `/2` runoff pools evaporate, but in the humid start valley none receded in a year: no water ever left a region. Border exchange swaps equal volumes, and generated rivers had no downstream outflow. A first try drained only border cells and left the inner floodplain at the volume cap: internal flow could not carry floodwater to the edge fast enough. Diagnosis then found a second cause: ground elevation is the same under generated water and its banks, so a bankfull river stood its full depth (0.2) above the land beside it, and internal flow held every runoff-flooded neighbour at that level. No pool beside a river could ever empty.
+
+`climate-water/3`, now the new-game rule:
+- **Incised channels.** Generated water fills a channel cut its own generated depth into the ground. Internal flow takes the bed as elevation less that depth, so bankfull water stands level with its banks. Runoff-made cells lie on the ground. Old worlds keep the ground-level bed.
+- **Discharge.** Each connected body of open water (orthogonal neighbours, as in the internal flow) that reaches a border side open to external water drains a quarter of its *net* liquid water above its generated levels per day (a flood-wave residence of about four days), scaled by its most open outlet. The outflow comes from the cells holding surplus, in proportion, with their dissolved salt, so discharge never draws a river below its generated water. Runoff-made cells have no generated level; they drain to the internal flow's minimum wet film (0.01) and then recede through the existing funded-channel recession.
+- **What doesn't drain.** Bodies with no open outlet: closed basins, and sides owned by a paired neighbouring region, whose seams already move water between regions.
+- **Ledger.** The outflow is `riverDischarge` (water) and `dischargeSalt` in the open-water ledger; both ledgers still close every day.
+- **Seams.** Transfer across a paired seam still compares ground-level heads. Both sides carry generated water of similar depth, so the difference is small, but the seam is not yet incised.
+- **Evaporation film.** Pool evaporation (`/2` and `/3`) now stops at the same minimum wet film. Evaporating a pool to exactly zero made the internal flow refuse the world, which `/2` only escaped because rivers kept refilling its pools.
+
+`tests/climate-water.mjs` adds a controlled case: a runoff pool beside a river with an open outlet, in a dry catchment on cool days. It drains downstream and recedes in 8 days (under `/2` it had not receded after 120). The water and salt ledgers close every day (under 10⁻⁶), and the river keeps its generated water.
+
 ## Not yet
 
 - **Deserts and the climate pass:** hot, dry subtropics, coupled rain and temperature, and continental interiors. This needs the start-valley decision.

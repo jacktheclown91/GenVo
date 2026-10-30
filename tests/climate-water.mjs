@@ -5,8 +5,9 @@
 // and that recorded worlds keep the original formula exactly.
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
-import {CLIMATE_WATER,SOIL_WATER,evaporationPotential} from '../src/ecology/soil-water.js';
+import {CLIMATE_WATER,SOIL_WATER,evaporationPotential,initializeSoilWater} from '../src/ecology/soil-water.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {boundaryOpenness} from '../src/world/planetary-boundary-water.js';
 
 const close=(x,y,label,tol=1e-12)=>assert.ok(Math.abs(x-y)<=tol*Math.max(1,Math.abs(x),Math.abs(y)),`${label}: ${x} vs ${y}`);
 // 1. The law: nothing evaporates at or below freezing; 0.085 per temperature unit above it.
@@ -61,9 +62,45 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
    const row=w.environment.lastDay;evaporated+=row.surfaceEvaporation||0;worst=Math.max(worst,Math.abs(row.waterClosure??0));sim.day++}
   return{start,evaporated,receded:!w.water[i],days:day,worst,volume:w.environment.volume[i]};
  };
- const two=pool(CLIMATE_WATER.policy),one=pool(CLIMATE_WATER.soil);
+ const two=pool(CLIMATE_WATER.pools),one=pool(CLIMATE_WATER.soil);
  assert.ok(two.evaporated>0,'the pool evaporates');assert.ok(two.receded,`the pool dries and recedes to land (${two.days} days)`);
  assert.ok(two.worst<1e-6,`open-water ledger closes every day (${two.worst.toExponential(1)})`);
  assert.equal(one.evaporated,0,'climate-water/1 pools do not evaporate');assert.ok(!one.receded||one.days>two.days,'and do not dry faster');
 }
-console.log('Climate water PASS (/1 soil, /2 runoff pools): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D)');
+// 6. climate-water/3, river discharge: a runoff pool beside a river that leaves the region
+// (the river fills a channel incised by its generated depth, so bankfull water is level with
+// the bank)
+// drains downstream with it and recedes on cool, dry days in a dry catchment, well before evaporation alone could
+// dry it; the water and salt ledgers close every day. Under /2 the pool only evaporates.
+{
+ const drain=policy=>{
+  const sim=new Simulation('CLIMATE-WATER-POOL',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();
+  // Water bodies (orthogonal neighbours) that reach an open border side.
+  const e0=w.environment,body=new Int32Array(w.len).fill(-1),open=[];
+  for(let s=0;s<w.len;s++){if(!w.water[s]||body[s]>=0)continue;const id=open.length;let out=false;const stack=[s];body[s]=id;
+   while(stack.length){const i=stack.pop();if(e0.boundary[i]&&boundaryOpenness(e0,i,w))out=true;const x=i%w.n;for(const j of [x>0?i-1:-1,x<w.n-1?i+1:-1,i-w.n,i+w.n])if(j>=0&&j<w.len&&w.water[j]&&body[j]<0){body[j]=id;stack.push(j)}}
+   open.push(out)}
+  let i=-1;for(let k=w.n*4;k<w.len-w.n*4&&i<0;k++){const x=k%w.n;if(x<4||x>w.n-5||w.water[k])continue;
+   const wet=[k-1,k+1,k-w.n,k+w.n].filter(j=>w.water[j]);if(wet.length&&wet.every(j=>open[body[j]])&&!(w.soilWater?.snowpack?.[k]>0))i=k}
+  assert.ok(i>=0,'a land cell beside a river with an open outlet');
+  // A dry catchment, so nothing but the river and the air touches the pool.
+  if(!w.soilWater)initializeSoilWater(w);
+  for(let k=0;k<w.len;k++)if(!w.water[k]){w.moisture[k]=0;w.soilWater.groundwater[k]=0;e0.overland[k]=0}
+  w.environment.overland[i]=.2;
+  w.setSurfaceWater([{i,water:1,depth:.2,salinity:0,source:'overland'}],{reason:'rainfall-runoff-inundation'});
+  const e=w.environment;assert.equal(e.floodOrigin[i],1,'a runoff pool');let discharged=0,day=0,worst=0,worstSalt=0;
+  for(;day<120&&w.water[i];day++){sim.climate={temp:.38,rain:0,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+   const row=w.environment.lastDay;discharged+=row.riverDischarge||0;
+   worst=Math.max(worst,Math.abs(row.waterClosure??0));worstSalt=Math.max(worstSalt,Math.abs(row.closure));sim.day++}
+  // The river body's net water above its generated levels never goes negative.
+  const env=w.environment,river=body[[i-1,i+1,i-w.n,i+w.n].find(j=>w.water[j]&&body[j]>=0)];let net=0;for(let k=0;k<w.len;k++)if(w.water[k]&&body[k]===river&&env.floodOrigin[k]!==1)net+=env.volume[k]-(env.ice?.[k]||0)-env.depth[k];
+  return{discharged,receded:!w.water[i],days:day,worst,worstSalt,net};
+ };
+ const three=drain(CLIMATE_WATER.policy),two=drain(CLIMATE_WATER.pools);
+ assert.ok(three.discharged>0,'water leaves downstream');assert.ok(three.receded,`the pool drains and recedes (${three.days} days)`);
+ assert.ok(three.worst<1e-6&&three.worstSalt<1e-6,`water and salt ledgers close every day (${three.worst.toExponential(1)}, ${three.worstSalt.toExponential(1)})`);
+ assert.ok(three.net>-1e-6,`the river keeps its generated water (${three.net.toExponential(1)})`);
+ assert.equal(two.discharged,0,'climate-water/2 does not discharge');assert.ok(!two.receded||two.days>three.days*2,`and its pool lasts far longer (${two.days} days)`);
+ console.log(`  discharge: pool receded after ${three.days} days (${two.receded?two.days+' days':'not in '+two.days} under /2), ${three.discharged.toFixed(2)} discharged, river net ${three.net.toFixed(3)} above its generated level`);
+}
+console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed');
