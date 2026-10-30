@@ -1,0 +1,34 @@
+{
+  "schema": "genvo.mature-regions-browser/1",
+  "root": "C:\\Users\\jackt\\AppData\\Local\\Temp\\claude\\C--Users-jackt-Desktop-Games-game-jam-october-genvo-toolkit\\128eada8-947c-4f62-8f8b-7e5df1a6b4d5\\scratchpad\\baseline-e64",
+  "seconds": 60,
+  "started": "2026-10-30T11:21:43.788Z",
+  "scope": "Headless Chromium native loop; controlled frontier placement on the bundled Day 100 world; not GPU or creator acceptance",
+  "errors": [],
+  "setup": {
+    "policy": "synchronized-strides/1",
+    "regions": 2,
+    "tick": 4800
+  },
+  "frameMs": {
+    "count": 1299,
+    "median": 33.30000000000291,
+    "p95": 50.10000000000582,
+    "p99": 266.6000000000022,
+    "worst": 2499.7999999999993
+  },
+  "framesOver": {
+    "ms250": 13,
+    "ms1000": 4
+  },
+  "longTaskWorst": 2496,
+  "ticksAdvanced": 174,
+  "elapsedMs": 60035.79999999702,
+  "ticksPerSecond": 2.8982706984833824,
+  "paused": false,
+  "tick": 4974,
+  "remote": [
+    4968,
+    4968
+  ]
+}

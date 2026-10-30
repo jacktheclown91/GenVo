@@ -1,0 +1,167 @@
+{
+ "scope": "Combined main (stabilization + PR #51) in headless Chromium. Real input and real simulation; the clock is only advanced by ordinary updates.",
+ "steps": [
+  {
+   "name": "main menu",
+   "buttons": [
+    "Continue ↗",
+    "New World ↗",
+    "Load World ↗",
+    "Options ↗",
+    "Credits ↗",
+    "Begin World",
+    "Back",
+    "New World",
+    "Back",
+    "Fullscreen",
+    "Back",
+    "Back"
+   ]
+  },
+  {
+   "name": "new world",
+   "day": 1,
+   "tick": 11,
+   "playerId": 109,
+   "alive": true,
+   "x": 55.5,
+   "y": 69.5,
+   "vx": 0,
+   "vy": 0,
+   "energy": 114.08,
+   "hydration": 102.60000000000001,
+   "intent": "idle",
+   "animals": 190,
+   "births": 0,
+   "rules": {
+    "grazing": "grazing-nutrients/1",
+    "breeding": "breeding-support/2",
+    "climateWater": "climate-water/6",
+    "bodySize": "body-size/2"
+   }
+  },
+  {
+   "name": "movement",
+   "movedWhileHeld": 1.49,
+   "glideFirst120ms": 0,
+   "glideAfterRelease": 0,
+   "stillAfter900ms": true
+  },
+  {
+   "name": "feeding",
+   "via": "HUD Eat button",
+   "energy": [
+    112.9049309078302,
+    116.20869387826671
+   ],
+   "hydration": [
+    97.9277475857662,
+    106.84304813462883
+   ],
+   "changed": true
+  },
+  {
+   "name": "drinking",
+   "via": "radial command",
+   "energy": [
+    116.20869387826671,
+    118.99236557191486
+   ],
+   "hydration": [
+    106.84304813462883,
+    114
+   ],
+   "changed": true
+  },
+  {
+   "name": "field guide",
+   "open": true,
+   "text": false
+  },
+  {
+   "name": "journal",
+   "visible": true
+  },
+  {
+   "name": "population",
+   "visible": false
+  },
+  {
+   "name": "body sizes",
+   "animals": 190,
+   "juveniles": 130,
+   "adultSizeRange": [
+    0.958,
+    1.047
+   ],
+   "juvenileGrowthRange": [
+    0.7,
+    1
+   ]
+  },
+  {
+   "name": "frame pacing, new world",
+   "frames": 475,
+   "p50": 16.7,
+   "p95": 16.8,
+   "p99": 33.3,
+   "worst": 33.4,
+   "ticksPerSecond": 8
+  },
+  {
+   "name": "night",
+   "tick": 210,
+   "day": 1,
+   "night": true,
+   "timeOfDay": 0.875,
+   "lightAlpha": 0.205
+  },
+  {
+   "name": "twenty days later",
+   "day": 21,
+   "tick": 4804,
+   "playerId": 109,
+   "alive": true,
+   "x": 50.138049042341194,
+   "y": 75.42355930396548,
+   "vx": 0,
+   "vy": 0,
+   "energy": 101.53986074229864,
+   "hydration": 80.21773372406184,
+   "intent": "drink",
+   "animals": 186,
+   "births": 0,
+   "rules": {
+    "grazing": "grazing-nutrients/1",
+    "breeding": "breeding-support/2",
+    "climateWater": "climate-water/6",
+    "bodySize": "body-size/2"
+   }
+  },
+  {
+   "name": "save and continue",
+   "saved": {
+    "day": 21,
+    "playerId": 109,
+    "animals": 186
+   },
+   "restored": {
+    "day": 21,
+    "playerId": 109,
+    "animals": 186,
+    "rules": {
+     "grazing": "grazing-nutrients/1",
+     "breeding": "breeding-support/2",
+     "climateWater": "climate-water/6",
+     "bodySize": "body-size/2"
+    }
+   }
+  },
+  {
+   "name": "mobile portrait",
+   "overflowX": false
+  }
+ ],
+ "gaps": [],
+ "errors": []
+}

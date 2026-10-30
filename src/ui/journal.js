@@ -20,14 +20,27 @@ export class FieldJournal{
     this.open=false;
     this.selectedId=null;
     this.lastSignature='';
-    this.el=document.querySelector('#journal');this.el.addEventListener('toggle',e=>{if(e.target.dataset.section==='body-comparison'&&e.target.open)drawLineageComparison(this.el,this.sim,this.selectedId)},{capture:true});this.el.addEventListener('click',e=>{const b=e.target.closest('[data-journal]');if(!b)return;if(b.dataset.journal==='revisit'){this.onRevisit?.(Number(b.dataset.patch));return}if(b.dataset.journal==='close')this.setOpen(false);else if(b.dataset.journal==='handoff')this.handoffSelected();else this.cycle(b.dataset.journal==='prev'?-1:1)});
+    this.el=document.querySelector('#journal');this.el.addEventListener('toggle',e=>{if(e.target.dataset.section==='body-comparison'&&e.target.open)drawLineageComparison(this.el,this.sim,this.selectedId)},{capture:true});this.el.addEventListener('click',e=>{const b=e.target.closest('[data-journal]');if(!b)return;if(b.dataset.journal==='revisit'){this.onRevisit?.(Number(b.dataset.patch));return}if(b.dataset.journal==='member'){this.selectMember(b.dataset.memberId);return}if(b.dataset.journal==='close')this.setOpen(false);else if(b.dataset.journal==='handoff')this.handoffSelected();else this.cycle(b.dataset.journal==='prev'?-1:1)});
   }
   setSimulation(sim){this.sim=sim;this.selectedId=null;this.lastSignature='';this.setOpen(false)}
   setOpen(open){this.open=!!open;if(this.open&&!this.selectedId)this.selectedId=this.sim.lineage.activeId||this.sim.lineage.founderId;this.lastSignature='';this.update()}
   toggle(){this.setOpen(!this.open);return this.open}
   records(){return [...this.sim.lineage.records.values()].sort((a,b)=>a.generation-b.generation||a.bornDay-b.bornDay||a.id-b.id)}
   selectedRecord(records=this.records()){if(!records.length)return null;if(!records.some(r=>r.id===this.selectedId))this.selectedId=this.sim.lineage.activeId||records[0].id;return records.find(r=>r.id===this.selectedId)||records[0]}
-  cycle(delta=1){const records=this.records();if(!records.length)return null;let i=records.findIndex(r=>r.id===this.selectedId);if(i<0)i=0;else i=(i+delta+records.length)%records.length;this.selectedId=records[i].id;this.lastSignature='';this.update();return records[i]}
+  cycle(delta=1){const records=this.records();if(!records.length)return null;let i=records.findIndex(r=>r.id===this.selectedId);if(i<0)i=0;else i=(i+delta+records.length)%records.length;this.selectedId=records[i].id;this.lastSignature='';this.update();const scroll=this.el?.querySelector('.journal-scroll');if(scroll)scroll.scrollTop=0;return records[i]}
+  // Portrait navigation reads existing records; it never transfers player control.
+  selectMember(rawId){
+    const id=Number(rawId);
+    if(!Number.isSafeInteger(id)||!this.sim?.lineage?.records?.has(id))return false;
+    this.selectedId=id;
+    this.lastSignature='';
+    this.update();
+    const scroll=this.el?.querySelector('.journal-scroll');
+    if(scroll)scroll.scrollTop=0;
+    const heading=this.el?.querySelector('.journal-head h2');
+    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}
+    return true;
+  }
   canTakeOver(record=this.selectedRecord()){
     if(!record?.alive||record.id===this.sim.lineage.activeId)return false;
     const animal=this.sim.animals.find(a=>a.id===record.id&&a.alive);if(!animal)return false;
@@ -89,25 +102,29 @@ export function buildJournalEntry(sim,recordId){
 
 // Retained individual anatomy only. Missing bodies never fall back to a founder.
 function kinHasBody(record){try{const plan=deserializePlan(record.bodyPlan);return !!record.genes&&Array.isArray(plan?.nodes)&&plan.nodes.length>0}catch{return false}}
-function kinMarkup(record,relation){return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-label="'+relation+' '+record.id+' recorded anatomy"></canvas>':'<p class="kin-missing">Anatomy not retained</p>')+'<figcaption><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></figcaption></figure>'}
+function kinMarkup(record,relation){
+  const label=relation+' · Generation '+record.generation+', record '+record.id+', '+(record.alive?'living':'deceased');
+  return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'"><button type="button" class="kin-record-link" data-journal="member" data-member-id="'+record.id+'" aria-label="Read '+label+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-hidden="true"></canvas>':'<span class="kin-missing">Anatomy not retained</span>')+'<span class="kin-card-caption"><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></span></button></figure>';
+}
 function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
 
-function journalMarkup(m,canTakeOver,recordCount,recordPosition){
+export function journalMarkup(m,canTakeOver,recordCount,recordPosition){
   const ancestry=m.ancestry.map(r=>`<span class="journal-node ${r.id===m.id?'selected':''} ${r.alive?'':'dead'}"><i></i><b>G${r.generation}</b><small>#${r.id}</small></span>`).join('');
   const parents=m.parents.length?m.parents.map(r=>`G${r.generation} #${r.id}`).join(' · '):'founder';
   const children=m.children.length?m.children.slice(0,8).map(r=>`<span>${r.alive?'•':'×'} G${r.generation} #${r.id}</span>`).join(''):'<em>none recorded</em>';
   const notes=m.notes.length?m.notes.map(n=>`<li><span>${escapeHtml(n.text)}</span><small>${n.when}</small></li>`).join(''):'<li><span>No field notes yet.</span></li>';
   return `<div class="journal-page knowledge-panel">
-    <header class="journal-head"><div><small>FAMILY LINE</small><h2>${escapeHtml(m.subjectName)} <span>Generation ${m.generation}</span></h2></div><p>${m.active?'YOU ARE HERE':m.alive?'LIVING RELATIVE':'FAMILY RECORD'}</p></header>
+    <header class="journal-head"><div><small>FAMILY LINE</small><h2 data-focus-key="journal-subject" tabindex="-1">${escapeHtml(m.subjectName)} <span>Generation ${m.generation}</span></h2></div><p>${m.active?'YOU ARE HERE':m.alive?'LIVING RELATIVE':'FAMILY RECORD'}</p></header>
     <div class="journal-scroll" data-focus-key="family-scroll" tabindex="0" aria-label="Scrollable family record"><div class="journal-stitch"></div>
+    <div class="journal-facts" aria-label="Family member at a glance"><div><b>Life record</b><span>${escapeHtml(m.born)}</span></div><div><b>Family ties</b><span>${m.parents.length} recorded parent${m.parents.length===1?'':'s'} · ${m.children.length} recorded child${m.children.length===1?'':'ren'}</span></div></div>
     <div class="journal-grid">
       <aside class="journal-spine" aria-label="Ancestry path">${ancestry}</aside>
-      <section class="journal-family-plate" aria-label="Recorded immediate family"><h3>Recorded parents</h3><p class="kin-context">Individual records; conception anatomy is compared below.</p><div class="kin-row kin-parents">${m.parents.length?m.parents.map(r=>kinMarkup(r,'Parent')).join(''):'<p class="kin-empty">No parent records retained</p>'}</div><div class="kin-subject"><h3>Selected family member</h3><p class="kin-scale-note">Anatomy shown at adult scale; age is recorded below.</p><section class="journal-specimen">
+      <section class="journal-family-plate" aria-label="Recorded immediate family"><h3>Recorded parents</h3><p class="kin-context">Select a parent or child portrait to read their record. Compare inherited anatomy below.</p><div class="kin-row kin-parents">${m.parents.length?m.parents.map(r=>kinMarkup(r,'Parent')).join(''):'<p class="kin-empty">No parent records retained</p>'}</div><div class="kin-subject"><h3>Selected family member</h3><p class="kin-scale-note">Anatomy shown at adult scale; age is recorded below.</p><section class="journal-specimen">
         <canvas id="journalPortrait" width="240" height="158" aria-label="Generation ${m.generation} family member"></canvas>
         <div class="specimen-caption"><b>${m.stage}</b><span>${m.sex} · ${m.ageDays} days · ${escapeHtml(m.taxon)}</span></div>
         <p>${escapeHtml(m.looks)}</p>
       </section>
-      </div><h3>Recorded children <span>${m.children.length}</span></h3><div class="kin-row kin-children" tabindex="0" aria-label="Recorded children; scroll horizontally for more">${m.children.length?m.children.slice(0,12).map(r=>kinMarkup(r,'Child')).join(''):'<p class="kin-empty">No children recorded</p>'}</div>${m.children.length>12?'<p class="kin-context">First 12 shown. Previous and Next browse every retained family record.</p>':''}</section>
+      </div><h3>Recorded children <span>${m.children.length}</span></h3><div class="kin-row kin-children" tabindex="0" aria-label="Recorded children; scroll horizontally for more">${m.children.length?m.children.slice(0,12).map(r=>kinMarkup(r,'Child')).join(''):'<p class="kin-empty">No children recorded</p>'}</div>${m.children.length>12?'<p class="kin-context">First 12 shown. Previous and Next browse all recorded family members.</p>':''}</section>
       <section class="journal-notes">
         ${m.taxonExplanation?`<h3>Where the species name came from</h3><p>${escapeHtml(m.taxonExplanation)}</p>`:''}
         <h3>Habits</h3><p>${escapeHtml(m.habits)}</p>
