@@ -31,6 +31,7 @@ import {restoreInertiaRules} from '../organisms/motion.js';
 import {restoreStructuralSupportRules} from '../organisms/structural-support.js';
 import {restoreAridPhysiologyRules} from '../ecology/arid-physiology.js';
 import {restoreGrazingNutrientRules} from '../ecology/grazing-nutrients.js';
+import {restoreUndergroundFeedingRules} from '../ecology/underground-feeding.js';
 import {restoreClimateWaterRules} from '../ecology/soil-water.js';
 import {restoreDiurnalRules} from '../ecology/diurnal-temperature.js';
 import {validateResidentStart} from './resident-start.js';
@@ -515,7 +516,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(sim.world.environment?.embryoClimatePolicy===EMBRYO_CLIMATE.policy)
    for(const egg of sim.eggs||[])validateEmbryoClimate(egg);
   validatePlanetAnimalOwnership(sim.animals,sim.planetaryTravel);
-  restoreMassRules(sim,snapshot.core||{});restoreBodySizeRules(sim,snapshot.core||{});restoreInertiaRules(sim,snapshot.core||{});restoreStructuralSupportRules(sim,snapshot.core||{});restoreAridPhysiologyRules(sim,snapshot.core||{});restoreGrazingNutrientRules(sim,snapshot.core||{});restoreClimateWaterRules(sim,snapshot.core||{});restoreDiurnalRules(sim,snapshot.core||{});
+  restoreMassRules(sim,snapshot.core||{});restoreBodySizeRules(sim,snapshot.core||{});restoreInertiaRules(sim,snapshot.core||{});restoreStructuralSupportRules(sim,snapshot.core||{});restoreAridPhysiologyRules(sim,snapshot.core||{});restoreGrazingNutrientRules(sim,snapshot.core||{});restoreUndergroundFeedingRules(sim,snapshot.core||{});restoreClimateWaterRules(sim,snapshot.core||{});restoreDiurnalRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
   // Older gestations already carry snapshots of both parents. Keep their new
   // preference alleles frozen at conception when upgrading a saved world.

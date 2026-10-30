@@ -129,6 +129,7 @@ const PLAYER_MISS=new WeakMap();
 import {SOIL_WATER,CLIMATE_WATER,advanceSoilDay} from '../ecology/soil-water.js';
 import {climateWaterPolicy} from '../world/climate-water.js';
 import {GRAZING_NUTRIENTS} from '../ecology/grazing-nutrients.js';
+import {UNDERGROUND_FEEDING,undergroundFeedingEnabled,feedUnderground} from '../ecology/underground-feeding.js';
 import {DIURNAL,airTemperature} from '../ecology/diurnal-temperature.js';
 import {beginPageVegetationDay,visitLandByWorldPageSteps,completePageVegetationDay} from '../world/page-vegetation-work.js';
 import {drain} from './resumable.js';
@@ -169,7 +170,7 @@ export class Simulation{
     stormWeather=true,
     strangerResponses=true,
     dayClock=false,
-    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,grazingNutrients=false,climateWater=false,diurnal=false,
+    metabolism=false,bodySize=false,inertia=false,structuralSupport=false,aridPhysiology=false,grazingNutrients=false,undergroundFeeding=false,climateWater=false,diurnal=false,
     foodProperties=false,
     tissueWater=false,
     winterWater=false,
@@ -239,6 +240,7 @@ export class Simulation{
     if(aridPhysiology){if(aridPhysiology!==true&&aridPhysiology!==ARID_PHYSIOLOGY.policy)throw Error('Unknown arid physiology policy.');this.aridPhysiologyRules=ARID_PHYSIOLOGY.policy}
     // Temperature-driven evaporation for the soil water balance (climate-water/1).
     if(grazingNutrients){if(grazingNutrients!==true&&grazingNutrients!==GRAZING_NUTRIENTS.policy)throw Error('Unknown grazing nutrient policy.');this.grazingNutrientRules=GRAZING_NUTRIENTS.policy}
+    if(undergroundFeeding){if(undergroundFeeding!==true&&undergroundFeeding!==UNDERGROUND_FEEDING.policy)throw Error('Unknown underground feeding policy.');this.undergroundFeedingRules=UNDERGROUND_FEEDING.policy}
     if(climateWater){if(climateWater!==true&&!climateWaterPolicy(climateWater))throw Error('Unknown climate water policy.');this.climateWaterRules=climateWater===true?CLIMATE_WATER.policy:climateWater}
     // Air warms by day and cools by night around the daily mean (diurnal-temperature/1).
     if(diurnal){if(diurnal!==true&&diurnal!==DIURNAL.policy)throw Error('Unknown diurnal temperature policy.');this.diurnalRules=DIURNAL.policy}
@@ -524,7 +526,7 @@ export class Simulation{
   playerThreatDisplay(){return startDisplay(this)}
   threatDisplayStatus(){return displayStatus(this)}
   playerToggleRoost(){if(this.paused)return{ok:false,type:'roost',message:'Resume the world first.'};const a=this.player();if(!a)return{ok:false,type:'roost',message:'No active creature.'};if(this.playerCombat.attackActive(a))return{ok:false,type:'roost',message:'Finish the attack first.'};const result=a.perched?this.leaveCanopy(a):this.enterCanopy(a);if(result.ok){a.intent='idle';a.target=null;this.lastPlayerAction={type:a.perched?'roost':'descend',actorId:a.id,tick:this.tickCount}}return result}
-  undergroundDecisionStep(a){if(this.tickCount%CFG.lifeStride===0&&a.hydration<SPECIES[a.species].maxHydration*.28&&!a.burrowAir&&caveDrinkAvailability(this,a).enabled){drinkCaveWater(this,a,{gain:5.2});a.intent='drink';return}const p=this.world.subsurface.passages.get(this.world.idx(a.x,a.y));if(p?.entry&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){toggleBurrow(this,a);return}if(a.energy<SPECIES[a.species].maxEnergy*.7){const meal=this.foraging.selected(a);if(meal)this.foraging.consume(a,meal)}const route=entranceRoute(this.world,a);if(route?.length&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){const i=route[0];moveUnderground(this,a,i%this.world.n+.5-a.x,(i/this.world.n|0)+.5-a.y,1/CFG.simHz);return}const d=((a.id+Math.floor(this.tickCount/16))%4);moveUnderground(this,a,[1,0,-1,0][d],[0,1,0,-1][d],1/CFG.simHz)}
+  undergroundDecisionStep(a){if(this.tickCount%CFG.lifeStride===0&&a.hydration<SPECIES[a.species].maxHydration*.28&&!a.burrowAir&&caveDrinkAvailability(this,a).enabled){drinkCaveWater(this,a,{gain:5.2});a.intent='drink';return}const p=this.world.subsurface.passages.get(this.world.idx(a.x,a.y));if(p?.entry&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){toggleBurrow(this,a);return}if(a.energy<SPECIES[a.species].maxEnergy*.7){if(undergroundFeedingEnabled(this))feedUnderground(this,a);else{const meal=this.foraging.selected(a);if(meal)this.foraging.consume(a,meal)}}const route=entranceRoute(this.world,a);if(route?.length&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){const i=route[0];moveUnderground(this,a,i%this.world.n+.5-a.x,(i/this.world.n|0)+.5-a.y,1/CFG.simHz);return}const d=((a.id+Math.floor(this.tickCount/16))%4);moveUnderground(this,a,[1,0,-1,0][d],[0,1,0,-1][d],1/CFG.simHz)}
   enterCanopy(a){return this.climbingRules===CLIMBING.policy&&!a.airborne?startClimb(this,a):perch(a,this.world,{climbing:canTreeClimb(this,a)})}
   leaveCanopy(a){return this.climbingRules===CLIMBING.policy?startClimb(this,a,{descending:true}):descend(a,this.world)}
   canopyFoodAvailability(animal=this.player()){

@@ -132,6 +132,8 @@ const runtime=[
   'tests/shelter-objective.mjs',
   'tests/tutorial-start-targets.mjs',
   'tests/starter-partner.mjs',
+  'tests/forage-season-competition.mjs',
+  'tests/underground-feeding.mjs',
   'tests/arid-expression-presentation.mjs',
   'tests/diurnal-light-presentation.mjs',
   'tests/field-guide-ui-state.mjs',

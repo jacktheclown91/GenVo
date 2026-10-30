@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {UNDERGROUND_FEEDING} from '../src/ecology/underground-feeding.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
 
@@ -49,6 +50,8 @@ sim.tickCount+=CFG.lifeStride;sim.foraging.rememberPatch(p,'thistlepod',seed.x,s
 assert.equal(sim.rng.state,rng,'season and competition forage memory consumes no simulation RNG');
 
 // Headless ecology must remain unaware of player forage memory.
-const headless=new Simulation('GENVO8-FORAGE-SEASON-HEADLESS',{player:false});headless.seasonIndex=2;for(let i=0;i<CFG.lifeStride*6;i++)headless.update(null);assert.equal(headless.foraging.states.size,0);
+// New games feed underground wildlife through the wild interaction (underground-feeding/1);
+// worlds built without it keep their original underground eating.
+const headless=new Simulation('GENVO8-FORAGE-SEASON-HEADLESS',{player:false,undergroundFeeding:UNDERGROUND_FEEDING.policy});headless.seasonIndex=2;for(let i=0;i<CFG.lifeStride*6;i++)headless.update(null);assert.equal(headless.foraging.states.size,0);
 
 console.log('seasonal forage reliability + observed competition checks: PASS');

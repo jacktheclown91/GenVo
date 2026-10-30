@@ -15,7 +15,9 @@ const [seed='DEMOGRAPHY-1',daysArg='365',periodArg='30',out]=process.argv.slice(
 if(!(days>0&&days<=1000&&period>0))throw Error('Supply 1..1000 days and a positive period');
 const sim=new Simulation(seed,{player:true,worldGenerator:'planetary/1',regionalFrontier:true,autonomousPopulations:true,courtshipSimilarity:true,dayClock:true,metabolism:true,
  foodProperties:true,tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true,regionalFounding:'regional-founding-templates/3',
- bodySize:'body-size/2',inertia:true,structuralSupport:true,aridPhysiology:true,climateWater:true,diurnal:true,autonomousEvolution:true,grazingNutrients:true,breedingSupport:'breeding-support/2'});
+ bodySize:'body-size/2',inertia:true,structuralSupport:true,aridPhysiology:true,climateWater:true,diurnal:true,autonomousEvolution:true,grazingNutrients:true,breedingSupport:'breeding-support/2',starterPartner:'same-land-partner/1',
+ // GENVO_UNDERGROUND_FEEDING=0 measures the world without underground-feeding/1 for comparison.
+ undergroundFeeding:process.env.GENVO_UNDERGROUND_FEEDING==='0'?false:'wild-underground-feeding/1'});
 sim.setPlayerAutonomy(true);
 const blank=()=>({attempts:0,accepted:0,conceived:0,births:0,deaths:{},juvenileDeaths:{},oldDeaths:{}});
 let tally={};const bucket=s=>tally[s]||=blank();
