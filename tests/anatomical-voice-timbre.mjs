@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {creatureVoiceProfile,voiceSamplePath} from '../src/audio/creature-voice.js';
+import {AudioDirector} from '../src/audio/audio.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {encodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
+const sim=new Simulation('VOICE-TIMBRE',{player:true,dayClock:true,metabolism:true,bodySize:'body-size/2'}),a=sim.player();
+const snap=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(sim,{savedAt:'voices'}))),before=snap();
+const mouth=id=>({...a,bodyPlan:makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:id}:n))});
+const grazer=mouth('grazing-mouth'),claw={...grazer,bodyPlan:makePlan([...grazer.bodyPlan.nodes,{partId:'claw',parent:'root/limb.1',socket:'spur'}])};
+const g=creatureVoiceProfile(grazer),c=creatureVoiceProfile(claw);
+for(const key of ['sample','rate','vocalMass','cutoffHz','resonanceHz','resonanceQ','resonanceDb'])assert.equal(c[key],g[key],'Noncalling claws cannot change vocal anatomy');
+const profiles=['grazing-mouth','tearing-jaw','crushing-jaw','beak-mouth','kernel-beak','filter-mouth','sucker-mouth','gape-mouth'].map(id=>creatureVoiceProfile(mouth(id)));
+assert.notEqual(profiles[1].resonanceHz,profiles[2].resonanceHz,'Different real jaw structures retain distinct resonance');
+assert.notEqual(profiles[3].cutoffHz,profiles[4].cutoffHz,'Crushing beaks differ from ordinary beaks');
+for(const p of profiles){assert.ok(p.cutoffHz>=700&&p.cutoffHz<=9000);assert.ok(p.resonanceHz>=150&&p.resonanceHz<=3000);assert.ok(p.resonanceDb<=2&&p.resonanceQ<=.85)}
+const sized=s=>creatureVoiceProfile({...grazer,bodySize:{schema:1,alleles:[Math.log(s),Math.log(s)]}});
+assert.ok(sized(.5).resonanceHz>sized(3).resonanceHz);assert.ok(sized(.5).rate>sized(3).rate);
+assert.equal(creatureVoiceProfile({...grazer,alive:false}),null);
+assert.equal(creatureVoiceProfile({...grazer,bodyPlan:makePlan(grazer.bodyPlan.nodes.filter(n=>n.socket!=='mouth'))}),null);
+let filters=0,disconnected=0;const nodes=[],ctx={createBiquadFilter(){filters++;const n={frequency:{},Q:{},gain:{},connect(dest){this.dest=dest},disconnect(){disconnected++}};nodes.push(n);return n}};
+const destination={},path=voiceSamplePath(ctx,destination,profiles[2]);assert.equal(filters,2);assert.equal(path.input,nodes[0]);assert.equal(nodes[0].dest,nodes[1]);assert.equal(nodes[1].dest,destination);assert.equal(nodes[1].gain.value,profiles[2].resonanceDb);path.dispose();assert.equal(disconnected,2);
+assert.equal(voiceSamplePath(ctx,destination,null).input,destination);assert.equal(filters,2,'Unrelated effects allocate no voice filters');
+const audio=new AudioDirector(null);audio.ctx={currentTime:0};audio.enabled=audio.unlocked=true;let options;
+audio.playSample=(id,args)=>{options={id,...args};return true};assert.equal(audio.playSpeciesVoice(grazer),true);assert.equal(options.id,g.sample);assert.deepEqual(options.voice,g);
+assert.equal(snap(),before,'Voice reads and presentation never change any saved field or biological RNG');
+console.log('Anatomical voice timbre PASS: calling-part family, nonvocal attachment isolation, eight oral profiles, real size, bounded filters, cleanup, actual playback handoff and full graph purity.');

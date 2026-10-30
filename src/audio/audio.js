@@ -7,7 +7,7 @@ import {AUDIO_SCENES,activeStrategyBranch,cueForResult,handoffTheme,musicPattern
 import {AUTHORED_AUDIO} from './assets.js';
 import {habitatMixTargets} from './habitat.js';
 import {HabitatTextures} from './habitat-textures.js';
-import {creatureVoiceProfile} from './creature-voice.js';
+import {creatureVoiceProfile,voiceSamplePath} from './creature-voice.js';
 import {currentCourtshipMove,COURTSHIP_PERFORMANCE,availableCourtshipMoves} from '../reproduction/courtship-performance.js';
 import {CFG} from '../sim/config.js';
 
@@ -228,7 +228,7 @@ export class AudioDirector{
   playSpeciesVoice(animal,{stalkerTell=false,volume=.3}={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return false;
     const voice=creatureVoiceProfile(animal);if(!voice)return false;const rate=voice.rate*(.97+this.rand()*.06);
-    if(this.playSample(voice.sample,{x:animal.x,y:animal.y,radius:stalkerTell?12:15,volume,rate}))return true;
+    if(this.playSample(voice.sample,{x:animal.x,y:animal.y,radius:stalkerTell?12:15,volume,rate,voice}))return true;
     const dest=this.spatialDestination(animal.x,animal.y,{radius:stalkerTell?12:15,volume});if(!dest)return false;this.foregroundCue(.65);const t=this.ctx.currentTime+.005;
     if(voice.rough){this.noise(t,.18,.12,1200*rate,dest);this.tone(170*rate,92*rate,t,.24,.08,'sawtooth',dest)}
     else if(voice.bright){this.tone(1100*rate,1850*rate,t,.13,.08,'sine',dest);this.tone(1500*rate,2200*rate,t+.16,.09,.05,'sine',dest)}
@@ -306,11 +306,11 @@ export class AudioDirector{
       case'deny':this.tone(135,108,t,.09,.022,'triangle');this.noise(t,.045,.018,520);break;
     }
   }
-  playSample(id,{x=null,y=null,radius=14,volume=1,rate=1,bus='sfx',when=null}={}){
+  playSample(id,{x=null,y=null,radius=14,volume=1,rate=1,bus='sfx',when=null,voice=null}={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return false;const buffer=this.assetBuffers.get(id);if(!buffer)return false;let destination=bus==='music'?this.musicBus:bus==='ambience'?this.ambienceBus:this.sfxBus;
     if(Number.isFinite(x)&&Number.isFinite(y)){destination=this.spatialDestination(x,y,{radius,volume});if(!destination)return false;volume=1}
     if(bus==='sfx')this.foregroundCue(Math.min(1.2,buffer.duration||.65));
-    const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=buffer;if(src.playbackRate)src.playbackRate.value=clamp(rate,.65,1.5);gain.gain.value=Math.max(.0001,volume);src.connect(gain);gain.connect(destination);if(Number.isFinite(when))src.start(Math.max(this.ctx.currentTime,when));else src.start();return true;
+    const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=buffer;if(src.playbackRate)src.playbackRate.value=clamp(rate,.65,1.5);gain.gain.value=Math.max(.0001,volume);src.connect(gain);const path=voiceSamplePath(this.ctx,destination,voice);gain.connect(path.input);if(voice)src.onended=()=>{src.disconnect?.();gain.disconnect?.();path.dispose()};if(Number.isFinite(when))src.start(Math.max(this.ctx.currentTime,when));else src.start();return true;
   }
   spatialDestination(x,y,{radius=14,volume=1}={}){
     if(!this.ctx||!this.sfxBus)return null;const p=this.sim?.player?.();if(!p)return this.sfxBus;const dx=x-p.x,dy=y-p.y,d=Math.hypot(dx,dy);if(d>radius)return null;const att=.12+.88*Math.pow(clamp(1-d/radius),1.25),gain=this.ctx.createGain();gain.gain.value=Math.max(.0001,volume*att);
