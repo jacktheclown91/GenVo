@@ -76,6 +76,20 @@ Nothing else changes: rain, weather, temperature, rivers and lakes are untouched
 
 These are observations; nothing was tuned. Drowning rose with the new open water (10, 7 and 1 in the three seeds).
 
+## `climate-water/2` — evaporating runoff pools (S9 finding, October 29)
+
+The S9 year-long validation found that **open water never evaporated**. Rain added volume to every wet cell, and nothing removed standing water to the air. Rainfall-runoff pools therefore only grew (1,449 flooded cells and none receded in a 365-day run), the funded-channel recession condition (a dried pocket) was never met, and valleys slowly flooded. The same happened under the pre-morphology rules (180 flooded cells and none receded by day 61), so it predates this work. It contradicts Scenario D, where a temporary water source must disappear through physical processes.
+
+`climate-water/2` (`world/climate-water.js`), now the new-game rule:
+- **Who evaporates.** Cells flooded by rainfall-runoff inundation (`floodOrigin` 1) evaporate their liquid water at the same temperature-driven potential as soil, 0.085 × max(0, T − 0.30) per day.
+- **Ledger.** The water leaves as `surfaceEvaporation` in the open-water ledger (daily input, output and closure).
+- **Ice and salt.** Ice is excluded, and salt stays, concentrating as the pool shrinks.
+- **Recession.** A dried pool then recedes through the existing funded-channel recession.
+- **What doesn't evaporate.** Generated rivers and lakes stand for catchment-scale supply that the regional model does not simulate (their border exchange is volume-neutral), so they keep their recorded balance instead of drying within weeks.
+- **Versions.** `climate-water/1` (soil only) stays valid for worlds saved with it. The law lives in a leaf module shared by the soil and open-water models.
+
+`tests/climate-water.mjs` adds Scenario D. A pool created through the real funded-inundation path evaporates on warm, dry days, closes its ledger every day (under 10⁻⁶), and recedes to land through recession. A `/1` pool does not evaporate.
+
 ## Not yet
 
 - **Deserts and the climate pass:** hot, dry subtropics, coupled rain and temperature, and continental interiors. This needs the start-valley decision.

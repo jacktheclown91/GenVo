@@ -1,6 +1,7 @@
 // Physical fields for new worlds. Normalized model units, not biome membership bonuses.
 import {coordNoise} from '../core/rng.js';
 import {SURFACE_ICE,liquidVolume,validateSurfaceIce} from './surface-ice.js';
+import {poolEvaporation,temperaturePotential} from './climate-water.js';
 import {recordPageSaltTransfer,finishPageSaltTransfers,validatePageSaltTransfers} from './page-salt-transfers.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
 import {regionalRainfall} from './weather-fronts.js';
@@ -78,7 +79,7 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&['pairedWaterInput','pairedWaterOutput'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid paired water totals.');
- if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
+ if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
@@ -92,7 +93,7 @@ export function validateEnvironment(w,e){
       (!Number.isFinite(row[k])||row[k]<0)))
    throw Error('Invalid paired planetary salt receipt.');
   if(e.schema>=3){
-   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
+   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
       (!Number.isFinite(row[k])||row[k]<0)))
     throw Error('Invalid planetary rainfall or overland receipt.');
    if(e.schema>=4&&['internalWaterMoved','internalSaltMoved','internalWetEdges'].some(k=>k in row&&
@@ -125,6 +126,7 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
 export function advanceEnvironmentWater(w,climate,day){
  const e=w.environment;if(!e)return;validateSurfaceIce(w,e);const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
+ let surfaceEvaporation=0;const evaporatePools=e.schema>=5&&poolEvaporation(climate)&&!!e.floodOrigin;
  let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0,boundaryWaterInput=0,boundaryWaterOutput=0,boundarySaltInput=0,boundarySaltOutput=0;
  const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(liquidVolume(e,i,e.schema>=3?e.volume[i]:e.depth[i]),liquidVolume(e,j,e.schema>=3?e.volume[j]:e.depth[j]))*.08,e.salt[from]*.25);const actual=e.icePolicy===SURFACE_ICE.policy?Math.min(flow,Math.max(0,next[from]),Math.max(0,liquidVolume(e,to)*2-next[to])):flow;next[from]-=actual;next[to]+=actual;if(actual>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?actual:-actual)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
@@ -136,6 +138,9 @@ export function advanceEnvironmentWater(w,climate,day){
  const displaced=e.schema>=5?rain-accepted:rain;
  if(e.schema>=5){
   e.volume[i]+=accepted;surfaceRainInput+=rain;surfaceRainOutput+=displaced;
+  // climate-water/2: a rainfall-runoff pool evaporates its liquid water to the air
+  // at the temperature-driven potential; salt stays and concentrates.
+  if(evaporatePools&&e.floodOrigin[i]===1){const evaporated=Math.min(liquidVolume(e,i,e.volume[i]),temperaturePotential(localTemperature(w,atmospheric,i)));if(evaporated>0){e.volume[i]-=evaporated;surfaceEvaporation+=evaporated}}
  }
  const lost=next[i]*(1-Math.exp(-displaced/liquidVolume(e,i,volume)));
  next[i]-=lost;t.rainWater+=rain;t.displacedWater+=displaced;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){
@@ -184,6 +189,7 @@ export function advanceEnvironmentWater(w,climate,day){
  if(e.schema>=5){
   t.surfaceRainInput=(t.surfaceRainInput||0)+surfaceRainInput;
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
+  if(surfaceEvaporation)t.surfaceEvaporation=(t.surfaceEvaporation||0)+surfaceEvaporation;
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
@@ -193,9 +199,9 @@ export function advanceEnvironmentWater(w,climate,day){
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
  ...(e.schema>=3?(e.schema>=5?{
   ...internal,waterBefore,waterAfter,
-  waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput,
-  waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-(waterAfter-waterBefore),
-  surfaceRainInput,surfaceRainOutput
+  waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput+surfaceEvaporation,
+  waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-surfaceEvaporation-(waterAfter-waterBefore),
+  surfaceRainInput,surfaceRainOutput,...(surfaceEvaporation?{surfaceEvaporation}:{})
  }:internal||{waterBefore,waterAfter:waterBefore,waterInput:0,waterOutput:0,waterClosure:0}):{}),
  pageTransfers:finishPageSaltTransfers(pageLedger)
 };e.daily.push(row);if(e.daily.length>64)e.daily.shift();e.lastDay=row;w.buildHydrology?.();return row;

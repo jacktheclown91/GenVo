@@ -13,26 +13,24 @@ import {syncCaveAir} from '../world/cave-air.js';
 //   plant uptake : producers fund growth from this soil water (src/ecology/plant-resources.js)
 // fieldCapacity comes from the generated terrain wetness (fine, organic low-lying soils retain more water).
 import {localRain,localTemperature} from '../world/environment.js';
+import {CLIMATE_WATER,climateWaterPolicy,temperaturePotential} from '../world/climate-water.js';
 import {coldSurfaceExchange,validateSnowpack} from '../world/snowpack.js';
 import {exchangeTerrainGroundwater} from '../world/topography.js';
 import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
 import {recordPageGroundwater,finishPageGroundwater,validatePageGroundwater} from '../world/page-groundwater-transfers.js';
 import {PLANETARY_SEAM_GROUNDWATER,validateSeamGroundwaterPolicy} from '../world/planetary-seam-groundwater.js';
 import {GROUNDWATER_SPRINGS,advanceGroundwaterSprings,validateGroundwaterSpringPolicy} from '../world/groundwater-springs.js';
-// climate-water/1 (morphology S5): evaporation potential follows temperature above
-// freezing (Thornthwaite-type) instead of a fixed floor that kept cold, wet land
-// arid. Anchors: freezing is 0.30 (snow/ice rules), 1 temperature unit is about
-// 50 C, 1 moisture unit is about 100 mm, and potential evaporation rises about
-// 0.17 mm per day per C above freezing: 0.085 per unit per day. Applied when the
-// day's climate carries the rule; recorded worlds keep the original formula.
-export const CLIMATE_WATER=Object.freeze({policy:'climate-water/1',freezing:.30,perDegree:.085});
+// Climate water balance (world/climate-water.js): under climate-water/1 or /2 the
+// evaporation potential follows temperature above freezing instead of a fixed
+// floor that kept cold, wet land arid. Recorded worlds keep the original formula.
+export {CLIMATE_WATER};
 export function evaporationPotential(climate,temperature){
- if(climate?.evaporation===CLIMATE_WATER.policy)return CLIMATE_WATER.perDegree*Math.max(0,temperature-CLIMATE_WATER.freezing);
+ if(climateWaterPolicy(climate?.evaporation))return temperaturePotential(temperature);
  return SOIL_WATER.potentialBase+SOIL_WATER.potentialTemp*Math.max(0,temperature);
 }
 export function restoreClimateWaterRules(sim,core){
  if(core.climateWaterRules===undefined)delete sim.climateWaterRules;
- else if(core.climateWaterRules!==CLIMATE_WATER.policy)throw Error('Unknown saved climate water rules.');
+ else if(!climateWaterPolicy(core.climateWaterRules))throw Error('Unknown saved climate water rules.');
  if(sim.climate?.evaporation!==undefined&&sim.climate.evaporation!==sim.climateWaterRules)throw Error('Saved climate disagrees with its recorded climate water rule.');
 }
 export const SOIL_WATER={enabled:true,rainScale:.06,potentialBase:.025,potentialTemp:.035,capacityBase:.3,capacityWet:.4,drain:.15,rise:.08,lateral:.5,deepDrain:.004,wiltingPoint:.03};
