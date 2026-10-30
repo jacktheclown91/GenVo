@@ -1,0 +1,314 @@
+{
+ "schema": "genvo.year-validation/1",
+ "seed": "S9-YEAR-2",
+ "days": 365,
+ "baseline": false,
+ "seconds": 493,
+ "slowestDayMs": 2398,
+ "maxSoilClosure": 0.000019159434486937243,
+ "seasonalWater": {
+  "riverDischarge": 4821.847,
+  "surfaceEvaporation": 538.875,
+  "flooded": 446,
+  "receded": 310,
+  "stillOpen": 136,
+  "drinksOnRunoffWater": 13918,
+  "drinkDecisions": 503973,
+  "recededThatWereUsed": 207,
+  "lifetimeDays": {
+   "p10": 9,
+   "p50": 36,
+   "p90": 68
+  }
+ },
+ "rows": [
+  {
+   "day": 31,
+   "alive": 178,
+   "births": 1,
+   "deaths": {
+    "predation": 8,
+    "starvation": 7,
+    "dehydration": 2
+   },
+   "openPonds": 0,
+   "flooded": 0,
+   "receded": 0,
+   "size": {
+    "min": 0.958,
+    "max": 1.047
+   },
+   "recognisedSpecies": 0,
+   "seconds": 57
+  },
+  {
+   "day": 61,
+   "alive": 168,
+   "births": 11,
+   "deaths": {
+    "predation": 13,
+    "starvation": 18,
+    "dehydration": 3,
+    "drowning": 3
+   },
+   "openPonds": 0,
+   "flooded": 0,
+   "receded": 0,
+   "size": {
+    "min": 0.958,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 109
+  },
+  {
+   "day": 91,
+   "alive": 165,
+   "births": 23,
+   "deaths": {
+    "predation": 21,
+    "starvation": 24,
+    "dehydration": 3,
+    "drowning": 3,
+    "health": 1
+   },
+   "openPonds": 11,
+   "flooded": 11,
+   "receded": 0,
+   "size": {
+    "min": 0.958,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 162
+  },
+  {
+   "day": 121,
+   "alive": 166,
+   "births": 40,
+   "deaths": {
+    "predation": 24,
+    "starvation": 27,
+    "dehydration": 9,
+    "drowning": 6,
+    "health": 1,
+    "faded": 1
+   },
+   "openPonds": 106,
+   "flooded": 123,
+   "receded": 17,
+   "size": {
+    "min": 0.953,
+    "max": 1.062
+   },
+   "recognisedSpecies": 0,
+   "seconds": 211
+  },
+  {
+   "day": 151,
+   "alive": 168,
+   "births": 49,
+   "deaths": {
+    "predation": 27,
+    "starvation": 29,
+    "dehydration": 9,
+    "drowning": 8,
+    "health": 1,
+    "faded": 1
+   },
+   "openPonds": 172,
+   "flooded": 235,
+   "receded": 63,
+   "size": {
+    "min": 0.955,
+    "max": 1.062
+   },
+   "recognisedSpecies": 0,
+   "seconds": 262
+  },
+  {
+   "day": 181,
+   "alive": 123,
+   "births": 52,
+   "deaths": {
+    "predation": 31,
+    "starvation": 29,
+    "dehydration": 48,
+    "drowning": 9,
+    "health": 1,
+    "faded": 2,
+    "age": 3
+   },
+   "openPonds": 158,
+   "flooded": 307,
+   "receded": 149,
+   "size": {
+    "min": 0.955,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 307
+  },
+  {
+   "day": 211,
+   "alive": 123,
+   "births": 57,
+   "deaths": {
+    "predation": 31,
+    "starvation": 31,
+    "dehydration": 48,
+    "drowning": 9,
+    "health": 1,
+    "faded": 3,
+    "age": 5
+   },
+   "openPonds": 93,
+   "flooded": 307,
+   "receded": 214,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 345
+  },
+  {
+   "day": 241,
+   "alive": 111,
+   "births": 61,
+   "deaths": {
+    "predation": 33,
+    "starvation": 33,
+    "dehydration": 48,
+    "drowning": 9,
+    "health": 1,
+    "faded": 4,
+    "age": 16
+   },
+   "openPonds": 105,
+   "flooded": 327,
+   "receded": 222,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 381
+  },
+  {
+   "day": 271,
+   "alive": 107,
+   "births": 68,
+   "deaths": {
+    "predation": 36,
+    "starvation": 36,
+    "dehydration": 48,
+    "drowning": 9,
+    "health": 1,
+    "faded": 4,
+    "age": 21
+   },
+   "openPonds": 197,
+   "flooded": 431,
+   "receded": 234,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 414
+  },
+  {
+   "day": 301,
+   "alive": 93,
+   "births": 70,
+   "deaths": {
+    "predation": 39,
+    "starvation": 38,
+    "dehydration": 48,
+    "drowning": 9,
+    "health": 1,
+    "faded": 5,
+    "age": 31
+   },
+   "openPonds": 149,
+   "flooded": 444,
+   "receded": 295,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 443
+  },
+  {
+   "day": 331,
+   "alive": 73,
+   "births": 71,
+   "deaths": {
+    "predation": 40,
+    "starvation": 42,
+    "dehydration": 50,
+    "drowning": 9,
+    "health": 1,
+    "faded": 6,
+    "age": 44
+   },
+   "openPonds": 137,
+   "flooded": 445,
+   "receded": 308,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 469
+  },
+  {
+   "day": 361,
+   "alive": 64,
+   "births": 74,
+   "deaths": {
+    "predation": 40,
+    "starvation": 42,
+    "dehydration": 55,
+    "drowning": 9,
+    "health": 1,
+    "faded": 6,
+    "age": 51
+   },
+   "openPonds": 136,
+   "flooded": 446,
+   "receded": 310,
+   "size": {
+    "min": 0.93,
+    "max": 1.049
+   },
+   "recognisedSpecies": 0,
+   "seconds": 489
+  },
+  {
+   "day": 366,
+   "alive": 62,
+   "births": 74,
+   "deaths": {
+    "predation": 40,
+    "starvation": 42,
+    "dehydration": 55,
+    "drowning": 9,
+    "health": 1,
+    "faded": 6,
+    "age": 53
+   },
+   "openPonds": 136,
+   "flooded": 446,
+   "receded": 310,
+   "size": {
+    "min": 0.93,
+    "max": 1.037
+   },
+   "recognisedSpecies": 0,
+   "seconds": 493
+  }
+ ]
+}

@@ -1,13 +1,13 @@
 // Physical fields for new worlds. Normalized model units, not biome membership bonuses.
 import {coordNoise} from '../core/rng.js';
 import {SURFACE_ICE,liquidVolume,validateSurfaceIce} from './surface-ice.js';
-import {poolEvaporation,temperaturePotential} from './climate-water.js';
+import {CLIMATE_WATER,poolEvaporation,riverDischarge,temperaturePotential} from './climate-water.js';
 import {recordPageSaltTransfer,finishPageSaltTransfers,validatePageSaltTransfers} from './page-salt-transfers.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
 import {regionalRainfall} from './weather-fronts.js';
-import {advanceInternalPlanetaryWater} from './planetary-internal-water.js';
+import {PLANETARY_INTERNAL_WATER,advanceInternalPlanetaryWater} from './planetary-internal-water.js';
 import {totalPlanetarySurfaceWater} from './planetary-runoff.js';
-import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy,boundaryWaterExchange,validateBoundaryWaterReceipt} from './planetary-boundary-water.js';
+import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy,boundaryWaterExchange,boundaryOpenness,validateBoundaryWaterReceipt} from './planetary-boundary-water.js';
 import {validateSeamRunoffPolicy} from './planetary-seam-runoff.js';
 import {PLANETARY_SEAM_GROUNDWATER} from './planetary-seam-groundwater.js';
 import {GROUNDWATER_SPRINGS} from './groundwater-springs.js';
@@ -79,7 +79,7 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&['pairedWaterInput','pairedWaterOutput'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid paired water totals.');
- if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
+ if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
@@ -93,7 +93,7 @@ export function validateEnvironment(w,e){
       (!Number.isFinite(row[k])||row[k]<0)))
    throw Error('Invalid paired planetary salt receipt.');
   if(e.schema>=3){
-   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
+   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
       (!Number.isFinite(row[k])||row[k]<0)))
     throw Error('Invalid planetary rainfall or overland receipt.');
    if(e.schema>=4&&['internalWaterMoved','internalSaltMoved','internalWetEdges'].some(k=>k in row&&
@@ -124,9 +124,40 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // Fixed-depth water bodies exchange equal water volumes with neighboring cells. Salt is advected
 // conservatively; freshwater rain displaces an equal volume, exporting its dissolved salt.
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
+// climate-water/3: each connected body of open water (orthogonal neighbours, as
+// in the internal flow) that reaches a border side open to external water drains
+// a quarter of its net liquid water above the generated levels per day, scaled by
+// its most open outlet; dissolved salt leaves in proportion.
+// Runoff-made cells (floodOrigin 1) have no generated level: they drain to the
+// internal flow's minimum wet film, so dried pools can recede. Bodies with no
+// open outlet (closed basins, or sides owned by paired regions, whose seams move
+// water themselves) keep their water.
+const levelOf=(e,i)=>e.floodOrigin?.[i]===1?PLANETARY_INTERNAL_WATER.minWet:e.depth[i];
+function dischargeRivers(w,salt){
+ const e=w.environment,n=w.n,seen=new Uint8Array(w.len),stack=[],body=[];let water=0,saltOut=0;
+ for(let s=0;s<w.len;s++){
+  if(!w.water[s]||seen[s])continue;
+  body.length=0;stack.push(s);seen[s]=1;let outlet=0;
+  while(stack.length){const i=stack.pop();body.push(i);const open=e.boundary[i]?boundaryOpenness(e,i,w):null;if(open&&open.fraction>outlet)outlet=open.fraction;
+   const x=i%n;for(const j of [x>0?i-1:-1,x<n-1?i+1:-1,i-n,i+n])if(j>=0&&j<w.len&&w.water[j]&&!seen[j]){seen[j]=1;stack.push(j)}}
+  if(!outlet)continue;
+  // The body's net surplus sets the day's outflow, taken from the cells holding
+  // surplus in proportion, so discharge never draws a body below its generated water.
+  let net=0,positive=0;for(const i of body){const surplus=liquidVolume(e,i,e.volume[i])-levelOf(e,i);net+=surplus;if(surplus>0)positive+=surplus}
+  if(!(net>0&&positive>0))continue;const share=net*CLIMATE_WATER.dischargeFraction*outlet/positive;
+  for(const i of body){
+   const liquid=liquidVolume(e,i,e.volume[i]),out=(liquid-levelOf(e,i))*share;
+   if(!(out>0))continue;
+   const leaving=Math.min(salt[i],salt[i]*out/liquid);
+   e.volume[i]-=out;salt[i]-=leaving;water+=out;saltOut+=leaving;
+  }
+ }
+ return{water,salt:saltOut};
+}
 export function advanceEnvironmentWater(w,climate,day){
  const e=w.environment;if(!e)return;validateSurfaceIce(w,e);const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
- let surfaceEvaporation=0;const evaporatePools=e.schema>=5&&poolEvaporation(climate)&&!!e.floodOrigin;
+ let surfaceEvaporation=0,dischargeWater=0,dischargeSalt=0;const evaporatePools=e.schema>=5&&poolEvaporation(climate)&&!!e.floodOrigin;
+ const discharge=e.schema>=5&&riverDischarge(climate)&&(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy);
  let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0,boundaryWaterInput=0,boundaryWaterOutput=0,boundarySaltInput=0,boundarySaltOutput=0;
  const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(liquidVolume(e,i,e.schema>=3?e.volume[i]:e.depth[i]),liquidVolume(e,j,e.schema>=3?e.volume[j]:e.depth[j]))*.08,e.salt[from]*.25);const actual=e.icePolicy===SURFACE_ICE.policy?Math.min(flow,Math.max(0,next[from]),Math.max(0,liquidVolume(e,to)*2-next[to])):flow;next[from]-=actual;next[to]+=actual;if(actual>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?actual:-actual)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
@@ -139,8 +170,9 @@ export function advanceEnvironmentWater(w,climate,day){
  if(e.schema>=5){
   e.volume[i]+=accepted;surfaceRainInput+=rain;surfaceRainOutput+=displaced;
   // climate-water/2: a rainfall-runoff pool evaporates its liquid water to the air
-  // at the temperature-driven potential; salt stays and concentrates.
-  if(evaporatePools&&e.floodOrigin[i]===1){const evaporated=Math.min(liquidVolume(e,i,e.volume[i]),temperaturePotential(localTemperature(w,atmospheric,i)));if(evaporated>0){e.volume[i]-=evaporated;surfaceEvaporation+=evaporated}}
+  // at the temperature-driven potential, down to the minimum wet film open water
+  // keeps until recession; salt stays and concentrates.
+  if(evaporatePools&&e.floodOrigin[i]===1){const evaporated=Math.min(Math.max(0,liquidVolume(e,i,e.volume[i])-PLANETARY_INTERNAL_WATER.minWet),temperaturePotential(localTemperature(w,atmospheric,i)));if(evaporated>0){e.volume[i]-=evaporated;surfaceEvaporation+=evaporated}}
  }
  const lost=next[i]*(1-Math.exp(-displaced/liquidVolume(e,i,volume)));
  next[i]-=lost;t.rainWater+=rain;t.displacedWater+=displaced;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){
@@ -179,7 +211,8 @@ export function advanceEnvironmentWater(w,climate,day){
     next[i]=target;
    }
   }}
- const internal=advanceInternalPlanetaryWater(w,next);
+ const internal=advanceInternalPlanetaryWater(w,next,{incised:discharge});
+ if(discharge){const out=dischargeRivers(w,next);dischargeWater=out.water;dischargeSalt=out.salt;t.saltOutput+=out.salt}
  if((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)){
   t.boundaryWaterInput+=boundaryWaterInput;
   t.boundaryWaterOutput+=boundaryWaterOutput;
@@ -190,6 +223,7 @@ export function advanceEnvironmentWater(w,climate,day){
   t.surfaceRainInput=(t.surfaceRainInput||0)+surfaceRainInput;
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
   if(surfaceEvaporation)t.surfaceEvaporation=(t.surfaceEvaporation||0)+surfaceEvaporation;
+  if(dischargeWater){t.riverDischarge=(t.riverDischarge||0)+dischargeWater;t.dischargeSalt=(t.dischargeSalt||0)+dischargeSalt}
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
@@ -199,9 +233,9 @@ export function advanceEnvironmentWater(w,climate,day){
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
  ...(e.schema>=3?(e.schema>=5?{
   ...internal,waterBefore,waterAfter,
-  waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput+surfaceEvaporation,
-  waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-surfaceEvaporation-(waterAfter-waterBefore),
-  surfaceRainInput,surfaceRainOutput,...(surfaceEvaporation?{surfaceEvaporation}:{})
+  waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput+surfaceEvaporation+dischargeWater,
+  waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-surfaceEvaporation-dischargeWater-(waterAfter-waterBefore),
+  surfaceRainInput,surfaceRainOutput,...(surfaceEvaporation?{surfaceEvaporation}:{}),...(dischargeWater?{riverDischarge:dischargeWater,dischargeSalt}:{})
  }:internal||{waterBefore,waterAfter:waterBefore,waterInput:0,waterOutput:0,waterClosure:0}):{}),
  pageTransfers:finishPageSaltTransfers(pageLedger)
 };e.daily.push(row);if(e.daily.length>64)e.daily.shift();e.lastDay=row;w.buildHydrology?.();return row;

@@ -49,6 +49,20 @@ export function boundaryWaterExchange(environment,i,salt,volume,world=null){
    !Number.isFinite(volume)||volume<=0||volume>2||
    salt>volume*2+1e-10)
   throw Error('Invalid planetary boundary-water stock.');
+ const open=boundaryOpenness(environment,i,world);if(!open)return null;
+ const {fraction,reservoirSalinity}=open;
+ const liquid=liquidVolume(environment,i,volume);if(!(liquid>0)||salt>liquid*2+1e-10)throw Error('Invalid boundary liquid-water stock.');
+ const water=liquid*PLANETARY_BOUNDARY_WATER.dailyFraction*fraction;
+ const saltOutput=Math.min(salt,salt*water/liquid);
+ const saltInput=water*reservoirSalinity;
+ return{saltAfter:salt-saltOutput+saltInput,
+  saltInput,saltOutput,waterInput:water,waterOutput:water};
+}
+// How open a wet border cell is to external water beyond the region (the share
+// of its outside sides not owned by a paired neighbouring region) and the
+// salinity of that outside water. Null when it has no open external side.
+export function boundaryOpenness(environment,i,world=null){
+ const boundary=environment.boundary[i];if(!boundary)return null;
  let reservoirSalinity=boundary===2?1:boundary===3?.5:0,fraction=1;
  const blocked=environment.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy
   ?environment.blockedBoundaries?.[i]||0:0;
@@ -74,12 +88,7 @@ export function boundaryWaterExchange(environment,i,salt,volume,world=null){
   fraction=open.length/outside.length;
   reservoirSalinity=open.reduce((sum,side)=>sum+side.salinity,0)/open.length;
  }
- const liquid=liquidVolume(environment,i,volume);if(!(liquid>0)||salt>liquid*2+1e-10)throw Error('Invalid boundary liquid-water stock.');
- const water=liquid*PLANETARY_BOUNDARY_WATER.dailyFraction*fraction;
- const saltOutput=Math.min(salt,salt*water/liquid);
- const saltInput=water*reservoirSalinity;
- return{saltAfter:salt-saltOutput+saltInput,
-  saltInput,saltOutput,waterInput:water,waterOutput:water};
+ return{fraction,reservoirSalinity};
 }
 
 export function validateBoundaryWaterReceipt(environment,row){

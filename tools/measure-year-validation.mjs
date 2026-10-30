@@ -48,7 +48,7 @@ for(let d=1;d<=days;d++){
 }
 const lifetimes=closed.map(c=>c.days).sort((a,b)=>a-b),used=closed.filter(c=>c.drinks>0).length;
 const result={schema:'genvo.year-validation/1',seed,days,baseline,seconds:Math.round((Date.now()-started)/1000),slowestDayMs:slowest,maxSoilClosure:maxClosure,
- seasonalWater:{flooded,receded,stillOpen:ponds.size,drinksOnRunoffWater:drinksOnPonds,drinkDecisions:drinksTotal,recededThatWereUsed:used,
+ seasonalWater:{riverDischarge:+(w.environment?.totals?.riverDischarge??0).toFixed(3),surfaceEvaporation:+(w.environment?.totals?.surfaceEvaporation??0).toFixed(3),flooded,receded,stillOpen:ponds.size,drinksOnRunoffWater:drinksOnPonds,drinkDecisions:drinksTotal,recededThatWereUsed:used,
   lifetimeDays:lifetimes.length?{p10:lifetimes[Math.floor(.1*(lifetimes.length-1))],p50:lifetimes[Math.floor(.5*(lifetimes.length-1))],p90:lifetimes[Math.floor(.9*(lifetimes.length-1))]}:null},rows};
 if(out)fs.writeFileSync(out,JSON.stringify(result,null,1));
 console.log(JSON.stringify({...result,rows:undefined}));
