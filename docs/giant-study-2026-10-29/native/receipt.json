@@ -1,0 +1,803 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "exported": {
+    "format": "genvo.organism-study/1",
+    "source": {
+      "bodySizeRules": "body-size/2",
+      "seed": "LAB-STUDY-1",
+      "day": 1
+    },
+    "animal": {
+      "id": 109,
+      "species": "genvo",
+      "age": 32,
+      "genes": {
+        "body": 0.9406014594249428,
+        "motion": 0.998417894449085,
+        "metabolism": 0.9547144828364253,
+        "digestion": 1.0032892002258451,
+        "senses": 0.9841420565731824,
+        "climate": 1.0394470845814796,
+        "immunity": 0.9745197662618011,
+        "temperament": 1.0535968674346805
+      },
+      "pigmentGenome": {
+        "schema": "genvo.pigment-genome/1",
+        "hue": 11,
+        "chroma": 1,
+        "tone": 3,
+        "marking": 2,
+        "density": 1,
+        "accent": 1
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "adaptations": [],
+      "sex": "F",
+      "massPolicy": "relative-anatomical-load/1",
+      "bodySize": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "alive": true
+    }
+  },
+  "cases": [
+    {
+      "resolution": "32",
+      "dir": "0",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 40559,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 4541,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "1",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 29943,
+        "width": 286
+      },
+      "pinnedExtent": {
+        "pixels": 3481,
+        "width": 96
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "2",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 48642,
+        "width": 274
+      },
+      "pinnedExtent": {
+        "pixels": 5300,
+        "width": 91
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "3",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 33613,
+        "width": 292
+      },
+      "pinnedExtent": {
+        "pixels": 3898,
+        "width": 98
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "4",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 47388,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 5251,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "5",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 33121,
+        "width": 292
+      },
+      "pinnedExtent": {
+        "pixels": 3828,
+        "width": 98
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "6",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 47549,
+        "width": 274
+      },
+      "pinnedExtent": {
+        "pixels": 5194,
+        "width": 91
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "32",
+      "dir": "7",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 29541,
+        "width": 286
+      },
+      "pinnedExtent": {
+        "pixels": 3433,
+        "width": 96
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "0",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 39351,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 4298,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "1",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 24853,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 2868,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "2",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 45514,
+        "width": 282
+      },
+      "pinnedExtent": {
+        "pixels": 5288,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "3",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 26713,
+        "width": 288
+      },
+      "pinnedExtent": {
+        "pixels": 3078,
+        "width": 96
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "4",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 43782,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 4801,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "5",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 26889,
+        "width": 288
+      },
+      "pinnedExtent": {
+        "pixels": 3085,
+        "width": 96
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "6",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 45383,
+        "width": 282
+      },
+      "pinnedExtent": {
+        "pixels": 5264,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "64",
+      "dir": "7",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 24779,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 2859,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "0",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 39311,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 4281,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "1",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 24865,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 2918,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "2",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 46036,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 5313,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "3",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 26806,
+        "width": 288
+      },
+      "pinnedExtent": {
+        "pixels": 3157,
+        "width": 97
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "4",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 44064,
+        "width": 320
+      },
+      "pinnedExtent": {
+        "pixels": 4799,
+        "width": 106
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "5",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 26868,
+        "width": 288
+      },
+      "pinnedExtent": {
+        "pixels": 3146,
+        "width": 97
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "6",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 45893,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 5287,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    },
+    {
+      "resolution": "128",
+      "dir": "7",
+      "current": {
+        "schema": 1,
+        "alleles": [
+          1.0986122886681096,
+          1.0986122886681096
+        ]
+      },
+      "pinned": {
+        "schema": 1,
+        "alleles": [
+          0.04232024694792927,
+          -0.03845667513087392
+        ]
+      },
+      "currentExtent": {
+        "pixels": 24820,
+        "width": 281
+      },
+      "pinnedExtent": {
+        "pixels": 2896,
+        "width": 95
+      },
+      "label": "Same mounted anatomy as the pinned reference · inherited adult length 3.000× / pinned 1.002× · pinned age 100% of maturity",
+      "guides": 1
+    }
+  ],
+  "newborn": "newborn · 55% adult linear growth · preview only · current 1.650× / adult 3.000×",
+  "scope": "Public Journal export of an actual new-world animal, actual Lab import and pinned inherited data. The second imported 3x study is explicitly controlled offline; no Simulation fields were edited and no evolved 3x lineage is claimed."
+}
