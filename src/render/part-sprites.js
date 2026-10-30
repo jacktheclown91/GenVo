@@ -1,5 +1,5 @@
 import {pixel,pixelLine,snap} from './pixel-art.js';
-import {drawNativeAridAccent} from './arid-expression.js';
+import {drawNativeAridAccent} from './arid-surface-art.js';
 import {drawHead} from './head.js';
 import {artForPart} from './runtime-part-art.js';
 import {partDef} from '../lineage/part-registry.js';
