@@ -12,6 +12,7 @@ import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
 import {drawSensoryFog,prepareSensoryFog,clipToSensed} from './sensory-fog.js';
 import {drawThermalWeather} from './thermal-weather.js';
+import {drawDiurnalLight} from './diurnal-light.js';
 import {drawWeatherReadout} from './weather-readout.js';
 import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
 import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric-visibility.js';
@@ -181,6 +182,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      else{for(const entry of actors)draw(entry);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    // Weather, art and creatures share the same light; biological sensory fog
+    // and all readable controls are drawn afterwards by their own authorities.
+    drawDiurnalLight(this);
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
