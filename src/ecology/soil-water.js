@@ -13,7 +13,7 @@ import {syncCaveAir} from '../world/cave-air.js';
 //   plant uptake : producers fund growth from this soil water (src/ecology/plant-resources.js)
 // fieldCapacity comes from the generated terrain wetness (fine, organic low-lying soils retain more water).
 import {localRain,localTemperature} from '../world/environment.js';
-import {CLIMATE_WATER,climateWaterPolicy,temperaturePotential} from '../world/climate-water.js';
+import {CLIMATE_WATER,climateWaterPolicy,pondedRunOn,temperaturePotential} from '../world/climate-water.js';
 import {coldSurfaceExchange,validateSnowpack} from '../world/snowpack.js';
 import {exchangeTerrainGroundwater} from '../world/topography.js';
 import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
@@ -59,6 +59,9 @@ export function plantAvailableWater(w,i,capacity){return Math.max(0,w.moisture[i
 // Called after producers have withdrawn from the plant-available store: the withdrawal leaves the soil.
 export function withdrawPlantUptake(w,i,capacity,remaining){const s=w.soilWater,next=SOIL_WATER.wiltingPoint+remaining/capacity,used=Math.max(0,w.moisture[i]-next);if(used>0){w.moisture[i]-=used;if(s)s.totals.uptake+=used}return used}
 export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
+  // Ponded overland water belongs to the open-water ledger; it soaks in only where
+  // the day's runoff returns to that ledger.
+  const ponds=runoffSink&&w.environment?.schema>=5&&pondedRunOn(climate)?w.environment.overland:null;let runOn=0;
   const P=SOIL_WATER,s=w.soilWater||initializeSoilWater(w),fc=s.fieldCapacity,g=s.groundwater,next=s.scratch,n=w.n,t=s.totals,atmospheric=w.environment?{...climate,frontDay:day}:climate;
   const rain=Math.max(0,climate.rain)*P.rainScale,potential=evaporationPotential(climate,climate.temp);
   // Groundwater lateral flow from the previous state: each pair of land neighbours exchanges the same amount in
@@ -74,9 +77,12 @@ export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
     // Snowfall remains stored water, not immediate soil infiltration. Thaw
     // enters the SAME infiltration/runoff authority as rainfall and cannot
     // generate liquid volume without a preceding precipitation receipt.
-    const snow=coldSurfaceExchange(w,i,cellRain,cellTemp),liquid=snow.rain;
+    const snow=coldSurfaceExchange(w,i,cellRain,cellTemp);
+    // climate-water/4: ponded water evaporates first, and the rest joins the rain.
+    let ponded=0,pondEvaporation=0;if(ponds&&ponds[i]>0){ponded=ponds[i];ponds[i]=0;pondEvaporation=Math.min(ponded,cellPotential);runOn+=ponded}
+    const liquid=snow.rain+ponded-pondEvaporation;
     const infiltration=liquid*Math.min(1,Math.max(0,(1-m)/(1-cap)));m+=infiltration;
-    const evaporation=Math.min(m,cellPotential*Math.min(1,m/cap));m-=evaporation;
+    const soilEvaporation=Math.min(m,(cellPotential-pondEvaporation)*Math.min(1,m/cap));m-=soilEvaporation;const evaporation=soilEvaporation+pondEvaporation;
     const percolation=P.drain*Math.max(0,m-cap);m-=percolation;gw+=percolation;
     const capillary=P.rise*Math.max(0,gw-m);m+=capillary;gw-=capillary;
     const deep=P.deepDrain*gw;gw-=deep;
@@ -87,6 +93,7 @@ export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
     // that outgoing stock to its own overland inventory later this day.
     if(runoffSink)runoffSink(i,liquid-infiltration+overflow);
     t.rain+=cellRain;t.snowfall=(t.snowfall||0)+snow.snowfall;t.snowmelt=(t.snowmelt||0)+snow.melt;t.infiltration+=infiltration;t.runoff+=liquid-infiltration;t.evaporation+=evaporation;t.percolation+=percolation;t.capillary+=capillary;t.deepDrainage+=deep}
+  if(runOn){t.runOn=(t.runOn||0)+runOn;const e=w.environment,row=e.lastDay;row.waterOutput+=runOn;row.waterAfter-=runOn;row.pondedRunOn=runOn;e.totals.pondedRunOn=(e.totals.pondedRunOn||0)+runOn}
   s.day=day;syncCaveAir(w);return s;
 }
 // Land water storage: soil moisture plus groundwater over every land cell (open water is a fixed boundary).
@@ -99,7 +106,7 @@ const FLOWS=['rain','snowfall','snowmelt','infiltration','runoff','evaporation',
 export function advanceSoilDay(w,climate,day){
   const r=w.plantResources,cap=2;// PLANT_RESOURCE_UNITS.waterCapacity
   const s=w.soilWater||initializeSoilWater(w);s.snowpack||=new Float64Array(w.len);s.totals.snowfall??=0;s.totals.snowmelt??=0;s.totals.springDischarge??=0;
-  const caveDrinking=s.pendingCaveDrinking||0,snowEaten=s.pendingSnowEaten||0,before=soilWaterStorage(w)+caveDrinking+snowEaten,t0=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]]));
+  const caveDrinking=s.pendingCaveDrinking||0,snowEaten=s.pendingSnowEaten||0,before=soilWaterStorage(w)+caveDrinking+snowEaten,t0={...Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]])),runOn:s.totals.runOn};
   if(r?.soilWaterLinked){for(let i=0;i<w.len;i++)if(!w.water[i])withdrawPlantUptake(w,i,cap,r.water[i]);r.soilWaterLinked=false}
   // Runoff is temporary stage data only. The physical stocks and their
   // receipts are persistent, but no duplicate live runoff authority is saved.
@@ -111,9 +118,9 @@ export function advanceSoilDay(w,climate,day){
   // Runoff validates cave geometry before applying erosion/topology changes.
   // Publish the gas displacement from this already committed groundwater step.
   syncCaveAir(w);
-  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge+caveDrinking+snowEaten;
+  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),runOn=(s.totals.runOn||0)-(t0.runOn||0),inputs=f.rain+f.lateral+runOn,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge+caveDrinking+snowEaten;
   let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
-  s.lastDay={day,...(caveDrinking?{caveDrinking}:{}),...(snowEaten?{snowEaten}:{}),climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
+  s.lastDay={day,...(caveDrinking?{caveDrinking}:{}),...(snowEaten?{snowEaten}:{}),climateRain:climate.rain,climateTemp:climate.temp,...f,...(runOn?{runOn}:{}),inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
   if(Object.hasOwn(s,'pendingCaveDrinking'))s.pendingCaveDrinking=0;if(Object.hasOwn(s,'pendingSnowEaten'))s.pendingSnowEaten=0;
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
   if(runoff){

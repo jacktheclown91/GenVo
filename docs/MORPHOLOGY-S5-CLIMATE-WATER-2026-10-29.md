@@ -94,7 +94,7 @@ The S9 year-long validation found that **open water never evaporated**. Rain add
 
 Under `/2` runoff pools evaporate, but in the humid start valley none receded in a year: no water ever left a region. Border exchange swaps equal volumes, and generated rivers had no downstream outflow. A first try drained only border cells and left the inner floodplain at the volume cap: internal flow could not carry floodwater to the edge fast enough. Diagnosis then found a second cause: ground elevation is the same under generated water and its banks, so a bankfull river stood its full depth (0.2) above the land beside it, and internal flow held every runoff-flooded neighbour at that level. No pool beside a river could ever empty.
 
-`climate-water/3`, now the new-game rule:
+`climate-water/3` (kept for worlds saved with it; `/4` below is the new-game rule):
 - **Incised channels.** Generated water fills a channel cut its own generated depth into the ground. Internal flow takes the bed as elevation less that depth, so bankfull water stands level with its banks. Runoff-made cells lie on the ground. Old worlds keep the ground-level bed.
 - **Discharge.** Each connected body of open water (orthogonal neighbours, as in the internal flow) that reaches a border side open to external water drains a quarter of its *net* liquid water above its generated levels per day (a flood-wave residence of about four days), scaled by its most open outlet. The outflow comes from the cells holding surplus, in proportion, with their dissolved salt, so discharge never draws a river below its generated water. Runoff-made cells have no generated level; they drain to the internal flow's minimum wet film (0.01) and then recede through the existing funded-channel recession.
 - **What doesn't drain.** Bodies with no open outlet: closed basins, and sides owned by a paired neighbouring region, whose seams already move water between regions.
@@ -103,6 +103,36 @@ Under `/2` runoff pools evaporate, but in the humid start valley none receded in
 - **Evaporation film.** Pool evaporation (`/2` and `/3`) now stops at the same minimum wet film. Evaporating a pool to exactly zero made the internal flow refuse the world, which `/2` only escaped because rivers kept refilling its pools.
 
 `tests/climate-water.mjs` adds a controlled case: a runoff pool beside a river with an open outlet, in a dry catchment on cool days. It drains downstream and recedes in 8 days (under `/2` it had not receded after 120). The water and salt ledgers close every day (under 10⁻⁶), and the river keeps its generated water.
+
+## `climate-water/4` — ponded water soaks in (S9 finding 2, October 29)
+
+A year-long classification of the `/3` field (seed S9-YEAR-2, every 15 days) found the cause of the growing open water:
+- **Ponded water never left the land.** Runoff waiting on dry land (`overland`) could only move downhill (65% a day) or stay. It never soaked into the soil or evaporated, although the soil under it was never saturated (room for about 1,900 units at day 101). The land store grew from 1,567 to 6,646 units in 125 days, more than ten times all open water. About 1,470 units sat in about 12 terrain sinks, where the inundation rule skips cells holding more than 2.
+- **Pools grew outward.** A pool at the 2.0 cap refuses runoff, so ponded water piled up beside it, crossed the inundation threshold and flooded the next cell. By day 361, 530 of 1,016 pools sat in 28 closed lakes, the largest 373 cells, and every shore pool stood above its lowest bank.
+
+`climate-water/4`, now the new-game rule:
+- **Run-on infiltration.** Each soil day a land cell's ponded water joins its rain under the same infiltration law; what the soil cannot take runs on downhill as before.
+- **Ponded evaporation.** The ponded water evaporates first at the open-water potential; the soil beneath gets what potential is left.
+- **Ledgers.** The water leaves the open-water ledger as `pondedRunOn` and enters the soil ledger as `runOn` on the same day. Both close: the soil ledger under 10⁻⁵, the combined rain and runoff ledger under 10⁻⁶.
+- **Versions.** Worlds saved under `/1`–`/3` are unchanged; the new terms are exactly zero there.
+
+`tests/climate-water.mjs` adds a controlled case. Ponded water on dry soil raises its moisture by 0.30 in one day and leaves 0.15 ponded, against 0.26 under `/3`. On saturated soil it passes on as runoff, and both ledgers close.
+
+**Year field, S9-YEAR-2, 365 days:**
+
+| | `/3` | `/4` |
+| --- | --- | --- |
+| Open-water cells, day 361 | 1,554 | 674 |
+| Ponded water on land, day 121 | about 6,600 and rising | 783, then steady at 600–1,200 |
+| Runoff pools flooded; receded; open at day 366 | 1,550; 520; 1,030 | 446; 310; 136 |
+| Pool life, p10 / p50 / p90 (days) | — / 66 / — | 9 / 36 / 68 |
+| River discharge (moisture units) | 10,100 | 4,822 |
+| Alive at day 366 (from 188); births | 63; 104 | 62; 74 |
+| Deaths: dehydration, drowning, wildfire | 26, 15, 31 | 55, 9, 0 |
+
+Open water no longer grows; seasonal pools come and go (11 at day 91, 172 at day 151, 136 at day 361). Two things remain:
+- **Midsummer heat kills animals far from water.** 39 animals died of thirst on days 167–169, during a heat spike (0.65 to 0.85), near the valley's northern edge. They were 10–55 tiles from water and none was beside a recently dried pool. Under `/3` the north still held runoff pools that should not have lasted. This is an observation; nothing was tuned.
+- **Lakes in closed sinks stand above their banks.** About 135 deep pools (median 1.5) in closed sinks persist. On flat ground their surface stands above the dry land beside them, because water does not yet spill onto lower land. That is the next open-water question.
 
 ## Not yet
 

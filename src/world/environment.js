@@ -79,7 +79,7 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&['pairedWaterInput','pairedWaterOutput'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid paired water totals.');
- if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
+ if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
@@ -93,7 +93,7 @@ export function validateEnvironment(w,e){
       (!Number.isFinite(row[k])||row[k]<0)))
    throw Error('Invalid paired planetary salt receipt.');
   if(e.schema>=3){
-   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
+   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','surfaceEvaporation','riverDischarge','dischargeSalt','pondedRunOn','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
       (!Number.isFinite(row[k])||row[k]<0)))
     throw Error('Invalid planetary rainfall or overland receipt.');
    if(e.schema>=4&&['internalWaterMoved','internalSaltMoved','internalWetEdges'].some(k=>k in row&&

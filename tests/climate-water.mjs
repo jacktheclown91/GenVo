@@ -96,11 +96,38 @@ assert.throws(()=>new Simulation('CLIMATE-WATER-BAD',{...opts,climateWater:'clim
   const env=w.environment,river=body[[i-1,i+1,i-w.n,i+w.n].find(j=>w.water[j]&&body[j]>=0)];let net=0;for(let k=0;k<w.len;k++)if(w.water[k]&&body[k]===river&&env.floodOrigin[k]!==1)net+=env.volume[k]-(env.ice?.[k]||0)-env.depth[k];
   return{discharged,receded:!w.water[i],days:day,worst,worstSalt,net};
  };
- const three=drain(CLIMATE_WATER.policy),two=drain(CLIMATE_WATER.pools);
+ const three=drain(CLIMATE_WATER.discharge),two=drain(CLIMATE_WATER.pools);
  assert.ok(three.discharged>0,'water leaves downstream');assert.ok(three.receded,`the pool drains and recedes (${three.days} days)`);
  assert.ok(three.worst<1e-6&&three.worstSalt<1e-6,`water and salt ledgers close every day (${three.worst.toExponential(1)}, ${three.worstSalt.toExponential(1)})`);
  assert.ok(three.net>-1e-6,`the river keeps its generated water (${three.net.toExponential(1)})`);
  assert.equal(two.discharged,0,'climate-water/2 does not discharge');assert.ok(!two.receded||two.days>three.days*2,`and its pool lasts far longer (${two.days} days)`);
  console.log(`  discharge: pool receded after ${three.days} days (${two.receded?two.days+' days':'not in '+two.days} under /2), ${three.discharged.toFixed(2)} discharged, river net ${three.net.toFixed(3)} above its generated level`);
 }
-console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed');
+// 7. climate-water/4, ponded run-on: water ponded on dry land (overland water) evaporates and
+// soaks into unsaturated soil instead of waiting indefinitely; saturated soil passes it on
+// downhill. Both the soil ledger and the combined open-water and runoff ledger close. Under /3
+// the same ponded water never enters the soil.
+{
+ const pond=policy=>{
+  const sim=new Simulation('CLIMATE-WATER-POND',{...opts,climateWater:policy}),w=sim.world;sim.phaseClimate();if(!w.soilWater)initializeSoilWater(w);
+  const e=w.environment,dry=[],wet=[];
+  for(let k=w.n*4;k<w.len-w.n*4&&(dry.length<20||wet.length<20);k++){const x=k%w.n;if(x<4||x>w.n-5||w.water[k]||w.soilWater.snowpack?.[k]>0)continue;
+   if([k-1,k+1,k-w.n,k+w.n].some(j=>w.water[j]))continue;(dry.length<=wet.length?dry:wet).push(k)}
+  for(const k of dry){w.moisture[k]=.2;e.overland[k]=.3}
+  for(const k of wet){w.moisture[k]=1;w.soilWater.groundwater[k]=1;e.overland[k]=.3}
+  const m0=dry.map(k=>w.moisture[k]);
+  sim.climate={temp:.5,rain:0,weatherFactor:1,...(sim.climateWaterRules?{evaporation:sim.climateWaterRules}:{})};sim.tickCount=0;sim.phaseSoil();
+  const soil=w.soilWater.lastDay,row=w.environment.lastDay;
+  return{gained:dry.reduce((s,k,j)=>s+w.moisture[k]-m0[j],0)/dry.length,dryLeft:dry.reduce((s,k)=>s+w.environment.overland[k],0)/dry.length,
+   runoff:soil.runoff,runOn:soil.runOn||0,pondedRunOn:row.pondedRunOn||0,soilClosure:Math.abs(soil.closure),waterClosure:Math.abs(row.waterClosure)};
+ };
+ const four=pond(CLIMATE_WATER.policy),three=pond(CLIMATE_WATER.discharge),wetPonded=20*.3;
+ assert.ok(four.runOn>0&&Math.abs(four.runOn-four.pondedRunOn)<1e-9,'ponded water leaves the open-water ledger into the soil ledger');
+ assert.ok(four.gained>three.gained+.05,`dry soil takes up ponded water (${four.gained.toFixed(3)} against ${three.gained.toFixed(3)})`);
+ assert.ok(four.dryLeft<three.dryLeft,`less water stays ponded on dry land (${four.dryLeft.toFixed(3)} against ${three.dryLeft.toFixed(3)})`);
+ assert.ok(four.runoff-three.runoff>wetPonded*.5,`saturated soil passes ponded water on as runoff (${(four.runoff-three.runoff).toFixed(2)} of ${wetPonded.toFixed(1)})`);
+ assert.ok(four.soilClosure<1e-5&&four.waterClosure<1e-6,`soil and open-water ledgers close (${four.soilClosure.toExponential(1)}, ${four.waterClosure.toExponential(1)})`);
+ assert.equal(three.runOn,0,'climate-water/3 ponded water never enters the soil');
+ console.log(`  run-on: dry soil +${four.gained.toFixed(3)} moisture, ponded water ${four.dryLeft.toFixed(3)} left on dry land against ${three.dryLeft.toFixed(3)} under /3`);
+}
+console.log('Climate water PASS (/1 soil, /2 runoff pools, /3 river discharge, /4 ponded run-on): evaporation zero at freezing and 0.085 per unit above, rule carried only by recording worlds, conserved soil days with less evaporation and more recharge and runoff on cool wet days, saves, recorded worlds unchanged; /2 runoff pools evaporate, close their ledger and recede (Scenario D); /3 runoff pools drain downstream with their rivers and recede on cool days, ledgers closed; /4 ponded water evaporates and soaks into unsaturated soil, saturated soil passes it on, ledgers closed');

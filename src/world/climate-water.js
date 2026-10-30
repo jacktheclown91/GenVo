@@ -12,15 +12,26 @@
 //  - climate-water/3: the same, and rivers discharge. Each connected body of
 //    open water that reaches a border side open to external water (a river or
 //    sea continuing beyond the region, not a side owned by a paired neighbouring
-//    region) drains a quarter of its liquid water above the generated level per
-//    day (a flood-wave residence of about four days), from every cell, scaled by
-//    its most open outlet, with its dissolved salt. Runoff-made cells have no
-//    generated level and drain to a thin film, so floodplains return toward
-//    their generated levels and runoff pools can dry and recede.
+//    region) drains a quarter of its net liquid water above its generated levels
+//    per day (a flood-wave residence of about four days), scaled by its most
+//    open outlet, with its dissolved salt. Runoff-made cells have no generated
+//    level and drain to a thin film. Generated water fills a channel incised by
+//    its own depth (bankfull water is level with its banks), so runoff pools
+//    beside rivers drain into them and can dry and recede.
+//  - climate-water/4: the same, and water ponded on land (overland water
+//    waiting to run downhill) soaks in. Each soil day the cell's ponded water
+//    evaporates at this potential first (the soil beneath gets what potential is
+//    left) and the rest joins the cell's rain under the same infiltration law;
+//    what the soil cannot take runs on downhill as before. Without it ponded water
+//    could only move downhill or wait, so it built up on unsaturated land and kept
+//    flooding new pools.
 // The rule travels in the day's climate (climate.evaporation) so every soil and
 // open-water day, resident or archived, follows its own world's recorded rule.
-export const CLIMATE_WATER=Object.freeze({policy:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25});
-export const climateWaterPolicy=value=>value===CLIMATE_WATER.policy||value===CLIMATE_WATER.pools||value===CLIMATE_WATER.soil;
+export const CLIMATE_WATER=Object.freeze({policy:'climate-water/4',discharge:'climate-water/3',pools:'climate-water/2',soil:'climate-water/1',freezing:.30,perDegree:.085,dischargeFraction:.25});
+const RULES=[CLIMATE_WATER.soil,CLIMATE_WATER.pools,CLIMATE_WATER.discharge,CLIMATE_WATER.policy];
+const rank=climate=>RULES.indexOf(climate?.evaporation)+1;
+export const climateWaterPolicy=value=>RULES.includes(value);
 export function temperaturePotential(temperature){return CLIMATE_WATER.perDegree*Math.max(0,temperature-CLIMATE_WATER.freezing)}
-export const poolEvaporation=climate=>climate?.evaporation===CLIMATE_WATER.policy||climate?.evaporation===CLIMATE_WATER.pools;
-export const riverDischarge=climate=>climate?.evaporation===CLIMATE_WATER.policy;
+export const poolEvaporation=climate=>rank(climate)>=2;
+export const riverDischarge=climate=>rank(climate)>=3;
+export const pondedRunOn=climate=>rank(climate)>=4;
