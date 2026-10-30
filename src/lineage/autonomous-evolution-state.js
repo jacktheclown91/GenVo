@@ -1,6 +1,6 @@
 import {autonomousEvolutionEnabled,regionalReferenceEvolutionEnabled} from './autonomous-evolution.js';
 import {validateRegionalPressureObservations} from '../ecology/population-profile.js';
-import {INHERITED_PARTS,physicalTraitMeta} from './inherited-anatomy-evidence.js';
+import {physicalEvidenceRules,physicalTraitMeta} from './inherited-anatomy-evidence.js';
 import {partDef} from './part-registry.js';
 
 // Validate prospective observational history only after canonical controllers
@@ -28,7 +28,8 @@ function validateBody(animal,nodes){
   }
   const physical=animal.protoHistory?.physical;
   if(physical!==undefined){
-    if(!object(physical)||physical.rules!==INHERITED_PARTS||!object(physical.baseline)||!object(physical.tracks)||
+    if(!object(physical)||!physicalEvidenceRules(physical.rules)||!object(physical.baseline)||!object(physical.tracks)||
+       (physical.baselineSize!==undefined&&(physical.rules==='inherited-parts/1'||!Number.isFinite(physical.baselineSize)))||
        Object.entries(physical.baseline).some(([id,count])=>!partDef(id)||!nonnegative(count)))
       throw Error('Invalid saved inherited physical evidence.');
     for(const [id,track] of Object.entries(physical.tracks)){

@@ -1,4 +1,13 @@
 import {undergroundLineOfSight} from '../world/cave-optics.js';
+import {GIANT_SIZE} from '../organisms/body-size.js';
+import {bodyDimensionsOf} from '../organisms/body-mass.js';
+// Under body-size/2 a body is seen in proportion to its apparent size: its current
+// linear scale, from half (motion and contrast still give small bodies away) to
+// three times the sighting range. Places and objects, and worlds without the rule, use 1.
+export function targetVisibility(sim,target){
+ if(sim?.bodySizeRules!==GIANT_SIZE.policy||!target?.bodySize)return 1;
+ return Math.max(.5,Math.min(GIANT_SIZE.maxScale,bodyDimensionsOf(target).currentScale));
+}
 import {STRATUM_SENSES,stratumSight} from './stratum-senses.js';
 import {regionalRainfall,planetaryWindAt} from '../world/weather-fronts.js';
 import {snowFraction} from '../world/snowpack.js';
@@ -91,7 +100,7 @@ export function atmosphericSight(sim,observer,target,range){
   const samples=Math.min(8,Math.max(1,Math.ceil(distance/4)));
   for(let k=0;k<samples;k++){const t=(k+.5)/samples;opticalDepth+=atmosphereAt(sim,observer.x+(target.x-observer.x)*t,observer.y+(target.y-observer.y)*t).extinction*distance/samples}
  }
- const transmission=Math.exp(-opticalDepth),effectiveRange=range*transmission;
+ const transmission=Math.exp(-opticalDepth),effectiveRange=range*transmission*targetVisibility(sim,target);
  return{detected:distance<=effectiveRange,distance,opticalDepth,transmission,effectiveRange};
 }
 const validBackup=id=>typeof id==='string'&&/^world-[A-Za-z0-9-]{8,72}$/.test(id);

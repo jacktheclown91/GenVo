@@ -55,7 +55,7 @@ export class ProtoSpeciationController{
   onBirth(child,parents=[]){
     const legacy=this.inheritLegacyTrait(child,parents);
     if(!autonomousEvolutionEnabled(this.sim))return legacy;
-    const physical=recordInheritedPhysicalEvidence(child,parents,this.sourcePopulationFor(child),this.sim.day);
+    const physical=recordInheritedPhysicalEvidence(child,parents,this.sourcePopulationFor(child),this.sim.day,{size:this.sim.bodySizeRules==='body-size/2'});
     return legacy||physical;
   }
   inheritLegacyTrait(child,parents=[]){

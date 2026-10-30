@@ -9,6 +9,8 @@ import {canOccupy} from '../lineage/lifestyle.js';
 import {isWaterDweller} from '../lineage/aquatic.js';
 import {thermalSiteDemand} from './thermal-refuge.js';
 import {renewableFood,founderDailyNeed,FOUNDING_RANGE} from './resource-founding.js';
+import {foundingWaterBudget} from './water-founding.js';
+import {bodySizeEnabled,evolvedFounderSize} from '../organisms/body-size.js';
 
 // Regional evolutionary founding (creator direction 2026-10-21). A newly
 // entered planetary region receives small, genetically varied founding groups
@@ -27,8 +29,14 @@ import {renewableFood,founderDailyNeed,FOUNDING_RANGE} from './resource-founding
 // with open fresh water reachable on foot within the founding range. Juicy
 // food and snow are seasonal; in waterless regions they kept /1 founders alive
 // for about 35-45 days only. Recorded /1 worlds keep their founding exactly.
+// /3 (morphology S6) judges water by each body's own physiology: a land site
+// qualifies with drinking water within reach, OR when the water its diet
+// supplies (eaten only up to its food need) covers what its body loses there
+// (water-founding.js). Ordinary drinkers still need water in reach; a body
+// whose food and conservation genuinely cover its loss may found without it.
+// Recorded /2 and /1 worlds keep their founding exactly.
 export const REGIONAL_FOUNDING=Object.freeze({
- policy:'regional-founding-templates/2',legacy:'regional-founding-templates/1',
+ policy:'regional-founding-templates/3',drinking:'regional-founding-templates/2',legacy:'regional-founding-templates/1',
  maxPrimary:6,maxScavengers:2,maxPredators:2,maxPerMouth:2,
  minSuitableCells:96,probeSites:6,siteSamples:24,placementTries:40,shoreRange:3,jitter:.35
 });
@@ -86,7 +94,7 @@ function supportAt(sim,a,point,baseNeed=founderDailyNeed(a.species,a)){
  const at={...a,x:point.x,y:point.y},need=baseNeed*(1+Math.max(0,thermalSiteDemand(sim,a,point.x,point.y).load));
  return{food:renewableFood(sim,at),need};
 }
-export const regionalFoundingPolicy=value=>value===REGIONAL_FOUNDING.policy||value===REGIONAL_FOUNDING.legacy;
+export const regionalFoundingPolicy=value=>value===REGIONAL_FOUNDING.policy||value===REGIONAL_FOUNDING.drinking||value===REGIONAL_FOUNDING.legacy;
 // Steps over walkable land from the site to a drinkable fresh-water shore.
 const drinkingWaterInReach=(w,point)=>(w.waterDistance?.[w.idx(point.x,point.y)]??Infinity)<=FOUNDING_RANGE;
 function rankRole(sim,profile,rng,kind,absent,policy){
@@ -98,11 +106,17 @@ function rankRole(sim,profile,rng,kind,absent,policy){
   const samples=[];for(let k=0;k<REGIONAL_FOUNDING.siteSamples;k++)samples.push(cellPoint(profile.world,cells[Math.floor(rng.next()*cells.length)]));
   const measured=withProbe(sim,t,probe=>{
    const baseNeed=founderDailyNeed(probe.species,probe);
-   return samples.map(p=>({...p,...supportAt(sim,probe,p,baseNeed)}));
+   const physiological=policy===REGIONAL_FOUNDING.policy&&t.habitat.medium!=='water';
+   return samples.map(p=>({...p,...supportAt(sim,probe,p,baseNeed),...(physiological?{water:foundingWaterBudget(sim,probe,p)}:{})}));
   });
-  if(policy===REGIONAL_FOUNDING.policy&&t.habitat.medium!=='water'){
+  if(policy===REGIONAL_FOUNDING.drinking&&t.habitat.medium!=='water'){
    const watered=measured.filter(m=>drinkingWaterInReach(profile.world,m));
    if(!watered.length){absent.push({template:t.id,reason:'no drinking water within reach'});continue}
+   measured.splice(0,measured.length,...watered);
+  }
+  if(policy===REGIONAL_FOUNDING.policy&&t.habitat.medium!=='water'){
+   const watered=measured.filter(m=>m.water.sustainable);
+   if(!watered.length){absent.push({template:t.id,reason:'neither drinking water within reach nor enough water in its diet'});continue}
    measured.splice(0,measured.length,...watered);
   }
   measured.sort((a,b)=>b.food/b.need-a.food/a.need||a.y-b.y||a.x-b.x);
@@ -140,6 +154,9 @@ function foundGroup(sim,row,rng,origin,policy){
  for(let k=0;k<want;k++){
   const site=sites[k%sites.length],a=sim.spawnAnimal(t.carrier,site.x,site.y);bodyFor(a,variantPlan(t,rng));
   if(!place(sim,a,site,rng,isWaterDweller(a))){sim.animals.splice(sim.animals.indexOf(a),1);continue}
+  // A naturally evolved configuration keeps its cohort's inherited size: founders
+  // draw both alleles around the recorded mean with the recorded spread.
+  if(t.bodySize&&a.bodySize&&bodySizeEnabled(sim))a.bodySize=evolvedFounderSize(rng,t.bodySize,sim.bodySizeRules);
   a.foundingOrigin={schema:1,policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount,...(t.library?{library:t.library}:{})};
   members.push(a);
  }
@@ -152,7 +169,8 @@ function foundGroup(sim,row,rng,origin,policy){
  const scored=members.map(a=>({a,food:renewableFood(sim,a)})).sort((x,y)=>y.food-x.food||x.a.id-y.a.id),kept=scored.slice(0,supportable).map(x=>x.a);
  balanceSexes(kept);
  const removed=new Set(scored.slice(supportable).map(x=>x.a));if(removed.size)sim.animals=sim.animals.filter(a=>!removed.has(a));
- const summary={template:t.id,carrier:t.carrier,configured:members.length,supportable,renewableFood:+shared.toFixed(3),needPerFounder:+need.toFixed(3),sites:sites.map(s=>({x:+s.x.toFixed(2),y:+s.y.toFixed(2)})),ids:kept.map(a=>a.id)};
+ const water=row.best.filter(m=>m.water).map(m=>m.water),waterSummary=water.length?{water:{drinkingSites:water.filter(m=>m.drinking).length,dietRatio:+Math.min(...water.map(m=>m.ratio)).toFixed(3)}}:{};
+ const summary={template:t.id,carrier:t.carrier,configured:members.length,supportable,...waterSummary,renewableFood:+shared.toFixed(3),needPerFounder:+need.toFixed(3),sites:sites.map(s=>({x:+s.x.toFixed(2),y:+s.y.toFixed(2)})),ids:kept.map(a=>a.id)};
  if(!kept.length)return{absent:'renewable food cannot support a breeding group',summary};
  sim.spawnCenters[t.carrier]=[...(sim.spawnCenters[t.carrier]||[]),...sites];
  return{summary};
