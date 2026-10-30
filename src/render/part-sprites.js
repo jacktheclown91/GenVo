@@ -66,9 +66,22 @@ const DRAW={
   // v1.60.0: the basic eye and the resting grazing mouth are part art too (they were drawn by the body).
   'simple-eye'(c,k){const {eye,s,p}=k,ex=eye.x,ey=eye.y,wide=!!k.wide;pixel(c,ex-1,ey-1,wide?3:2,wide?3:2,s,p.light);pixel(c,ex-1,ey-1,2,wide?2:1,s,'#eef7ff');const pupilX=ex+(k.fx>.25?0:k.fx<-.25?-1:0),pupilY=ey+(k.fy>.25?0:k.fy<-.25?-1:0);pixel(c,pupilX,pupilY,1,1,s,k.alert?'#5c3040':'#223751');if(wide)pixel(c,ex,ey-1,1,1,s,'#ffffff')},
   'grazing-mouth'(c,k){const {mouth:m,perp,s}=k,r=k.rest||1;pixelLine(c,m.x-perp.x*r,m.y-perp.y*r,m.x+perp.x*r,m.y+perp.y*r,s,'rgba(38,54,76,.72)')},
-  'grasper'(c,k){const sign=Math.sign(k.leg.side)||1,f=k.foot;pixel(c,snap(f.x+sign),snap(f.y),1,1,k.s,k.p.light);pixel(c,snap(f.x),snap(f.y+1),1,1,k.s,k.p.shade)},
+  'grasper'(c,k){
+    const f=k.foot,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
+    const side=Math.sign(k.leg?.side)||1;
+    pixel(c,snap(f.x+fx-fy*side),snap(f.y+fy+fx*side),1,1,k.s,k.p.light);
+    pixel(c,snap(f.x+fx),snap(f.y+fy),1,1,k.s,k.p.shade);
+  },
   // Digging forelimb: a broad spade foot (3 pixels) with a pale cutting edge.
-  'digging-forelimb'(c,k){const sign=Math.sign(k.leg.side)||1,f=k.foot;pixel(c,snap(f.x-1),snap(f.y+1),3,1,k.s,'#8c6a46');pixel(c,snap(f.x-1),snap(f.y+2),3,1,k.s,'#e2cf9f');pixel(c,snap(f.x+sign),snap(f.y),1,1,k.s,'#8c6a46')},
+  'digging-forelimb'(c,k){
+    const f=k.foot,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
+    const side=Math.sign(k.leg?.side)||1;
+    for(const [reach,color] of [[1,'#8c6a46'],[2,'#e2cf9f']]){
+      const x=f.x+fx*reach,y=f.y+fy*reach;
+      pixelLine(c,x+fy,y-fx,x-fy,y+fx,k.s,color);
+    }
+    pixel(c,snap(f.x-fy*side),snap(f.y+fx*side),1,1,k.s,'#8c6a46');
+  },
   'barb'(c,k){const sign=Math.sign(k.leg.side)||1;pixel(c,snap(k.knee.x+sign),snap(k.knee.y-1),1,2,k.s,k.p.light)},
   // Claw: a hooked two-segment talon past the foot.
   'claw'(c,k){const f=k.foot,sign=Math.sign(k.leg.side)||1,tx=f.x+k.fx*2,ty=f.y+k.fy*2;pixelLine(c,f.x,f.y,tx,ty,k.s,'#f1e8cf');pixel(c,snap(tx+k.perp.x*sign),snap(ty+k.perp.y*sign),1,1,k.s,'#f1e8cf')},
