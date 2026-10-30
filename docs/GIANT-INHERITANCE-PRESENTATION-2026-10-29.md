@@ -19,3 +19,5 @@ A separate view-only record copy supplies explicit retained-size reader fixtures
 native/ retains the initial harness failure: it clicked an already-open comparison disclosure after reopening the Journal, hiding its own controls. The harness now checks disclosure state first; no product behavior or gate was relaxed.
 
 Creator acceptance, the conception writer, ordinary giant fields, broader C7/C8 validation and full C1-C8 remain open. No release published.
+
+Final fixture correction: an added parity assertion initially failed because the test deleted/re-added bodySize on the live fixture, changing graph property order itself. The legacy check now uses an isolated unsized clone; canonical input remains untouched. The shell had continued to the implementation commit after that test failure, so the correction and rerun are recorded in a separate follow-up commit. Product behavior was not changed for the test.

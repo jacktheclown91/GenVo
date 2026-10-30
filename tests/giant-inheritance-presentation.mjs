@@ -24,5 +24,5 @@ const young=buildYoungSummary(sim,p,[child],{first:true}).young[0];assert.ok(Mat
 assert.equal(snapshot(),before,'Read adapters, labels and portraits leave the full saved graph exact');
 delete record.parentPhenotypes[0].bodySize;p.bodySize=size(3);before=snapshot();
 models=lineageComparisonModels(sim,child.id);assert.equal(models[0].sizeStatus,'unrecorded');assert.equal(lineageComparisonChanges(sim,models)[0].sizeChange,null,'Missing conception size is never substituted with a living parent');
-const old=child.bodySize;delete child.bodySize;assert.equal(buildYoungSummary(sim,p,[child],{first:true}).young[0].size,undefined,'Legacy children retain their unsized summary');child.bodySize=old;assert.equal(snapshot(),before,'Missing-history and legacy reads remain pure');
+const legacyChild={...child};delete legacyChild.bodySize;assert.equal(buildYoungSummary(sim,p,[legacyChild],{first:true}).young[0].size,undefined,'Legacy children retain their unsized summary');assert.equal(snapshot(),before,'Missing-history and legacy reads remain pure');
 console.log('Giant inheritance presentation PASS: versioned3x portraits, quantitative recorded deltas, actual newborn scale, old bounds, missing-history and legacy behavior, full read purity.');
