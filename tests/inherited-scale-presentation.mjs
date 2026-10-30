@@ -24,5 +24,6 @@ assert.match(renderer,/gaitTravelFor\(inheritedGaitLength\(/);
 assert.match(renderer,/ph\.bodyScale\*=visualGrowth/,'preserve existing developmental growth');
 assert.match(renderer,/Math\.ceil\(44\*scale\/2\)/,'screen bounds expand with inherited scale');
 assert.match(renderer,/drawGenvoSprite\(c,\{animal:a,phenotype:ph,scale,/,'actual sprite uses inherited scale');
-assert.match(renderer,/r\.drawAnimal\(actor,tile\)/,'regional renderer delegates to same drawAnimal');
+const regional=readFileSync(new URL('../src/render/regional-fauna.js',import.meta.url),'utf8');
+assert.match(regional,/r\.drawAnimal\(actor,tile\)/,'regional renderer delegates to same drawAnimal');
 console.log('inherited body-size presentation projection: PASS');
