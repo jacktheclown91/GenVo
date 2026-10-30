@@ -41,6 +41,7 @@ import {EncounterPresentation,applyEncounterPose} from './encounter-expression.j
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
 import {PartExpressionTracker} from './part-expression.js';
+import {aridVisualReading,applyAestivationPosture} from './arid-expression.js';
 // v1.41.0 32-pixel world: cached terrain tiles hold 32 art pixels per tile (painted on a 2x-scaled canvas).
 const TILE_ART=2;
 // World art pass (v1.50.0): room round each tile for plants that spread past its edges, in tile units.
@@ -1062,9 +1063,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
+    const arid=aridVisualReading(this.sim,a);
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
+    applyAestivationPosture(behavior,life,arid);
     const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat','crack'].includes(action)});
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyBirthSettlement(behavior,birth,{feeding:!!feeding});
@@ -1074,7 +1077,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded,a);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
-    const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert:alert&&!life.dormant,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};
+    const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert:alert&&!life.dormant,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,arid,partExpression:this.partExpressions.sample(this.sim,a,action)};
     const contact=environmentContactFor(this.sim.world,a,{action,phase,moving});
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
@@ -1105,7 +1108,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawMarkers(a,scale);
     // Two quiet 32-grid pixel sleep strokes readable from above; no side-view
     // body, new actor animation state or invented simulation energy.
-    if(a.torpor){const alpha=.55+.20*Math.sin((this.renderNow||0)*.0016+a.id);c.save();c.globalAlpha*=alpha;for(const [x,y] of [[6,-12],[7,-12],[8,-12],[8,-11],[7,-10],[6,-9],[7,-9],[8,-9],[10,-15],[11,-15],[11,-14],[10,-13],[11,-13]])pixel(c,x,y,1,1,scale,'#d8e4e2');c.restore()}
+    if(a.torpor){const alpha=.55+.20*Math.sin((this.renderNow||0)*.0016+a.id);c.save();c.globalAlpha*=alpha;for(const [x,y] of [[6,-12],[7,-12],[8,-12],[8,-11],[7,-10],[6,-9],[7,-9],[8,-9],[10,-15],[11,-15],[11,-14],[10,-13],[11,-13]])pixel(c,x,y,1,1,scale,arid?.aestivating?'#d6b183':'#d8e4e2');c.restore()}
     if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
   }
   easedDir(id,target){
@@ -1186,7 +1189,7 @@ function vectorDir(dx,dy,fallback=0){if(Math.abs(dx)<.001&&Math.abs(dy)<.001)ret
 function hash2(x,y,salt=0){let n=(x*374761393+y*668265263+salt*1442695041)>>>0;n=(n^(n>>13))*1274126177>>>0;return((n^(n>>16))>>>0)/4294967295}
 // v1.57.0: what a creature's finished sprite depends on, so a pose seen before is one canvas copy.
 // The active creature is never cached (its pose reacts continuously to input and combat).
-function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|dormant'+(life?.dormant?1:0)+'|gestation'+(life?.gestation??0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')}
+function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|dormant'+(life?.dormant?1:0)+'|gestation'+(life?.gestation??0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')+'|arid'+(pose.arid?.frillFlushed?1:0)+(pose.arid?.waxSealed?1:0)+(pose.arid?.aestivating?1:0)}
 function smoothNoise2(x,y,cell=8,salt=0){
   const gx=Math.floor(x/cell),gy=Math.floor(y/cell),fx=(x-gx*cell)/cell,fy=(y-gy*cell)/cell;
   const sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy),a=hash2(gx,gy,salt),b=hash2(gx+1,gy,salt),c=hash2(gx,gy+1,salt),d=hash2(gx+1,gy+1,salt);
