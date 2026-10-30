@@ -1,4 +1,4 @@
-import {adultSizeScale,validateBodySize} from '../organisms/body-size.js';
+import {BODY_SIZE,bodySizePolicy,adultSizeScale,validateBodySize} from '../organisms/body-size.js';
 // Read-only lineage portraits use canonical phenotype colors and shared native bounds.
 import {creatureFootprint} from './creature-footprint.js';
 import {migrateLegacyReadings} from '../lineage/readings.js';
@@ -9,14 +9,14 @@ import {deserializePlan} from '../lineage/body-plan.js';
 import {founderPlan} from '../lineage/body-inheritance.js';
 import {nativeArtStatus} from './runtime-part-art.js';
 // Pure read adapter. Missing pigment stays on the established legacy-gene appearance path.
-export function lineagePortraitReading(genes,{dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null,bodySize=null}={}){
- const animal=migrateLegacyReadings({id:1,dir,genes:{...genes},pigmentGenome:pigmentGenome?structuredClone(pigmentGenome):null,anatomy:anatomy?{...anatomy}:undefined,adaptations:[...adaptations],lineageForm:divergence?{...divergence}:null,populationTrait:protoTrait?{...protoTrait}:null,speciesBranch:speciesBranch?{...speciesBranch}:null,ecoLifestyle:lifestyle?{...lifestyle}:null});let plan;try{plan=bodyPlan?deserializePlan(bodyPlan):null}catch{plan=null}animal.bodyPlan=plan||founderPlan();if(bodySize){validateBodySize(bodySize);animal.bodySize=structuredClone(bodySize)}const phenotype=phenotypeFor(animal);return{animal,phenotype,palette:creaturePalette(phenotype)};
+export function lineagePortraitReading(genes,{dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null,bodySize=null,bodySizeRules=BODY_SIZE.policy}={}){
+ const animal=migrateLegacyReadings({id:1,dir,genes:{...genes},pigmentGenome:pigmentGenome?structuredClone(pigmentGenome):null,anatomy:anatomy?{...anatomy}:undefined,adaptations:[...adaptations],lineageForm:divergence?{...divergence}:null,populationTrait:protoTrait?{...protoTrait}:null,speciesBranch:speciesBranch?{...speciesBranch}:null,ecoLifestyle:lifestyle?{...lifestyle}:null});let plan;try{plan=bodyPlan?deserializePlan(bodyPlan):null}catch{plan=null}animal.bodyPlan=plan||founderPlan();if(bodySize){if(!bodySizePolicy(bodySizeRules))throw Error('Invalid portrait size policy.');validateBodySize(bodySize,bodySizeRules);animal.bodySize=structuredClone(bodySize)}const phenotype=phenotypeFor(animal);return{animal,phenotype,palette:creaturePalette(phenotype)};
 }
 const cache=new Map();let boundsMeasurements=0;
 export function lineagePortraitCacheStats(){return{entries:cache.size,boundsMeasurements}}
 const artIdentities=new WeakMap();let artIdentity=0;
 function detailIdentity(parts){if(!parts)return 0;if(!artIdentities.has(parts))artIdentities.set(parts,++artIdentity);return artIdentities.get(parts)}
-function dataFor(genes,options){const {dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null,bodySize=null}=options,key=JSON.stringify([nativeArtStatus().revision,detailIdentity(options.authoredParts),genes,dir,adaptations,divergence,protoTrait,speciesBranch,lifestyle,bodyPlan,anatomy,pigmentGenome,bodySize]);if(!cache.has(key)){if(cache.size>=128)cache.delete(cache.keys().next().value);cache.set(key,lineagePortraitReading(genes,options))}return cache.get(key)}
+function dataFor(genes,options){const {dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null,bodySize=null,bodySizeRules=BODY_SIZE.policy}=options,key=JSON.stringify([nativeArtStatus().revision,detailIdentity(options.authoredParts),genes,dir,adaptations,divergence,protoTrait,speciesBranch,lifestyle,bodyPlan,anatomy,pigmentGenome,bodySize,bodySizeRules]);if(!cache.has(key)){if(cache.size>=128)cache.delete(cache.keys().next().value);cache.set(key,lineagePortraitReading(genes,options))}return cache.get(key)}
 export function lineagePortraitBounds(genes,options={}){const data=dataFor(genes,options);if(!data.bounds){boundsMeasurements++;data.bounds=Object.freeze(creatureFootprint(data.animal,options.dir??2,{authoredParts:options.authoredParts}))}return data.bounds}
 export function drawLineagePortrait(canvas,genes,options={}){
  if(!canvas?.getContext||!genes)return;const{frame=1,dir=2,emphasis=false,fitScale=null}=options,data=dataFor(genes,options),bounds=lineagePortraitBounds(genes,options),c=canvas.getContext('2d'),w=canvas.width,h=canvas.height;c.imageSmoothingEnabled=false;c.clearRect(0,0,w,h);

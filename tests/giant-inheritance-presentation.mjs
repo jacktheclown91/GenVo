@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {lineageComparisonModels,lineageComparisonChanges} from '../src/ui/lineage-comparison.js';
+import {lineagePortraitReading} from '../src/render/lineage-portrait.js';
+import {buildYoungSummary} from '../src/ui/young-summary.js';
+import {GIANT_SIZE,BODY_SIZE,adultSizeScale} from '../src/organisms/body-size.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {encodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
+const sim=new Simulation('GIANT-INHERITANCE-READING',{player:true,dayClock:true,metabolism:true,bodySize:GIANT_SIZE.policy}),p=sim.player(),mate=sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id);
+const child=sim.spawnAnimal(p.species,p.x,p.y,[p,mate]);sim.lineage.registerBirth(child,[p,mate]);
+// Explicit read-adapter fixtures; no production writer or natural lineage claim.
+const size=n=>({schema:1,alleles:[Math.log(n),Math.log(n)]});child.bodySize=size(3);child.age=0;
+const record=sim.lineage.records.get(child.id);record.parentPhenotypes[0].bodySize=size(1.5);record.parentPhenotypes[1].bodySize=size(2);
+const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(sim,{savedAt:'giant-inheritance'})));let before=snapshot();
+let models=lineageComparisonModels(sim,child.id),changes=lineageComparisonChanges(sim,models);
+assert.ok(models.every(m=>m.sizeStatus==='recorded'));assert.equal(models.at(-1).bodySizeRules,GIANT_SIZE.policy);
+assert.ok(Math.abs(changes[0].sizeChange.percent-100)<1e-10);assert.ok(Math.abs(changes[1].sizeChange.percent-50)<1e-10);
+assert.match(changes[0].sizeChange.text,/100.0%/);
+const portrait=lineagePortraitReading(child.genes,{bodyPlan:child.bodyPlan,bodySize:child.bodySize,bodySizeRules:GIANT_SIZE.policy});assert.ok(Math.abs(adultSizeScale(portrait.animal)-3)<1e-12);
+assert.throws(()=>lineagePortraitReading(child.genes,{bodySize:child.bodySize,bodySizeRules:BODY_SIZE.policy}));
+assert.throws(()=>lineagePortraitReading(child.genes,{bodySize:child.bodySize}));
+assert.throws(()=>lineagePortraitReading(child.genes,{bodySize:child.bodySize,bodySizeRules:'unknown'}));
+const young=buildYoungSummary(sim,p,[child],{first:true}).young[0];assert.ok(Math.abs(young.size.adultScale-3)<1e-12);assert.ok(Math.abs(young.size.currentScale-1.65)<1e-12);assert.ok(young.lines.some(t=>t.includes('3.000')&&t.includes('1.650')));
+assert.equal(snapshot(),before,'Read adapters, labels and portraits leave the full saved graph exact');
+delete record.parentPhenotypes[0].bodySize;p.bodySize=size(3);before=snapshot();
+models=lineageComparisonModels(sim,child.id);assert.equal(models[0].sizeStatus,'unrecorded');assert.equal(lineageComparisonChanges(sim,models)[0].sizeChange,null,'Missing conception size is never substituted with a living parent');
+const old=child.bodySize;delete child.bodySize;assert.equal(buildYoungSummary(sim,p,[child],{first:true}).young[0].size,undefined,'Legacy children retain their unsized summary');child.bodySize=old;assert.equal(snapshot(),before,'Missing-history and legacy reads remain pure');
+console.log('Giant inheritance presentation PASS: versioned3x portraits, quantitative recorded deltas, actual newborn scale, old bounds, missing-history and legacy behavior, full read purity.');

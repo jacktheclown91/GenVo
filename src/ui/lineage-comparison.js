@@ -10,7 +10,7 @@ import {beginTintFrame} from '../render/indexed-part-renderer.js';
 
 function sizeReading(source,sim){
   if(source?.bodySize){
-    try{validateBodySize(source.bodySize);return{bodySize:structuredClone(source.bodySize),sizeStatus:'recorded'}}catch{}
+    try{validateBodySize(source.bodySize,sim.bodySizeRules);return{bodySize:structuredClone(source.bodySize),bodySizeRules:sim.bodySizeRules,sizeStatus:'recorded'}}catch{}
   }
   return{sizeStatus:sim.bodySizeRules?'unrecorded':'reference'};
 }
@@ -41,7 +41,12 @@ export function lineageComparisonChanges(sim,models){
       if(Number.isFinite(delta)&&Math.abs(delta)>=.01)proportions.push(label+' '+(delta>0?'+':'−')+Math.round(Math.abs(delta)*100)+'%');
     }
     const verbs=bodyVerbs(sim,{...child,species:'genvo'},{...parent,species:'genvo'}).filter(v=>v.change!=='kept');
-    return{parentId:parent.id,differences:build?.differences||[],proportions,verbs};
+    let sizeChange=null;
+    if(parent.sizeStatus==='recorded'&&child.sizeStatus==='recorded'){
+      const ratio=adultSizeScale(child)/adultSizeScale(parent),percent=(ratio-1)*100;
+      sizeChange={ratio,percent,text:Math.abs(percent)<.05?'Offspring adult length matches to 0.1%':'Offspring adult length '+(percent>0?'+':'-')+Math.abs(percent).toFixed(1)+'% versus this parent'};
+    }
+    return{parentId:parent.id,differences:build?.differences||[],proportions,verbs,sizeChange};
   });
 }
 
@@ -55,7 +60,7 @@ function detailedParts(models){
   return batch.promise;
 }
 function portraitOptions(model,state,authoredParts){
-  return{bodyPlan:model.bodyPlan,adaptations:model.adaptations,anatomy:model.anatomy,pigmentGenome:model.pigmentGenome,lifestyle:model.lifestyle,dir:state.dir,bodySize:state.size==='inherited'?model.bodySize:null,authoredParts};
+  return{bodyPlan:model.bodyPlan,adaptations:model.adaptations,anatomy:model.anatomy,pigmentGenome:model.pigmentGenome,lifestyle:model.lifestyle,dir:state.dir,bodySize:state.size==='inherited'?model.bodySize:null,bodySizeRules:model.bodySizeRules,authoredParts};
 }
 const element=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 
@@ -91,8 +96,9 @@ export async function drawLineageComparison(el,sim,id){
     figure.querySelectorAll('.lineage-size-reading,.lineage-change-reading').forEach(e=>e.remove());
     const note=element('p',comparisonSizeLabel(models[i]));note.className='lineage-size-reading';figure.append(note);
     const change=changes[i];if(!change)continue;
+    if(change.sizeChange){const delta=element('p',change.sizeChange.text);delta.className='lineage-size-reading lineage-size-change';figure.append(delta)}
     const detail=element('details');detail.className='lineage-change-reading';detail.open=state.expanded.has(change.parentId);detail.ontoggle=()=>{if(detail.open)state.expanded.add(change.parentId);else state.expanded.delete(change.parentId)};const count=change.differences.length;
-    detail.append(element('summary',count?count+' changed '+(count===1?'position':'positions')+' in offspring':'Same mounted anatomy'));
+    detail.append(element('summary',count?count+' changed '+(count===1?'position':'positions')+' in offspring':'Same mounted anatomy'+(change.sizeChange&&Math.abs(change.sizeChange.percent)>=.05?' · adult size differs':'')));
     const list=element('ul');for(const d of change.differences)list.append(element('li',d.location+': '+d.first+' → '+d.second));
     for(const text of change.proportions)list.append(element('li',text));
     for(const v of change.verbs)list.append(element('li',(v.change==='new'?'Gained anatomy for ':'Lost anatomy for ')+v.label.toLowerCase()));
