@@ -1,0 +1,279 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "comparison": {
+    "timings": [
+      {
+        "label": "before",
+        "resolution": 64,
+        "medianMs": 12.300000000745058,
+        "p90Ms": 39.099999997764826,
+        "samples": 10
+      },
+      {
+        "label": "current",
+        "resolution": 64,
+        "medianMs": 9.399999998509884,
+        "p90Ms": 26.5,
+        "samples": 10
+      },
+      {
+        "label": "before",
+        "resolution": 128,
+        "medianMs": 13.5,
+        "p90Ms": 41.70000000298023,
+        "samples": 10
+      },
+      {
+        "label": "current",
+        "resolution": 128,
+        "medianMs": 14,
+        "p90Ms": 39.399999998509884,
+        "samples": 10
+      }
+    ],
+    "stateExact": true,
+    "airborne": true,
+    "mode": null,
+    "study": {
+      "format": "genvo.organism-study/1",
+      "source": {
+        "seed": "WING-DETAIL",
+        "day": 1
+      },
+      "animal": {
+        "id": 197,
+        "species": "genvo",
+        "age": 30,
+        "genes": {
+          "body": 1.0004891861695797,
+          "motion": 1.059968186262995,
+          "metabolism": 0.9319615846965462,
+          "digestion": 1.0387794451322407,
+          "senses": 0.9032896058168263,
+          "climate": 1.0076407193671912,
+          "immunity": 1.03862084466964,
+          "temperament": 0.9877320158295334
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 22,
+          "chroma": 2,
+          "tone": 0,
+          "marking": 3,
+          "density": 0,
+          "accent": 6
+        },
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "adaptations": [],
+        "sex": "M",
+        "massPolicy": "relative-anatomical-load/1",
+        "bodySize": {
+          "schema": 1,
+          "alleles": [
+            0.036017907387577,
+            0.04884344779420645
+          ]
+        },
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/dorsal",
+              "partId": "flight-wing",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "dorsal"
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-96101c59"
+        },
+        "alive": true
+      }
+    },
+    "aerial": {
+      "landing": false,
+      "phase": 2.971818181804654,
+      "wingFrame": 0,
+      "glideSpread": 0,
+      "flightSpread": 0.9711729714807213,
+      "wingSweep": 0.15896834037090413,
+      "aerialTuck": 1,
+      "bodyRise": 0.010348164083843604,
+      "bodyDrop": 0,
+      "bodyLean": 0.22
+    }
+  },
+  "facings": [
+    {
+      "resolution": "64",
+      "dir": 0,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 1,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 2,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 3,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 4,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 5,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 6,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "64",
+      "dir": 7,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 0,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 1,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 2,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 3,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 4,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 5,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 6,
+      "plan": "bp0-96101c59",
+      "study": 197
+    },
+    {
+      "resolution": "128",
+      "dir": 7,
+      "plan": "bp0-96101c59",
+      "study": 197
+    }
+  ],
+  "scope": "Public winged-flier start, real6 takeoff/landing and keyboard flight; same-state airborne gameplay before/current isolated to wing detail, plus actual organism study in Lab display (court) preview/all8 directions. Lab display is not a biological takeoff claim. No mass/position/anatomy/energy/airborne injection; native32 and canonical state retained. Short CPU render observations, not mature-world acceptance."
+}

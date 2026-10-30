@@ -1,0 +1,79 @@
+{
+  "schema": "genvo.part-art-variants/1",
+  "version": 4,
+  "status": "production-candidate-creator-review",
+  "native32Fallback": true,
+  "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
+  "generation": "Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.",
+  "parts": [
+    {
+      "partId": "small-torso",
+      "resolution": 64,
+      "path": "./small-torso-64.indexed.json.gz",
+      "checksum": "0d1704fd6dadc81525474a97317b43969bb8aae2e02cf2ba5968f76b8fcdbb82",
+      "bytes": 4258,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 64,
+      "path": "./soft-torso-64.indexed.json.gz",
+      "checksum": "90ee3ca2382acec1146743a326ab790d0d72e22695d0b9462732da3b3fdcf3d4",
+      "bytes": 4253,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 64,
+      "path": "./dome-torso-64.indexed.json.gz",
+      "checksum": "ee7f01844f04d99a0f3b1baceb11d3906d907ef4e80dbe597357a565374b99c2",
+      "bytes": 4257,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "small-torso",
+      "resolution": 128,
+      "path": "./small-torso-128.indexed.json.gz",
+      "checksum": "838d13d777c1cb50dc84f782811e78ac557ad8d885d403a9cdc44895c1931905",
+      "bytes": 14063,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 128,
+      "path": "./soft-torso-128.indexed.json.gz",
+      "checksum": "c21a4fb111c71393b807d2d3d9a5bc8be50438d70504c767d1d3f3464598f891",
+      "bytes": 14061,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 128,
+      "path": "./dome-torso-128.indexed.json.gz",
+      "checksum": "ed49ff0cd70117507c770799eb03d27fa56a702b252f738f85ca9d2d56c0f63b",
+      "bytes": 14064,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    }
+  ],
+  "refinement": "Three single-view covering masters, explicit fixed registration; preceding masters retained.",
+  "faceRefinement": "Native code-authored eyelids, compound facets and distinct resting/feeding mouth tissue.",
+  "limbRefinement": "Native indexed walking muscles, runner tendons and sturdy joint/foot anatomy; unchanged two-bone registration."
+}

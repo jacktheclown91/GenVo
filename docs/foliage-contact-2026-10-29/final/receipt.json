@@ -1,0 +1,87 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "result": {
+    "timings": [
+      {
+        "label": "before",
+        "medianMs": 8.200000002980232,
+        "p95Ms": 48.399999998509884,
+        "samples": 18
+      },
+      {
+        "label": "current",
+        "medianMs": 6.100000001490116,
+        "p95Ms": 51.29999999701977,
+        "samples": 18
+      }
+    ],
+    "fieldStates": [
+      {
+        "actors": 2,
+        "probes": 10,
+        "activeCells": 8,
+        "cells": 1470
+      }
+    ],
+    "target": {
+      "i": 645,
+      "x": 5,
+      "y": 5
+    },
+    "rows": [
+      {
+        "size": 1,
+        "old": true,
+        "radius": 1.15,
+        "strength": 0
+      },
+      {
+        "size": 1,
+        "old": false,
+        "radius": 1.15,
+        "strength": 0
+      },
+      {
+        "size": 1.5,
+        "old": true,
+        "radius": 1.4375,
+        "strength": 0
+      },
+      {
+        "size": 1.5,
+        "old": false,
+        "radius": 1.4375,
+        "strength": 0
+      },
+      {
+        "size": 2,
+        "old": true,
+        "radius": 1.7249999999999999,
+        "strength": 0
+      },
+      {
+        "size": 2,
+        "old": false,
+        "radius": 1.7249999999999999,
+        "strength": 0.07246376574039459
+      },
+      {
+        "size": 3,
+        "old": true,
+        "radius": 2.3,
+        "strength": 0
+      },
+      {
+        "size": 3,
+        "old": false,
+        "radius": 2.3,
+        "strength": 0.30434781312942505
+      }
+    ],
+    "stateExact": true,
+    "bodySizeRules": "body-size/2",
+    "scope": "Ordinary public new-world movement and actual modern contact field. Isolated comparison uses controlled1/1.5/2/3x clones and unchanged recorded mature-valley terrain/plant stocks (view-only modern-size policy adapter, not an adopted physical world) through the real foreground painter; it is not a naturally evolved giant population or physical multi-size field. No canonical animal/resource/position fields edited."
+  },
+  "status": "PASS"
+}

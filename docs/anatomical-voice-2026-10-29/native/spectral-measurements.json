@@ -1,0 +1,185 @@
+{
+  "rows": [
+    {
+      "name": "grazer-before",
+      "centroidHz": 711.3314378942154,
+      "energyAbove3k": 0.0032031481122509913,
+      "activeSeconds": 0.6559183673469388,
+      "peak": 0.0712282806634903,
+      "rms": 0.008386242318986674,
+      "rate": 1.076339385671347,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "grazer-current",
+      "centroidHz": 714.8374887950719,
+      "energyAbove3k": 0.0025610054290097933,
+      "activeSeconds": 0.6538321995464853,
+      "peak": 0.08408310264348984,
+      "rms": 0.009541234604719756,
+      "rate": 1.08,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "clawed-grazer-before",
+      "centroidHz": 708.3008426989165,
+      "energyAbove3k": 0.0031310462292358583,
+      "activeSeconds": 0.6586848072562358,
+      "peak": 0.07147849351167679,
+      "rms": 0.008404168316624562,
+      "rate": 1.0717543137087908,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "clawed-grazer-current",
+      "centroidHz": 714.8374887950719,
+      "energyAbove3k": 0.0025610054290097933,
+      "activeSeconds": 0.6538321995464853,
+      "peak": 0.08408310264348984,
+      "rms": 0.009541234604719756,
+      "rate": 1.08,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "jaw-before",
+      "centroidHz": 939.2722487213753,
+      "energyAbove3k": 0.11480339892640237,
+      "activeSeconds": 0.7290249433106576,
+      "peak": 0.07051625847816467,
+      "rms": 0.003996157809695351,
+      "rate": 1.0687674812199623,
+      "sample": "stalker"
+    },
+    {
+      "name": "jaw-current",
+      "centroidHz": 721.9966534887322,
+      "energyAbove3k": 0.051713183641747394,
+      "activeSeconds": 0.7859863945578232,
+      "peak": 0.07627593725919724,
+      "rms": 0.004560345398241201,
+      "rate": 0.9952403047549363,
+      "sample": "stalker"
+    },
+    {
+      "name": "crusher-before",
+      "centroidHz": 932.7924449323868,
+      "energyAbove3k": 0.1127981028072629,
+      "activeSeconds": 0.7339682539682539,
+      "peak": 0.07045403867959976,
+      "rms": 0.004009704160400082,
+      "rate": 1.0615316720595018,
+      "sample": "stalker"
+    },
+    {
+      "name": "crusher-current",
+      "centroidHz": 502.9012275545948,
+      "energyAbove3k": 0.0090669047230096,
+      "activeSeconds": 0.7970975056689342,
+      "peak": 0.07737532258033752,
+      "rms": 0.004748630620267878,
+      "rate": 0.9430776873728447,
+      "sample": "stalker"
+    },
+    {
+      "name": "beak-before",
+      "centroidHz": 2739.003664592847,
+      "energyAbove3k": 0.0821621551111769,
+      "activeSeconds": 0.36444444444444446,
+      "peak": 0.06573629379272461,
+      "rms": 0.006715857088439955,
+      "rate": 1.076339385671347,
+      "sample": "hopper"
+    },
+    {
+      "name": "beak-current",
+      "centroidHz": 2763.417207969147,
+      "energyAbove3k": 0.08893515139360916,
+      "activeSeconds": 0.3635374149659864,
+      "peak": 0.07714642584323883,
+      "rms": 0.007850266870182846,
+      "rate": 1.08,
+      "sample": "hopper"
+    },
+    {
+      "name": "kernel-before",
+      "centroidHz": 2723.5181005336703,
+      "energyAbove3k": 0.0821568558636234,
+      "activeSeconds": 0.36653061224489797,
+      "peak": 0.06573835760354996,
+      "rms": 0.006734927146603607,
+      "rate": 1.0702540670498653,
+      "sample": "hopper"
+    },
+    {
+      "name": "kernel-current",
+      "centroidHz": 2556.0286736280914,
+      "energyAbove3k": 0.0771848795275063,
+      "activeSeconds": 0.3892517006802721,
+      "peak": 0.07744473218917847,
+      "rms": 0.008345548112997378,
+      "rate": 1.0086068263321195,
+      "sample": "hopper"
+    },
+    {
+      "name": "filter-before",
+      "centroidHz": 530.2266682902421,
+      "energyAbove3k": 0.012340162369879396,
+      "activeSeconds": 0.5059410430839002,
+      "peak": 0.06746634840965271,
+      "rms": 0.0035369504573332902,
+      "rate": 1.076339385671347,
+      "sample": "digger"
+    },
+    {
+      "name": "filter-current",
+      "centroidHz": 430.40220268673824,
+      "energyAbove3k": 0.00015187234764803327,
+      "activeSeconds": 0.5040362811791383,
+      "peak": 0.07917656004428864,
+      "rms": 0.004031595029493493,
+      "rate": 1.08,
+      "sample": "digger"
+    },
+    {
+      "name": "giant-before",
+      "centroidHz": 507.77257792136226,
+      "energyAbove3k": 0.0008825920865391954,
+      "activeSeconds": 0.7127437641723356,
+      "peak": 0.07212712615728378,
+      "rms": 0.00978114626126866,
+      "rate": 0.7749643576833698,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "giant-current",
+      "centroidHz": 510.81806792218146,
+      "energyAbove3k": 0.0002448466572214618,
+      "activeSeconds": 0.7136961451247166,
+      "peak": 0.08398061990737915,
+      "rms": 0.011156637330970708,
+      "rate": 0.7776000000000001,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "giant-newborn-before",
+      "centroidHz": 596.9920410873834,
+      "energyAbove3k": 0.0016431442772241024,
+      "activeSeconds": 0.7162358276643991,
+      "peak": 0.07208775728940964,
+      "rms": 0.00915222914657532,
+      "rate": 0.9032955108419988,
+      "sample": "genvo-call"
+    },
+    {
+      "name": "giant-newborn-current",
+      "centroidHz": 600.4196329896056,
+      "energyAbove3k": 0.0008419808780523374,
+      "activeSeconds": 0.7169160997732427,
+      "peak": 0.08342785388231277,
+      "rms": 0.010424177495688388,
+      "rate": 0.9063676055121512,
+      "sample": "genvo-call"
+    }
+  ],
+  "scope": "Measured native OfflineAudioContext WAV output; energy centroid and >3kHz fraction are numerical comparisons, not listener acceptance."
+}

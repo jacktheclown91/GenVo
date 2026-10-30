@@ -1,0 +1,48 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "result": {
+    "eligible": 2493,
+    "best": {
+      "i": 4230,
+      "x": 6,
+      "y": 33,
+      "reading": {
+        "available": 0.21566188736224565,
+        "cover": 1,
+        "snow": 0,
+        "surfaceWetness": 0,
+        "temperature": 0.5558782582727825,
+        "exposure": 0.2433470399033617,
+        "retentive": true
+      }
+    },
+    "survey": {
+      "x0": 0,
+      "y0": 25,
+      "width": 16,
+      "height": 16
+    },
+    "timings": [
+      {
+        "old": true,
+        "medianMs": 59.899999998509884,
+        "p95Ms": 66.69999999552965,
+        "samples": 12
+      },
+      {
+        "old": false,
+        "medianMs": 23.599999994039536,
+        "p95Ms": 25.399999998509884,
+        "samples": 12
+      }
+    ],
+    "day": 101,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "worldGenerator": "planetary/1",
+    "player": 86,
+    "stateExact": true,
+    "scope": "Public existing Day100 resident and ordinary renderer; actual dry-cell survey uses the same recorded World and renderer tile path with no actor relocation or terrain/climate/biomass edits. No natural channel-history/recession acceptance claimed."
+  }
+}

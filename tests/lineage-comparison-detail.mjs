@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {Simulation} from '../src/sim/simulation.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {lineageComparisonModels,lineageComparisonChanges,comparisonSizeLabel} from '../src/ui/lineage-comparison.js';
+import {lineagePortraitReading} from '../src/render/lineage-portrait.js';
+import {adultSizeScale} from '../src/organisms/body-size.js';
+import {loadPartArtVariant} from '../src/render/part-art-variants.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {encodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
+const sim=new Simulation('DETAILED-INHERITANCE',{player:true,dayClock:true,metabolism:true,bodySize:true}),parent=sim.player(),mate=sim.animals.find(a=>a.alive&&a.species==='genvo'&&a.id!==parent.id);
+// Explicit canonical birth/model fixture, not a claimed natural field event.
+const child=sim.spawnAnimal('genvo',parent.x+.2,parent.y+.2,[parent,mate]);sim.lineage.registerBirth(child,[parent,mate]);
+child.bodyPlan=makePlan(child.bodyPlan.nodes.map(n=>n.socket?.startsWith('limb.')?{...n,partId:'webbed-leg'}:n));
+const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(sim,{savedAt:'detailed-comparison'})));
+let saved=snapshot(),models=lineageComparisonModels(sim,child.id),changes=lineageComparisonChanges(sim,models);
+assert.equal(models[0].sizeStatus,'unrecorded');assert.equal(models.at(-1).sizeStatus,'recorded');assert.match(comparisonSizeLabel(models[0]),/not recorded/);
+assert.ok(changes[0].differences.some(d=>d.second==='webbed leg'));assert.ok(changes[0].verbs.some(v=>v.key==='dive'&&v.change==='new'));assert.equal(snapshot(),saved);
+const oldSize=structuredClone(parent.bodySize);parent.bodySize={schema:1,alleles:[Math.log(2),Math.log(2)]};
+assert.equal(lineageComparisonModels(sim,child.id)[0].bodySize,undefined,'missing conception size is never borrowed from the living parent');
+// Future retained-witness reader fixture only. No writer/save authority is added.
+const record=sim.lineage.records.get(child.id);record.parentPhenotypes[0].bodySize=oldSize;record.parentPhenotypes[1].bodySize=structuredClone(mate.bodySize);
+saved=snapshot();models=lineageComparisonModels(sim,child.id);assert.deepEqual(models[0].bodySize,oldSize);assert.notDeepEqual(models[0].bodySize,parent.bodySize);
+models[0].bodySize.alleles[0]=0;assert.equal(snapshot(),saved,'returned size data is independently owned');
+const reading=lineagePortraitReading(child.genes,{bodyPlan:child.bodyPlan,pigmentGenome:child.pigmentGenome,bodySize:parent.bodySize});assert.equal(adultSizeScale(reading.animal),2);reading.animal.bodySize.alleles[0]=0;assert.equal(adultSizeScale(parent),2);
+assert.throws(()=>lineagePortraitReading(child.genes,{bodySize:{schema:1,alleles:[9,9]}}));
+const requested=[],factory=()=>({getContext(){return{createImageData(w,h){return{data:new Uint8ClampedArray(w*h*4)}},putImageData(){}}}}),fetcher=async url=>{requested.push(String(url));return new Response(await fs.readFile(url))};
+const catalog=new URL('../assets/art/production-candidate-v1/catalog.json',import.meta.url);
+const selected=await loadPartArtVariant(catalog,{resolution:128,partIds:['simple-eye','grazing-mouth','not-in-detailed-catalog'],createCanvas:factory,fetcher});
+assert.equal(selected.parts.size,2);assert.equal(requested.filter(p=>p.endsWith('.gz')).length,2);assert.ok(requested.filter(p=>p.endsWith('.gz')).every(p=>p.includes('simple-eye-128')||p.includes('grazing-mouth-128')));
+const empty=await loadPartArtVariant(catalog,{resolution:128,partIds:['not-in-detailed-catalog'],createCanvas:factory,fetcher});assert.equal(empty.parts.size,0,'unsupported detailed anatomy keeps standard fallback');
+await assert.rejects(loadPartArtVariant(catalog,{partIds:[4],createCanvas:factory,fetcher}),/Invalid detailed part selection/);
+console.log('Detailed lineage comparison PASS: canonical differences/capabilities, honest missing sizes, immutable future witness reads, owned size-aware portraits and selective verified artwork loading/fallback.');

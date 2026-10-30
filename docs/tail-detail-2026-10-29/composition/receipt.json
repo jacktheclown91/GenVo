@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "name": "balance",
+      "resolution": 64,
+      "label": "before",
+      "medianMs": 2.2000000029802322,
+      "p90Ms": 3.100000001490116,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "balance",
+      "resolution": 64,
+      "label": "current",
+      "medianMs": 2,
+      "p90Ms": 3.100000001490116,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "paddle",
+      "resolution": 64,
+      "label": "before",
+      "medianMs": 1.8000000044703484,
+      "p90Ms": 2.5,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "paddle",
+      "resolution": 64,
+      "label": "current",
+      "medianMs": 1.7999999970197678,
+      "p90Ms": 2.600000001490116,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "balance",
+      "resolution": 128,
+      "label": "before",
+      "medianMs": 2,
+      "p90Ms": 2.5,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "balance",
+      "resolution": 128,
+      "label": "current",
+      "medianMs": 2,
+      "p90Ms": 2.2000000029802322,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "paddle",
+      "resolution": 128,
+      "label": "before",
+      "medianMs": 1.9000000059604645,
+      "p90Ms": 2.6999999955296516,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "name": "paddle",
+      "resolution": 128,
+      "label": "current",
+      "medianMs": 2,
+      "p90Ms": 2.5,
+      "samples": 30,
+      "spritesPerSample": 8
+    }
+  ],
+  "scope": "Matched isolated8-sprite CPU composition, actual gameplay organism studies, reused canvas, alternating warm before/current comparisons. Not whole-world FPS or mature-crowd acceptance."
+}

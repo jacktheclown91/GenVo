@@ -18,7 +18,8 @@ async function newWorld(page,seed){
  await page.getByRole('button',{name:/New World/}).first().click();await page.locator('#newWorldSeed').fill(seed);await page.getByRole('button',{name:'Begin World',exact:true}).click();
  await page.waitForFunction(()=>window.__GENVO8__?.nativeArtStatus?.().status==='ready',{timeout:120000});await page.waitForTimeout(800);
 }
-async function advanceDays(page,days){await page.evaluate(n=>{const s=window.__GENVO8__.sim,target=s.day+n;while(s.day<target)s.update(null)},days);await page.waitForTimeout(400)}
+// The player creature runs on the game's own Auto mode while time is advanced unattended.
+async function advanceDays(page,days){await page.evaluate(n=>{const s=window.__GENVO8__.sim,target=s.day+n,auto=s.playerAutonomy;s.setPlayerAutonomy(true);while(s.day<target)s.update(null);s.setPlayerAutonomy(auto)},days);await page.waitForTimeout(400)}
 (async()=>{
  const browser=await chromium.launch({headless:true});activeBrowser=browser;
  // Desktop 800 x 600.

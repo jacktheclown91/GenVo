@@ -1,0 +1,35 @@
+{
+  "rows": [
+    {
+      "enabled": false,
+      "medianMs": 4,
+      "p95Ms": 5.400000002235174,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": true,
+      "medianMs": 4.099999997764826,
+      "p95Ms": 5.700000002980232,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": false,
+      "medianMs": 4.099999997764826,
+      "p95Ms": 4.699999999254942,
+      "samples": 30,
+      "visibleCreatures": 2
+    }
+  ],
+  "stateExact": false,
+  "snapshotDifference": {
+    "index": 2963,
+    "before": "ngGraceUntilDay\",20],[\"openingGraceEnded\",false],[\"playerAutonomy\",false],[\"familyControlExplained\",false],[\"lastPlayerAction\",{\"$ref\":41}],[\"lastPlayerDamage\",null],[\"lastDefenseReceipt\",null],[\"foundingReport\",{\"$ref\":42}],[\"starterMateId\",198],[\"creatureSta",
+    "after": "ngGraceUntilDay\",20],[\"openingGraceEnded\",false],[\"playerAutonomy\",false],[\"familyControlExplained\",true],[\"lastPlayerAction\",{\"$ref\":41}],[\"lastPlayerDamage\",null],[\"lastDefenseReceipt\",null],[\"foundingReport\",{\"$ref\":42}],[\"starterMateId\",198],[\"creatureStar"
+  },
+  "frozenBefore": "{\"landing\":false,\"phase\":6.894545454565801,\"wingFrame\":1,\"flightSpread\":0.3317237793515471,\"wingSweep\":-0.16789986583068037,\"aerialTuck\":1,\"bodyRise\":0.23989402792508566,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "frozenAfter": "{\"landing\":false,\"phase\":6.894545454565801,\"wingFrame\":1,\"flightSpread\":0.3317237793515471,\"wingSweep\":-0.16789986583068037,\"aerialTuck\":1,\"bodyRise\":0.23989402792508566,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "pauseExact": true,
+  "scope": "Matched paused young-world direct renderer CPU composition while the real player is airborne. Preceding no-aerial-helper path / new path / preceding path. Not FPS or mature-population acceptance."
+}

@@ -1,0 +1,266 @@
+{
+  "status": "PASS",
+  "subject": "paddle",
+  "seed": "TAIL-DETAIL-paddle",
+  "comparison": {
+    "study": {
+      "format": "genvo.organism-study/1",
+      "source": {
+        "bodySizeRules": "body-size/2",
+        "seed": "TAIL-DETAIL-paddle",
+        "day": 1
+      },
+      "animal": {
+        "id": 197,
+        "species": "genvo",
+        "age": 30,
+        "genes": {
+          "body": 1.0339320477098228,
+          "motion": 1.0428786883596333,
+          "metabolism": 0.969702422618866,
+          "digestion": 1.0520398125052453,
+          "senses": 0.9203236422501505,
+          "climate": 1.0117027854546905,
+          "immunity": 1.0934771474450828,
+          "temperament": 1.0594739690888675
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 8,
+          "chroma": 0,
+          "tone": 2,
+          "marking": 1,
+          "density": 2,
+          "accent": 0
+        },
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0.9
+        },
+        "adaptations": [
+          "webbed-limbs"
+        ],
+        "sex": "M",
+        "massPolicy": "relative-anatomical-load/1",
+        "bodySize": {
+          "schema": 1,
+          "alleles": [
+            0.04202426350675524,
+            0.028785039926879114
+          ]
+        },
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "soft-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/tail",
+              "partId": "paddle-tail",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "tail"
+            }
+          ],
+          "id": "bp0-48a594e0"
+        },
+        "alive": true
+      }
+    },
+    "timings": [
+      {
+        "label": "native32",
+        "medianMs": 9.300000004470348,
+        "p90Ms": 21,
+        "samples": 10
+      },
+      {
+        "label": "before64",
+        "medianMs": 7.299999997019768,
+        "p90Ms": 26.700000002980232,
+        "samples": 10
+      },
+      {
+        "label": "current64",
+        "medianMs": 7.200000002980232,
+        "p90Ms": 24.599999994039536,
+        "samples": 10
+      },
+      {
+        "label": "closeup128",
+        "medianMs": 7.600000001490116,
+        "p90Ms": 20.799999997019768,
+        "samples": 10
+      }
+    ],
+    "stateExact": true,
+    "plan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "soft-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "webbed-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "webbed-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "webbed-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "webbed-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        },
+        {
+          "id": "root/tail",
+          "partId": "paddle-tail",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "tail"
+        }
+      ],
+      "id": "bp0-48a594e0"
+    },
+    "parts": [
+      "soft-torso",
+      "simple-eye",
+      "simple-eye",
+      "webbed-leg",
+      "webbed-leg",
+      "webbed-leg",
+      "webbed-leg",
+      "grazing-mouth",
+      "paddle-tail"
+    ],
+    "position": {
+      "x": 64.5,
+      "y": 47.28916074366811
+    },
+    "decodedRgbaBytesPerVariant": 1048576
+  },
+  "movement": {
+    "distance": 1.5309065063313696,
+    "start": {
+      "x": 64.5,
+      "y": 47.28916074366811
+    },
+    "end": {
+      "x": 62.96909349366863,
+      "y": 47.28916074366811
+    },
+    "tick": 87
+  },
+  "errors": [],
+  "scope": "Public recorded sandbox-founder import; real supported anatomy and ordinary keyboard movement in a new planetary world. Same paused world/camera across native32/prior64/refined-body-form64/128 art. No living actor, food, position or weather injection. 128 capture uses the same gameplay footprint; Lab closeups are separate.",
+  "creatorAcceptance": false
+}

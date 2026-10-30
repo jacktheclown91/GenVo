@@ -1,0 +1,222 @@
+{
+  "rows": [
+    {
+      "label": "cold bare",
+      "time": 0.19,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 1,
+        "thermal": 0.11074669412167845,
+        "temperature": -0.30000001192092896,
+        "thermogenic": false,
+        "bodyDrop": 0.65,
+        "headDrop": 0.45,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.35,
+        "eyeNarrow": true,
+        "cacheToken": "cold:16:0"
+      }
+    },
+    {
+      "label": "cold fur",
+      "time": 0.19,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 0.58705251043701,
+        "thermal": 0.05315841317840565,
+        "temperature": -0.30000001192092896,
+        "thermogenic": false,
+        "bodyDrop": 0.36562500000000003,
+        "headDrop": 0.253125,
+        "bodyLean": -0.1125,
+        "bodySway": 0,
+        "feelerPin": 0.196875,
+        "eyeNarrow": true,
+        "cacheToken": "cold:9:0"
+      }
+    },
+    {
+      "label": "cold fur + core",
+      "time": 0.19,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 0.3089931184268882,
+        "thermal": 0.03508455269774773,
+        "temperature": -0.30000001192092896,
+        "thermogenic": true,
+        "bodyDrop": 0.203125,
+        "headDrop": 0.140625,
+        "bodyLean": -0.0625,
+        "bodySway": 0.03125,
+        "feelerPin": 0.109375,
+        "eyeNarrow": false,
+        "cacheToken": "cold:5:1"
+      }
+    },
+    {
+      "label": "heat bare",
+      "time": 0.19,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 0.9692308572622444,
+        "thermal": 0.07800000572204589,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.4,
+        "headDrop": 0.25,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.12,
+        "eyeNarrow": true,
+        "cacheToken": "heat:16:0"
+      }
+    },
+    {
+      "label": "heat fur",
+      "time": 0.19,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 1,
+        "thermal": 0.0967200070953369,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.4,
+        "headDrop": 0.25,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.12,
+        "eyeNarrow": true,
+        "cacheToken": "heat:16:0"
+      }
+    },
+    {
+      "label": "heat frill",
+      "time": 0.19,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 0.6332308326134314,
+        "thermal": 0.05616000411987304,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.25,
+        "headDrop": 0.15625,
+        "bodyLean": -0.125,
+        "bodySway": 0,
+        "feelerPin": 0.075,
+        "eyeNarrow": true,
+        "cacheToken": "heat:10:0"
+      }
+    },
+    {
+      "label": "cold bare",
+      "time": 0.25,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 1,
+        "thermal": 0.11074669412167845,
+        "temperature": -0.30000001192092896,
+        "thermogenic": false,
+        "bodyDrop": 0.65,
+        "headDrop": 0.45,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.35,
+        "eyeNarrow": true,
+        "cacheToken": "cold:16:0"
+      }
+    },
+    {
+      "label": "cold fur",
+      "time": 0.25,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 0.58705251043701,
+        "thermal": 0.05315841317840565,
+        "temperature": -0.30000001192092896,
+        "thermogenic": false,
+        "bodyDrop": 0.36562500000000003,
+        "headDrop": 0.253125,
+        "bodyLean": -0.1125,
+        "bodySway": 0,
+        "feelerPin": 0.196875,
+        "eyeNarrow": true,
+        "cacheToken": "cold:9:0"
+      }
+    },
+    {
+      "label": "cold fur + core",
+      "time": 0.25,
+      "thermal": {
+        "kind": "cold",
+        "intensity": 0.3089931184268882,
+        "thermal": 0.03508455269774773,
+        "temperature": -0.30000001192092896,
+        "thermogenic": true,
+        "bodyDrop": 0.203125,
+        "headDrop": 0.140625,
+        "bodyLean": -0.0625,
+        "bodySway": 0,
+        "feelerPin": 0.109375,
+        "eyeNarrow": false,
+        "cacheToken": "cold:5:0"
+      }
+    },
+    {
+      "label": "heat bare",
+      "time": 0.25,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 0.9692308572622444,
+        "thermal": 0.07800000572204589,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.4,
+        "headDrop": 0.25,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.12,
+        "eyeNarrow": true,
+        "cacheToken": "heat:16:0"
+      }
+    },
+    {
+      "label": "heat fur",
+      "time": 0.25,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 1,
+        "thermal": 0.0967200070953369,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.4,
+        "headDrop": 0.25,
+        "bodyLean": -0.2,
+        "bodySway": 0,
+        "feelerPin": 0.12,
+        "eyeNarrow": true,
+        "cacheToken": "heat:16:0"
+      }
+    },
+    {
+      "label": "heat frill",
+      "time": 0.25,
+      "thermal": {
+        "kind": "heat",
+        "intensity": 0.6332308326134314,
+        "thermal": 0.05616000411987304,
+        "temperature": 1.2000000476837158,
+        "thermogenic": false,
+        "bodyDrop": 0.25,
+        "headDrop": 0.15625,
+        "bodyLean": -0.125,
+        "bodySway": 0,
+        "feelerPin": 0.075,
+        "eyeNarrow": true,
+        "cacheToken": "heat:10:0"
+      }
+    }
+  ],
+  "scope": "Private cloned actor/world draw inputs with explicit temperatures and actual supported mounted parts. Not natural heat or thermogenic-shiver observations; no live simulation edits.",
+  "stateExact": true
+}

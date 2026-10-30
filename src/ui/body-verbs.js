@@ -1,3 +1,4 @@
+import {aridPhysiologyEnabled} from '../ecology/arid-physiology.js';
 // What a body can do, as verbs (creator direction 2026-10-23: anatomy changes what you
 // can do, not only numbers). Read from the same capability authorities the game uses
 // when the action is attempted; nothing is inferred from part names here.
@@ -10,7 +11,8 @@ export const VERB_LABELS=Object.freeze({attack:'Attack',pounce:'Pounce',display:
 // Verbs of `body`, each marked new, kept or lost against `before` (when given).
 export function bodyVerbs(sim,body,before=null){
  const now=actionCapabilities(sim,body),then=before?actionCapabilities(sim,before):now,out=[];
- for(const [key,label] of Object.entries(VERB_LABELS)){
+ for(const [key,baseLabel] of Object.entries(VERB_LABELS)){
+  const label=key==='torpor'&&aridPhysiologyEnabled(sim)?'Seasonal and drought dormancy':baseLabel;
   if(now[key])out.push({key,label,change:then[key]?'kept':'new'});
   else if(then[key])out.push({key,label,change:'lost'});
  }

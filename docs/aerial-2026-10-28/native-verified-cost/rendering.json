@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "enabled": false,
+      "medianMs": 4.299999997019768,
+      "p95Ms": 5.800000000745058,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": true,
+      "medianMs": 4.299999997019768,
+      "p95Ms": 5.100000001490116,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": false,
+      "medianMs": 4.600000001490116,
+      "p95Ms": 6,
+      "samples": 30,
+      "visibleCreatures": 2
+    }
+  ],
+  "stateExact": true,
+  "snapshotDifference": null,
+  "frozenBefore": "{\"landing\":false,\"phase\":7.353636363622812,\"wingFrame\":1,\"flightSpread\":0.261191162874224,\"wingSweep\":-0.10694803005876909,\"aerialTuck\":1,\"bodyRise\":0.265213428711817,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "frozenAfter": "{\"landing\":false,\"phase\":7.353636363622812,\"wingFrame\":1,\"flightSpread\":0.261191162874224,\"wingSweep\":-0.10694803005876909,\"aerialTuck\":1,\"bodyRise\":0.265213428711817,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "pauseExact": true,
+  "scope": "Matched paused young-world direct renderer CPU composition while the real player is airborne. Preceding no-aerial-helper path / new path / preceding path. Not FPS or mature-population acceptance."
+}

@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "subject": "shell",
+  "seed": "GENVO8-TEST-A",
+  "proof": {
+    "rows": [
+      {
+        "id": 197,
+        "player": true,
+        "first": {
+          "x": 45.5,
+          "y": 107.5
+        },
+        "last": {
+          "x": 42.11221429830835,
+          "y": 105.67480537671204
+        },
+        "weight": {
+          "relative": 0.2864275796610036,
+          "mass": 2.692614910081304,
+          "source": "relative-anatomical-load/1"
+        },
+        "style": {
+          "runner": 0,
+          "spring": 0,
+          "webbed": 0,
+          "sturdy": 1,
+          "heavy": 0.6364275796610035,
+          "bob": 2.0182841274576058,
+          "thud": 0.6364275796610035,
+          "twist": 1.0182841274576055,
+          "roll": 0.5727848216949032,
+          "lean": -0.09546413694915053,
+          "hop": 0
+        },
+        "key": "|mass-carriage41",
+        "samples": 128,
+        "distance": 3.84817195216971
+      },
+      {
+        "id": 198,
+        "player": false,
+        "first": {
+          "x": 45.5,
+          "y": 107.5
+        },
+        "last": {
+          "x": 44.484752076478884,
+          "y": 104.82552413066992
+        },
+        "weight": {
+          "relative": 0.28857669176467593,
+          "mass": 2.7039297864798097,
+          "source": "relative-anatomical-load/1"
+        },
+        "style": {
+          "runner": 0,
+          "spring": 0,
+          "webbed": 0,
+          "sturdy": 1,
+          "heavy": 0.6385766917646759,
+          "bob": 2.0217227068234815,
+          "thud": 0.6385766917646759,
+          "twist": 1.0217227068234815,
+          "roll": 0.5747190225882083,
+          "lean": -0.09578650376470138,
+          "hop": 0
+        },
+        "key": "|mass-carriage41",
+        "samples": 90,
+        "distance": 2.860690392517658
+      }
+    ],
+    "queries": 218,
+    "meanQueryMs": 0.01055045877027949,
+    "stateExact": true,
+    "contacts": {
+      "held": 437,
+      "replanted": 5,
+      "recovered": 4,
+      "maxHoldDrift": 0,
+      "resets": 0
+    }
+  },
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Public legal authored founder, actual keyboard and autonomous movement. No mass/age/position/motion/resources altered. Query overhead and paused graph parity, not full mature-world performance acceptance."
+}

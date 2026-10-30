@@ -1,0 +1,182 @@
+{
+  "rows": [
+    {
+      "mouth": "grazing-mouth",
+      "elapsed": 0.1,
+      "mode": "graze"
+    },
+    {
+      "mouth": "nibbler-mouth",
+      "elapsed": 0.1,
+      "mode": "nibble"
+    },
+    {
+      "mouth": "beak-mouth",
+      "elapsed": 0.1,
+      "mode": "peck"
+    },
+    {
+      "mouth": "kernel-beak",
+      "elapsed": 0.1,
+      "mode": "crush"
+    },
+    {
+      "mouth": "tearing-jaw",
+      "elapsed": 0.1,
+      "mode": "tear"
+    },
+    {
+      "mouth": "filter-mouth",
+      "elapsed": 0.1,
+      "mode": "filter"
+    },
+    {
+      "mouth": "sucker-mouth",
+      "elapsed": 0.1,
+      "mode": "suck"
+    },
+    {
+      "mouth": "gape-mouth",
+      "elapsed": 0.1,
+      "mode": "swallow"
+    },
+    {
+      "mouth": "grazing-mouth",
+      "elapsed": 0.35,
+      "mode": "graze"
+    },
+    {
+      "mouth": "nibbler-mouth",
+      "elapsed": 0.35,
+      "mode": "nibble"
+    },
+    {
+      "mouth": "beak-mouth",
+      "elapsed": 0.35,
+      "mode": "peck"
+    },
+    {
+      "mouth": "kernel-beak",
+      "elapsed": 0.35,
+      "mode": "crush"
+    },
+    {
+      "mouth": "tearing-jaw",
+      "elapsed": 0.35,
+      "mode": "tear"
+    },
+    {
+      "mouth": "filter-mouth",
+      "elapsed": 0.35,
+      "mode": "filter"
+    },
+    {
+      "mouth": "sucker-mouth",
+      "elapsed": 0.35,
+      "mode": "suck"
+    },
+    {
+      "mouth": "gape-mouth",
+      "elapsed": 0.35,
+      "mode": "swallow"
+    },
+    {
+      "mouth": "grazing-mouth",
+      "elapsed": 0.6,
+      "mode": "graze"
+    },
+    {
+      "mouth": "nibbler-mouth",
+      "elapsed": 0.6,
+      "mode": "nibble"
+    },
+    {
+      "mouth": "beak-mouth",
+      "elapsed": 0.6,
+      "mode": "peck"
+    },
+    {
+      "mouth": "kernel-beak",
+      "elapsed": 0.6,
+      "mode": "crush"
+    },
+    {
+      "mouth": "tearing-jaw",
+      "elapsed": 0.6,
+      "mode": "tear"
+    },
+    {
+      "mouth": "filter-mouth",
+      "elapsed": 0.6,
+      "mode": "filter"
+    },
+    {
+      "mouth": "sucker-mouth",
+      "elapsed": 0.6,
+      "mode": "suck"
+    },
+    {
+      "mouth": "gape-mouth",
+      "elapsed": 0.6,
+      "mode": "swallow"
+    },
+    {
+      "mouth": "grazing-mouth",
+      "elapsed": 0.82,
+      "mode": "graze"
+    },
+    {
+      "mouth": "nibbler-mouth",
+      "elapsed": 0.82,
+      "mode": "nibble"
+    },
+    {
+      "mouth": "beak-mouth",
+      "elapsed": 0.82,
+      "mode": "peck"
+    },
+    {
+      "mouth": "kernel-beak",
+      "elapsed": 0.82,
+      "mode": "crush"
+    },
+    {
+      "mouth": "tearing-jaw",
+      "elapsed": 0.82,
+      "mode": "tear"
+    },
+    {
+      "mouth": "filter-mouth",
+      "elapsed": 0.82,
+      "mode": "filter"
+    },
+    {
+      "mouth": "sucker-mouth",
+      "elapsed": 0.82,
+      "mode": "suck"
+    },
+    {
+      "mouth": "gape-mouth",
+      "elapsed": 0.82,
+      "mode": "swallow"
+    }
+  ],
+  "timings": [
+    {
+      "updated": false,
+      "medianMs": 3.399999998509884,
+      "p95Ms": 5,
+      "samples": 30,
+      "spritesPerSample": 8
+    },
+    {
+      "updated": true,
+      "medianMs": 3.6999999955296516,
+      "p95Ms": 4.700000002980232,
+      "samples": 30,
+      "spritesPerSample": 8
+    }
+  ],
+  "scope": "Explicit private receipt replay, actual canonical modular draw/64px assets; missing live carnivore/filter/suction events are not claimed. Timings measure uncached eight-sprite composition, not full-world FPS.",
+  "stateExact": true
+}

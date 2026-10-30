@@ -8,6 +8,7 @@ export class FrontEnd{
     this.messageEl=document.querySelector('#menuMessage');this.worldsEl=document.querySelector('#worldsList');
     this.el.addEventListener('click',event=>this.click(event));
     this.el.querySelector('#menuVolume')?.addEventListener('input',e=>this.updateVolume(Number(e.target.value)));
+    for(const channel of ['music','ambience','sfx'])this.el.querySelector(`[data-audio-channel="${channel}"]`)?.addEventListener('input',e=>{this.audio.setVolume(channel,Number(e.target.value)/100);this.syncSettings()});
     this.el.querySelector('#menuMute')?.addEventListener('change',e=>this.updateMute(e.target.checked));
     this.el.querySelector('#menuReduceMotion')?.addEventListener('change',e=>this.updateMotion(e.target.checked));
     // Viewing mode is a presentation preference kept in this browser, not in saves.
@@ -134,14 +135,13 @@ export class FrontEnd{
   syncSettings(){
     const vol=this.el.querySelector('#menuVolume'),label=this.el.querySelector('#menuVolumeValue'),mute=this.el.querySelector('#menuMute'),motion=this.el.querySelector('#menuReduceMotion');
     vol.value=Math.round(this.audio.masterLevel*100);label.value=`${vol.value}%`;label.textContent=`${vol.value}%`;
+    for(const channel of ['music','ambience','sfx']){const slider=this.el.querySelector(`[data-audio-channel="${channel}"]`);if(slider){slider.value=Math.round(this.audio[channel+'Level']*100);const output=slider.parentElement.querySelector('output');output.value=output.textContent=`${slider.value}%`}}
     mute.checked=!this.audio.enabled;motion.checked=document.body.classList.contains('reduced-menu-motion');
     const zoom=this.el.querySelector('#menuZoom');if(zoom)zoom.value=String(cameraZoom());
     const view=this.el.querySelector('#menuViewMode'),note=this.el.querySelector('#menuViewNote');if(view){view.value=viewMode();if(note)note.textContent=VIEW_MODES[viewMode()].note}
   }
   updateVolume(n){
-    this.audio.masterLevel=Math.max(0,Math.min(1,n/100));this.audio.savePrefs();
-    if(this.audio.ctx&&this.audio.master){const t=this.audio.ctx.currentTime;this.audio.master.gain.setTargetAtTime(this.audio.enabled?this.audio.masterLevel:0,t,.03)}
-    this.el.querySelector('#menuVolumeValue').textContent=`${n}%`;
+    this.audio.setVolume('master',n/100);this.syncSettings();
   }
   updateMute(muted){if(this.audio.enabled===!muted)return;this.audio.toggleMute()}
   updateMotion(reduce){document.body.classList.toggle('reduced-menu-motion',reduce);try{localStorage.setItem('genvo-menu-reduced-motion',reduce?'1':'0')}catch{}}

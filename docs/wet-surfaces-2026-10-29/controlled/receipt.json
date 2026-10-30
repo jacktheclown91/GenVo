@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "scope": "Explicit controlled surface-art layers using canonical weather/store readers and native painter. Never entered a Simulation and not natural habitat evidence.",
+  "cases": [
+    {
+      "name": "Dry soil",
+      "water": false,
+      "film": 0,
+      "rain": 0,
+      "temp": 0.8,
+      "moisture": 0.03,
+      "impacts": 0
+    },
+    {
+      "name": "Damp soil",
+      "water": false,
+      "film": 0,
+      "rain": 0,
+      "temp": 0.8,
+      "moisture": 0.55,
+      "impacts": 0
+    },
+    {
+      "name": "Stored warm film",
+      "water": false,
+      "film": 0.03,
+      "rain": 0,
+      "temp": 0.8,
+      "moisture": 0.4,
+      "impacts": 0
+    },
+    {
+      "name": "Spent film",
+      "water": false,
+      "film": 0,
+      "rain": 0,
+      "temp": 0.8,
+      "moisture": 0.4,
+      "impacts": 0
+    },
+    {
+      "name": "Rain on liquid water",
+      "water": true,
+      "film": 0,
+      "rain": 1,
+      "temp": 0.8,
+      "moisture": 0.4,
+      "impacts": 36
+    },
+    {
+      "name": "Cold film: no liquid sheen",
+      "water": false,
+      "film": 0.03,
+      "rain": 0,
+      "temp": 0.1,
+      "moisture": 0.4,
+      "impacts": 0
+    }
+  ],
+  "stampCanvases": 9,
+  "extraCanvasAllocations": 0,
+  "errors": [],
+  "creatorAcceptance": false
+}

@@ -287,7 +287,10 @@
         </section>
         <section class="menu-view" data-screen="settings" hidden aria-label="Game options">
           <h2>Options</h2>
-          <label class="menu-slider">Sound volume <output id="menuVolumeValue">72%</output><input id="menuVolume" type="range" min="0" max="100" step="5" value="72" /></label>
+          <label class="menu-slider">Sound volume <output id="menuVolumeValue">72%</output><input id="menuVolume" type="range" min="0" max="100" step="1" value="72" /></label>
+          <label class="menu-slider">Music <output>34%</output><input data-audio-channel="music" type="range" min="0" max="100" step="1" value="34" /></label>
+          <label class="menu-slider">Environment <output>42%</output><input data-audio-channel="ambience" type="range" min="0" max="100" step="1" value="42" /></label>
+          <label class="menu-slider">Creatures & actions <output>68%</output><input data-audio-channel="sfx" type="range" min="0" max="100" step="1" value="68" /></label>
           <label class="menu-switch"><input id="menuMute" type="checkbox" /> Mute audio</label>
           <label class="menu-switch"><input id="menuReduceMotion" type="checkbox" /> Reduce menu motion</label>
           <label class="menu-field">View<select id="menuViewMode"><option value="comfort">Comfort View (recommended)</option><option value="biological">Biological Vision</option><option value="sandbox">Sandbox View</option></select><small id="menuViewNote"></small></label>

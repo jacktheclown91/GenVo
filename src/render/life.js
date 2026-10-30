@@ -1,3 +1,4 @@
+import {aestivating,ARID_PHYSIOLOGY} from '../ecology/arid-physiology.js';
 import {SPECIES} from '../organisms/species.js';
 import {COLD_BEHAVIOR} from '../ecology/cold-wildlife.js';
 import {gestationFullness} from './gestation-surface.js';
@@ -17,9 +18,9 @@ export function visualLifeState(sim,a,{frame=0,moving=false,action='idle',develo
   const strained=exhausted||thirsty||hurt||injured||sick;
   const dependent=development?.stage==='newborn'||development?.stage==='juvenile';
   const calmAction=['idle','social','guard','listen','scan','rest'].includes(action);
-  const dormant=!!(a.alive&&a.torpor&&!moving&&action==='rest'&&!a.airborne&&!a.perched&&!a.underground&&!a.climb&&!a.burrowWork&&!a.caveTransit&&!a.bracing&&!a.attackAction&&!a.courtshipPerformance);
+  const dormant=!!(a.alive&&a.torpor&&!moving&&action==='rest'&&!a.airborne&&!a.perched&&(!a.underground||aestivating(a))&&!a.climb&&!a.burrowWork&&!a.caveTransit&&!a.bracing&&!a.attackAction&&!a.courtshipPerformance);
   // This is a visual cadence, not another respiration or metabolism authority.
-  const timed=Number.isFinite(timeSeconds),metabolic=Math.max(.72,Math.min(1.28,a.genes?.metabolism||1)),period=(3.1+(a.id%11)*.13)/(metabolic*(strained?1.35:1)*(dormant?COLD_BEHAVIOR.energyRate:1)),t=timed?Math.max(0,timeSeconds)+a.id*.731:0,phase=timed?(t/period)%1:0;
+  const timed=Number.isFinite(timeSeconds),metabolic=Math.max(.72,Math.min(1.28,a.genes?.metabolism||1)),period=(3.1+(a.id%11)*.13)/(metabolic*(strained?1.35:1)*(dormant?(aestivating(a)?ARID_PHYSIOLOGY.aestivation.energyRate:COLD_BEHAVIOR.energyRate):1)),t=timed?Math.max(0,timeSeconds)+a.id*.731:0,phase=timed?(t/period)%1:0;
   const segment=phase<.4?phase/.4:(1-phase)/.6,ease=segment*segment*(3-2*segment);
   const blinkPhase=timed?(t%(blinkPeriod/8)):0;
   const blink=dormant||(timed?blinkPhase<.15:blinkTick===0||(!moving&&calmAction&&blinkTick===1));
@@ -36,6 +37,7 @@ export function playerMoodLabel(sim,a){
   if(!a)return'';
   const spec=SPECIES[a.species];if(!spec)return'';
   const water=a.hydration/spec.maxHydration,energy=a.energy/spec.maxEnergy,health=(a.health??100)/100;
+  if(a.torpor)return aestivating(a)?'Drought dormancy':'Winter torpor';
   if(a.infected)return'Unwell';
   const injury=sim?.injury?.enabled?.(a)?a.injuryCare:null;if(injury?.active)return injury.level==='severe'?'Badly wounded':'Wounded';
   if(health<.45)return'Hurt';

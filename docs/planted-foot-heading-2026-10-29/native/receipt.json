@@ -1,0 +1,77 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "result": {
+    "stats": {
+      "held": 368,
+      "playerTurning": 34,
+      "npcTurning": 14,
+      "maxHeldYawChange": 0,
+      "maxWorldDrift": 0,
+      "samples": 892,
+      "costMs": 4.500000029802322,
+      "ids": [
+        109,
+        74,
+        86
+      ],
+      "meanResolveMs": 0.005044843082738029
+    },
+    "stateExact": true,
+    "detail": {
+      "id": "walking-leg",
+      "args": {
+        "root": {
+          "x": 5.833659766015754,
+          "y": -1.655320867738092
+        },
+        "knee": {
+          "x": 11.217926296265281,
+          "y": 3.013219152937121
+        },
+        "foot": {
+          "x": 11.511818239523564,
+          "y": 7.639582816414077
+        },
+        "scale": 1.9700983722162297,
+        "mirrorTransverse": false,
+        "footForward": {
+          "x": 6.123233995736766e-17,
+          "y": -1
+        },
+        "facing": 7,
+        "state": "move",
+        "timeMs": 125,
+        "pigment": [
+          [
+            27,
+            25,
+            21
+          ],
+          [
+            88,
+            63,
+            38
+          ],
+          [
+            139,
+            99,
+            60
+          ],
+          [
+            173,
+            129,
+            84
+          ],
+          [
+            214,
+            186,
+            158
+          ]
+        ],
+        "frameIndex": 0
+      }
+    }
+  },
+  "scope": "Ordinary new world, public keyboard turns, unmodified autonomous wildlife and actual optional64 artwork. Detail uses an actual captured held foot enlarged5x for inspection; before changes only distal heading. No biological movement or event fields staged. Not full-world performance or creator acceptance."
+}

@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only decoded original catalog checkpoints; no restore, ecology advance, organisms or world edits. Biomass threshold alone is necessary, not sufficient: load and other controller checks still apply.",
+  "tree": "woodspire",
+  "minimumTree": 0.85,
+  "rows": [
+    {
+      "id": "established-valley-d30",
+      "path": "assets/scenarios/established-valley-d30.json.gz",
+      "sha256": "6706d1f3f2896f6eb66ca1cac1006a445732bed2a851658ac80b41dc71414210",
+      "day": 31,
+      "maximum": 0.36590632796287537,
+      "supportedBiomassCells": 0
+    },
+    {
+      "id": "mature-valley-d100",
+      "path": "assets/scenarios/mature-valley-d100.json.gz",
+      "sha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+      "day": 101,
+      "maximum": 0.5332411527633667,
+      "supportedBiomassCells": 0
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import {pixel,pixelLine,snap} from './pixel-art.js';
 import {drawNativeAridAccent} from './arid-surface-art.js';
 import {drawHead} from './head.js';
 import {artForPart} from './runtime-part-art.js';
+import {nativeCoveringFit} from './covering-fit.js';
 import {partDef} from '../lineage/part-registry.js';
 export {pixel,pixelLine} from './pixel-art.js';
 // Evolution Expansion Phase B (GDD v1, section 10; backlog EV-006): pixel part components.
@@ -65,9 +66,22 @@ const DRAW={
   // v1.60.0: the basic eye and the resting grazing mouth are part art too (they were drawn by the body).
   'simple-eye'(c,k){const {eye,s,p}=k,ex=eye.x,ey=eye.y,wide=!!k.wide;pixel(c,ex-1,ey-1,wide?3:2,wide?3:2,s,p.light);pixel(c,ex-1,ey-1,2,wide?2:1,s,'#eef7ff');const pupilX=ex+(k.fx>.25?0:k.fx<-.25?-1:0),pupilY=ey+(k.fy>.25?0:k.fy<-.25?-1:0);pixel(c,pupilX,pupilY,1,1,s,k.alert?'#5c3040':'#223751');if(wide)pixel(c,ex,ey-1,1,1,s,'#ffffff')},
   'grazing-mouth'(c,k){const {mouth:m,perp,s}=k,r=k.rest||1;pixelLine(c,m.x-perp.x*r,m.y-perp.y*r,m.x+perp.x*r,m.y+perp.y*r,s,'rgba(38,54,76,.72)')},
-  'grasper'(c,k){const sign=Math.sign(k.leg.side)||1,f=k.foot;pixel(c,snap(f.x+sign),snap(f.y),1,1,k.s,k.p.light);pixel(c,snap(f.x),snap(f.y+1),1,1,k.s,k.p.shade)},
+  'grasper'(c,k){
+    const f=k.foot,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
+    const side=Math.sign(k.leg?.side)||1;
+    pixel(c,snap(f.x+fx-fy*side),snap(f.y+fy+fx*side),1,1,k.s,k.p.light);
+    pixel(c,snap(f.x+fx),snap(f.y+fy),1,1,k.s,k.p.shade);
+  },
   // Digging forelimb: a broad spade foot (3 pixels) with a pale cutting edge.
-  'digging-forelimb'(c,k){const sign=Math.sign(k.leg.side)||1,f=k.foot;pixel(c,snap(f.x-1),snap(f.y+1),3,1,k.s,'#8c6a46');pixel(c,snap(f.x-1),snap(f.y+2),3,1,k.s,'#e2cf9f');pixel(c,snap(f.x+sign),snap(f.y),1,1,k.s,'#8c6a46')},
+  'digging-forelimb'(c,k){
+    const f=k.foot,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
+    const side=Math.sign(k.leg?.side)||1;
+    for(const [reach,color] of [[1,'#8c6a46'],[2,'#e2cf9f']]){
+      const x=f.x+fx*reach,y=f.y+fy*reach;
+      pixelLine(c,x+fy,y-fx,x-fy,y+fx,k.s,color);
+    }
+    pixel(c,snap(f.x-fy*side),snap(f.y+fx*side),1,1,k.s,'#8c6a46');
+  },
   'barb'(c,k){const sign=Math.sign(k.leg.side)||1;pixel(c,snap(k.knee.x+sign),snap(k.knee.y-1),1,2,k.s,k.p.light)},
   // Claw: a hooked two-segment talon past the foot.
   'claw'(c,k){const f=k.foot,sign=Math.sign(k.leg.side)||1,tx=f.x+k.fx*2,ty=f.y+k.fy*2;pixelLine(c,f.x,f.y,tx,ty,k.s,'#f1e8cf');pixel(c,snap(tx+k.perp.x*sign),snap(ty+k.perp.y*sign),1,1,k.s,'#f1e8cf')},
@@ -143,7 +157,7 @@ const DRAW={
   'reinforced-torso'(c,k){for(let i=0;i<3;i++){const rx=k.bx-k.fx*(i*1.6-.6)-1,ry=k.by-k.fy*(i*1.6-.6)-Math.max(2,k.bodyH*.32);pixel(c,snap(rx),snap(ry),3,1,k.s,'#2b3f66');pixel(c,snap(rx),snap(ry-1),2,1,k.s,k.p.light)}},
   // Paddle tail: a broad blade behind the body that sweeps with the gait frame.
   // Paddle tail: a dark-outlined stalk ending in a wide teal blade with pale edges, sweeping with the gait.
-  'paddle-tail'(c,k){const sweep=((k.frameInt%4)-1.5)*.45,rx=k.bx-k.fx*(k.bodyW*.46),ry=k.by-k.fy*(k.bodyH*.46)+1,tx=rx-k.fx*3.6+k.perp.x*sweep,ty=ry-k.fy*3.6+k.perp.y*sweep;pixelLine(c,rx,ry,tx,ty,k.s,'#2b3f66');for(let w=-2;w<=2;w++){const bx=tx-k.fx*.8+k.perp.x*w,by=ty-k.fy*.8+k.perp.y*w;pixel(c,snap(bx),snap(by),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#3f9aa6');pixel(c,snap(bx-k.fx),snap(by-k.fy),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#2f7f8c')}}
+  'paddle-tail'(c,k){const sweep=k.authoredState==='swim'?(Number(k.behavior?.tailSweep)||0):((k.frameInt%4)-1.5)*.45,rx=k.bx-k.fx*(k.bodyW*.46),ry=k.by-k.fy*(k.bodyH*.46)+1,tx=rx-k.fx*3.6+k.perp.x*sweep,ty=ry-k.fy*3.6+k.perp.y*sweep;pixelLine(c,rx,ry,tx,ty,k.s,'#2b3f66');for(let w=-2;w<=2;w++){const bx=tx-k.fx*.8+k.perp.x*w,by=ty-k.fy*.8+k.perp.y*w;pixel(c,snap(bx),snap(by),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#3f9aa6');pixel(c,snap(bx-k.fx),snap(by-k.fy),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#2f7f8c')}}
 };
 // Wave 1 components. Shapes read at gameplay zoom: each body class has its own outline cue.
 const along=(k,t)=>({x:k.bx+k.fx*t,y:k.by+k.fy*t});
@@ -204,7 +218,7 @@ Object.assign(DRAW,{
 
 // Wave 2 components (tails, backs, flanks, spurs), drawn on the 32-pixel grid.
 const tailRoot=k=>k.L?.tail?{x:k.L.tail.x,y:k.L.tail.y+1}:({x:k.bx-k.fx*(k.bodyW*.46),y:k.by-k.fy*(k.bodyH*.46)+1});
-const tailSweep=k=>((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
+const tailSweep=k=>k.authoredState==='swim'?(Number(k.behavior?.tailSweep)||0):((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
 // A cowed retreat tucks the tail in toward the body; the root stays anatomically fixed.
 const tailTuck=k=>Math.max(0,Math.min(1,Number(k.behavior?.tailTuck)||0));
 const tailEnd=(k,len)=>{const r=tailRoot(k),w=tailSweep(k);len*=1-.5*tailTuck(k);return{r,x:r.x-k.fx*len+k.perp.x*w,y:r.y-k.fy*len+k.perp.y*w}};
@@ -248,8 +262,8 @@ Object.assign(DRAW,{
   'horn-crest'(c,k){const b=backTop(k),h={x:b.x+k.fx*1.6,y:b.y};pixelLine(c,h.x,h.y,h.x+k.fx*.6,h.y-3,k.s,'#f1e8cf');pixelLine(c,h.x+k.fx*.6,h.y-3,h.x+k.fx*1.6,h.y-3.8,k.s,'#f1e8cf',.5);pixel(c,h.x,h.y-.5,1,1,k.s,'#c9a86a')},
   'tusk-jaw'(c,k){const m=along(k,k.face.mouthForward+.6);for(const sg of [-1,1]){const r={x:m.x+k.perp.x*sg*1.2,y:m.y+k.perp.y*sg*1.2},e={x:r.x+k.fx*2.4+k.perp.x*sg*.6,y:r.y+k.fy*2.4+k.perp.y*sg*.6-.8};pixelLine(c,r.x,r.y,e.x,e.y,k.s,'#f6eeda');pixel(c,e.x,e.y,.5,.5,k.s,'#ffffff')}},
   // Gliding membrane: a thin golden skin flap stretched out from the flank.
-  'patagium'(c,k){const f=flankAt(k),spread=k.behavior?.glideSpread?5:1.5;pixelLine(c,f.x+k.fx*3,f.y+k.fy*3,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,k.s,'#a3c1ba',2);pixelLine(c,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,f.x-k.fx*3,f.y-k.fy*3,k.s,'#476e73',1)},
-  'gliding-membrane'(c,k){const f=flankAt(k),o={x:f.x+k.perp.x*k.sign*2.2,y:f.y+k.perp.y*k.sign*2.2},a={x:f.x+k.fx*1.6,y:f.y+k.fy*1.6},b={x:f.x-k.fx*2,y:f.y-k.fy*2};pixel(c,(f.x+o.x)/2-.5,(f.y+o.y)/2-.5,1.5,1.5,k.s,'rgba(246,220,138,.55)');pixelLine(c,a.x,a.y,o.x,o.y,k.s,'#f6dc8a',.5);pixelLine(c,o.x,o.y,b.x,b.y,k.s,'#c9a24a',.5)},
+  'patagium'(c,k){const f=flankAt(k),spread=1.5+3.5*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0));pixelLine(c,f.x+k.fx*3,f.y+k.fy*3,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,k.s,'#a3c1ba',2);pixelLine(c,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,f.x-k.fx*3,f.y-k.fy*3,k.s,'#476e73',1)},
+  'gliding-membrane'(c,k){const f=flankAt(k),spread=1+1.2*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0)),o={x:f.x+k.perp.x*k.sign*spread,y:f.y+k.perp.y*k.sign*spread},a={x:f.x+k.fx*1.6,y:f.y+k.fy*1.6},b={x:f.x-k.fx*2,y:f.y-k.fy*2};pixel(c,(f.x+o.x)/2-.5,(f.y+o.y)/2-.5,1.5,1.5,k.s,'rgba(246,220,138,.55)');pixelLine(c,a.x,a.y,o.x,o.y,k.s,'#f6dc8a',.5);pixelLine(c,o.x,o.y,b.x,b.y,k.s,'#c9a24a',.5)},
   // Luminous tail: a slim tail ending in a glowing bulb with a soft halo.
   'luminous-tail'(c,k){const t=tailEnd(k,6);pixelLine(c,t.r.x,t.r.y,t.x,t.y,k.s,k.p.shade,.5);pixel(c,t.x-1,t.y-1,2.5,2.5,k.s,'rgba(255,240,150,.35)');pixel(c,t.x-.5,t.y-.5,1.5,1.5,k.s,'#fff3a0');pixel(c,t.x-.5,t.y-.5,.5,.5,k.s,'#ffffff')},
   // Shell back: a ridge of pale crystal shards with white tips.
@@ -271,15 +285,20 @@ function standardLimb(c,k){
   // The lower leg stays visible while the foot is raised, so a coarse gait never flickers.
   pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,distal);
   pixel(c,snap(knee.x),snap(knee.y),1,1,s,leg.front>.15?p.light:p.body);
-  const toeX=snap(foot.x),toeY=snap(foot.y);pixel(c,toeX-.5,toeY,1.5,1,s,lifted>.62?p.light:p.shade);pixel(c,toeX,toeY,.5,.5,s,p.light);
-  if(lifted<.42&&Math.abs(leg.side)>.55)pixel(c,toeX+Math.sign(leg.side),toeY,1,1,s,p.shade);
+  forwardToe(c,k,.8,1,lifted>.62?p.light:p.shade);pixel(c,snap(foot.x),snap(foot.y),.5,.5,s,p.light);
+  if(lifted<.42&&Math.abs(leg.side)>.55){const side=Math.sign(leg.side),axis=k.leg?.footForward,perp=axis?{x:-axis.y,y:axis.x}:k.perp||{x:0,y:1};pixel(c,snap(foot.x+perp.x*side),snap(foot.y+perp.y*side),1,1,s,p.shade)}
 }
 // v1.59.0: each leg type has its own articulation (its gait, stride and lift, lives in
 // creature-assembler LEG_GAIT; the shapes are here).
 const toe=(c,k,x,y,w,h,col)=>pixel(c,snap(x),snap(y),w,h,k.s,col);
+// Fallback foot tissue follows body forward; contact geometry stays fixed.
+function forwardToe(c,k,length,width,color){
+  const {foot,s}=k,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0;
+  pixelLine(c,foot.x-fx*.25,foot.y-fy*.25,foot.x+fx*length,foot.y+fy*length,s,color,width);
+}
 export const LIMB_ART={
   // Climber: jointed weight-bearing limb, thick forearm and paired recurved digits.
-  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;
+  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0,perp={x:-fy,y:fx};
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.8);
     pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,p.body,1.3);
     pixel(c,snap(knee.x-.5),snap(knee.y-.5),1.4,1.2,s,p.light);
@@ -288,17 +307,17 @@ export const LIMB_ART={
       pixelLine(c,ax,ay,tx,ty,s,'#d7b889',.75);
       pixel(c,snap(tx-fx*.5+sg*perp.x*.3),snap(ty-fy*.5+sg*perp.y*.3),.65,.65,s,'#f5e4bf')}},
   // Runner: a slender limb, a light springy shin and a long forward-reaching toe.
-  'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
-    pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+k.fx*1.4,foot.y+k.fy*1.4,s,p.shade,.5);toe(c,k,foot.x+k.fx*1.4,foot.y+k.fy*1.4,.5,.5,p.light)},
+  'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,axis=leg?.footForward,fx=axis?.x??k.fx,fy=axis?.y??k.fy,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
+    pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+fx*1.4,foot.y+fy*1.4,s,p.shade,.5);toe(c,k,foot.x+fx*1.4,foot.y+fy*1.4,.5,.5,p.light)},
   // Sturdy: a thick column with a low knee and a broad flat foot.
   'sturdy-leg'(c,k){const {root,knee,foot,s,p}=k,mid={x:(root.x+foot.x)/2,y:(root.y+foot.y)/2},kn={x:(knee.x+mid.x)/2,y:(knee.y+mid.y)/2};
-    pixelLine(c,root.x,root.y,kn.x,kn.y,s,p.shade,2);pixelLine(c,kn.x,kn.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(kn.x-.5),snap(kn.y-.5),1.5,1,s,p.light);toe(c,k,foot.x-1.25,foot.y,2.5,1,p.shade);toe(c,k,foot.x-1.25,foot.y,2.5,.5,p.light)},
+    pixelLine(c,root.x,root.y,kn.x,kn.y,s,p.shade,2);pixelLine(c,kn.x,kn.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(kn.x-.5),snap(kn.y-.5),1.5,1,s,p.light);forwardToe(c,k,.65,2.5,p.shade);forwardToe(c,k,.65,1.5,p.light)},
   // Spring: a digitigrade leg with a raised hock, so it folds and kicks like a hopping animal.
   'spring-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0,v=Math.max(.5,Math.min(1,k.size??.65)),hock={x:knee.x+(foot.x-knee.x)*.55-k.fx*(1+v),y:knee.y+(foot.y-knee.y)*.55-k.fy*(1+v)-.5};
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.5);pixelLine(c,knee.x,knee.y,hock.x,hock.y,s,p.body,.5);pixelLine(c,hock.x,hock.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,1);
-    pixel(c,snap(hock.x),snap(hock.y),.5,.5,s,p.light);toe(c,k,foot.x-.5,foot.y,1.5,.5,p.shade)},
+    pixel(c,snap(hock.x),snap(hock.y),.5,.5,s,p.light);forwardToe(c,k,1,.5,p.shade)},
   // Webbed: the standard limb ending in a spread paddle of three webbed toes.
-  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,perp=k.perp||{x:0,y:1};for(const d of [-1,0,1])pixel(c,snap(foot.x+perp.x*d*.8),snap(foot.y+perp.y*d*.8+.5),.5,1,s,'#2f6f86');pixel(c,snap(foot.x-1),snap(foot.y+.5),2,.5,s,'#7fc8c8')},
+  'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,axis=k.leg?.footForward,fx=axis?.x??k.fx??1,fy=axis?.y??k.fy??0,perp={x:-fy,y:fx};for(const d of [-1,0,1]){const x=foot.x+perp.x*d*.8,y=foot.y+perp.y*d*.8;pixelLine(c,x,y,x+fx,y+fy,s,'#2f6f86',.7)}pixelLine(c,foot.x-perp.x,foot.y-perp.y,foot.x+perp.x,foot.y+perp.y,s,'#7fc8c8',.5)},
   // Padded: the standard limb on a round soft pad that lifts only a little.
   'padded-leg'(c,k){standardLimb(c,k);const {foot,s,p}=k;toe(c,k,foot.x-1,foot.y,2,1,p.shade);toe(c,k,foot.x-.5,foot.y,1,.5,p.light)},
   // Broad, joint-following arid contact pad; not a free-floating terrain sprite.
@@ -316,9 +335,12 @@ export function drawLimb(c,partId,k){
   if(art?.drawLimb&&typeof c.drawImage==='function'&&art.drawLimb(c,{
     root:{x:k.root.x*k.s,y:k.root.y*k.s},knee:{x:k.knee.x*k.s,y:k.knee.y*k.s},
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
+    // The geometry is paired across the body; its asymmetric tissue must be too.
+    mirrorTransverse:(k.leg?.side||0)<0,
+    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!Number.isFinite(k.behavior?.climbHeight)&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?(k.leg?.footForward||{x:k.fx??1,y:k.fy??0}):null,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
-    // Contact paint follows each individual foot, rather than blinking in unison.
-    frameIndex:k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
+    // Ground contact and water feathering select each mounted foot independently.
+    frameIndex:k.leg?.swimFeather!=null?(k.leg.swimFeather>.25?1:0):k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
   }))return true;
   (LIMB_ART[partId]||standardLimb)(c,k);return false
 }
@@ -343,7 +365,9 @@ export function artMount(partId,k){
    const fraction=({barb:0,'hook-spur':0,'sensory-bristle':0,'kick-spur':0,
      'dew-claw':.55,claw:1,'heel-spike':1,'grip-pad':1})[partId]??1;
    return {x:k.knee.x+dx*fraction-dx/length*.25,y:k.knee.y+dy*fraction-dy/length*.25,
-     scale:.22,mirrorX:(k.leg?.side||0)<0};
+     scale:.22,mirrorX:(k.leg?.side||0)<0,
+     // Only foot-mounted tissue follows a planted sole; knee/shin spurs keep their joint.
+     rotation:fraction===1&&k.leg?.footForward?Math.atan2(k.leg.footForward.y,k.leg.footForward.x)-Math.atan2(k.fy??0,k.fx??1):0};
  }
  if(sockets.includes('tail')){
    const at=authored('tail'),radius=ellipseRadius(k.fx,k.fy);
@@ -354,7 +378,7 @@ export function artMount(partId,k){
    const at=authored(side<0?'flank.left':'flank.right');
    const radius=ellipseRadius(k.perp.x,k.perp.y);
    return {x:at?.x??x0+k.perp.x*side*radius*.86,y:at?.y??y0+k.perp.y*side*radius*.86,
-     scale:['patagium','gliding-membrane'].includes(partId)?(k.behavior?.glideSpread?.55:.23):.25,mirrorX:side<0};
+     scale:['patagium','gliding-membrane'].includes(partId)?(.23+.32*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0))):.25,mirrorX:side<0};
  }
  if(sockets.includes('dorsal')){
    const at=authored('dorsal');
@@ -376,7 +400,7 @@ export function artMount(partId,k){
 export function drawPart(c,partId,k){
  const authored=k.authoredParts?.[partId]||artForPart(partId);
  if(authored?.rig?.kind==='dorsal-display'&&typeof c.drawImage==='function'){
-  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null})){drawNativeAridAccent(c,partId,k,at);return true;}
+  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),sweepRadians:partId==='flight-wing'?(Number(k.behavior?.wingSweep)||0):0,deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:partId==='flight-wing'&&Number.isInteger(k.behavior?.wingFrame)?k.behavior.wingFrame:(k.authoredFrameIndex??null)})){drawNativeAridAccent(c,partId,k,at);return true;}
  }
  if(authored&&!authored.rig&&typeof c.drawImage==='function'){
   const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward}:null));
@@ -384,8 +408,8 @@ export function drawPart(c,partId,k){
    const faceFactor=k.eye?.x!==undefined?.55:k.mouth?.x!==undefined?.72:PART_SPRITES[partId]?.layer==='face'?.7:1;
    const scale=k.s*(mount?.scale??(faceFactor/2));
    const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
-    rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null};
-   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX;let painted=false;c.save();try{if(rotation||paired){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted){drawNativeAridAccent(c,partId,k,mount);return true;}
+    rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:['patagium','gliding-membrane'].includes(partId)&&Number.isFinite(k.behavior?.glideSpread)?0:(k.authoredFrameIndex??null)};
+   const fit=nativeCoveringFit(partId,k),rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX,oral=k.mouth&&authored.expressionScale!=='fixed'?k.behavior?.feedingMouthShape:null;let painted=false;c.save();try{if(rotation||paired||oral||fit){c.translate(args.x,args.y);if(fit)c.scale(fit.x,fit.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}if(oral){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(Math.max(.8,Math.min(1.15,oral.forward||1)),Math.max(.8,Math.min(1.15,oral.width||1)));c.rotate(-axis)}args.x=0;args.y=0}if(!oral&&k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted){drawNativeAridAccent(c,partId,k,mount);return true;}
   }
  }
  const fn=DRAW[partId];if(fn)fn(c,k);return !!fn;

@@ -1,0 +1,506 @@
+{
+  "status": "PASS",
+  "comparisons": [
+    {
+      "specimen": "Small ground forager",
+      "scale": 2,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Small ground forager",
+      "scale": 4,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.4,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.4,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Small ground forager",
+      "scale": 7,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.6,
+          "p95Ms": 0.7,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.6,
+          "p95Ms": 0.7,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.5,
+          "p95Ms": 0.6,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Small ground forager",
+      "scale": 10,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 1.1,
+          "p95Ms": 1.8,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.7,
+          "p95Ms": 0.9,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.8,
+          "p95Ms": 1,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Fur-mantled runner",
+      "scale": 2,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.3,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.3,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Fur-mantled runner",
+      "scale": 4,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.4,
+          "p95Ms": 0.6,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Fur-mantled runner",
+      "scale": 7,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.8,
+          "p95Ms": 0.9,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.7,
+          "p95Ms": 1,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.6,
+          "p95Ms": 0.7,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Fur-mantled runner",
+      "scale": 10,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 1,
+          "p95Ms": 1.2,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.8,
+          "p95Ms": 1,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.9,
+          "p95Ms": 1.1,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Shelled sturdy walker",
+      "scale": 2,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.3,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.3,
+          "p95Ms": 0.3,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.2,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Shelled sturdy walker",
+      "scale": 4,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.4,
+          "p95Ms": 0.6,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Shelled sturdy walker",
+      "scale": 7,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.7,
+          "p95Ms": 1,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.7,
+          "p95Ms": 1,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.6,
+          "p95Ms": 1,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Shelled sturdy walker",
+      "scale": 10,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 1,
+          "p95Ms": 1.1,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.8,
+          "p95Ms": 1,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.8,
+          "p95Ms": 1,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Feathered compound-eye forager",
+      "scale": 2,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.3,
+          "p95Ms": 0.4,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Feathered compound-eye forager",
+      "scale": 4,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.4,
+          "p95Ms": 0.5,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Feathered compound-eye forager",
+      "scale": 7,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 0.8,
+          "p95Ms": 1.1,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.7,
+          "p95Ms": 0.8,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.6,
+          "p95Ms": 1,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    },
+    {
+      "specimen": "Feathered compound-eye forager",
+      "scale": 10,
+      "samples": 48,
+      "results": [
+        {
+          "resolution": 32,
+          "medianMs": 1.1,
+          "p95Ms": 1.3,
+          "compressedStudyBytes": 0,
+          "decodedStudyFrameRgbaBytes": 0
+        },
+        {
+          "resolution": 64,
+          "medianMs": 0.9,
+          "p95Ms": 1.1,
+          "compressedStudyBytes": 56179,
+          "decodedStudyFrameRgbaBytes": 3932160
+        },
+        {
+          "resolution": 128,
+          "medianMs": 0.9,
+          "p95Ms": 1.5,
+          "compressedStudyBytes": 183917,
+          "decodedStudyFrameRgbaBytes": 15728640
+        }
+      ]
+    }
+  ],
+  "world": [
+    {
+      "resolution": 32,
+      "zoom": 2,
+      "art": {
+        "status": "ready",
+        "installed": 97,
+        "revision": 2,
+        "errors": []
+      },
+      "animals": 196,
+      "stateExact": true
+    },
+    {
+      "resolution": 64,
+      "zoom": 2,
+      "art": {
+        "status": "ready",
+        "installed": 97,
+        "revision": 3,
+        "errors": []
+      },
+      "animals": 196,
+      "stateExact": true
+    },
+    {
+      "resolution": 128,
+      "zoom": 2,
+      "art": {
+        "status": "ready",
+        "installed": 97,
+        "revision": 4,
+        "errors": []
+      },
+      "animals": 196,
+      "stateExact": true
+    },
+    {
+      "resolution": 32,
+      "zoom": 2,
+      "art": {
+        "status": "ready",
+        "installed": 97,
+        "revision": 5,
+        "errors": []
+      },
+      "animals": 196,
+      "stateExact": true
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Four legal assembly fixtures and the actual New World player; all eight facings, matched physical scales, paused actual-world previews and exact state parity. Visual acceptance remains separate."
+}

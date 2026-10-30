@@ -1,0 +1,135 @@
+{
+  "errors": [],
+  "layouts": [],
+  "creatorAcceptance": false,
+  "result": {
+    "fixtureRecords": [
+      {
+        "name": "severe-retentive",
+        "reading": {
+          "available": 0,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 0,
+          "surfaceWetness": 0,
+          "temperature": 0.8,
+          "exposure": 1,
+          "retentive": true
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      },
+      {
+        "name": "severe-loose",
+        "reading": {
+          "available": 0,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 0,
+          "surfaceWetness": 0,
+          "temperature": 0.8,
+          "exposure": 1,
+          "retentive": false
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      },
+      {
+        "name": "rewet",
+        "reading": {
+          "available": 0.9038461331256047,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 0,
+          "surfaceWetness": 0,
+          "temperature": 0.8,
+          "exposure": 0,
+          "retentive": true
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      },
+      {
+        "name": "surface-film",
+        "reading": {
+          "available": 0,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 0,
+          "surfaceWetness": 1,
+          "temperature": 0.8,
+          "exposure": 0,
+          "retentive": true
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      },
+      {
+        "name": "cold-dry",
+        "reading": {
+          "available": 0,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 0,
+          "surfaceWetness": 0,
+          "temperature": 0.1,
+          "exposure": 1,
+          "retentive": true
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      },
+      {
+        "name": "snow-cover",
+        "reading": {
+          "available": 0,
+          "cover": 0,
+          "greenCover": 0,
+          "snow": 1,
+          "surfaceWetness": 0,
+          "temperature": 0.1,
+          "exposure": 0,
+          "retentive": true
+        },
+        "scope": "Explicit controlled paint fixture; never entered a Simulation, not a naturally evolved climate/vegetation history."
+      }
+    ],
+    "eligible": 2493,
+    "best": {
+      "i": 4230,
+      "x": 6,
+      "y": 33,
+      "reading": {
+        "available": 0.21566188736224565,
+        "cover": 1,
+        "greenCover": 1,
+        "snow": 0,
+        "surfaceWetness": 0,
+        "temperature": 0.5558782582727825,
+        "exposure": 0.2433470399033617,
+        "retentive": true
+      }
+    },
+    "survey": {
+      "x0": 0,
+      "y0": 25,
+      "width": 16,
+      "height": 16
+    },
+    "timings": [
+      {
+        "old": true,
+        "medianMs": 63.5,
+        "p95Ms": 76.29999999701977,
+        "samples": 12
+      },
+      {
+        "old": false,
+        "medianMs": 25.700000002980232,
+        "p95Ms": 31.600000001490116,
+        "samples": 12
+      }
+    ],
+    "day": 101,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "worldGenerator": "planetary/1",
+    "player": 86,
+    "stateExact": true,
+    "scope": "Public existing Day100 resident and ordinary renderer; actual dry-cell survey uses the same recorded World and renderer tile path with no actor relocation or terrain/climate/biomass edits. No natural channel-history/recession acceptance claimed."
+  }
+}

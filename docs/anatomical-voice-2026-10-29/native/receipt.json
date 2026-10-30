@@ -1,0 +1,424 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "nativeMix": {
+    "seconds": 8.32,
+    "rate": 192000,
+    "channels": 2,
+    "peak": 0.19502998888492584,
+    "rms": 0.015201820157654847
+  },
+  "live": {
+    "calls": [
+      {
+        "id": 108,
+        "profile": {
+          "sample": "stalker",
+          "rate": 1.051642124647017,
+          "rough": true,
+          "bright": false,
+          "mass": 6.17,
+          "vocalMass": 0.5,
+          "cutoffHz": 3275.681833653736,
+          "resonanceHz": 581.1693575837273,
+          "resonanceQ": 0.65,
+          "resonanceDb": 1.4
+        },
+        "played": true,
+        "stateExact": true
+      },
+      {
+        "id": 31,
+        "profile": {
+          "sample": "genvo-call",
+          "rate": 1.0887706160279176,
+          "rough": false,
+          "bright": false,
+          "mass": 5.21,
+          "vocalMass": 0.3,
+          "cutoffHz": 3629.2353867597253,
+          "resonanceHz": 705.6846585366133,
+          "resonanceQ": 0.65,
+          "resonanceDb": 1.1
+        },
+        "played": true,
+        "stateExact": true
+      }
+    ],
+    "filtersCreated": 4,
+    "filtersDisposed": 4,
+    "active": false
+  },
+  "palettes": [
+    {
+      "kind": "grazer",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.0712282806634903,
+        "rms": 0.008386242318986674
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 1.076339385671347,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      }
+    },
+    {
+      "kind": "grazer",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.08408310264348984,
+        "rms": 0.009541234604719756
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 1.08,
+        "rough": false,
+        "bright": false,
+        "mass": 5,
+        "vocalMass": 0.3,
+        "cutoffHz": 3600,
+        "resonanceHz": 700,
+        "resonanceQ": 0.65,
+        "resonanceDb": 1.1
+      }
+    },
+    {
+      "kind": "clawed-grazer",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07147849351167679,
+        "rms": 0.008404168316624562
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 1.0717543137087908,
+        "rough": false,
+        "bright": false,
+        "mass": 5.12
+      }
+    },
+    {
+      "kind": "clawed-grazer",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.08408310264348984,
+        "rms": 0.009541234604719756
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 1.08,
+        "rough": false,
+        "bright": false,
+        "mass": 5.12,
+        "vocalMass": 0.3,
+        "cutoffHz": 3600,
+        "resonanceHz": 700,
+        "resonanceQ": 0.65,
+        "resonanceDb": 1.1
+      }
+    },
+    {
+      "kind": "jaw",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07051625847816467,
+        "rms": 0.003996157809695351
+      },
+      "profile": {
+        "sample": "stalker",
+        "rate": 1.0687674812199623,
+        "rough": true,
+        "bright": false,
+        "mass": 5.2
+      }
+    },
+    {
+      "kind": "jaw",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07627593725919724,
+        "rms": 0.004560345398241201
+      },
+      "profile": {
+        "sample": "stalker",
+        "rate": 0.9952403047549363,
+        "rough": true,
+        "bright": false,
+        "mass": 5.2,
+        "vocalMass": 0.5,
+        "cutoffHz": 3100,
+        "resonanceHz": 550,
+        "resonanceQ": 0.65,
+        "resonanceDb": 1.4
+      }
+    },
+    {
+      "kind": "crusher",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07045403867959976,
+        "rms": 0.004009704160400082
+      },
+      "profile": {
+        "sample": "stalker",
+        "rate": 1.0615316720595018,
+        "rough": true,
+        "bright": false,
+        "mass": 5.4
+      }
+    },
+    {
+      "kind": "crusher",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07737532258033752,
+        "rms": 0.004748630620267878
+      },
+      "profile": {
+        "sample": "stalker",
+        "rate": 0.9430776873728447,
+        "rough": true,
+        "bright": false,
+        "mass": 5.4,
+        "vocalMass": 0.7,
+        "cutoffHz": 2100,
+        "resonanceHz": 360,
+        "resonanceQ": 0.8,
+        "resonanceDb": 1.8
+      }
+    },
+    {
+      "kind": "beak",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.06573629379272461,
+        "rms": 0.006715857088439955
+      },
+      "profile": {
+        "sample": "hopper",
+        "rate": 1.076339385671347,
+        "rough": false,
+        "bright": true,
+        "mass": 5
+      }
+    },
+    {
+      "kind": "beak",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07714642584323883,
+        "rms": 0.007850266870182846
+      },
+      "profile": {
+        "sample": "hopper",
+        "rate": 1.08,
+        "rough": false,
+        "bright": true,
+        "mass": 5,
+        "vocalMass": 0.3,
+        "cutoffHz": 6500,
+        "resonanceHz": 1900,
+        "resonanceQ": 0.6,
+        "resonanceDb": 1.1
+      }
+    },
+    {
+      "kind": "kernel",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.06573835760354996,
+        "rms": 0.006734927146603607
+      },
+      "profile": {
+        "sample": "hopper",
+        "rate": 1.0702540670498653,
+        "rough": false,
+        "bright": true,
+        "mass": 5.16
+      }
+    },
+    {
+      "kind": "kernel",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07744473218917847,
+        "rms": 0.008345548112997378
+      },
+      "profile": {
+        "sample": "hopper",
+        "rate": 1.0086068263321195,
+        "rough": false,
+        "bright": true,
+        "mass": 5.16,
+        "vocalMass": 0.46,
+        "cutoffHz": 4800,
+        "resonanceHz": 1500,
+        "resonanceQ": 0.7,
+        "resonanceDb": 1.2
+      }
+    },
+    {
+      "kind": "filter",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.06746634840965271,
+        "rms": 0.0035369504573332902
+      },
+      "profile": {
+        "sample": "digger",
+        "rate": 1.076339385671347,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      }
+    },
+    {
+      "kind": "filter",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07917656004428864,
+        "rms": 0.004031595029493493
+      },
+      "profile": {
+        "sample": "digger",
+        "rate": 1.08,
+        "rough": false,
+        "bright": false,
+        "mass": 5,
+        "vocalMass": 0.3,
+        "cutoffHz": 1400,
+        "resonanceHz": 260,
+        "resonanceQ": 0.85,
+        "resonanceDb": 1.5
+      }
+    },
+    {
+      "kind": "giant",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07212712615728378,
+        "rms": 0.00978114626126866
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 0.7749643576833698,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      }
+    },
+    {
+      "kind": "giant",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.08398061990737915,
+        "rms": 0.011156637330970708
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 0.7776000000000001,
+        "rough": false,
+        "bright": false,
+        "mass": 5,
+        "vocalMass": 0.3,
+        "cutoffHz": 2592,
+        "resonanceHz": 504,
+        "resonanceQ": 0.65,
+        "resonanceDb": 1.1
+      }
+    },
+    {
+      "kind": "giant-newborn",
+      "old": true,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.07208775728940964,
+        "rms": 0.00915222914657532
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 0.9032955108419988,
+        "rough": false,
+        "bright": false,
+        "mass": 5
+      }
+    },
+    {
+      "kind": "giant-newborn",
+      "old": false,
+      "metric": {
+        "seconds": 4,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.08342785388231277,
+        "rms": 0.010424177495688388
+      },
+      "profile": {
+        "sample": "genvo-call",
+        "rate": 0.9063676055121512,
+        "rough": false,
+        "bright": false,
+        "mass": 5,
+        "vocalMass": 0.3,
+        "cutoffHz": 3021.225351707171,
+        "resonanceHz": 587.4604850541721,
+        "resonanceQ": 0.65,
+        "resonanceDb": 1.1
+      }
+    }
+  ],
+  "scope": "Ordinary new world and existing live wildlife voice scheduling, no biological/event/position injection. Native master recording and synchronous full saved-graph parity per call. Before/current controlled OfflineAudioContext anatomical/size palettes use preserved old voice code and real native samples; they do not claim naturally evolved giant or mouth lineages."
+}

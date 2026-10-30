@@ -1,0 +1,140 @@
+// Native actual swimming observation using public New World and AUTO controls.
+// Usage: node tools/review-swimming.mjs <source root> <fresh output> [seed] [creature]
+import fs from 'node:fs';
+import path from 'node:path';
+import http from 'node:http';
+import {createRequire} from 'node:module';
+
+const require=createRequire(import.meta.url);
+let playwright;
+try{playwright=require('playwright')}catch{
+  playwright=require(path.join(process.env.USERPROFILE,
+    '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+}
+if(!process.argv[2]||!process.argv[3])throw Error('Supply source root and fresh evidence directory');
+const root=path.resolve(process.argv[2]),out=path.resolve(process.argv[3]);
+const seed=process.argv[4]||'GENVO8-TEST-A',creature=process.argv[5]||'starter-dive';
+if(fs.existsSync(out))throw Error('Never overwrite an earlier review');
+fs.mkdirSync(out,{recursive:true});
+const mime={'.mjs':'text/javascript','.js':'text/javascript','.json':'application/json',
+  '.html':'text/html','.css':'text/css','.png':'image/png','.svg':'image/svg+xml',
+  '.ogg':'audio/ogg','.m4a':'audio/mp4','.wav':'audio/wav','.gz':'application/gzip'};
+const server=http.createServer((request,response)=>{
+  const pathname=decodeURIComponent(new URL(request.url,'http://local').pathname);
+  const file=path.resolve(root,'.'+pathname);
+  if(file!==root&&!file.startsWith(root+path.sep)){response.writeHead(403);response.end();return}
+  const target=fs.existsSync(file)&&fs.statSync(file).isDirectory()?path.join(file,'index.html'):file;
+  fs.readFile(target,(error,bytes)=>{
+    if(error){response.writeHead(404);response.end();return}
+    response.setHeader('Content-Type',mime[path.extname(target)]||'application/octet-stream');
+    response.end(bytes);
+  });
+});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+let browser;
+try{
+  browser=await playwright.chromium.launch();
+  const context=await browser.newContext({viewport:{width:960,height:540},
+    recordVideo:{dir:out,size:{width:960,height:540}}});
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('http://127.0.0.1:'+server.address().port+'/');
+  await page.waitForFunction(()=>window.__GENVO8__?.saveManager&&
+    window.__GENVO8__.nativeArtStatus().status==='ready');
+  await page.getByRole('button',{name:'New World',exact:true}).click();
+  await page.locator('#newWorldCreature').selectOption(creature);
+  await page.locator('#newWorldSeed').fill(seed);
+  await page.getByRole('button',{name:'Begin World',exact:true}).click();
+  await page.waitForFunction(seed=>document.querySelector('#frontEnd')?.hidden&&
+    window.__GENVO8__.sim.seed===seed,seed,{timeout:60000});
+  await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
+  for(let i=0;i<8;i++){
+    const blocked=await page.evaluate(()=>{
+      const tutorial=window.__GENVO8__.tutorial;
+      return tutorial.worldInputBlocked()&&['welcome','briefing'].includes(tutorial.stage);
+    });
+    if(!blocked)break;
+    await page.keyboard.press('Enter');
+  }
+  await page.waitForTimeout(1500);
+  await page.getByRole('button',{name:'Game utilities',exact:true}).click();
+  await page.locator('button[data-action=autonomy]').click();
+  await page.getByRole('button',{name:'Game utilities',exact:true}).click();
+  await page.keyboard.press('p');
+  const artProof=await page.evaluate(async()=>{
+    const g=window.__GENVO8__,{loadPartArtVariant}=await import('/src/render/part-art-variants.js'),{setPartArtPreview}=await import('/src/render/runtime-part-art.js'),{createSimulationSnapshot}=await import('/src/persistence/save-manager.js'),{encodeSnapshotGraph}=await import('/src/persistence/scenario-codec.js');
+    if(!g.sim.paused)throw Error('Public pause failed');
+    const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(g.sim,{savedAt:'native-detailed-locomotion'}))),before=snapshot();
+    const result=await loadPartArtVariant(new URL('/assets/art/production-candidate-v1/catalog.json',location.href),{resolution:64});setPartArtPreview(result.parts);
+    if(snapshot()!==before)throw Error('Detailed art changed simulation state');return{resolution:64,parts:result.parts.size,stateExact:true};
+  });
+  await page.keyboard.press('p');
+  const navigation=[];
+  // Public keys only: locate a nearby liquid cell without editing the actor.
+  for(let i=0;i<40;i++){
+    const route=await page.evaluate(async()=>{
+      const {liquidContact}=await import('/src/lineage/ice-locomotion.js'),g=window.__GENVO8__,p=g.sim.player(),w=g.sim.world;
+      if(liquidContact(w,p)){
+        const dirs=[['ArrowRight',1,0],['ArrowDown',0,1],['ArrowLeft',-1,0],['ArrowUp',0,-1]];
+        const rows=dirs.map(([key,dx,dy])=>{let length=0;for(let j=1;j<20;j++){const x=p.x+dx*j,y=p.y+dy*j;if(!w.isPlayable(x,y)||!liquidContact(w,{...p,x,y}))break;length++;}return{key,length};}).sort((a,b)=>b.length-a.length);
+        return{wet:true,x:p.x,y:p.y,key:rows[0].key,canSwim:g.sim.canSwim(p)};
+      }
+      let best=null;for(let dy=-20;dy<=20;dy++)for(let dx=-20;dx<=20;dx++){const x=Math.floor(p.x)+dx+.5,y=Math.floor(p.y)+dy+.5;if(!w.isPlayable(x,y)||!liquidContact(w,{...p,x,y}))continue;const distance=Math.hypot(x-p.x,y-p.y);if(!best||distance<best.distance)best={x,y,distance};}
+      if(!best)throw Error('No nearby liquid water');const dx=best.x-p.x,dy=best.y-p.y;
+      return{wet:false,x:p.x,y:p.y,key:Math.abs(dx)>Math.abs(dy)?dx>0?'ArrowRight':'ArrowLeft':dy>0?'ArrowDown':'ArrowUp',target:best};
+    });
+    navigation.push(route);
+    if(route.wet){await page.keyboard.down(route.key);break;}
+    await page.keyboard.down(route.key);await page.waitForTimeout(300);await page.keyboard.up(route.key);
+  }
+  const observation=await page.evaluate(async()=>{
+    const g=window.__GENVO8__,motion=g.renderer.motion,original=motion.sample;
+    const {GroundContactTracker}=await import('/src/render/ground-contacts.js');
+    const begin=GroundContactTracker.prototype.begin;let active=0,idle=0,frozen=0,swimming=0;const swimmers=new Set(),swimRows=[];
+    GroundContactTracker.prototype.begin=function(options){const frame=begin.call(this,options);if(frame)active++;else idle++;if(frame?.cacheToken)frozen++;if(options.action==='swim'&&options.moving){swimming++;swimmers.add(options.id);if(swimRows.length<40){const a=g.sim.animals.find(a=>a.id===options.id);swimRows.push({id:a?.id,player:a?.player,x:a?.x,y:a?.y,intent:a?.intent,parts:a?.bodyPlan?.nodes.map(n=>n.partId)});}}return frame;};
+    const rows=[],ids=new Set();let walking=0,turns=0;
+    const headings=new Map();
+    motion.sample=function(animal,tick,now,options){
+      const pose=original.call(this,animal,tick,now,options);
+      if(!animal.player&&pose.moving){
+        walking++;ids.add(animal.id);
+        const dir=Math.atan2(pose.headingY,pose.headingX),prior=headings.get(animal.id);
+        if(prior!==undefined&&Math.abs(dir-prior)>.1)turns++;
+        headings.set(animal.id,dir);
+        if(rows.length<120)rows.push({id:animal.id,tick,x:pose.x,y:pose.y,gait:pose.gaitPhase});
+      }
+      return pose;
+    };
+    try{await new Promise(resolve=>setTimeout(resolve,8000));}
+    finally{motion.sample=original;GroundContactTracker.prototype.begin=begin;}
+    return{swimming,swimmers:[...swimmers],swimRows,contacts:{active,idle,frozen,stats:g.renderer.groundContacts?.stats,states:g.renderer.groundContacts?.states.size},walkingSamples:walking,creatures:[...ids],headingChanges:turns,samples:rows,
+      nativeArt:g.nativeArtStatus().status,scope:'Public Shore swimmer New World, AUTO wildlife and normal directional player input into actual liquid water; actual optional64 batch with native32 fallback. No organism, movement rule or terrain injection. This observation does not establish creator visual acceptance.'};
+  });
+  for(const key of ['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'])await page.keyboard.up(key);
+  await page.screenshot({path:path.join(out,'native-swimming.png')});
+  await page.keyboard.press('p');
+  const rendering=await page.evaluate(async()=>{
+    const g=window.__GENVO8__,{GroundContactTracker}=await import('/src/render/ground-contacts.js'),{SPRITE_STATS}=await import('/src/render/genvo-draw.js');
+    const {createSimulationSnapshot}=await import('/src/persistence/save-manager.js'),{encodeSnapshotGraph}=await import('/src/persistence/scenario-codec.js');
+    const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(g.sim,{savedAt:'contact-cost'}))),before=snapshot(),original=GroundContactTracker.prototype.begin,rows=[];
+    if(!g.sim.paused)throw Error('Native timing requires paused world');
+    try{for(const enabled of [true,false,true]){
+      GroundContactTracker.prototype.begin=enabled?original:function(){return null;};
+      const samples=[],hits=SPRITE_STATS.hits;
+      for(let i=0;i<36;i++){await new Promise(resolve=>requestAnimationFrame(resolve));const start=performance.now();g.renderer.render();if(i>=6)samples.push(performance.now()-start);}
+      samples.sort((a,b)=>a-b);rows.push({enabled,medianMs:samples[15],p95Ms:samples[28],samples:samples.length,cacheHits:SPRITE_STATS.hits-hits,visibleCreatures:g.renderer.screenPos?.size});
+    }}finally{GroundContactTracker.prototype.begin=original;}
+    return{rows,stateExact:before===snapshot(),scope:'Matched paused young-world direct renderer CPU composition, with contacts / preceding no-contact hook / contacts. Includes frozen cache reuse. Not mature-population or end-to-end FPS acceptance.'};
+  });
+  if(!rendering.stateExact)throw Error('Contact comparison changed biological snapshot');
+
+  fs.writeFileSync(path.join(out,'observation.json'),JSON.stringify({...observation,navigation,artProof,rendering,errors},null,2));
+  if(!observation.swimming)throw Error('No actual swimming observed');
+  if(errors.length)throw Error(errors.join('\n'));
+  fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify({...observation,navigation,artProof,rendering,errors},null,2));
+  console.log(JSON.stringify({...observation,samples:undefined,swimRows:undefined,rendering}));
+  await page.close();await context.close();
+}finally{
+  await browser?.close();
+  await new Promise(resolve=>server.close(resolve));
+}

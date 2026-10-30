@@ -1,3 +1,11 @@
+import {FoliageContactField,foliageFringeHash} from './foliage-contact.js';
+import {drawUnderwaterView,submergedActorOpacity,showDiveSurfaceCue} from './underwater-presentation.js';
+import {WetSurfaceArt} from './wet-surface-art.js';
+import {SwimMotionPresentation,applySwimMotion} from './swim-motion.js';
+import {adultSizeScale} from '../organisms/body-size.js';
+import {WorkMotionPresentation,applyWorkMotion,CLIMB_PIXEL_HEIGHT} from './work-motion.js';
+import {AerialPresentation,applyAerialPose} from './aerial-presentation.js';
+import {GroundContactTracker} from './ground-contacts.js';
 import {courtshipCameraTarget} from './courtship-camera.js';
 import {drawTutorialGuide} from './tutorial-guide-art.js';
 import {drawNestArt,drawEggArt} from './clutch-art.js';
@@ -25,7 +33,7 @@ import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
 import {reactionExpression,applyReactionPose} from './reaction-expression.js';
 import {gaitTravelFor} from './genvo.js';
 import {assemblyFor} from './creature-assembler.js';
-import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
+import {locomotionStyle,locomotionOffsets,locomotionCacheToken} from './locomotion-style.js';
 import {movementProfile} from '../lineage/lifestyle.js';
 import {drawSnowGround,beginSnowWindow} from './snow-ground-art.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
@@ -61,6 +69,7 @@ import {buildVisualWaterMask,LANDFORM_RESOLUTION,maskWaterAt} from './landform.j
 import {buildVisualHabitatMask,visualHabitatAt,buildSmoothedHabitatField,HABITAT_ZONE} from './habitat.js';
 import {visualCompositionAt} from './composition.js';
 import {visualLifeState} from './life.js';
+import {ThermalPresentation,applyThermalExpression} from './thermal-expression.js';
 import {behaviorVisualState,visualActionFromIntent} from './behavior.js';
 import {physicalMotionExpression,applyPhysicalMotionExpression,drawBrakeScuff} from './physical-motion-expression.js';
 import {drawGenvoSprite,SPRITE_BATCH,beginSpriteBatch,endSpriteBatch,spriteBatchAfterFlush,spriteBatchBeforeFlush} from './genvo-draw.js';
@@ -140,8 +149,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     prepareSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
     if(this.sim.world.planet)(this.borderTerrain||=new BorderTerrain(Renderer)).draw(this,tile,startX,startY,cols,rows);
+    (this.wetSurfaceArt||=new WetSurfaceArt()).begin(this.sim,{seconds:this.sim.tickCount/CFG.simHz,lowDetail:this.lowDetail});
     this.groundPassOnly=true;try{
-    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.pages?this.sim.world.pages.indexAt(wx,wy):this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy)}
+    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.pages?this.sim.world.pages.indexAt(wx,wy):this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy);if(this.sim.world.water[i]||(this.sim.world.environment?.overland?.[i]||0)>1e-5)this.wetSurfaceArt.drawTile(this.ctx,this.sim,{i,x:wx,y:wy,mask:this.visualWaterMask(wx,wy),px,py,u:this.zoom})}
     }finally{this.groundPassOnly=false}
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}
@@ -187,10 +197,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     // Draw a single world-time wash after weather and before sensory fog/HUD.
     drawDiurnalLight(this);
+    drawUnderwaterView(this);
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
-    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
+    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.swimMotionPresentation?.prune(this.encounters?.time||0);this.workMotion?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
 
 
   // v1.33.5: which relatives are carrying out your Family Command (solid gold pip) and which
@@ -624,7 +635,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawOrganicHabitat(px,py,u,x,y);
     c.save();c.globalAlpha*=hierarchy.accentAlpha;
     this.drawGroundComposition(px,py,u,i,x,y);
-    drawSeasonalGround(c,{world:w,habitatField:this.habitatField,season,px,py,u,x,y,identity});
+    drawSeasonalGround(c,{world:w,climate:this.sim.climate,habitatField:this.habitatField,season,px,py,u,x,y,identity});
     this.drawHabitatRelief(px,py,u,i,x,y);
     drawHabitatClusterAccents(c,{world:w,habitatField:this.habitatField,px,py,u,i,x,y});c.restore();
     drawRiparianDepth(c,{world:w,isWater:(tx,ty)=>this.isWater(tx,ty),px,py,u,i,x,y,depth:this.visualWaterMask(x,y).depth});
@@ -658,7 +669,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       this.drawOrganicHabitat(0,0,1,x,y);
       tc.save();tc.globalAlpha*=hierarchy.accentAlpha;
       this.drawGroundComposition(0,0,1,i,x,y);
-      drawSeasonalGround(tc,{world:w,habitatField:this.habitatField,season,px:0,py:0,u:1,x,y,identity});
+      drawSeasonalGround(tc,{world:w,climate:this.sim.climate,habitatField:this.habitatField,season,px:0,py:0,u:1,x,y,identity});
       this.drawHabitatRelief(0,0,1,i,x,y);
       drawHabitatClusterAccents(tc,{world:w,habitatField:this.habitatField,px:0,py:0,u:1,i,x,y});tc.restore();
       drawRiparianDepth(tc,{world:w,isWater:(tx,ty)=>this.isWater(tx,ty),px:0,py:0,u:1,i,x,y,depth:this.visualWaterMask(x,y).depth});
@@ -768,7 +779,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawOrganicWaterMotion(px,py,u,x,y,mask,hash){
-    drawWaterSurfaceMarks(this.ctx,{world:this.sim.world,x,y,mask,px,py,u,seconds:this.sim.tickCount/CFG.simHz})
+    drawWaterSurfaceMarks(this.ctx,{world:this.sim.world,x,y,mask,px,py,u,seconds:this.sim.tickCount/CFG.simHz,column:!this.groundPassOnly})
   }
 
   paintOrganicWaterBase(c,px,py,u,x,y,mask,hash,reach){
@@ -859,17 +870,23 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
   drawForegroundHabitat(tile,startX,startY,cols,rows){
     const c=this.ctx,w=this.sim.world,u=this.zoom,animals=this.visibleAnimals||[];
+    let nearPush;
+    const field=this.foliageContacts||(this.foliageContacts=new FoliageContactField());
+    if(field.prepare(this.sim,{startX:startX-2,startY:startY-2,cols:cols+4,rows:rows+4,animals,
+      positionFor:a=>a.player&&this.playerVisual?this.playerVisual:this.motion.positionAt(a,this.renderNow)}))nearPush=(x,y)=>field.at(x,y);
+    if(!nearPush){
     // v1.57.0: visible animals are linked into a tile grid (reused typed arrays, nothing allocated per
     // frame), so each fringe tile checks only the creatures on the 3x3 tiles around it instead of all
     // of them. On large screens the old per-tile scan was the single biggest cost.
     const gx0=startX-2,gy0=startY-2,GW=cols+4,GH=rows+4,GN=GW*GH;if(!this.dispHead||this.dispHead.length<GN)this.dispHead=new Int32Array(GN*2);if(!this.dispNext||this.dispNext.length<animals.length)this.dispNext=new Int32Array(Math.max(128,animals.length*2));
     const head=this.dispHead,next=this.dispNext;head.fill(-1,0,GN);for(let k=0;k<animals.length;k++){const a=animals[k];if(!a.alive)continue;const tx=Math.floor(a.x)-gx0,ty=Math.floor(a.y)-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;const ti=ty*GW+tx;next[k]=head[ti];head[ti]=k}
-    const nearPush=(x,y)=>{let best=null,bestD=1.15;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const tx=x+dx-gx0,ty=y+dy-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;for(let k=head[ty*GW+tx];k>=0;k=next[k]){const a=animals[k],ddx=(x+.5)-a.x,ddy=(y+.5)-a.y,d=Math.hypot(ddx,ddy);if(d>=bestD)continue;bestD=d;const len=Math.max(.001,d);best={animal:a,distance:d,x:ddx/len,y:ddy/len,strength:Math.max(0,1-d/1.15)}}}return best};
+    nearPush=(x,y)=>{let best=null,bestD=1.15;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const tx=x+dx-gx0,ty=y+dy-gy0;if(tx<0||ty<0||tx>=GW||ty>=GH)continue;for(let k=head[ty*GW+tx];k>=0;k=next[k]){const a=animals[k],ddx=(x+.5)-a.x,ddy=(y+.5)-a.y,d=Math.hypot(ddx,ddy);if(d>=bestD)continue;bestD=d;const len=Math.max(.001,d);best={animal:a,distance:d,x:ddx/len,y:ddy/len,strength:Math.max(0,1-d/1.15)}}}return best};
+    }
     // The foreground fringe now reacts to nearby bodies. Plant biomass stays canonical;
     // only the rendered stems/branches bend away from animals passing through them.
     for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){
       const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=w.idx(x,y);if(w.water[i])continue;
-      const marsh=w.plants.marshroot?.[i]||0,bramble=w.plants.bramble?.[i]||0,moss=w.plants.sunmoss?.[i]||0,comp=visualCompositionAt(w,x+.5,y+.5,this.habitatField),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=hash2(x,y,1213),push=nearPush(x,y),profile=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),playerContact=!!push?.animal?.player,lean=push?Math.round(push.x*(playerContact?4:3)*push.strength):0,flatten=push?Math.round(push.strength*(playerContact?3:2)):0,season=this.sim.season,fgAlpha=foregroundAlphaFor(profile,{playerContact});
+      const marsh=w.plants.marshroot?.[i]||0,bramble=w.plants.bramble?.[i]||0,moss=w.plants.sunmoss?.[i]||0,comp=visualCompositionAt(w,x+.5,y+.5,this.habitatField),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=foliageFringeHash(x,y),push=nearPush(x,y),profile=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),playerContact=!!push?.animal?.player,lean=push?Math.round(push.x*(playerContact?4:3)*push.strength):0,flatten=push?Math.round(push.strength*(playerContact?3:2)):0,season=this.sim.season,fgAlpha=foregroundAlphaFor(profile,{playerContact});
       if(comp.openness<.66&&marsh>.48&&w.moisture[i]>.58&&h>.44){
         const reed=season==='WINTER'?['#b3a77b','#cabd91']:season==='AUTUMN'?['#7b8052','#a08f59']:['#688755','#91a566'];
         c.save();c.globalAlpha=.72*fgAlpha;for(let k=0;k<3;k++){const ox=(3+Math.floor(hash2(x+k,y-k,1217)*10)),ht=Math.max(2,2+Math.floor(hash2(y+k,x-k,1223)*3)-flatten),base=16,shift=lean+(k===1?Math.sign(lean||1):0);c.fillStyle=k===1?reed[1]:reed[0];c.fillRect(px+ox*u,py+(base-Math.ceil(ht*.55))*u,u,Math.ceil(ht*.55)*u);c.fillRect(px+(ox+shift)*u,py+(base-ht)*u,u,Math.max(u,Math.floor(ht*.55)*u))}c.restore();
@@ -1062,16 +1079,19 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // v1.59.0: turning eases through the in-between facings (one 45-degree step every 70 ms) instead
     // of snapping across several at once. Presentation only; the simulation's facing is unchanged.
     drawDir=this.easedDir(a.id,drawDir&7);
+    const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
     const bob=(a.airborne||alert||['drink','eat','hunt'].includes(action))?0:(moving?cycle8(BODY_BOB,phase):0);
     // Whole-body carriage from mounted legs and build; a plain walker keeps exactly the shared bob.
-    const carriage=(a.airborne||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
+    const carriage=(a.airborne||a.perched||a.climb||a.burrowWork||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
-    const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const arid=aridVisualReading(this.sim,a);
-    const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
+    const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social,feeding});
     const physical=physicalMotionExpression(this.sim,a,{dir:drawDir,moving,growth:dev.growth,
       grounded:!inWater&&!a.airborne&&!a.perched&&!a.underground&&!a.climb&&!a.caveTransit&&!(a.diveDepth>.03)});
+    const thermal=(this.thermalPresentation||=new ThermalPresentation()).sample(this.sim,a,this.encounters?.time||0,{action,moving,blocked:!!feeding||!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome});applyThermalExpression(behavior,thermal);
+    const workMotion=(this.workMotion||=new WorkMotionPresentation()).sample(this.sim,a,this.encounters?.time||0);applyWorkMotion(behavior,workMotion);
+    const aerial=(this.aerialPresentation||=new AerialPresentation()).sample(this.sim,a,this.encounters?.time||0);applyAerialPose(behavior,aerial);
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
     applyPhysicalMotionExpression(behavior,physical);
@@ -1079,10 +1099,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat','crack'].includes(action)});
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyBirthSettlement(behavior,birth,{feeding:!!feeding});
+    const swimMotion=(this.swimMotionPresentation||=new SwimMotionPresentation()).sample(this.sim,a,this.encounters?.time||0,{action,moving,blocked:!!feeding||!!reaction||!!defense||!!encounter.move||!!encounter.impact||!!a.attackAction||!!a.bracing});applySwimMotion(behavior,swimMotion);
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
     const looking=life.dormant?null:attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
-    behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
+    behavior.headTurn=(behavior.headTurn||0)+(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded,a);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
     const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert:alert&&!life.dormant,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,arid,partExpression:this.partExpressions.sample(this.sim,a,action)};
@@ -1101,22 +1122,29 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
     if(!a.underground&&!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-a.climb.height*7/3:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-(workMotion?.height??a.climb.height)*CLIMB_PIXEL_HEIGHT:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*scale);c.globalAlpha*=1-depth*.55}
-    if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*scale)}
+    if((a.diveDepth||0)>.03){c.globalAlpha*=submergedActorOpacity(this.sim.player(),a);c.translate(0,Math.min(4,a.diveDepth*4)*scale)}
     // Record the actual translated sprite surface for DOM obstruction avoidance,
     // including aerial/climbing/depth offsets; UI does not reimplement those rules.
     if(a.player||a.id===this.overlayTargetId){const t=c.getTransform?.();if(t){const radius=Math.ceil(44*scale/2)+2,rx=radius*(Math.abs(t.a)+Math.abs(t.c)),ry=radius*(Math.abs(t.b)+Math.abs(t.d));this.screenBounds.set(a.id,{left:t.e-rx,top:t.f-ry,right:t.e+rx,bottom:t.f+ry,width:rx*2,height:ry*2});}}
     const drawPhase=life.dormant?0:a.player?phase:cachePhase;
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,cacheKey:a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)});
+    const spriteTransform=c.getTransform?.();
+    const groundContactFrame=(this.groundContacts||=new GroundContactTracker({unitsPerTile:CFG.tileSize})).begin({
+      id:a.id,world:this.sim.world,sizeScale:inheritedScale,anatomy:(a.bodyPlan?.id||'')+'|'+(a.genVersion||0)+'|'+visualGrowth,
+      x:this.camera.x+((spriteTransform?.e??px)-this.w/2)/tile,y:this.camera.y+((spriteTransform?.f??py)-this.h/2)/tile,
+      dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
+      eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
+    });
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion||thermal),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')+(thermal?'|thermal'+thermal.cacheToken:'')+(swimMotion?'|swim'+swimMotion.cacheToken:'')});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 
     if(a.caveTransit&&!a.player){c.globalAlpha=1;c.fillStyle='#d4ddc6';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText((a.caveTransit.entering?'Descending ':'Surfacing ')+Math.round(a.caveTransit.elapsed/CAVES.transitionSeconds*100)+'%',0,-12*scale)}
     if(a.climb&&!a.player){c.fillStyle='#e4d4a8';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('Climb '+a.climb.height.toFixed(1),0,-10*scale)}
-    if((a.diveDepth||0)>.03){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';if(!a.player)c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
+    if(showDiveSurfaceCue(this.sim.player(),a)){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';if(!a.player)c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
     drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});
     if(!a.underground&&!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});
@@ -1204,7 +1232,7 @@ function vectorDir(dx,dy,fallback=0){if(Math.abs(dx)<.001&&Math.abs(dy)<.001)ret
 function hash2(x,y,salt=0){let n=(x*374761393+y*668265263+salt*1442695041)>>>0;n=(n^(n>>13))*1274126177>>>0;return((n^(n>>16))>>>0)/4294967295}
 // v1.57.0: what a creature's finished sprite depends on, so a pose seen before is one canvas copy.
 // The active creature is never cached (its pose reacts continuously to input and combat).
-function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|dormant'+(life?.dormant?1:0)+'|gestation'+(life?.gestation??0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')+'|arid'+(pose.arid?.frillFlushed?1:0)+(pose.arid?.waxSealed?1:0)+(pose.arid?.aestivating?1:0)}
+function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|dormant'+(life?.dormant?1:0)+'|gestation'+(life?.gestation??0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+locomotionCacheToken(a)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')+'|arid'+(pose.arid?.frillFlushed?1:0)+(pose.arid?.waxSealed?1:0)+(pose.arid?.aestivating?1:0)}
 function smoothNoise2(x,y,cell=8,salt=0){
   const gx=Math.floor(x/cell),gy=Math.floor(y/cell),fx=(x-gx*cell)/cell,fy=(y-gy*cell)/cell;
   const sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy),a=hash2(gx,gy,salt),b=hash2(gx+1,gy,salt),c=hash2(gx,gy+1,salt),d=hash2(gx+1,gy+1,salt);

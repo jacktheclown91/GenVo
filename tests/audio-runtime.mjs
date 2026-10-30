@@ -32,6 +32,8 @@ globalThis.fetch=async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(32)});
 
 const sim=new Simulation('GENVO8-AUDIO-RUNTIME',{player:true});
 const audio=new AudioDirector(sim);
+assert.equal(audio.playSpeciesVoice(sim.player()),false,'voice before gesture is silent and safe');
+assert.doesNotThrow(()=>audio.pollCourtshipAudio(),'locked courtship polling is safe');
 assert.equal(await audio.unlock(),true);
 assert.ok(audio.ctx instanceof FakeAudioContext);
 assert.ok(audio.ambienceSource,'ambience starts after unlock');
@@ -52,6 +54,16 @@ audio.assetBuffers.set('stalker',new Buffer(256));const spatialStarts=audio.ctx.
 assert.equal(audio.playSample('stalker',{x:p.x+4,y:p.y,radius:12,volume:.5}),true);
 assert.ok(audio.ctx.starts>spatialStarts,'authored cue schedules a buffer source');
 assert.ok(audio.ctx.lastPanner?.pan.value>0,'world-right cue pans right of the player');
+audio.ctx.currentTime+=3;audio.updateMix(audio.currentScene);
+const normalMusic=audio.musicBus.gain.value,normalAmbience=audio.ambienceBus.gain.value;
+const beforeVoice=JSON.stringify(sim.player());
+audio.playSpeciesVoice(sim.player());
+assert.ok(audio.musicBus.gain.value<normalMusic,'voices make room in music');
+assert.ok(audio.ambienceBus.gain.value<normalAmbience,'voices make room in habitat bed');
+assert.equal(JSON.stringify(sim.player()),beforeVoice,'audio never mutates the organism');
+audio.ctx.currentTime+=3;audio.updateMix(audio.currentScene);
+assert.equal(audio.musicBus.gain.value,normalMusic,'background music recovers after cue');
+assert.equal(audio.ambienceBus.gain.value,normalAmbience,'habitat bed recovers after cue');
 const preDuck=audio.musicBus.gain.value;audio.playHandoff({reason:'selected',newlyEstablished:false});assert.ok(audio.handoffDuckUntil>audio.ctx.currentTime,'handoff opens a temporary mix-duck window');assert.ok(audio.musicBus.gain.value<preDuck,'handoff stinger ducks procedural music instead of stacking at full level');
 assert.equal(audio.toggleMute(),false);
 assert.equal(audio.master.gain.value,0);

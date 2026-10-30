@@ -1,0 +1,60 @@
+{
+  "rows": [
+    {
+      "mode": "before",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.055167801678180695,
+      "rms": 0.00817227788531847,
+      "rainCanopy": 0
+    },
+    {
+      "mode": "current",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.07250693440437317,
+      "rms": 0.011781773004582002,
+      "rainCanopy": 0.17706167697906494
+    },
+    {
+      "mode": "isolated",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.03897937014698982,
+      "rms": 0.008472597028911321,
+      "rainCanopy": 0.17706167697906494
+    },
+    {
+      "mode": "dry",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.03156916797161102,
+      "rms": 0.0041204157926257225,
+      "rainCanopy": 0
+    },
+    {
+      "mode": "bare",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.05516780540347099,
+      "rms": 0.008172277883623338,
+      "rainCanopy": 0
+    },
+    {
+      "mode": "enclosed",
+      "seconds": 8,
+      "rate": 22050,
+      "channels": 2,
+      "peak": 0.024533811956644058,
+      "rms": 0.0046769048408586995,
+      "rainCanopy": 0
+    }
+  ],
+  "scope": "Native OfflineAudioContext controlled acoustic comparison, identical authored assets/noise seed; before differs only by disabling the new foliage rain layer. Isolated is the new layer alone. No world fields are edited or natural habitat history claimed.",
+  "creatorAcceptance": false
+}

@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import {wingStudyPose,wingStudyReading} from '../tools/creature-lab/wing-study.js';
+import {FounderDesign} from '../src/lineage/founder-design.js';
+import {place,replaceRoot} from '../src/lineage/evolution-draft.js';
+import {flightLoading,FLIGHT} from '../src/lineage/flight.js';
+import {ANATOMICAL_MASS} from '../src/organisms/body-mass.js';
+import {aerialPose} from '../src/render/aerial-presentation.js';
+import {genvoVisualPose} from '../src/render/genvo.js';
+import {assemblyFor} from '../src/render/creature-assembler.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {encodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
+const design=new FounderDesign('sandbox');
+assert.ok(replaceRoot(design.draft,'light-torso').ok);
+assert.ok(place(design.draft,'flight-wing','root','dorsal').ok);
+const body={species:'genvo',bodyPlan:design.draft.plan,age:60,massPolicy:ANATOMICAL_MASS,bodySize:{schema:1,alleles:[0,0]}};
+const reading=wingStudyReading(body),saved=JSON.stringify(body);
+assert.equal(reading.loading,flightLoading(body));
+assert.equal(reading.limit,FLIGHT.maxAdultMass);
+assert.match(reading.text,/ground stance/);
+const legs=assemblyFor(body).legSlots;
+for(let dir=0;dir<8;dir++)for(let frame=0;frame<8;frame+=.25){
+  const pose=wingStudyPose(body,frame),shared=aerialPose({phase:frame,mode:'fly',age:1});
+  assert.deepEqual(pose,{flightSpread:shared.flightSpread,wingSweep:shared.wingSweep,wingFrame:shared.wingFrame});
+  const ground=genvoVisualPose({dir,frame,moving:false,legSlots:legs}),study=genvoVisualPose({dir,frame,moving:false,legSlots:legs,behavior:pose});
+  assert.deepEqual(study.legs,ground.legs,'articulated wings never invent an airborne foot pose');
+  assert.deepEqual(study.bodyOffset,ground.bodyOffset);
+}
+const precursor=new FounderDesign('sandbox');assert.ok(place(precursor.draft,'proto-wing','root','dorsal').ok);
+assert.equal(wingStudyReading({...body,bodyPlan:precursor.draft.plan}).available,false);
+assert.equal(wingStudyPose({...body,bodyPlan:precursor.draft.plan}),null);
+const heavy={...body,bodySize:{schema:1,alleles:[Math.log(2),Math.log(2)]}};
+assert.ok(wingStudyReading(heavy).loading>reading.loading);
+assert.equal(wingStudyReading(heavy).available,true,'kinematic study is not a grant or denial of biological takeoff');
+assert.equal(JSON.stringify(body),saved);
+const sim=new Simulation('LAB-WING-STUDY',{player:true,dayClock:true,metabolism:true,bodySize:true});
+const snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(sim,{savedAt:'wing-study'}))),before=snapshot();
+for(const a of sim.animals){wingStudyReading(a);wingStudyPose(a,2)}
+assert.equal(snapshot(),before);
+console.log('Lab wing study PASS: shared aerial cycle and loading, all8 orientations/256 grounded poses, precursor exclusion, explicit kinematic scope, continuous size reading and complete organism/save parity.');

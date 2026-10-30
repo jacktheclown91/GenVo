@@ -9,3 +9,10 @@ body{background:#14291d;color:#e4ead3;font:14px/1.5 system-ui;background-image:l
 
 .lab-body-stage>.artboard::before{content:attr(data-label);position:absolute;top:-20px;left:0;right:0;text-align:center;font:600 11px Georgia;color:#e4d198;pointer-events:none}#referencePreview{background:radial-gradient(ellipse at 50% 60%,#607a484f,#102517 70%)}
 .lab-in-play{color:#cfe0b0;font-size:12px;border-left:2px solid #8fae6a;padding-left:8px}
+
+/* Keep anatomical comparisons useful on short screens; the page can scroll. */
+.lab-specimen{height:max(700px,calc(100vh - 195px))}.lab-body-stage{min-height:250px}.lab-specimen #assemblyStudyStatus{flex:none;font-size:12px;line-height:1.4;margin:5px 0}.lab-preview-expanded .lab-specimen{height:100%}@media(max-width:650px){.lab-specimen{height:700px}.lab-preview-expanded .lab-specimen{height:calc(100vh - 75px)}}
+
+.lab-structure{margin:12px 0;padding:10px 12px;border:1px solid #9aa46a;border-left:3px solid #9aa46a;border-radius:7px;background:#233d2a}.lab-structure[data-state=strained]{border-left-color:#e0b876}.lab-structure[data-state=overloaded]{border-left-color:#dc947c}.lab-structure h3{font-size:17px;margin:0}.lab-structure p{margin:6px 0}.lab-structure summary{cursor:pointer;min-height:36px;padding-top:8px;box-sizing:border-box;color:#e0d0a0}.lab-structure .lab-structure-note{font-size:12px;color:#c0cdb4}
+
+.lab-wing-study{flex:none;font-size:12px;line-height:1.35;margin:5px 0;color:#c0cdb4}

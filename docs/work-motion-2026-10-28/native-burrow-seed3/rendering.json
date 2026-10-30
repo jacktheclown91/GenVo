@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "enabled": false,
+      "medianMs": 2.7000000029802322,
+      "p95Ms": 3.600000001490116,
+      "samples": 30,
+      "visibleCreatures": 1
+    },
+    {
+      "enabled": true,
+      "medianMs": 3.399999998509884,
+      "p95Ms": 5,
+      "samples": 30,
+      "visibleCreatures": 1
+    },
+    {
+      "enabled": false,
+      "medianMs": 3.0999999940395355,
+      "p95Ms": 3.7999999970197678,
+      "samples": 30,
+      "visibleCreatures": 1
+    }
+  ],
+  "stateExact": true,
+  "pauseExact": true,
+  "scope": "Matched paused young-world native CPU composition during actual excavation; no-work observer / new observer / no-work observer. Not FPS or mature-population acceptance."
+}

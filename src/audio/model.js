@@ -3,6 +3,7 @@ import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
 import {VISIBILITY,atmosphereAt} from '../ecology/atmospheric-visibility.js';
 import {detects} from '../ecology/threat-perception.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
+import {audibleLiquid,habitatSoundscape} from './habitat.js';
 
 export const AUDIO_SCENES=Object.freeze({
   CALM:'calm',
@@ -41,12 +42,7 @@ export function localWetness(sim,animal=sim?.player?.()){
   return Math.max(0,Math.min(1,moist*.72+seep*.48));
 }
 
-export function localWaterEdge(sim,animal=sim?.player?.()){
-  if(!sim?.world||!animal)return 0;
-  const i=sim.world.idx(animal.x,animal.y),seep=sim.world.seepage?.[i]||0,dist=sim.world.waterDistance?.[i];
-  const near=Number.isFinite(dist)&&dist<65535?Math.max(0,1-dist/5):0;
-  return Math.max(0,Math.min(1,Math.max(seep,near)));
-}
+export function localWaterEdge(sim,animal=sim?.player?.()){return audibleLiquid(sim,animal).level}
 
 export function stalkerDangerBand(scene){
   if(scene?.huntPhase==='charge')return 3;
@@ -63,7 +59,7 @@ export function localRainIntensity(sim,animal=sim?.player?.()){
 
 export function musicSceneFor(sim){
   const p=sim?.player?.();
-  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,rain:0,branch:null};
+  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,rain:0,branch:null,habitat:{kind:'silent',water:0,waterPan:0}};
   const encounter=sim.predator?.playerStatus?.(p)||null,nearest=nearestHunter(sim,p,10),encounterAnimal=encounter?sim.animals?.find?.(a=>a.id===encounter.hunterId&&a.alive):null;
   const threat=encounterAnimal?{animal:encounterAnimal,distance:encounter.distance}:nearest,protectedStart=!!sim.isOpeningProtected?.(p),hidden=!!p.hidden;
   const shelter=sim.shelter?.nearest?.(p,{radius:2.25,familyOnly:true})||null;
@@ -73,7 +69,7 @@ export function musicSceneFor(sim){
   const concealed=!!(hidden&&threat&&sim.camouflageConceals?.(p,threat.animal,threat.distance));
   const danger=concealed?rawDanger*.38:rawDanger;
   const scene=danger>.16?AUDIO_SCENES.DANGER:hidden?AUDIO_SCENES.HIDDEN:shelter?AUDIO_SCENES.SHELTER:AUDIO_SCENES.CALM;
-  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),rain:localRainIntensity(sim,p),branch:activeStrategyBranch(p)};
+  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),rain:localRainIntensity(sim,p),branch:activeStrategyBranch(p),habitat:habitatSoundscape(sim,p)};
 }
 
 export function cueForResult(result){

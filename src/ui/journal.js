@@ -1,3 +1,4 @@
+import {downloadOrganismStudy} from '../render/organism-study.js';
 import {deserializePlan} from '../lineage/body-plan.js';
 import {recordedInheritanceSummary} from '../lineage/recombination-receipt.js';
 import {bodyCostReading} from './body-cost-reading.js';
@@ -20,7 +21,7 @@ export class FieldJournal{
     this.open=false;
     this.selectedId=null;
     this.lastSignature='';
-    this.el=document.querySelector('#journal');this.el.addEventListener('toggle',e=>{if(e.target.dataset.section==='body-comparison'&&e.target.open)drawLineageComparison(this.el,this.sim,this.selectedId)},{capture:true});this.el.addEventListener('click',e=>{const b=e.target.closest('[data-journal]');if(!b)return;if(b.dataset.journal==='revisit'){this.onRevisit?.(Number(b.dataset.patch));return}if(b.dataset.journal==='member'){this.selectMember(b.dataset.memberId);return}if(b.dataset.journal==='close')this.setOpen(false);else if(b.dataset.journal==='handoff')this.handoffSelected();else this.cycle(b.dataset.journal==='prev'?-1:1)});
+    this.el=document.querySelector('#journal');this.el.addEventListener('toggle',e=>{if(e.target.dataset.section==='body-comparison'&&e.target.open)drawLineageComparison(this.el,this.sim,this.selectedId)},{capture:true});this.el.addEventListener('click',e=>{const b=e.target.closest('[data-journal]');if(!b)return;if(b.dataset.journal==='revisit'){this.onRevisit?.(Number(b.dataset.patch));return}if(b.dataset.journal==='study'){const animal=this.sim.animals.find(a=>a.id===this.selectedId);if(animal?.bodyPlan)downloadOrganismStudy(animal,{seed:this.sim.seed,day:this.sim.day,...(this.sim.bodySizeRules?{bodySizeRules:this.sim.bodySizeRules}:{})});return}if(b.dataset.journal==='member'){this.selectMember(b.dataset.memberId);return}if(b.dataset.journal==='close')this.setOpen(false);else if(b.dataset.journal==='handoff')this.handoffSelected();else this.cycle(b.dataset.journal==='prev'?-1:1)});
   }
   setSimulation(sim){this.sim=sim;this.selectedId=null;this.lastSignature='';this.setOpen(false)}
   setOpen(open){this.open=!!open;if(this.open&&!this.selectedId)this.selectedId=this.sim.lineage.activeId||this.sim.lineage.founderId;this.lastSignature='';this.update()}
@@ -86,6 +87,7 @@ export function buildJournalEntry(sim,recordId){
     changes:traitListText(changes,{empty:'close to the founder'}),looks,
     adaptations:(record.adaptations||[]).map(id=>ADAPTATIONS[id]?.name).filter(Boolean),
     bodyCost:bodyCostReading(animal,animal?tissueEnergy(sim,animal):undefined),
+    studyAvailable:!!animal?.bodyPlan,
     bodyComparison:lineageComparisonModels(sim,record.id).map(m=>({label:m.label,id:m.id})),
     seedPatches:(sim.discovery.seedObservations||[]).filter(o=>o.actorId===record.id).slice(-8).map(o=>({id:o.id,text:seedPatchDescription(o),when:'Last observed day '+o.observedDay})),
     habits:sim.habits?.summary?.(animal||{habits:record.habits})||'no settled habits yet',
@@ -132,7 +134,7 @@ export function journalMarkup(m,canTakeOver,recordCount,recordPosition){
         ${m.developing?.length?`<h3>Body developing toward</h3><p>${escapeHtml(m.developing.join(' · '))}</p>`:''}
         <h3>What changed</h3><p>${escapeHtml(m.changes)}</p>
         <h3>Family</h3><p>Parents: ${escapeHtml(parents)}</p><div class="journal-children">${children}</div>
-        <details class="knowledge-fold" data-section="inheritance"><summary data-focus-key="inheritance">Inherited biology &amp; record</summary><p>Record #${m.id}</p><h3>Inherited body parts</h3><p>${escapeHtml(m.parentBuilds)}<br>${escapeHtml(m.inheritance)}<br>${m.livingMatches} other living lineage creature${m.livingMatches===1?'':'s'} with an identical physical build.</p>
+        <details class="knowledge-fold" data-section="inheritance"><summary data-focus-key="inheritance">Inherited biology &amp; record</summary><p>Record #${m.id}</p>${m.studyAvailable?'<p><button type="button" data-journal="study" data-focus-key="organism-study">Export for Creature Lab</button><small>Import this study in the Lab to compare its recorded size, age and pigmentation.</small></p>':''}<h3>Inherited body parts</h3><p>${escapeHtml(m.parentBuilds)}<br>${escapeHtml(m.inheritance)}<br>${m.livingMatches} other living lineage creature${m.livingMatches===1?'':'s'} with an identical physical build.</p>
         <p>Matching body plans can reopen editing after a permitted mating; kinship, health and reciprocal mate choice still apply.</p>
         ${m.adaptations.length?`<h3>Major adaptations</h3><p>${escapeHtml(m.adaptations.join(' · '))}</p>`:''}
         </details><h3>Places remembered</h3><p>${escapeHtml(m.home)}<br>${escapeHtml(m.lastWater)}<br>${escapeHtml(m.lastFood)}<br>${escapeHtml(m.migration)}</p>
@@ -140,7 +142,7 @@ export function journalMarkup(m,canTakeOver,recordCount,recordPosition){
       </section>
     </div>
     ${m.seedPatches.length?`<section class="journal-events journal-seed-patches"><h3>Seeds &amp; places observed</h3><ul>${m.seedPatches.map(o=>`<li><span>${escapeHtml(o.text)}<small>${escapeHtml(o.when)}</small></span><button type="button" data-journal="revisit" data-patch="${o.id}" data-focus-key="patch-${o.id}">Revisit patch</button></li>`).join('')}</ul></section>`:''}
-    ${m.bodyComparison.length?`<details class="knowledge-fold journal-body-comparison" style="--comparison-count:${m.bodyComparison.length}" data-section="body-comparison"><summary data-focus-key="body-comparison">Compare parent &amp; offspring anatomy</summary><p>Recorded parent bodies at conception and this offspring's inherited body, shown at a shared adult scale. Juveniles are smaller in the world.${m.bodyComparison.length<3?' Some parent information is unavailable in this older record.':''}</p><div>${m.bodyComparison.map(m=>`<figure><figcaption>${escapeHtml(m.label)}</figcaption><canvas width="240" height="180" aria-label="${escapeHtml(m.label)}"></canvas></figure>`).join('')}</div></details>`:''}
+    ${m.bodyComparison.length?`<details class="knowledge-fold journal-body-comparison" style="--comparison-count:${m.bodyComparison.length}" data-section="body-comparison"><summary data-focus-key="body-comparison">Compare parent &amp; offspring anatomy</summary><p data-comparison-note>Recorded parent anatomy and offspring anatomy, normalized to reference size. Inherited size is listed separately.${m.bodyComparison.length<3?' Some parent information is unavailable in this older record.':''}</p><div>${m.bodyComparison.map(m=>`<figure><figcaption>${escapeHtml(m.label)}</figcaption><canvas width="240" height="180" aria-label="${escapeHtml(m.label)}"></canvas></figure>`).join('')}</div></details>`:''}
     <section class="journal-events"><h3>Field notes</h3><ul>${notes}</ul></section>
     </div><footer class="journal-foot"><span class="journal-record-position">${recordCount===1?'1 family record':`Record ${recordPosition} of ${recordCount}`}</span>${recordCount>1?'<button type="button" data-journal="prev" data-focus-key="prev">Previous</button><button type="button" data-journal="next" data-focus-key="next">Next</button>':''}${canTakeOver?'<button type="button" data-journal="handoff">Continue as this one · H</button>':''}<button type="button" data-journal="close" data-focus-key="close">Close · L</button></footer>
   </div>`;

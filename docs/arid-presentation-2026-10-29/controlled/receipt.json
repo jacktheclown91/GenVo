@@ -1,0 +1,35 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Explicit controlled hot/dry physiological fixture in an isolated browser, canonical Simulation/action execution and actual native sprite/control classes. No natural drought-dormancy field observation is claimed.",
+  "setup": {
+    "signal": {
+      "frillFlushed": true,
+      "waxSealed": true,
+      "aestivating": false,
+      "cacheToken": "110"
+    },
+    "stateExact": true,
+    "cacheInvalidated": true,
+    "alphaExact": true
+  },
+  "entered": {
+    "torpor": true,
+    "kind": "aestivation",
+    "result": {
+      "ok": true,
+      "type": "aestivation",
+      "message": "Aestivating. Food and water use slow; heat, drought and predators remain dangers."
+    }
+  },
+  "woke": {
+    "torpor": false,
+    "kind": null,
+    "result": {
+      "ok": true,
+      "type": "torpor",
+      "message": "Roused from aestivation."
+    }
+  },
+  "status": "PASS"
+}

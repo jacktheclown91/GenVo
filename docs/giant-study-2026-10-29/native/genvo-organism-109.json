@@ -1,0 +1,122 @@
+{
+  "format": "genvo.organism-study/1",
+  "source": {
+    "bodySizeRules": "body-size/2",
+    "seed": "LAB-STUDY-1",
+    "day": 1
+  },
+  "animal": {
+    "id": 109,
+    "species": "genvo",
+    "age": 32,
+    "genes": {
+      "body": 0.9406014594249428,
+      "motion": 0.998417894449085,
+      "metabolism": 0.9547144828364253,
+      "digestion": 1.0032892002258451,
+      "senses": 0.9841420565731824,
+      "climate": 1.0394470845814796,
+      "immunity": 0.9745197662618011,
+      "temperament": 1.0535968674346805
+    },
+    "pigmentGenome": {
+      "schema": "genvo.pigment-genome/1",
+      "hue": 11,
+      "chroma": 1,
+      "tone": 3,
+      "marking": 2,
+      "density": 1,
+      "accent": 1
+    },
+    "anatomy": {
+      "armor": 0,
+      "barbs": 0,
+      "glands": 0,
+      "spring": 0,
+      "waterBody": 0,
+      "gut": 0,
+      "repair": 0,
+      "signal": 0,
+      "rally": 0,
+      "skin": 0,
+      "jaw": 0,
+      "forelimb": 0,
+      "waterStorage": 0,
+      "webbing": 0
+    },
+    "adaptations": [],
+    "sex": "F",
+    "massPolicy": "relative-anatomical-load/1",
+    "bodySize": {
+      "schema": 1,
+      "alleles": [
+        0.04232024694792927,
+        -0.03845667513087392
+      ]
+    },
+    "bodyPlan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-4134709b"
+    },
+    "alive": true
+  }
+}

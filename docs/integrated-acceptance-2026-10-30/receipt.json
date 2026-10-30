@@ -101,12 +101,12 @@
   },
   {
    "name": "frame pacing, new world",
-   "frames": 475,
+   "frames": 474,
    "p50": 16.7,
-   "p95": 16.8,
+   "p95": 16.7,
    "p99": 33.3,
    "worst": 33.4,
-   "ticksPerSecond": 8
+   "ticksPerSecond": 8.12
   },
   {
    "name": "night",
@@ -122,14 +122,14 @@
    "tick": 4804,
    "playerId": 109,
    "alive": true,
-   "x": 50.138049042341194,
-   "y": 75.42355930396548,
+   "x": 50.93345157371386,
+   "y": 75.27982364518442,
    "vx": 0,
    "vy": 0,
-   "energy": 101.53986074229864,
-   "hydration": 80.21773372406184,
-   "intent": "drink",
-   "animals": 186,
+   "energy": 91.65581120409942,
+   "hydration": 98.15207563524542,
+   "intent": "idle",
+   "animals": 181,
    "births": 0,
    "rules": {
     "grazing": "grazing-nutrients/1",
@@ -143,12 +143,12 @@
    "saved": {
     "day": 21,
     "playerId": 109,
-    "animals": 186
+    "animals": 181
    },
    "restored": {
     "day": 21,
     "playerId": 109,
-    "animals": 186,
+    "animals": 181,
     "rules": {
      "grazing": "grazing-nutrients/1",
      "breeding": "breeding-support/2",

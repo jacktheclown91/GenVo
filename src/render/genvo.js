@@ -1,3 +1,7 @@
+import {climbingLimb,diggingLimb,climbingGripOffsets} from './work-limbs.js';
+import {swimmingLimb} from './swimming-limbs.js';
+import {supportPosture} from './support-load.js';
+import {coordinatedGaitOffsets} from './gait-coordination.js';
 import {articulatedKnee} from './limb-articulation.js';
 // GenVo8-specific presentation geometry. Read-only: no simulation state is mutated and no RNG is consumed.
 const DIR8=[{x:0,y:-1},{x:1,y:-1},{x:1,y:0},{x:1,y:1},{x:0,y:1},{x:-1,y:1},{x:-1,y:0},{x:-1,y:-1}];
@@ -11,6 +15,7 @@ const IDLE_TWITCH=[0,0,.35,0,0,-.25,0,.18];
 export function splayAngle(a){const t=((a%(2*Math.PI))+2*Math.PI)%(2*Math.PI),side=t<Math.PI?1:-1,u=side>0?t:2*Math.PI-t;if(u<.01||Math.abs(u-Math.PI)<.01)return a;const w=Math.PI/2+(u-Math.PI/2)*.72;return side>0?w:2*Math.PI-w}
 export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',bodyScale=1,bodyWidthScale=1,bodyHeightScale=1,limbScale=1,sensoryScale=1,eyeScale=1,feelerScale=1,temperamentScale=1,dependent=false,alert=false,stage='adult',life={},behavior={},legSlots=null}={}){
   if(['glide','jump','land'].includes(action)){moving=false;frame=0}
+  if(Number.isFinite(behavior?.excavationElapsed)){moving=false;frame=0}
   frame=((Number(frame)%8)+8)%8;const frameInt=Math.floor(frame);dir&=7;
   const v=DIR8[dir],vmag=Math.hypot(v.x,v.y)||1,fx=v.x/vmag,fy=v.y/vmag,perp={x:-fy,y:fx};
   const flee=action==='flee',eat=action==='eat',drink=action==='drink',court=action==='court',hunt=action==='hunt'||action==='stalk';
@@ -32,21 +37,30 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   };
   const stretch=flee?1.12:hunt?1.07:(moving&&Math.abs(moveSquash)>0?1.03:1);
   const legs=[];
+  const loadTransfer=Array.isArray(legSlots)&&moving&&!Number.isFinite(b.displayPhase)&&!b.noLoadTransfer&&['idle','move','flee','forage','seek-water','prowl','rest'].includes(action);
+  let supportWeight=0,supportSide=0,supportFore=0,sturdyLegs=0;
   // Designed bodies (wave 1) pass their own leg slots: angles in sixteenths of a turn relative to
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
   const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale,slotList):null;
+  const coordinated=slotList&&moving&&action!=='swim'&&!Number.isFinite(b.displayPhase)?coordinatedGaitOffsets(slotList):null;
+  const gripOffsets=slotList&&Number.isFinite(b.climbHeight)&&!b.climbHold?climbingGripOffsets(slotList):null;
   for(let n=0;n<count;n++){
     let k=n,dx,dy,reachScale=1,slot=null,gait=null;
     if(slotList){const L=slotList[n],raw=L.slot*Math.PI/8,ang=splayAngle(raw);slot=L.slot;reachScale=L.reach||1;gait=L.gait||null;k=(L.slot>>1)+(L.slot&1);dx=fx*Math.cos(ang)+perp.x*Math.sin(ang);dy=fy*Math.cos(ang)+perp.y*Math.sin(ang)}
     else{const raw=DIR8[k],mag=Math.hypot(raw.x,raw.y)||1;dx=raw.x/mag;dy=raw.y/mag}
     const front=dx*fx+dy*fy,side=dx*perp.x+dy*perp.y;
-    const phase=(Number.isFinite(b.displayPhase)?b.displayPhase:frame)+(slotList?((Math.round(Math.abs(side)*3)+Math.round(front*2)+(side<0?4:0))%8):((k&1)?4:0)+((k>>1)&1));
+    const phase=(Number.isFinite(b.displayPhase)?b.displayPhase:frame)+(coordinated?coordinated[n]:slotList?((Math.round(Math.abs(side)*3)+Math.round(front*2)+(side<0?4:0))%8):((k&1)?4:0)+((k>>1)&1));
     // v1.59.0: each leg type moves its own way: stride scales the swing, lift how high the foot rises.
     const step=organicFootfall(phase,travel,moving?(gait?.stride??1):1);
     const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
     const settling=!moving&&!b.guardPlanted&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
     const striking=slotList&&b.attackLimbSlots?.includes(slot),attackLift=striking?(Number(b.attackLimbLift)||0):0;
-    const digLift=action==='dig'&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
+    if(loadTransfer){
+      const load=striking&&attackLift>0?0:step.supportLoad;
+      supportWeight+=load;supportSide+=side*load;supportFore+=front*load;
+      if((gait?.step??1)<.85)sturdyLegs++;
+    }
+    const digLift=action==='dig'&&!Number.isFinite(b.excavationElapsed)&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
     const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift+digLift,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
     if(alert)reach+=.65;if(flee)reach+=front<-.2?1.35:.35;if(court&&front>.4)reach+=.95;if((eat||drink)&&front>.35)reach-=.8;if(depleted)reach-=.3;
@@ -68,7 +82,30 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need&&action!=='jump'){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
+    if(slotList&&(Number.isFinite(b.climbHeight)||Number.isFinite(b.excavationElapsed))){
+      const options={root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,front,side,limbScale,reachScale};
+      const work=Number.isFinite(b.climbHeight)?climbingLimb({...options,height:b.climbHeight,holding:!!b.climbHold,phaseOffset:gripOffsets?.[n]}):diggingLimb({...options,elapsed:b.excavationElapsed,partId:slotList[n].partId,neutralFoot:foot});
+      legs.push({index:k,slot,root,...work,front,side});continue;
+    }
+    if(slotList&&action==='swim'){
+      const stroke=swimmingLimb({phase:frame,moving,steer:b.swimSteer||0,brake:b.swimBrake||0,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
+      legs.push({index:k,slot,root,...stroke,front,side});continue;
+    }
+    if(slotList&&b.aerialTuck>0){
+      const tuck=Math.max(0,Math.min(1,b.aerialTuck)),fold=limbScale*reachScale;
+      const tuckedFoot={x:root.x-fx*1.3*fold+perp.x*side*.65*fold,y:root.y-fy*1.3*fold+perp.y*side*.65*fold};
+      const tuckedKnee={x:root.x+fx*.8*fold+perp.x*side*.8*fold,y:root.y+fy*.8*fold+perp.y*side*.8*fold};
+      const blend=(a,z)=>({x:a.x+(z.x-a.x)*tuck,y:a.y+(z.y-a.y)*tuck});
+      legs.push({index:k,slot,root,knee:blend(knee,tuckedKnee),foot:blend(foot,tuckedFoot),lift:Math.max(lift,tuck*1.6),liftAmount:Math.max(liftAmount,tuck*.8),planted:false,front,side});continue;
+    }
     legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:action==='jump'||action==='climb'?false:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:action==='jump'||action==='climb'?false:liftAmount<.34,front,side});
+  }
+  if(loadTransfer){
+    const posture=supportPosture({weight:supportWeight,side:supportSide,fore:supportFore,limbs:count,sturdy:sturdyLegs/count,bodyScale});
+    // Only the torso and its hips/neck follow load. Contact coordinates are not
+    // translated; drawGenvoBody already lets hips ride above planted feet.
+    bodyOffset.x+=perp.x*posture.side+fx*posture.fore;
+    bodyOffset.y+=perp.y*posture.side+fy*posture.fore+posture.sink;
   }
   const sensory=Math.max(.8,Number(sensoryScale)||1);
   const eyes=Math.max(.78,Number(eyeScale)||1),feelers=Math.max(.78,Number(feelerScale)||1);
@@ -112,8 +149,9 @@ export const GAIT_REVIEW={strideScale:1};
 export function gaitTravelFor(limbScale=1,legSlots=null){return Math.max(2.6,4.6*limbScale)*strideLengthFor(legSlots)*GAIT_REVIEW.strideScale}
 export function organicFootfall(phase,travel=null,recovery=1){
  const p=((Number(phase)+7)%8+8)%8,span=Number.isFinite(travel)?travel*5/8:2.9;
- if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false}}
- return{stride:span/2-span*(p-3)/5,lift:0,planted:true};
+ if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false,supportLoad:0}}
+ const supportProgress=(p-3)/5,supportLoad=Math.sin(Math.PI*supportProgress)**2;
+ return{stride:span/2-span*(p-3)/5,lift:0,planted:true,supportLoad};
 }
 function cycle(values,phase){phase=((Number(phase)%8)+8)%8;const a=Math.floor(phase),b=(a+1)&7,t=phase-a;return values[a]+(values[b]-values[a])*t}
 

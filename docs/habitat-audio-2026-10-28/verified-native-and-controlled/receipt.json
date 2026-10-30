@@ -1,0 +1,634 @@
+{
+  "cases": [
+    {
+      "seed": "AUDIO-RAIN-3",
+      "state": {
+        "day": 1,
+        "tick": 42,
+        "air": {
+          "rain": 0.413905322577351,
+          "temperature": 0.40820381161298397,
+          "wind": {
+            "east": 0.618181026712047,
+            "south": 0.46232715327962726,
+            "strength": 0.7719418232265981
+          },
+          "fog": 0.17595523430691054,
+          "snow": 0,
+          "liquid": 0.17523895781130927,
+          "extinction": 0.02900038121833818
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "wetland",
+          "water": 0.717157287525381,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.6484440994685167,
+          "moisture": 0.7523385882377625,
+          "temperature": 0.40820381161298397,
+          "elevation": 0.05405817925930023,
+          "canopy": 0
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.07882489264011383,
+        "rms": 0.01270441141235199
+      },
+      "sceneRain": 0.17523895781130927,
+      "rainGain": 0.20066723227500916
+    },
+    {
+      "seed": "GENVO8-TEST-A",
+      "state": {
+        "day": 1,
+        "tick": 3,
+        "air": {
+          "rain": 0,
+          "temperature": 0.4744112491607666,
+          "wind": {
+            "east": -0.7199405726244947,
+            "south": -0.46880271087057024,
+            "strength": 0.859121882988951
+          },
+          "fog": 0.08287674448338124,
+          "snow": 0,
+          "liquid": 0,
+          "extinction": 0.009945209338005748
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "unclassified",
+          "water": 0.8,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.5739828765765865,
+          "moisture": 0.6931685209274292,
+          "temperature": 0.4744112491607666,
+          "elevation": 0.042947255074977875,
+          "canopy": 0.2885172516107559
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.06705015897750854,
+        "rms": 0.012719454247153431
+      },
+      "sceneRain": 0,
+      "rainGain": 0
+    },
+    {
+      "seed": "AUDIO-RAIN-4",
+      "state": {
+        "day": 1,
+        "tick": 1,
+        "air": {
+          "rain": 0,
+          "temperature": 0.37525445222854614,
+          "wind": {
+            "east": 0.1597642265034343,
+            "south": 0.7292504153449352,
+            "strength": 0.7465458970157167
+          },
+          "fog": 0.20568755515828752,
+          "snow": 0,
+          "liquid": 0,
+          "extinction": 0.0246825066189945
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "unclassified",
+          "water": 0.8,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.5069250528833311,
+          "moisture": 0.7532297968864441,
+          "temperature": 0.37525445222854614,
+          "elevation": 0.35901322960853577,
+          "canopy": 0.3002343699336052
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.058525487780570984,
+        "rms": 0.010570011923328316
+      },
+      "sceneRain": 0,
+      "rainGain": 0
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Same exported app, three ordinary seeded New Worlds, public onboarding/Return controls, native 1x clock. Zero-output diagnostic tap records the existing master bus; no sound/event/organism/weather fields are injected.",
+  "decoders": [
+    {
+      "stem": "field-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "field-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    }
+  ],
+  "palettes": [
+    {
+      "name": "dry-steppe",
+      "kind": "steppe",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.048978306353092194,
+        "rms": 0.011439154588810122
+      },
+      "targets": {
+        "field": 0.1573656,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0.2576,
+        "exposed": 0.12,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "rainy-steppe",
+      "kind": "steppe",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.05991500988602638,
+        "rms": 0.008815498096012266
+      },
+      "targets": {
+        "field": 0.1414968,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0.4293250516799596,
+        "canopy": 0,
+        "grit": 0.08511999999999997,
+        "exposed": 0.12,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "dry-woodland",
+      "kind": "woodland",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.0655386671423912,
+        "rms": 0.014212128679645861
+      },
+      "targets": {
+        "field": 0.242034,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0.3024,
+        "grit": 0,
+        "exposed": 0,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "rainy-woodland",
+      "kind": "woodland",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.06355884671211243,
+        "rms": 0.011942285167253543
+      },
+      "targets": {
+        "field": 0.18774600000000002,
+        "wet": 0.21714285714285714,
+        "water-edge": 0,
+        "rain": 0.4293250516799596,
+        "canopy": 0.19353599999999999,
+        "grit": 0,
+        "exposed": 0,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "wetland",
+      "kind": "wetland",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.04855455085635185,
+        "rms": 0.007718911709643571
+      },
+      "targets": {
+        "field": 0.1828392,
+        "wet": 0.2931428571428572,
+        "water-edge": 0.21600000000000003,
+        "rain": 0.24,
+        "canopy": 0.01278,
+        "grit": 0,
+        "exposed": 0,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "alpine",
+      "kind": "alpine",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.04114415869116783,
+        "rms": 0.009308081031872719
+      },
+      "targets": {
+        "field": 0.1414968,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0,
+        "exposed": 0.336,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 440,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "tundra",
+      "kind": "tundra",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.025916311889886856,
+        "rms": 0.0055045345953583825
+      },
+      "targets": {
+        "field": 0.1494312,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0,
+        "exposed": 0.22400000000000003,
+        "enclosed": 0,
+        "waterRate": 1.03,
+        "exposedHz": 260,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "ocean",
+      "kind": "ocean",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.05929746851325035,
+        "rms": 0.009907936451405077
+      },
+      "targets": {
+        "field": 0.093786,
+        "wet": 0,
+        "water-edge": 0.62,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0,
+        "exposed": 0.144,
+        "enclosed": 0,
+        "waterRate": 0.86,
+        "exposedHz": 300,
+        "filterHz": 18000,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "cave",
+      "kind": "cave",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.024533811956644058,
+        "rms": 0.005070539640408189
+      },
+      "targets": {
+        "field": 0,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0,
+        "exposed": 0,
+        "enclosed": 0.35,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 1400,
+        "enclosedHz": 240,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    },
+    {
+      "name": "burrow",
+      "kind": "burrow",
+      "metric": {
+        "seconds": 6,
+        "rate": 22050,
+        "channels": 2,
+        "peak": 0.011404360644519329,
+        "rms": 0.002475089819099095
+      },
+      "targets": {
+        "field": 0,
+        "wet": 0,
+        "water-edge": 0,
+        "rain": 0,
+        "canopy": 0,
+        "grit": 0,
+        "exposed": 0,
+        "enclosed": 0.23,
+        "waterRate": 1.03,
+        "exposedHz": 620,
+        "filterHz": 1400,
+        "enclosedHz": 130,
+        "waterPan": 0.25
+      },
+      "sharedBuffer": true,
+      "stateExact": true,
+      "scope": "Controlled acoustic palette on native OfflineAudioContext; no biological habitat or weather history claimed."
+    }
+  ],
+  "mute": {
+    "enabled": false,
+    "gain": 0
+  },
+  "unmute": {
+    "enabled": true,
+    "gain": 0.7200000286102295,
+    "masterLevel": 0.72
+  }
+}

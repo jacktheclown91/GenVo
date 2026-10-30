@@ -1,0 +1,5 @@
+import {acousticDimensions} from './movement-contact.js';
+import {PARTS} from '../lineage/part-registry.js';
+import {planPartCounts} from '../lineage/part-abilities.js';
+// Acoustic presentation only: authored palettes follow mounted anatomy, never ancestry labels.
+export function creatureVoiceProfile(animal){if(!animal?.alive)return null;const counts=planPartCounts(animal),actions=new Set();let mass=0;for(const [id,n] of Object.entries(counts)){const part=PARTS[id];if(!part||n<=0)continue;mass+=part.mass*n;for(const action of part.actionCapabilities)actions.add(action)}if(!actions.has('call'))return null;const sample=actions.has('tear')||actions.has('swallow')?'stalker':actions.has('peck')||actions.has('nibble')?'hopper':actions.has('filter')||actions.has('suck')?'digger':'genvo-call';const rate=Math.max(.65,Math.min(1.4,1.18/Math.pow(Math.max(.5,mass)/3,.18)*acousticDimensions(animal).pitch));return{sample,rate,rough:sample==='stalker',bright:sample==='hopper',mass};}

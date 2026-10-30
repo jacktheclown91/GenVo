@@ -1,0 +1,9 @@
+# Giant organism studies
+
+Claude S6-S8 through cd5022a7 were merged normally, preserving presentation work. The physical body-size/2 policy supports inherited adult scales to3x; earlier worlds retain their rules. No simulation, collision, recognition or founding policy was changed here.
+
+A presentation defect still validated every organism study against body-size/1, rejecting a valid animal above2x. Journal exports now carry their source world's optional bodySizeRules. The isolated Lab validates inherited alleles against that explicit canonical policy. Existing studies without the field retain2x validation and their exact normalized structure; unknown policies and out-of-range sizes fail closed. The study format remains genvo.organism-study/1; game saves are unchanged.
+
+Focused organism-study, giant-organism-study, giant-bodies, size-evolution, Journal, canonical-source, syntax and whitespace checks pass. The first new unit fixture omitted required metabolism and was corrected to use canonical day-clock/metabolism setup; production requirements were not relaxed. The new tests cover0.5/1/1.5/2/3x, actual growth, owned imported data, old2x limits and exact full-world snapshot parity.
+
+Native evidence is in giant-study-2026-10-29/native/: actual new-world Journal download records body-size/2; public Lab import pins its actual inherited data. A separately controlled offline3x study demonstrates24 direction/resolution combinations, shared-scale comparison, newborn current scale1.65x under canonical55% growth, and1440/1024/800 layouts. The native screenshots were inspected. No Simulation fields were edited and no naturally evolved giant or same-world giant population is claimed. These remain separate C4/C8 field requirements, alongside environmental collision/layering and mature-world performance. Full C1-C8 remains active; no release published.

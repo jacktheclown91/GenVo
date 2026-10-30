@@ -1,3 +1,4 @@
+import {drawDetailedFeeler} from './feeler-detail.js';
 import {flankInstanceOffset} from './flank-placement.js';
 import {gestationSurfaceSize} from './gestation-surface.js';
 import {pixel,pixelLine,snap,ART_DETAIL} from './pixel-art.js';
@@ -17,16 +18,19 @@ function shapeScales(shape,dir){if(!shape)return[1,1];const [vx,vy]=DIRV[dir&7],
 // Art redo (v1.47.0): every creature is drawn to a scratch canvas, then composited with a dark
 // one-art-pixel outline round its whole silhouette, so bodies, heads and legs read clearly against
 // any ground. Contexts without drawImage (tests, exporters) get the plain drawing.
-let scratch=null;
+const scratches=new Map();let scratchBytes=0;
+function reserveScratch(bytes,keep=null){
+  while(scratchBytes+bytes>POOL_BYTES||(!keep&&scratches.size>=8)){const entry=[...scratches].find(([,s])=>s!==keep);if(!entry)return false;const [key,s]=entry;scratches.delete(key);scratchBytes-=s.bytes;}return true;
+}
 // v1.57.3: ordinary page canvases, as the terrain uses. On some graphics drivers every copy from an
 // OffscreenCanvas onto the page is an expensive transfer; creature drawing took 35 ms a frame on the
 // creator's machine while terrain (page canvases) took 0.4 ms.
 function makeCanvas(n){if(typeof document!=='undefined'){const cv=document.createElement('canvas');cv.width=n;cv.height=n;return cv}if(typeof OffscreenCanvas!=='undefined')return new OffscreenCanvas(n,n);return null}
 function scratchFor(n){
-  if(scratch&&scratch.n===n)return scratch;const a=makeCanvas(n),b=makeCanvas(n);if(!a||!b)return null;
+  const hit=scratches.get(n);if(hit){scratches.delete(n);scratches.set(n,hit);return hit;}const bytes=n*n*8;if(!reserveScratch(bytes))return null;const a=makeCanvas(n),b=makeCanvas(n);if(!a||!b)return null;
   // v1.57.3: the scratch canvases are CPU canvases (willReadFrequently). On a GPU backend, drawing a
   // freshly painted GPU canvas forces the card to finish its work first, several stalls per creature.
-  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};scratch={n,a:ctx(a),b:ctx(b),pool:[],next:0,ctx};return scratch;
+  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};const scratch={n,a:ctx(a),b:ctx(b),pool:[],next:0,ctx,bytes};scratches.set(n,scratch);scratchBytes+=bytes;return scratch;
 }
 // Phase 3K render audit: on a GPU backend, copying the one shared finished-sprite canvas onto the page right
 // after repainting it waited for the previous upload: 83.5 ms of a 112 ms frame (headed Chromium, D3D11) for
@@ -35,7 +39,7 @@ function scratchFor(n){
 // Pixels are unchanged; the pool is capped at POOL_BYTES of canvas memory. ?scratchPool=1 restores the single
 // shared canvas. Measured, headed Chromium on D3D11, day 20: render p50 103 ms (one canvas), 36.5 (16), 29 (64), 20.8 (256).
 const POOL_BYTES=32*1024*1024;
-function finishCanvas(S){const k=Math.min(SPRITE_CACHE.scratchPool|0,Math.floor(POOL_BYTES/(S.n*S.n*4)));if(k<=1)return S.b;S.next=(S.next+1)%k;let x=S.pool[S.next];if(!x){const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return S.b;S.pool[S.next]=x}return x}
+function finishCanvas(S){const k=Math.min(SPRITE_CACHE.scratchPool|0,Math.floor(POOL_BYTES/(S.n*S.n*4)));if(k<=1)return S.b;S.next=(S.next+1)%k;let x=S.pool[S.next];if(!x){const bytes=S.n*S.n*4;if(!reserveScratch(bytes,S))return S.b;const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return S.b;S.pool[S.next]=x;S.bytes+=bytes;scratchBytes+=bytes}return x}
 // The outline colour: the palette's shade, much darker.
 // A blend of two hex colours (t = 0 gives a, 1 gives b).
 export function mixHex(a,b,t){const A=/^#([0-9a-f]{6})$/i.exec(a||''),B=/^#([0-9a-f]{6})$/i.exec(b||'');if(!A||!B)return a;const x=parseInt(A[1],16),y=parseInt(B[1],16),ch=k=>Math.round((x>>k&255)*(1-t)+(y>>k&255)*t).toString(16).padStart(2,'0');return'#'+ch(16)+ch(8)+ch(0)}
@@ -62,7 +66,7 @@ export function outlineColor(p){const m=/^#([0-9a-f]{6})$/i.exec(p?.shade||'');i
 // into a texture that is drawn from in the same frame stalls GPU backends.)
 const spriteCache=new Map(),SPRITE_CACHE_MAX=2400,bodyLayerCache=new Map(),BODY_LAYER_MAX=1200;
 // Diagnostic counters (read by tools/profile-population-frames.cjs; cost one increment per sprite draw).
-export const SPRITE_STATS={pendingBitmaps:0,hits:0,pending:0,misses:0,uncached:0,evictions:0,lastSide:0,size:()=>spriteCache.size};
+export const SPRITE_STATS={pendingBitmaps:0,hits:0,pending:0,misses:0,uncached:0,evictions:0,lastSide:0,size:()=>spriteCache.size,scratchBytes:()=>scratchBytes,scratchSizes:()=>scratches.size};
 // skipMoving: a walking creature's pose (32 per stride x direction x head turn) was almost never drawn twice
 // before eviction (Phase 3K render audit: 3483 of 3483 sampled misses were new keys), so caching it only paid
 // a bitmap upload and pushed out reusable resting poses. Moving poses are drawn directly; pixels are identical.
@@ -117,7 +121,7 @@ function keepSprite(ck,src,n,sx=0,sy=0){SPRITE_STATS.lastSide=n;
 export function drawGenvoSprite(c,opts={}){
   const s=opts.scale||1,n=Math.ceil(44*s/2)*2;
   const S=typeof c?.drawImage==='function'?scratchFor(n):null;if(!S)return drawGenvoBody(c,opts);
-  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts&&!(SPRITE_CACHE.skipMoving&&opts.moving)?opts.cacheKey+'|coat'+(Number.isFinite(opts.animal?.coatDensity)?Math.round(opts.animal.coatDensity*8):-1)+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
+  const artRevision=nativeArtStatus().revision,contactCache=opts.groundContactFrame?.cacheToken;const ck=opts.cacheKey&&!opts.authoredParts&&(!opts.groundContactFrame||contactCache)&&!(SPRITE_CACHE.skipMoving&&opts.moving&&!contactCache&&!opts.frozenPose)?opts.cacheKey+'|coat'+(Number.isFinite(opts.animal?.coatDensity)?Math.round(opts.animal.coatDensity*8):-1)+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null)+'|arid'+(opts.pose?.arid?.cacheToken||'')+(contactCache?'|contact'+contactCache:''):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
   const size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
   if(batch.active&&!(MODULAR_HEAD.enabled&&ck)){let slot=stagingSlot(size),body=slot&&!slot.B?poolBody(S):null;
     if(!slot||(!slot.B&&!body)){batch.stats.overflowFlushes++;batch.flush();slot=stagingSlot(size);body=slot&&!slot.B?poolBody(S):null}
@@ -140,7 +144,7 @@ export function drawGenvoSprite(c,opts={}){
 // would reach. Keys are "parent|socket" as the body plan uses them.
 export function genvoAnchors({animal:a,phenotype:ph,frame=0,pose={}}={}){
   const asm=assemblyFor(a),dir=pose.dir??a.dir??0,[shapeW,shapeH]=shapeScales(asm.shape,dir);
-  const profile=genvoVisualPose({id:a.id,dir,frame,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,stage:'adult',life:{},behavior:{}});
+  const profile=genvoVisualPose({id:a.id,dir,frame,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,stage:pose.stage||'adult',life:pose.life||{},behavior:{}});
   const {v,perp,bodyW,bodyH,bodyOffset,legs}=profile,fx=v.x,fy=v.y,bx=bodyOffset.x,by=bodyOffset.y,vn=Math.hypot(fx,fy)||1,rx=bodyW/2,ry=bodyH/2;
   const edgeAt=(dx,dy)=>1/Math.hypot(dx/rx,dy/ry),referenceHead=headPose(asm,profile,null);
   const forward=referenceHead?(referenceHead.x-bx)*fx+(referenceHead.y-by)*fy:profile.face.eyeForward,faceShift=Math.max(0,forward-profile.face.eyeForward+.15);
@@ -174,9 +178,16 @@ export function genvoAnchors({animal:a,phenotype:ph,frame=0,pose={}}={}){
 // that ignores drawing (to compute the same positions) and draws only head, mouth and eyes. ?modularHead=1.
 export const MODULAR_HEAD={enabled:false};
 const NULL_CTX=new Proxy({},{get:(t,k)=>k==='getTransform'?()=>new DOMMatrix():typeof k==='string'&&k!=='canvas'?()=>{}:undefined,set:()=>true});
-function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0,layer='all'}={}){let c=layer==='head'?NULL_CTX:c0;
+function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0,groundContactFrame=null,layer='all'}={}){let c=layer==='head'?NULL_CTX:c0;
   const asm=assemblyFor(a),[shapeW,shapeH]=shapeScales(asm.shape,pose.dir??a.dir??0);
   const frameInt=Math.floor(frame)&7,life=pose.life||{},profile=genvoVisualPose({id:a.id,dir:pose.dir??a.dir,frame,moving,action:pose.action||'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,alert:!!pose.alert,stage:pose.stage||'adult',life,behavior:pose.behavior||{}});
+  let neutralProfile=null,neutralSockets=null;
+  if(groundContactFrame?.needsRestPose){
+    const [neutralW,neutralH]=shapeScales(asm.shape,groundContactFrame.seedDir??pose.dir??a.dir);
+    neutralProfile=genvoVisualPose({dir:groundContactFrame.seedDir??pose.dir??a.dir,frame:0,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*neutralW,bodyHeightScale:(ph.bodyHeightScale||1)*neutralH,limbScale:ph.limbScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,stage:pose.stage||'adult',life});
+    if(asm.explicit)neutralSockets=socketPoints(asm.torso,bodyFrame({fx:neutralProfile.v.x,fy:neutralProfile.v.y,perp:neutralProfile.perp,bx:neutralProfile.bodyOffset.x,by:neutralProfile.bodyOffset.y,bodyW:neutralProfile.bodyW,bodyH:neutralProfile.bodyH}));
+  }
+  if(groundContactFrame)profile.bodyOffset=groundContactFrame.carriage(profile.bodyOffset,neutralProfile?.bodyOffset);
   const {v,perp,bodyW,bodyH,bodyOffset,legs,flee,drink,court,hunt}=profile,fx=v.x,fy=v.y,bx=bodyOffset.x,by=bodyOffset.y;
   const L=asm.explicit?socketPoints(asm.torso,bodyFrame({fx,fy,perp,bx,by,bodyW,bodyH})):null;
   const head=headPose(asm,profile,L,{frame,behavior:pose.behavior,life}),faceMounts=facialMounts(asm,head,L);
@@ -185,7 +196,7 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
   const face={...profile.face,eyeForward:profile.face.eyeForward+faceShift,mouthForward:profile.face.mouthForward+faceShift+.35};
   if(L){const proj=pt=>({f:(pt.x-bx)*fx+(pt.y-by)*fy,s:(pt.x-bx)*perp.x+(pt.y-by)*perp.y});if(L.mouth)face.mouthForward=proj(L.mouth).f;if(L['eye.right']){const e=proj(L['eye.right']);face.eyeForward=e.f;face.eyeSpread=Math.abs(e.s)}}
   const expressionNode=(socket,index=0)=>asm.faceNodes[socket]||a.bodyPlan?.nodes.filter(n=>n.parent==='root'&&n.socket===socket)[index]?.id;
-  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression,arid:pose.arid||null};
+  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,nativeBodyWidthScale:(ph.bodyWidthScale||1)*shapeW,nativeBodyHeightScale:(ph.bodyHeightScale||1)*shapeH,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression,arid:pose.arid||null};
   // Gait articulation (renderer-owned): the torso twists about its centre while walking, so the
   // head end and tail end swing to opposite sides and dorsal tissue rolls past the outline.
   // Whole-pixel canvas offsets keep pixel art crisp; feet are never moved (contacts stay planted).
@@ -202,7 +213,18 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
     if(twist){const end=leg.front>.25?1:leg.front<-.25?-1:0;if(end){const hx=perp.x*twist*end,hy=perp.y*twist*end;root={x:root.x+hx,y:root.y+hy};knee={x:knee.x+hx*.5,y:knee.y+hy*.5}}}
     // v1.54.0: an authored body puts the hip where it says; the leg keeps its own shape and stride.
     {const hip=leg.slot!=null&&L?.[limbOfSlot(leg.slot)];if(hip){const dx=hip.x-root.x,dy=hip.y-root.y;root={x:hip.x,y:hip.y};knee={x:knee.x+dx,y:knee.y+dy};foot={x:foot.x+dx,y:foot.y+dy}}}
-    const rel=relativeLegIndex(leg),legPart=leg.slot!=null?asm.slotLegs[leg.slot]:asm.legs[rel],spurPart=leg.slot!=null?asm.slotSpurs[leg.slot]:asm.spurs[rel],LK={...K,leg,root,knee,foot,size:a?.anatomy?.spring};
+    let drawnLeg=leg;
+    if(groundContactFrame){
+      let restFoot=foot;
+      const neutral=neutralProfile?.legs.find(l=>(l.slot??l.index)===(leg.slot??leg.index));
+      if(neutral){
+        restFoot={...neutral.foot};const hip=neutral.slot!=null&&neutralSockets?.[limbOfSlot(neutral.slot)];
+        if(hip){restFoot.x+=hip.x-neutral.root.x-neutralProfile.bodyOffset.x;restFoot.y+=hip.y-neutral.root.y-neutralProfile.bodyOffset.y;}
+      }
+      const resolved=groundContactFrame.resolve(leg,{root,knee,foot,restFoot});
+      root=resolved.root;knee=resolved.knee;foot=resolved.foot;drawnLeg=resolved.leg;
+    }
+    const rel=relativeLegIndex(leg),legPart=leg.slot!=null?asm.slotLegs[leg.slot]:asm.legs[rel],spurPart=leg.slot!=null?asm.slotSpurs[leg.slot]:asm.spurs[rel],LK={...K,leg:drawnLeg,root,knee,foot,size:a?.anatomy?.spring};
     const nativeLimb=drawLimb(c,legPart||'walking-leg',LK);
     if(spurPart)drawPart(c,spurPart,LK);
     if(!asm.explicit&&ph.adaptations?.webbedLimbs&&Math.abs(leg.side)>.34){const toeX=snap(foot.x),toeY=snap(foot.y),sign=Math.sign(leg.side)||1;pixel(c,toeX+sign,toeY,2,1,s,p.light)}
@@ -315,7 +337,8 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
     const rx=bx+fx*(Math.max(2.4,bodyW*.30))+perp.x*sign*(face.eyeSpread+1.0),ry=by+fy*(Math.max(2.4,bodyH*.30))+perp.y*sign*(face.eyeSpread+1.0);
     const behavior=profile.behavior||{},sweep=(Number(behavior.feelerSweep)||0)*Math.sin((frame+sign*1.6)*Math.PI/4),pin=Number(behavior.feelerPin)||0;
     const curl=(sign*(frameInt<4?1:-1))*.45,endX=rx+fx*(face.feelerReach-pin*.8)+perp.x*(sign*.75+curl+sweep*sign),endY=ry+fy*(face.feelerReach-pin*.8)+perp.y*(sign*.75+curl+sweep*sign);
-    pixelLine(c,rx,ry,endX,endY,s,p.light,.5);pixel(c,snap(endX),snap(endY),1,1,s,p.body);
+    const sensoryArt=authoredParts?.[head?.partId||'head-base']||artForPart(head?.partId||'head-base');
+    if(!drawDetailedFeeler(c,{root:{x:rx,y:ry},tip:{x:endX,y:endY},scale:s,palette:p,resolution:sensoryArt?.resolution||32,side:sign})){pixelLine(c,rx,ry,endX,endY,s,p.light,.5);pixel(c,snap(endX),snap(endY),1,1,s,p.body);}
   }
 
   // Each installed eye now supplies its own eyelid and iris. Use authored frame 1

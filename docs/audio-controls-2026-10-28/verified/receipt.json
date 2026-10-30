@@ -1,0 +1,92 @@
+{
+  "errors": [],
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "sliders": [
+        {
+          "value": "0",
+          "width": 352,
+          "label": "Music 0%"
+        },
+        {
+          "value": "80",
+          "width": 352,
+          "label": "Environment 80%"
+        },
+        {
+          "value": "25",
+          "width": 352,
+          "label": "Creatures & actions 25%"
+        }
+      ],
+      "backReachable": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "sliders": [
+        {
+          "value": "0",
+          "width": 352,
+          "label": "Music 0%"
+        },
+        {
+          "value": "80",
+          "width": 352,
+          "label": "Environment 80%"
+        },
+        {
+          "value": "25",
+          "width": 352,
+          "label": "Creatures & actions 25%"
+        }
+      ],
+      "backReachable": true
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "overflow": false,
+      "sliders": [
+        {
+          "value": "0",
+          "width": 352,
+          "label": "Music 0%"
+        },
+        {
+          "value": "80",
+          "width": 352,
+          "label": "Environment 80%"
+        },
+        {
+          "value": "25",
+          "width": 352,
+          "label": "Creatures & actions 25%"
+        }
+      ],
+      "backReachable": true
+    }
+  ],
+  "creatorAcceptance": false,
+  "preferences": {
+    "enabled": true,
+    "master": 0.72,
+    "music": 0,
+    "ambience": 0.8,
+    "sfx": 0.25
+  },
+  "muted": {
+    "enabled": false,
+    "gain": 0
+  },
+  "reloaded": {
+    "enabled": false,
+    "music": 0,
+    "ambience": 0.8,
+    "sfx": 0.25
+  }
+}

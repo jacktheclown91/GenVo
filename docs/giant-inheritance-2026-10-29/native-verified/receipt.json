@@ -1,0 +1,142 @@
+{
+  "mode": "controlled canonical birth",
+  "errors": [],
+  "directions": [
+    {
+      "dir": 0,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 1,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 2,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 3,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 4,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 5,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 6,
+      "expanded": true,
+      "focus": "Facing"
+    },
+    {
+      "dir": 7,
+      "expanded": true,
+      "focus": "Facing"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "pageOverflow": false,
+      "panelOverflow": false
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "pageOverflow": false,
+      "panelOverflow": false
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "pageOverflow": false,
+      "panelOverflow": false
+    },
+    {
+      "width": 600,
+      "height": 800,
+      "pageOverflow": false,
+      "panelOverflow": false
+    }
+  ],
+  "creatorAcceptance": false,
+  "record": {
+    "id": 197,
+    "changed": 1,
+    "models": [
+      {
+        "id": 109,
+        "label": "Parent 1 · conception anatomy",
+        "sizeStatus": "unrecorded"
+      },
+      {
+        "id": 111,
+        "label": "Parent 2 · conception anatomy",
+        "sizeStatus": "unrecorded"
+      },
+      {
+        "id": 197,
+        "label": "Offspring · current body",
+        "sizeStatus": "recorded"
+      }
+    ],
+    "day": 1,
+    "seed": "CONTROLLED-NATIVE-CONCEPTION"
+  },
+  "artStatus": "Detailed 128 · standard fallback where needed",
+  "inheritedSizeDisabled": true,
+  "detailedRequests": [
+    "small-torso-128.indexed.json.gz",
+    "head-base-128.indexed.json.gz",
+    "walking-leg-128.indexed.json.gz",
+    "simple-eye-128.indexed.json.gz",
+    "grazing-mouth-128.indexed.json.gz",
+    "beak-mouth-128.indexed.json.gz"
+  ],
+  "stateExact": true,
+  "controlledScale": {
+    "extents": [
+      47,
+      139
+    ],
+    "scope": "Isolated legal-size portrait adapter check; actual lineage and historical records unchanged."
+  },
+  "witnessReader": {
+    "scope": "Controlled view-only conception-size witnesses, not canonical saved history",
+    "worldRecordStillMissing": true,
+    "labels": [
+      "Offspring adult length +82.3% versus this parent",
+      "Offspring adult length +36.8% versus this parent"
+    ]
+  },
+  "cachePolicy": true,
+  "birth": {
+    "lines": [
+      "Inherited adult length 2.735× reference; current 1.504×",
+      "From you: grazing mouth, simple eye",
+      "From its other parent: small torso, walking leg",
+      "Compared with you: prefers cool, more cautious and solitary, larger body"
+    ],
+    "size": {
+      "adultScale": 2.735059458982873,
+      "currentScale": 1.5042827024405803,
+      "growth": 0.55,
+      "stage": "newborn",
+      "adultMass": 29.6666370703917,
+      "mass": 4.935786742586421
+    }
+  },
+  "finalStateExact": true,
+  "status": "PASS",
+  "scope": "Explicit controlled funded conception fixture, canonical giveBirth and actual Journal/Renderer classes; not natural field reproduction. native detailed portraits, eight directions, preserved disclosure/focus, four layouts and full biological parity. Conception size remains unknown in actual records. Retained-size reader witnesses and 1x/3x portraits are explicitly local controlled adapters; birth labels read the actual canonical fixture child."
+}

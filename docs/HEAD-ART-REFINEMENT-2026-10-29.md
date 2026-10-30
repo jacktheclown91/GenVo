@@ -1,0 +1,21 @@
+# Detailed head refinement — October 29
+
+The optional 64px/128px head base now has a rounded cranial contour, paired cheek volume, narrower facial platform, coherent upper-left volume shading, neck/cheek folds and sparse skin breaks. This replaces the preceding roughly square, densely textured surface. Eyes, mouths, feelers and coverings remain separate inherited parts; the base adds no eyes, mouth, ears, horns, fur or functional anatomy.
+
+`tools/art-production/head-recipes.mjs` authors native indexed tissue at each resolution and all eight orientations. `node tools/art-production/generate.mjs --refine-heads` compiles it through the existing canonical codec. Only the two optional head variants and their atlas previews change. Rig, pivot, 24-by-22 registration, inherited pigmentation regions, display scale and frame timing remain exact. Actual head pose still owns breathing, attention, feeding and turning; skin frames add no second motion. Native32 and global resolution selection are untouched. Original human art and the preceding image master remain in place. The previous detailed head assets and metadata are retained under `head-refinement-2026-10-29/before/`.
+
+## Evidence
+
+`tests/detailed-heads.mjs` passed 32 native frames, recipe reproducibility, material difference from the old tissue, all-eight-facing bounds, exact registration/palette/timing, inherited tint, unchanged Native32 source checksum and exact metadata for the other 28 optional variants. Torso and limb tests delegate only the two legitimately revised head entries to this new coverage; no budgets were raised. Detailed torso/limb/face, part-art variants, indexed renderer, limb handedness, canonical source and architecture checks passed, together with syntax/whitespace checks.
+
+`tools/review-head-batch.mjs` uses public sandbox-founder import and ordinary keyboard movement in a new planetary world. Three legal actual organisms cover compact/walking, soft/runner and domed/sturdy configurations. Same paused world and camera compare Native32, prior64, current64 and 128 artwork. Complete saved-state graphs remain exact during art changes. Movement distances were 2.05, 2.33 and 1.96 world units. No position, resource, climate, anatomy or biological event injection was used. These are authored founders, not naturally evolved lineages or proof of physical giants.
+
+Each actual organism study was then imported through the public Lab controls. Before/current64/128 comparisons retained its actual body, pigmentation and age, with 96 total direction checks across the three bodies. Native screenshots were inspected, including normal gameplay, enlarged Lab tissue and the directional assembly sheet. Gameplay at normal zoom shows a restrained silhouette/shading change; the close-up makes the head revision clearer. No claim that a head-only revision completes anatomical identity or all artwork quality requirements.
+
+Evidence lives under `head-refinement-2026-10-29/small/`, `soft/`, `dome/`, and the before/current directional sheets. `tools/profile-head-art.mjs` measures alternating uncached batches of the actual public-founder studies at scales 2/6, both resolutions and all eight directions, after warmups. The initial profile and the subsequent directional-sheet/profile run are both retained. Initial before/current medians were comparable at 1.3–1.7 ms per eight-sprite batch at scale2 and 2.6–3.2 ms at scale6. Timing precision and tails vary; this is not mature-world, GPU or global64px acceptance.
+
+Aggregate candidate compressed assets decrease from 421,545 to 406,932 bytes. Declared decoded RGBA for all variants stays 19,660,800 bytes; this is asset pixel storage, not a measurement of total browser memory. No extra runtime effect, canvas generator or anatomy query is introduced.
+
+## Continuation
+
+Full C1–C8 remains active. Natural-history identity across more anatomical combinations, richer representative fur/feather/armor assemblies, remaining locomotion/body configurations, real size/environment interactions, extreme habitats, mature populated-world performance and creator acceptance remain open. The 64px candidate is still optional and 32px remains the stable default/fallback. No simulation/save changes, push or release.

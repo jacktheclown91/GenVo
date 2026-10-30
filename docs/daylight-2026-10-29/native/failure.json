@@ -1,0 +1,67 @@
+{
+  "errors": [],
+  "phases": [
+    {
+      "name": "night",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 6.299999997019768,
+          "maxMs": 70.10000000149012,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 8.200000002980232,
+          "maxMs": 88.59999999776483,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.025,
+        "daylight": 0,
+        "night": true,
+        "label": "Night",
+        "shade": 0.2,
+        "warmth": 0
+      },
+      "tick": 6,
+      "day": 1,
+      "clock": "SpringDay 1Y1NightPaused",
+      "stateExact": true
+    },
+    {
+      "name": "dawn",
+      "timings": [
+        {
+          "old": true,
+          "medianMs": 25.5,
+          "maxMs": 35.70000000298023,
+          "samples": 8
+        },
+        {
+          "old": false,
+          "medianMs": 35,
+          "maxMs": 42.30000000074506,
+          "samples": 8
+        }
+      ],
+      "phase": {
+        "policy": "diurnal-temperature/1",
+        "timeOfDay": 0.275,
+        "daylight": 0.156434465040231,
+        "night": false,
+        "label": "Dawn",
+        "shade": 0.16871310699195383,
+        "warmth": 0.035290858725761765
+      },
+      "tick": 66,
+      "day": 1,
+      "clock": "SpringDay 1Y1DawnPaused",
+      "stateExact": true
+    }
+  ],
+  "creatorAcceptance": false,
+  "failure": "page.waitForFunction: Timeout 60000ms exceeded."
+}
