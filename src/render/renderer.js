@@ -1014,7 +1014,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   playerGaitVisual(a,gaitPerTile){const g=this.motion.sample({...a,id:'gait:'+a.id,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile});return{...this.playerVisual,gaitPhase:g.gaitPhase,recentlyMoving:g.recentlyMoving}}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const inheritedScale=inheritedVisualScale(a),scale=this.zoom*inheritedScale,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(inheritedGaitLength(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),a),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
+    const inheritedScale=inheritedVisualScale(a),scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(inheritedGaitLength(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),a),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(a.player?!!visual.recentlyMoving:!!visual.recentlyMoving&&targetTravel);if(a.player)this.lastPlayerDrawMoving=moving;
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
@@ -1080,7 +1080,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
     const shove=reactionShove(reaction,a);if(shove){recoilX+=shove.x;recoilY+=shove.y}const dShove=defenseShove(defense,a);if(dShove){recoilX+=dShove.x;recoilY+=dShove.y}
+    // Keep sprite rasterization at the existing pixel scale/cache size. The
+    // read-only canvas transform expresses inherited adult size without
+    // allocating a different scratch/atlas surface for every genome.
     c.save();c.translate(px+recoilX*scale,py+((life.hurt&&!moving?1:0)+recoilY)*scale);
+    if(inheritedScale!==1)c.scale(inheritedScale,inheritedScale);
     if(!a.underground&&!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     if(!a.underground&&!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
