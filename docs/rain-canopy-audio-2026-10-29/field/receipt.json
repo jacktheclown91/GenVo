@@ -1,0 +1,198 @@
+{
+  "cases": [
+    {
+      "seed": "AUDIO-RAIN-3",
+      "state": {
+        "day": 1,
+        "tick": 52,
+        "air": {
+          "rain": 0.5519909662098414,
+          "temperature": 0.4084021088155711,
+          "wind": {
+            "east": 0.413871555077728,
+            "south": 0.7278254516773284,
+            "strength": 0.8372691038201301
+          },
+          "fog": 0.1755426420364011,
+          "snow": 0,
+          "liquid": 0.3876784095536022,
+          "extinction": 0.038510645474280236
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "wetland",
+          "water": 0.8159146713489761,
+          "waterPan": -0.18408532865102387,
+          "saline": 0,
+          "wind": 0.5943251708103239,
+          "moisture": 0.7654846906661987,
+          "temperature": 0.4084021088155711,
+          "elevation": 0.05356917157769203,
+          "canopy": 0.2762501686811447
+        },
+        "textureNodes": 5,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.10719286650419235,
+        "rms": 0.013233581521448217
+      },
+      "sceneRain": 0.3876784095536022,
+      "rainGain": 0.29940280318260193
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Ordinary new-world initialization and keyboard travel to an existing rainy tree; zero biological/environment/event edits. Native master recording includes the new texture, plus ordinary music/actions/ambience.",
+  "decoders": [
+    {
+      "stem": "field-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "field-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    }
+  ],
+  "target": {
+    "x": 55.5,
+    "y": 49.5,
+    "canopy": 0.22100013494491577,
+    "rain": 0.3876784095536022,
+    "distance": 1
+  },
+  "reached": {
+    "position": {
+      "x": 55.42042664325512,
+      "y": 49.5
+    },
+    "scene": {
+      "scene": "calm",
+      "danger": 0,
+      "shelter": false,
+      "hidden": false,
+      "generation": 1,
+      "seasonIndex": 0,
+      "threatDistance": null,
+      "threatId": null,
+      "threatX": null,
+      "threatY": null,
+      "huntPhase": null,
+      "concealed": false,
+      "wetness": 0.9063489818572998,
+      "waterEdge": 0.8159146713489761,
+      "rain": 0.3876784095536022,
+      "branch": null,
+      "habitat": {
+        "kind": "wetland",
+        "water": 0.8159146713489761,
+        "waterPan": -0.18408532865102387,
+        "saline": 0,
+        "wind": 0.5943251708103239,
+        "moisture": 0.7654846906661987,
+        "temperature": 0.4084021088155711,
+        "elevation": 0.05356917157769203,
+        "canopy": 0.2762501686811447
+      }
+    },
+    "target": 0.03784086368634697
+  }
+}

@@ -1,6 +1,6 @@
-// Nonvocal material/air textures. Four sources share one cached noise buffer;
+// Nonvocal material/air textures. Five sources share one cached noise buffer;
 // slow modulation gives air movement without scheduling fictional world events.
-const definitions=[['canopy',2350,.6,.27],['grit',1550,.45,.17],['exposed',340,.7,.085],['enclosed',220,1.2,.11]];
+const definitions=[['canopy',2350,.6,.27],['grit',1550,.45,.17],['exposed',340,.7,.085],['enclosed',220,1.2,.11],['rain-canopy',3200,.65,5.7]];
 export class HabitatTextures{
  constructor(ctx,noise,bus){
   this.ctx=ctx;this.layers=new Map();

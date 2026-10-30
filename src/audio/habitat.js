@@ -38,7 +38,8 @@ export function habitatMixTargets(scene={}){
  const cold=kind==='tundra',high=kind==='alpine',arid=kind==='arid'||kind==='steppe',woods=kind==='woodland'||kind==='thicket';
  return{field:outside?(.26+.24*(1-wet))*(arid||high||cold?.38:1)*(woods?.65:1)*(1-water*.65)*(.35+.65*wind):0,wet:outside&&!openWater?.38*clamp((wet-.3)/.7)*(1-water*.25):0,
   'water-edge':outside?(.54+.08*clamp(h.saline))*water:submerged?.10*water:0,rain:outside?.48*Math.sqrt(rain):0,
-  canopy:outside?clamp(h.canopy)*(woods?.42:.18)*(1-rain*.45)*wind:0,grit:outside&&arid?.35*(1-wet*.8)*(1-rain*.75)*wind:0,
+  canopy:outside?clamp(h.canopy)*(woods?.42:.18)*(1-rain*.45)*wind:0,
+  'rain-canopy':outside?.22*Math.sqrt(rain)*clamp(h.canopy):0,grit:outside&&arid?.35*(1-wet*.8)*(1-rain*.75)*wind:0,
   exposed:outside?(high?.42:cold?.28:arid?.15:kind==='ocean'?.18:0)*wind:0,enclosed:inside?(kind==='cave'?.35:.23):submerged?.18:0,
   waterRate:1.03-.17*clamp(h.saline),exposedHz:high?440:cold?260:kind==='ocean'?300:620,filterHz:submerged?360:inside?1400:18000,enclosedHz:kind==='burrow'?130:kind==='submerged'?95:240,waterPan:Math.max(-.85,Math.min(.85,h.waterPan||0))};
 }
