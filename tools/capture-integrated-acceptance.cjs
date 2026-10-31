@@ -48,7 +48,7 @@ async function advanceDays(page,days){await page.evaluate(n=>{const s=window.__G
   await page.mouse.click(target.sx,target.sy);await page.waitForTimeout(200);await page.screenshot({path:path.join(out,`${kind}-options-800.png`)});
   const command=page.locator('.context-radial button').filter({hasText:label});
   let viaHud=false;if(!await command.count()){await page.keyboard.press('Escape');await page.waitForTimeout(150);if(kind!=='plant'){receipt.gaps.push(`No ${kind} command on the radial.`);continue}viaHud=true}
-  const start=await state(page);if(viaHud)await page.locator('button:visible').filter({hasText:/^\s*Eat\s*$/}).first().click();else await command.first().click();
+  const start=await state(page);if(viaHud)await page.locator('button:visible[data-resource="eat"], button:visible').filter({hasText:/Eat/i}).first().click();else await command.first().click();
   let done=false;for(let k=0;k<40&&!done;k++){await page.waitForTimeout(250);const now=await state(page);done=kind==='plant'?now.energy>start.energy+.01:now.hydration>start.hydration+.01}
   const end=await state(page);await page.screenshot({path:path.join(out,`${kind}-result-800.png`)});
   step(kind==='plant'?'feeding':'drinking',{via:viaHud?'HUD Eat button':'radial command',energy:[start.energy,end.energy],hydration:[start.hydration,end.hydration],changed:done});
