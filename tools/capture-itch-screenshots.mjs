@@ -18,7 +18,7 @@ const SCENES={
  'spring-jumper':{seed:'PLANET-OBS-1',creature:'starter-jump',frames:8,every:9000}};
 const wanted=process.argv.slice(4).length?process.argv.slice(4):Object.keys(SCENES);
 const mime={'.js':'text/javascript','.json':'application/json','.html':'text/html','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.wav':'audio/wav','.gz':'application/gzip'};
-const server=http.createServer((req,res)=>{const file=path.resolve(root,'..'+decodeURIComponent(new URL(req.url,'http://local').pathname));if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return}const target=fs.existsSync(file)&&fs.statSync(file).isDirectory()?path.join(file,'index.html'):file;fs.readFile(target,(error,bytes)=>{if(error){res.writeHead(404);res.end();return}res.setHeader('Content-Type',mime[path.extname(target)]||'application/octet-stream');res.end(bytes)})});
+const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return}const target=fs.existsSync(file)&&fs.statSync(file).isDirectory()?path.join(file,'index.html'):file;fs.readFile(target,(error,bytes)=>{if(error){res.writeHead(404);res.end();return}res.setHeader('Content-Type',mime[path.extname(target)]||'application/octet-stream');res.end(bytes)})});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await pw.chromium.launch({headless:true});const index=[];
 try{for(const name of wanted){const sc=SCENES[name];
  const [vw,vh,scale]=(process.env.VIEW||'1280x720@1.5').split(/[x@]/).map(Number),page=await browser.newPage({viewport:{width:vw,height:vh},deviceScaleFactor:scale});

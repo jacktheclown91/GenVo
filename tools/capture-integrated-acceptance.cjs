@@ -7,7 +7,7 @@
 // Only the simulation clock is advanced (real updates) to reach night and later days.
 let activeBrowser;const fs=require('node:fs'),path=require('node:path');
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
-const root=path.resolve(__dirname,'../..'),out=path.join(root,'docs/integrated-acceptance-2026-10-30');fs.mkdirSync(out,{recursive:true});
+const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/integrated-acceptance-2026-10-30');fs.mkdirSync(out,{recursive:true});
 const TYPES={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.png':'image/png','.wav':'audio/wav','.gz':'application/gzip','.svg':'image/svg+xml','.woff2':'font/woff2'};
 async function serve(context){await context.route('https://genvo.review/**',async r=>{const p=path.resolve(root,decodeURIComponent(new URL(r.request().url()).pathname).replace(/^\//,'')||'index.html');if(!p.startsWith(root+path.sep))return r.abort();if(!fs.existsSync(p))return r.fulfill({status:404,body:''});await r.fulfill({body:fs.readFileSync(p),contentType:TYPES[path.extname(p)]||'application/octet-stream'})})}
 const receipt={scope:'Combined main (stabilization + PR #51) in headless Chromium. Real input and real simulation; the clock is only advanced by ordinary updates.',steps:[],gaps:[],errors:[]};

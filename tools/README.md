@@ -12,6 +12,7 @@ Active tools only: those referenced by the gate, tests, other tools, CI workflow
 | Presentation reference sheets (needed by the audit) | `node tools/export_sprite_sheets.cjs` |
 | Browser export of exactly the reachable runtime | `node tools/export-public.mjs OUT_DIR` |
 | itch.io HTML5 ZIP and report | `python tools/package-itch-preview.py EXPORT ZIP REPORT` |
+| Check an export folder before packaging | `node tools/verify-public-build.cjs EXPORT_DIR EVIDENCE_DIR` |
 | Browser verification of an extracted ZIP | `node tools/verify-release-browser.mjs EXTRACTED EVIDENCE --autonomous-populations` |
 | First-player and integrated acceptance | `tools/capture-first-player-acceptance.cjs`, `tools/capture-integrated-acceptance.cjs` |
 | Mature-world performance | `node tools/measure-mature-regions-browser.mjs PUBLIC_ROOT OUT.json [SECONDS]` |

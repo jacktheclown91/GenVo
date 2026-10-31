@@ -8,9 +8,9 @@ import {
   readLedger,
   snapshotTree,
   verifyLedger
-} from '../provenance-lib.mjs';
+} from './provenance-lib.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = parseArgs(process.argv.slice(2));
 const ledgerPath = path.join(root, 'provenance/ledger.jsonl');
 const statePath = path.join(root, 'provenance/tree-state.json');
