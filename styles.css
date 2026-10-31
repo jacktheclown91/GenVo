@@ -411,7 +411,7 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 #interactionDock .dock-empty,#interactionDock .creature-context-tray{display:none!important}
 #interactionDock .dock-survival-slot{padding:0;border:0}
 #interactionDock .creature-stage-resources{justify-content:flex-end;gap:5px;flex-wrap:nowrap}
-#interactionDock .creature-stage-resources button{min-height:36px;padding:4px 9px;font-size:12px}
+#interactionDock .creature-stage-resources button{min-height:38px;padding:4px 9px;font-size:12px}
 #interactionDock .courtship-tray{display:block;max-height:150px;overflow-y:auto}
 #interactionDock .courtship-portraits{display:none}
 #interactionDock .courtship-cards{display:flex;gap:5px}
@@ -421,7 +421,7 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 #interactionDock .courtship-tools{display:flex;flex-wrap:wrap;gap:4px}
 #interactionDock .courtship-tools button{min-height:34px;padding:4px 7px;font-size:11px}
 #saveStatus{top:58px;right:10px}
-@media(max-width:600px){#interactionDock,#interactionDock.is-compact{grid-template-columns:170px minmax(0,1fr);padding:6px;gap:5px}#interactionDock .dock-player{grid-template-columns:32px 1fr}#interactionDock .dock-player>canvas,#interactionDock.is-compact .dock-player canvas{width:32px;height:28px}#interactionDock .dock-header{flex-direction:row;flex-wrap:wrap}#interactionDock .creature-stage-resources button{padding:4px 6px;font-size:11px}#interactionDock .creature-stage-resources button svg{width:16px;height:16px}#interactionDock .creature-stage-resources [data-resource=eat]{max-width:100px}}
+@media(max-width:600px){#interactionDock,#interactionDock.is-compact{grid-template-columns:170px minmax(0,1fr);padding:6px;gap:5px}#interactionDock button{min-height:38px!important;min-width:38px!important;touch-action:manipulation}#interactionDock .dock-player{grid-template-columns:32px 1fr}#interactionDock .dock-player>canvas,#interactionDock.is-compact .dock-player canvas{width:32px;height:28px}#interactionDock .dock-header{flex-direction:row;flex-wrap:wrap}#interactionDock .creature-stage-resources button{padding:4px 8px;font-size:12px;min-height:38px!important;min-width:38px!important;touch-action:manipulation}#interactionDock .creature-stage-resources button svg{width:18px;height:18px}#interactionDock .creature-stage-resources [data-resource=eat]{max-width:100px}}
 
 .context-radial button canvas{width:24px;height:24px;image-rendering:pixelated;pointer-events:none}
 
