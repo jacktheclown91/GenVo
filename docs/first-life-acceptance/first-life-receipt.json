@@ -1,0 +1,57 @@
+{
+  "scope": "Chromium verification of first-life journey, generational succession, naturalist field notes, and multi-viewport readability.",
+  "checks": {
+    "playerGroundAnchor": true,
+    "legitimateBirth": {
+      "id": 197,
+      "generation": 2,
+      "sex": "F"
+    },
+    "exactKinshipReveal": {
+      "kicker": "NEXT GENERATION",
+      "title": "Generation 2 begins",
+      "lead": "You take over as #197 (child of #109). Separate population pressures have begun leaving inherited differences. What it brings: no settled habits yet · knows 1 place.",
+      "childLabel": "Generation 2 #197 (child of #109)",
+      "visible": true
+    },
+    "descendantActiveControl": true,
+    "naturalistFieldNotes": [
+      "Took over active control of this lineage member.",
+      "First recorded drinking from open freshwater.",
+      "Met sibling #198.",
+      "Met parent #109.",
+      "Found Moss."
+    ],
+    "saveContinue": {
+      "samePlayer": true,
+      "sameGeneration": true,
+      "animalsCount": true
+    },
+    "frameStability": {
+      "avg": 18.406666666766007,
+      "max": 51.900000005960464,
+      "deltasCount": 60
+    },
+    "fit800": {
+      "playerX": 400,
+      "playerY": 300,
+      "topBottom": 162.5625,
+      "dockTop": 473.40625,
+      "noOverlap": true
+    },
+    "mobileTouch": {
+      "total": 6,
+      "smallTargets": [],
+      "overflowX": false
+    }
+  },
+  "screenshots": [
+    "01-survival-and-courtship-1280.png",
+    "02-family-and-young-1280.png",
+    "03-succession-reveal-1280.png",
+    "04-naturalist-journal-1280.png",
+    "05-first-life-800.png",
+    "06-mobile-portrait-touch.png"
+  ],
+  "status": "PASS"
+}
