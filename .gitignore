@@ -1,7 +1,8 @@
 # Local/private tools and caches
 .claude/
 .codex/
-.agents/
+!.agents/
+!.agents/**
 scratch/
 .env
 .env.*
