@@ -2,12 +2,21 @@
 // individual behaviour must be readable). Presentation only: the simulation, perception,
 // interaction reach and saves are unchanged; only how large the world is drawn.
 export const ZOOM_LEVELS=Object.freeze([2,3,4]);
-export const DEFAULT_ZOOM=2;
+export const DEFAULT_ZOOM=3;
 const KEY='genvo.cameraZoom';
 let current=null;
+
+export function defaultZoomForViewport(width=globalThis.innerWidth||1280,height=globalThis.innerHeight||720){
+  return (width>=960&&height>=640)?3:2;
+}
+
 export function cameraZoom(){
  if(current)return current;
- try{const stored=Number(globalThis.localStorage?.getItem(KEY));current=ZOOM_LEVELS.includes(stored)?stored:DEFAULT_ZOOM}catch{current=DEFAULT_ZOOM}
+ try{
+   const stored=Number(globalThis.localStorage?.getItem(KEY));
+   if(ZOOM_LEVELS.includes(stored)){current=stored;return current}
+ }catch{}
+ current=defaultZoomForViewport();
  return current;
 }
 export function setCameraZoom(z){

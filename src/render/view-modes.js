@@ -10,7 +10,7 @@
 //              sight, explicitly presentation-only
 export const VIEW_MODES=Object.freeze({
  biological:Object.freeze({label:'Biological Vision',fog:[.96,.8,0],clipVegetation:true,note:'Only what your creature senses; everything else stays dark.'}),
- comfort:Object.freeze({label:'Comfort View',fog:[.62,.34,0],clipVegetation:true,note:'The land stays readable around you; plants, carcasses and creatures appear only when your creature senses them.'}),
+ comfort:Object.freeze({label:'Comfort View',fog:[.54,.28,0],clipVegetation:true,note:'The land stays readable around you; plants, carcasses and creatures appear only when your creature senses them.'}),
  sandbox:Object.freeze({label:'Sandbox View',fog:[.3,.2,0],clipVegetation:false,note:'Shows the whole landscape and its plants for viewing. Creatures, carcasses and dens still need your senses.'})
 });
 export const DEFAULT_VIEW_MODE='comfort';

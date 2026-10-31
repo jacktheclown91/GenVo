@@ -5,6 +5,7 @@ import {movementEffect} from '../lineage/effects.js';
 import {inertiaEnabled,planMotion} from '../organisms/motion.js';
 import {conditionSpeed} from '../ecology/metabolism-policy.js';
 import {structuralSpeed} from '../organisms/structural-support.js';
+import {frontierStep} from '../world/regional-frontier.js';
 
 // Presentation-only prediction for the locally controlled GenVo8.
 // It never mutates simulation state, spends resources, advances animation authority,
@@ -37,6 +38,8 @@ export function predictPlayerPose(sim,input,aheadSeconds=0){
   }else{
     nx=a.x+dx*sp*dt;ny=a.y+dy*sp*dt;
   }
+  const stepped=frontierStep(sim.world,a.x,a.y,nx,ny);
+  nx=stepped.x;ny=stepped.y;
   if(!sim.canOccupy?.(a,nx,ny))return{...base,moving:true,swimming:travel.swimming};
   return{x:nx,y:ny,phase:wrap8((a.anim||0)+dt*8*(travel.swimming?1.35:1)),moving:true,swimming:travel.swimming};
 }
