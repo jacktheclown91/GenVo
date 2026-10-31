@@ -21,6 +21,7 @@ This is the one current development roadmap. Earlier roadmaps are in `history/ro
 - **Mature-world speed:** 4x with 560+ animals (`observer-play`); regional replay after long absences.
 - **`engineer-loss-return`:** redesign its return-patch experiment for finite root digging.
 - **Long field soaks** (`natural-world-soak`, `wild-evolution-observation`): run outside the gate and review population and evolution trends.
+- **Locomotion report:** `tests/grounded-locomotion.mjs` rewrites the tracked `docs/locomotion-support-measurements.json` on every run, and its support-drift reading moved from 0.007 to 0.35 after the padded-limb art (the test still passes). Write the output to an untracked run folder, and review the drift with the presentation owner.
 - **Historical saves:** offer the October 30 new-game rules (`underground-feeding/1`, `starter-partner/1`, `breeding-support/2`, `climate-water/6`, `grazing-nutrients/1`) as explicit adoptions with a backup.
 
 ## Presentation (ChatGPT)
