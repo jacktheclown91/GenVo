@@ -1,0 +1,21 @@
+// Uses only a newly launched nonpersistent browser and an explicit fresh context.
+// No existing browser profile, storage state, or user autosave is opened.
+const fs=require('node:fs'),path=require('node:path');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{const out=path.resolve('docs/player-journey/courtship-feedback');fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:false,args:['--ignore-gpu-blocklist']});
+const context=await browser.newContext({viewport:{width:1440,height:900},storageState:{cookies:[],origins:[]}});
+const page=await context.newPage(),errors=[];try{page.on('pageerror',e=>errors.push(e.message));
+const cdp=await browser.newBrowserCDPSession();const gpu=(await cdp.send('SystemInfo.getInfo')).gpu;
+const root=path.resolve(__dirname,'../..'),types={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.png':'image/png','.ogg':'audio/ogg','.mp3':'audio/mpeg','.wav':'audio/wav','.svg':'image/svg+xml'};
+// Same in-process file transport as the repository's existing GPU/parity harnesses.
+await context.route('https://genvo.review/**',async route=>{const file=path.resolve(root,decodeURIComponent(new URL(route.request().url()).pathname).replace(/^\//,'')||'index.html');if(!file.startsWith(root+path.sep))return route.abort();if(!fs.existsSync(file))return route.fulfill({status:404,body:''});return route.fulfill({body:fs.readFileSync(file),contentType:types[path.extname(file)]||'application/octet-stream'})});
+await page.goto('https://genvo.review/index.html');await page.waitForFunction(()=>window.__GENVO8__?.contextTray);
+await page.getByRole('button',{name:/New World/}).click();await page.locator('#newWorldSeed').fill('GENVO8-TEST-A');await page.getByRole('button',{name:'Begin World',exact:true}).click();
+await page.waitForFunction(()=>window.__GENVO8__?.nativeArtStatus().status==='ready'&&window.__GENVO8__?.sim?.player(),null,{timeout:60000});await page.waitForTimeout(4000);
+
+const rows=[];const read=()=>{const s=window.__GENVO8__.sim,p=s.player();return{day:s.day,tick:s.tickCount,player:{id:p.id,age:p.age,x:p.x,y:p.y,energy:p.energy,hydration:p.hydration,health:p.health,lastMate:p.lastMate,alive:p.alive},children:s.animals.filter(a=>a.parentIds?.includes(p.id)).map(a=>({id:a.id,age:a.age,alive:a.alive,parentIds:a.parentIds,body:a.bodyPlan})),pregnancies:s.animals.filter(a=>a.pregnant?.fatherId===p.id).map(a=>({id:a.id,pregnant:!!a.pregnant})),editor:window.__GENVO8__.editor.open,selected:s.reproduction.selectedMate()?.id,courtship:p.courtshipPerformance?.move,intent:p.intent,targetId:p.target?.id,courtTarget:s.reproduction.courtTargetId,availability:s.reproduction.courtshipAvailability(),refusal:p.lastCourtshipRefusal,failure:p.lastCourtshipFailure,completed:p.completedCourtship}};
+rows.push(await page.evaluate(read));await page.keyboard.press('KeyC');
+for(let i=0;i<16;i++){await page.waitForTimeout(2000);const keep=page.getByRole('button',{name:/Keep.*body/i});if(await keep.count()&&await keep.first().isVisible())await keep.first().click();const r=await page.evaluate(read);rows.push(r);if(i===3||i===15)await page.screenshot({path:path.join(out,'courtship-'+i+'.png')});console.log(JSON.stringify({day:r.day,intent:r.intent,courtTarget:r.courtTarget,refusal:r.refusal,failure:r.failure}));if(r.children.length||!r.player.alive||(i>3&&!r.courtTarget))break;}
+await page.screenshot({path:path.join(out,'final.png')});const text=await page.locator('body').innerText();if(!text.includes('Your creature held back:'))throw Error('Expected the actual ordinary refusal to be visible in the encounter panel');fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({scope:'Fresh ordinary default world; existing keyboard C courtship and Keep body UI only. Read-only telemetry. No actor, resource, time, consent, mutation or RNG edits; no fixture imports.',rows,text,errors},null,2));console.log(JSON.stringify({initial:rows[0],final:rows.at(-1),text:text.slice(-2500),errors}));
+}catch(error){fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify({message:error.message,errors},null,2));throw error}finally{await context.close();await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

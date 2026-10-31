@@ -1,26 +1,20 @@
 {
  "schema": "genvo.known-failures/1",
- "baseline": "d2f676c",
- "recorded": "2026-10-15 (Phase 3I)",
+ "baseline": "f7f3122a",
+ "recorded": "2026-10-30 (consolidation sweep, tools/run-tests.mjs --all --jobs 6)",
  "note": "Known failures still RUN every time and are reported as known-fail. A known suite that fails at a different place (at) or message (match) is reported as a NEW failure. A known suite that passes is reported as stale so the entry gets removed. Remove an entry when the suite is fixed.",
  "failures": {
-  "ai-disclosure": {
-   "category": "release-bookkeeping",
-   "at": "tests/ai-disclosure.mjs:4",
-   "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
-   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
-  },
   "evolution-baseline": {
    "category": "preserved-baseline",
    "at": "tests/evolution-baseline.mjs:15",
    "message": "AssertionError [ERR_ASSERTION]: natural AUTO runs match the consolidation baseline\r",
-   "note": "Creator decision 2026-10-15: keep the historical baseline unchanged. Current-source differences are recorded separately (node tools/evolution-baseline.mjs --compare; docs/evolution-baseline-comparison-2026-10-15.json). A new baseline follows the accepted biological corrections."
+   "note": "The effect matrix matches exactly. Only the 60-day natural AUTO runs drift after many rule changes; docs/evolution-baseline-comparison-2026-10-30.json records the comparison and the historical baseline is unchanged (the October 15 practice). Creator decision on refreshing the natural block."
   },
   "evolution-contract": {
    "category": "release-bookkeeping",
    "at": "tests/evolution-contract.mjs:15",
    "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-f",
-   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+   "note": "The v1.33.7 creature fixture (docs/evolution-expansion/baseline-v1.33.7/creature-fixture.json) is in no branch, commit or local folder. Retire the fixture section with this reason, or supply the fixture. Creator decision."
   },
   "player-copy-style": {
    "category": "release-bookkeeping",
@@ -33,6 +27,72 @@
    "at": "tests/provenance.mjs:22",
    "message": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
    "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  },
+  "restore-deferred-flora": {
+   "category": "stale-frozen-reference",
+   "at": "tests/restore-deferred-flora.mjs:13",
+   "message": "AssertionError [ERR_ASSERTION]: freshwater/1 current entire restored state",
+   "note": "Optimisation parity against a frozen pre-change copy. Today's code round-trips saves exactly, but the frozen copy predates later persisted state (cave subsurface) or later biology (tissue energy, aquatic foraging, shared breeding rule), so exact parity can no longer hold. Retire the frozen-copy comparison with this reason, or refreeze. Creator decision. See docs/TEST-DEBT-2026-10-30.md."
+  },
+  "world-restore-base-cache": {
+   "category": "stale-frozen-reference",
+   "at": "tests/world-restore-base-cache.mjs:10",
+   "message": "AssertionError [ERR_ASSERTION]: complete restore freshwater/1",
+   "note": "Optimisation parity against a frozen pre-change copy. Today's code round-trips saves exactly, but the frozen copy predates later persisted state (cave subsurface) or later biology (tissue energy, aquatic foraging, shared breeding rule), so exact parity can no longer hold. Retire the frozen-copy comparison with this reason, or refreeze. Creator decision. See docs/TEST-DEBT-2026-10-30.md."
+  },
+  "consolidation-demand-parity": {
+   "category": "stale-frozen-reference",
+   "at": "tests/consolidation-demand-parity.mjs:45",
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+   "note": "Optimisation parity against a frozen pre-change copy. Today's code round-trips saves exactly, but the frozen copy predates later persisted state (cave subsurface) or later biology (tissue energy, aquatic foraging, shared breeding rule), so exact parity can no longer hold. Retire the frozen-copy comparison with this reason, or refreeze. Creator decision. See docs/TEST-DEBT-2026-10-30.md."
+  },
+  "dietary-scan-parity": {
+   "category": "stale-frozen-reference",
+   "at": "tests/dietary-scan-parity.mjs:20",
+   "message": "AssertionError [ERR_ASSERTION]: complete natural saved state differs at day 2",
+   "note": "Optimisation parity against a frozen pre-change copy. Today's code round-trips saves exactly, but the frozen copy predates later persisted state (cave subsurface) or later biology (tissue energy, aquatic foraging, shared breeding rule), so exact parity can no longer hold. Retire the frozen-copy comparison with this reason, or refreeze. Creator decision. See docs/TEST-DEBT-2026-10-30.md."
+  },
+  "detailed-body-forms": {
+   "category": "presentation-catalog",
+   "at": "tests/detailed-body-forms.mjs:9",
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "note": "Frozen catalog variants changed by the padded-limb art commit (a48dc954); fails the same way on Codex's branch. Presentation owner (ChatGPT) to refreeze or adjust."
+  },
+  "detailed-heads": {
+   "category": "presentation-catalog",
+   "at": "tests/detailed-heads.mjs:19",
+   "message": "AssertionError [ERR_ASSERTION]: all other 28 candidate variants remain exact",
+   "note": "Frozen catalog variants changed by the padded-limb art commit (a48dc954); fails the same way on Codex's branch. Presentation owner (ChatGPT) to refreeze or adjust."
+  },
+  "detailed-torsos": {
+   "category": "presentation-catalog",
+   "at": "tests/detailed-torsos.mjs:13",
+   "message": "AssertionError [ERR_ASSERTION]: other22 variants remain exact; head revision is checked by detailed-heads",
+   "note": "Frozen catalog variants changed by the padded-limb art commit (a48dc954); fails the same way on Codex's branch. Presentation owner (ChatGPT) to refreeze or adjust."
+  },
+  "wing-root-refinement": {
+   "category": "presentation-catalog",
+   "at": "tests/wing-root-refinement.mjs:9",
+   "message": "AssertionError [ERR_ASSERTION]: other34 non-tail variants remain exact",
+   "note": "Frozen catalog variants changed by the padded-limb art commit (a48dc954); fails the same way on Codex's branch. Presentation owner (ChatGPT) to refreeze or adjust."
+  },
+  "terrain-cohesion": {
+   "category": "presentation",
+   "at": "tests/terrain-cohesion.mjs:18",
+   "message": "AssertionError [ERR_ASSERTION]: continuous terrain hue bias should not jump between nearby samples (max 33.76500227723697)",
+   "note": "Terrain hue jumps between nearby samples. Presentation owner (ChatGPT)."
+  },
+  "observer-play": {
+   "category": "performance-budget",
+   "at": "tests/observer-play.mjs:59",
+   "message": "AssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 1071 ms per real second of play",
+   "note": "4x speed with 560+ animals costs about 1 s of work per real second, above the test budget. Mature-world performance work; normal 1x play is within budget."
+  },
+  "engineer-loss-return": {
+   "category": "obsolete-experiment",
+   "match": "canonical digging with naturally born descendant: No accessible root or bulb meal remains here",
+   "message": "Day 89: canonical digging with naturally born descendant: No accessible root or bulb meal remains here, or this ground is recovering.",
+   "note": "The free-world half passes. The return-patch experiment digs one cell every 7 days, but under finite-local-root-food/1 that cell's roots run out by day 89. Redesign the maintenance experiment (a worked patch, or root regrowth). Long tier."
   }
  },
  "historicalObservations": {

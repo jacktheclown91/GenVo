@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../../src/sim/simulation.js';
+import {SPECIES} from '../../src/organisms/species.js';
+import path from 'node:path';
+const sim=new Simulation('GENVO8-NURSING-RESERVE-AUDIT',{player:true}),s=SPECIES.genvo;
+const candidate=process.argv.includes('--candidate');
+if(candidate){const {loadFundedNursingCandidate}=await import('../nursing-funded-candidate.mjs');sim.family.phaseCare=(await loadFundedNursingCandidate(path.resolve('src'))).prototype.phaseCare}
+const mother=sim.player(),father=sim.animals.find(a=>a.species==='genvo'&&a.id!==mother.id);
+Object.assign(mother,{sex:'F',age:s.maturity+10,x:12,y:12,energy:s.maxEnergy*.95,health:100});
+Object.assign(father,{sex:'M',age:s.maturity+10,x:12.2,y:12,energy:s.maxEnergy*.95,health:100});
+mother.pregnant={fatherId:father.id,days:1,totalDays:s.gestation};
+const children=sim.giveBirth(mother);assert.ok(children.length);
+for(const child of children){child.x=12.1;child.y=12;child.energy=1}
+sim.rebuildSpatial();
+const total=()=>sim.animals.filter(a=>a.alive).reduce((n,a)=>n+a.energy,0);
+const before=total(),rng=sim.rng.state;
+sim.family.phaseCare();
+const after=total();assert.equal(sim.rng.state,rng);
+console.log(JSON.stringify({seed:sim.seed,candidate,children:children.length,before,after,netEnergy:after-before,nurseEfficiency:s.familyCare.nurseEfficiency,productionChanged:false,naturalWildPopulationCause:false}));
+assert.ok(after<=before+1e-9,'reserve-only nursing must not create energy');
+const floor=s.maxEnergy*s.familyCare.parentReserve;
+mother.energy=father.energy=floor+.01;
+for(const child of children)child.energy=1;
+const limitedBefore=total();sim.family.phaseCare();
+assert.ok(total()<=limitedBefore+1e-9);
+assert.ok(mother.energy>=floor-1e-9&&father.energy>=floor-1e-9,'nursing cannot spend protected parent reserve');
+mother.energy=father.energy=s.maxEnergy*.95;
+const targets=children.map(child=>s.maxEnergy*(s.familyCare.nurseTarget-(sim.family.learningProfile(child)?.independence??0)*.14));
+children.forEach((child,i)=>{child.energy=targets[i]-.001});
+const nearTargetBefore=total();sim.family.phaseCare();
+assert.ok(total()<=nearTargetBefore+1e-9);
+children.forEach((child,i)=>assert.ok(child.energy<=targets[i]+1e-9,'funded nursing respects its exact child target'));
+assert.equal(sim.rng.state,rng);
+console.log('nursing funding, parent reserve and child target controls: PASS');

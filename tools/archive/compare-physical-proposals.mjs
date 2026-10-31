@@ -1,0 +1,4 @@
+import {PARTS} from '../../src/lineage/part-registry.js';import {founderPlan} from '../../src/lineage/body-inheritance.js';import {makePlan,validatePlan} from '../../src/lineage/body-plan.js';import fs from 'node:fs';
+const base=founderPlan(),weight=p=>p.nodes.reduce((n,x)=>n+(PARTS[x.partId]?.mass||0),0),ref=weight(base),rows=[];
+for(const torso of ['small-torso','light-torso','reinforced-torso','barrel-torso','dome-torso','long-torso']){const p=makePlan(base.nodes.map(n=>n.parent?n:{...n,partId:torso}));if(validatePlan(p).ok)rows.push({torso,mountedDeclaredWeight:weight(p),currentAdultMass:1.45,illustrativeNormalizedAdultMass:1.45*weight(p)/ref})}
+fs.writeFileSync('design/consolidation/physical-model-comparisons.json',JSON.stringify({status:'PROPOSAL ONLY - no biological numbers approved or applied',reference:{body:'complete founder',declaredWeight:ref,currentAdultMass:1.45},rows},null,2));console.log(rows);

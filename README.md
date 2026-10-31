@@ -4,6 +4,11 @@ GenVo is a Living Planet survival game and open-ended evolutionary possibility e
 
 ## Start here
 
+- [Roadmap](docs/ROADMAP.md): the one current development roadmap and the open decisions.
+- [Release checklist](docs/RELEASE-CHECKLIST.md): the reproducible build, verification and upload procedure.
+- [Tools](tools/README.md): the active toolkit. One-off scripts from earlier passes are in `tools/archive/`.
+- Tests: `tools/check-playable.mjs` is the release gate; `tools/run-tests.mjs` runs everything, with long studies in `tests/test-tiers.json` and classified failures in `tests/known-failures.json`.
+
 - [Engineering continuation](docs/GIT-CONTINUATION-HANDOFF.md): verified checkpoints, architecture baseline and exact GitHub-only next tasks.
 
 - [Current design](design/CURRENT-DESIGN.md): governing intent and constraints.
@@ -65,7 +70,7 @@ The fast runner reports deferred long suites and known failures separately. A pa
 
 ## Repository boundaries
 
-`tests/` and `tools/` contain functioning checks and authoring tools. `Original (human) arts/` preserves original artwork. Historical `reports/*-before/` source remains because comparison tests and capture tools import it. Never treat those fixtures as live implementation alternatives.
+`tests/` and `tools/` contain functioning checks and authoring tools; `tools/archive/` keeps one-off scripts from earlier passes. `Original (human) arts/` preserves original artwork. Historical `reports/*-before/` source remains because comparison tests and capture tools import it. Never treat those fixtures as live implementation alternatives.
 
 Local builds, snapshots and raw diagnostics are ignored. Source packages use the same Git inclusion boundary, with additional generated-file exclusions. Browser export follows actual runtime dependencies.
 

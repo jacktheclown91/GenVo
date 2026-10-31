@@ -1,4 +1,5 @@
-import {applyInertiaExpression} from '../src/render/inertia-expression.js';
+// Additive test pose (lean, sway, twist, roll, tail, drop) that exercises the ground-contact anchors.
+const applyInertiaExpression=(b,p)=>{for(const [k,v] of [['bodyLean','lean'],['bodySway','sway'],['torsoTwist','twist'],['dorsalRoll','roll'],['tailSweep','tail'],['bodyDrop','drop']])b[k]=(b[k]||0)+p[v]};
 import assert from 'node:assert/strict';
 import {GroundContactTracker} from '../src/render/ground-contacts.js';
 import {drawGenvoSprite} from '../src/render/genvo-draw.js';

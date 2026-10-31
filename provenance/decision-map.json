@@ -874,7 +874,7 @@
           "tests/anatomy-readings.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Directly edited caches fold back into anatomy. Save schema 7 moves every form and proto-trait onto the body with no gain or loss. Stage A baseline unchanged, including natural AUTO runs."
       }
@@ -896,7 +896,7 @@
           "tests/generation-progression.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Hunter now forms from a settled hunting habit plus a hunting build; Grazer from Efficient Gut, Forager form and no hunting habit; Burrower from a home habit instead of where adults stood that day. Rangebreak needs a ranging habit and Kin Gathering a home habit in addition to their events. Save schema stays 7; trial fields added at runtime default safely. Stage A baseline unchanged."
       }
@@ -914,7 +914,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Reproduced in Chromium by loading a save from a different world through loadSavedLineage; the same lakeside view is correct after the fix. No simulation or save change."
       }
@@ -932,7 +932,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Reproduced in Chromium on v1.32.3 with a real E press at a bank. No simulation or save change."
       }
@@ -979,7 +979,7 @@
           "tests/knowledge.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Teaching consumes no RNG. Autonomous navigation to water is unchanged. Save schema stays 8. Stage A baseline unchanged."
@@ -1003,7 +1003,7 @@
           "tests/pounce.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "No RNG added to heredity; Stage A baseline unchanged. Autonomous creatures do not pounce."
@@ -1026,7 +1026,7 @@
           "tests/learned-fear.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "No RNG consumed. Survival needs (drinking when parched, escape, mobbing) are never overridden, nor is the player's control. Stage A baseline unchanged: Stalkers target abundant prey, so fear arises mostly from encounters with the active creature."
@@ -1047,7 +1047,7 @@
           "docs/evolution-baseline.json",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Stage A baseline regenerated on purpose: factor matrix identical; natural runs EVO-A deaths 29 to 24, EVO-C 23 to 20, family forage range medians 10.35 to 10.40 and 8.09 to 8.11; EVO-B unchanged. The 20-year ecology stability test, failing since v1.27 (Hoppers 15 of 16), now passes."
@@ -1069,7 +1069,7 @@
           "tests/observer-readability.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Presentation only; no simulation change. Stage A baseline unchanged."
       }
@@ -1092,7 +1092,7 @@
           "tests/observer-readability.mjs",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Presentation only. Stage A baseline unchanged."
       }
@@ -1110,7 +1110,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Presentation only. Whether AUTO founders should build a first home is a gameplay change left for the creator to decide."
       }
@@ -1131,7 +1131,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Stage A baseline regenerated on purpose because its natural runs use AUTO: factor matrix identical; deaths EVO-A 24 to 22, EVO-B 15 to 19; family forage range medians EVO-A 10.40 to 10.78, EVO-B 8.38 to 8.30, EVO-C 8.11 to 10.09; one Grasping Limbs no longer appears in EVO-C by day 60. Homes are built on day 4 to 6 in headless AUTO runs."
@@ -1145,7 +1145,7 @@
       "rationale": "Playtesters asked for deeper, more Spore-like evolution; the creator's GDD sets the design and requires a no-op contract foundation before anything visible changes.",
       "implementation": {
         "files": [
-          "GenVo8_Evolution_Expansion_GDD_v1.md",
+          "docs/history/root-plans/GenVo8_Evolution_Expansion_GDD_v1.md",
           "src/lineage/part-registry.js",
           "src/lineage/body-plan.js",
           "src/lineage/phenotype-resolver.js",
@@ -1161,7 +1161,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md",
           "provenance/authorship-manifest.json"
         ],
@@ -1184,7 +1184,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Gate met: in-browser captures of a body using every new part in eight facings, walking and pouncing show it connected; a recorded-pixel comparison of all 113 fixture creatures over 8 facings, 8 frames, still and walking is identical to v1.35.0 apart from the spring heel; 560-animal observer probe 16.7 ms median and p95 at 1x to 4x; decision probe 5/5. Known gap: the paddle tail and jaws remain subtle at gameplay zoom, short of the GDD silhouette goal."
@@ -1217,7 +1217,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md",
           "docs/evolution-expansion/phase-c-creature-editor.md"
         ],
@@ -1250,7 +1250,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Gate met in the real browser (tools/phase_d_gate_probe.py, 9/9): same lean-ground Stalker charge; spring runner escapes with 0 hits; armored digger braces (0 to 9 damage against 15 for a plain body) then digs roots with E; venom and wide-eye body drives it off poisoned; wide-field eyes mark threats at 14 tiles against 10; a plain body cannot dig or poison; no console errors. tests/part-abilities.mjs covers each ability and cost, no part no action, a wild digger feeding itself, and save/reload of dug ground, poison and doses. Suite 154/155 before recording (provenance pending); v1.33.7 evolution baseline matches; decision probe 5/5; editor gate passes at 1280, 820 and 390 px. Observer probe A/B against v1.37.0 on the same machine: equal (16.7 ms median both; p95 and slow frames equally raised by machine load). During this pass an outside overwrite put v1.36.0 files over the toolkit; v1.37.0 files were restored from the staged v1.37.0 package and the Phase D edits reapplied."
@@ -1301,7 +1301,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 156/157 before recording (provenance pending), including tests/founder-body.mjs and tests/parts-wave1.mjs; 20-year ecology test passes after the balance pass (Diggers 23-24 on its seeds; an extra seed D still ends at 6 against 24 in v1.38.0); consolidation baseline regenerated deliberately (60-day family results unchanged except world deaths); creature drawings without plans pixel-identical to v1.38.0 (14,464 frames); browser: founder renders as a four-legged small body, the editor shows only the founder's sites and grows it to a soft six-legged body (+6% land speed), all nine bodies render in four facings with legs visible on long bodies, no clipping at 1280 and 390 px; decision probe 5/5; Phase D gate 9/9 with the plain control on the same speed rules; observer probe 16.7 ms median, p95 16.8 ms at 1x to 4x."
@@ -1325,7 +1325,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 156/157 before recording (provenance pending); decision probe 5/5; observer 16.7 ms median at 1x to 4x; browser: body sheet and in-game frame checked at the new zoom; editor fits at 1280 and 390 px."
@@ -1348,7 +1348,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 156/157 before recording (provenance pending); decision probe 5/5; chunk build 4.9 ms vs 3.2 ms in v1.38.0; observer probe 16.7 ms median at 1x to 4x with 1-2 frames over 50 ms per run (v1.38.0: none); normal 4x play showed no render frame over 25 ms and no simulation step over 12 ms in 12 s; browser screenshots checked for tile stair steps."
@@ -1375,7 +1375,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 157/158 before recording (provenance pending), including tests/parts-wave2.mjs and the 20-year ecology test; baseline regenerated; decision probe 5/5; Phase D gate 9/9; observer 16.7 ms median 1x-4x; editor fits; extra ecology seed D ends with 13 Diggers (v1.38.0: 24)."
@@ -1412,7 +1412,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 158/159 before recording (provenance pending), including tests/discovery.mjs and the 20-year ecology test; baseline regenerated; decision probe 5/5; Phase D gate 9/9; observer 16.7 ms median 1x-4x; browser: places drawn and discovered, hints and toasts, field guide panel, no console errors."
@@ -1449,7 +1449,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 159/160 before recording (provenance pending), including tests/wild-evolution.mjs and the 20-year ecology test; extra seeds B, D, F healthy (Diggers 23 on D); baseline regenerated (world deaths only); decision probe 5/5; Phase D gate 9/9; observer 16.7 ms median 1x-4x; browser: evolved Stalkers, an Elder Stalker and a relic render without errors."
@@ -1481,7 +1481,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite 159/160 before recording (provenance pending), including the rewritten tests/wild-evolution.mjs and the 20-year ecology test; extra seeds B, D, F healthy with many branches; baseline regenerated (world deaths only); decision probe 5/5; Phase D gate 9/9; observer 16.7 ms median 1x-4x with every wild animal on the modular drawer; browser lineup of three species and evolved variants without errors."
@@ -1509,7 +1509,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including the new tests/special-creatures.mjs; 200-day player-mode runs on three seeds: specials arrive on days 20-49, Ghost relics every ~40 days, Crystal Diggers sometimes taken by Stalkers; baseline regenerated (world deaths only); browser lineup of all four specials beside their common forms, no console errors."
@@ -1527,7 +1527,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); browser observer probe medians 16.7 ms, p95 16.8/16.8/33.4 ms, the same as v1.46.0; decision probe and Phase D gate pass; before/after sheets of every species and special creature at close-up and play scale; no console errors."
@@ -1546,7 +1546,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including the motion and visual geometry tests; observer probe p95 16.8/16.8/33.4 ms over three runs, the same as v1.47.0; decision probe and Phase D gate pass; close-up, in-game and walk-cycle renders checked; no console errors."
@@ -1565,7 +1565,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); interleaved observer A/B against v1.48.0 shows the same frame times; decision probe and Phase D gate pass; play-scale part sheet (every mouth, eye and back part, side and front views), diagonal Digger views and in-game shots checked; no console errors."
@@ -1584,7 +1584,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); interleaved observer A/B against v1.49.0 shows the same frame times; before/after screenshots of the start area and a river thicket; no console errors."
@@ -1603,7 +1603,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); interleaved observer A/B against v1.50.0 shows the same frame times; decision probe and Phase D gate pass; before/after screenshots of open ground and every place kind; no console errors."
@@ -1622,7 +1622,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); interleaved observer A/B against v1.51.0 shows the same frame times; decision probe and Phase D gate pass; four-season screenshots of the start area with every species in view; no console errors."
@@ -1645,7 +1645,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); browser drag tests: sail fin dragged onto the back socket, runner legs mirrored on both hips, sail fin dragged off removed it, beak attached by click then socket, Evolve commits; layout checks show no overlaps or clipped text at 1280x720, and a single scrolling column at 390x844; field guide pages and the journal show no clipped text; no console errors."
@@ -1668,7 +1668,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md",
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md",
           "docs/SIMULATION_SPEC.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including the new tests/socket-layout.mjs; browser editor drag tests pass with the authored sockets; eight-facing sheet of the round body with three part sets and the editor socket overlay; no console errors."
@@ -1688,7 +1688,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); consolidation baseline identical; 20-year ecology passes; CPU profile idle 23.5% -> ~33%; alternating 2-minute browser runs against v1.54.0: p95 16.8 ms both, slow frames within noise; no console errors."
       }
@@ -1708,7 +1708,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including audio asset, runtime and model tests; QA: every loop seam below its 99th-percentile sample step, no DC offset, no clipping; browser: all 32 files decode, seven loops run, cues play, no console errors."
       }
@@ -1736,7 +1736,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); browser flow: the founder (Generation 1) mating opens the editor, a runner-leg design committed by click is born into the litter, and the handoff portraits show real bodies with 'new runner leg' first; FPS (headless, 20 s AUTO): 1280x720 59.6, 1920x1080 57.7 (was 45.8), 2560x1440 44.9 (was 25.5); no console errors."
       }
@@ -1754,7 +1754,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including the new AUTO-mating editor assertion; browser: AUTO 4x opened the editor on day 5 for the founder and paused the game; editor drag tests pass; no console errors."
       }
@@ -1774,7 +1774,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); headless 20 s AUTO with the new counter: 1596x760 59.8 FPS, slowest 32 ms, builds 2.5 ms/frame (was 190 ms and 11.2 ms); 1920x1080 54.4 FPS; 2560x1440 44 FPS with performance mode engaged automatically; no console errors."
       }
@@ -1791,7 +1791,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); GPU emulation (SwiftShader, accelerated 2D canvas) at 1920x1080: creatures 2.6 ms/frame (was 33.6-43.6), drawImage 4.8% of CPU (was 56%); software path 1596x760 59.9 FPS, 1920x1080 58.9 FPS; editor drag tests pass; no console errors."
       }
@@ -1813,7 +1813,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending); decoded Opus loops match master length exactly with no offset and in-range seams; AAC tail padding handled by loopEnd; browser: 32/32 decode from Opus, and 32/32 from AAC with Opus blocked; no console errors."
       }
@@ -1836,7 +1836,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Suite all passing before recording (provenance pending), including the new tests/animation.mjs; 60 FPS walk-and-turn screen recordings before and after on the same seed; leg articulation sheets; FPS 1920x1080 58.9 (software), creatures 5.3 ms under GPU emulation; editor drag tests pass; no console errors."
       }
@@ -1857,7 +1857,7 @@
           "src/sim/config.js",
           "tests/core.mjs",
           "README.md",
-          "CHANGES-SINCE-v1.31.md"
+          "docs/history/root-plans/CHANGES-SINCE-v1.31.md"
         ],
         "notes": "Signed counter and costSteps; 560x460 stage with zoom 0.6-1.75; drawPartAlone tiles for 63 parts."
       }
@@ -1960,7 +1960,7 @@
       "implementation": {
         "status": "full objective active; requirements audited; ecology prerequisite still failing",
         "files": [
-          "GenVo8_Development_Plan_Guided_Survival_2026-10-10.md",
+          "docs/history/root-plans/GenVo8_Development_Plan_Guided_Survival_2026-10-10.md",
           "docs/GUIDED_SURVIVAL_IMPLEMENTATION_STATUS.md",
           "tools/ecology-validation.mjs"
         ],

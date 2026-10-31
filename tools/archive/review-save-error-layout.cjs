@@ -1,0 +1,20 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{
+ const root=process.cwd(),out=path.resolve(process.argv[2]||'reports/ui-save-error-layout-20261024');fs.mkdirSync(out,{recursive:true});
+ const receipt={scope:'Isolated authored UI layout fixture using production Help/save markup, stylesheet and NotificationCenter. No simulation, storage failure or recovery is present or claimed.',creatorAcceptance:false,errors:[],panels:[]};
+ const source=fs.readFileSync(path.join(root,'index.html'),'utf8'),fixture=source.slice(0,source.indexOf('</head>'))+'</head><body><main id="app"><canvas id="game"></canvas>'+source.match(/<div id="saveStatus"[^>]*>[\s\S]*?<\/div>/)[0]+source.match(/<section id="help"[\s\S]*?<\/section>/)[0]+'</main><script type="module">import {NotificationCenter} from "/src/ui/notification-center.js";window.__saveErrorFixture=new NotificationCenter(document.createElement("div"));document.querySelector("#help").hidden=false;const frame=()=>{window.__saveErrorFixture.layout();requestAnimationFrame(frame)};requestAnimationFrame(frame);</script></body>';
+ const server=http.createServer((req,res)=>{if(req.url==='/__save-error-fixture'){res.setHeader('Content-Type','text/html; charset=utf-8');return res.end(fixture)}const url=new URL(req.url,'http://local'),file=path.resolve(root,'..'+(url.pathname==='/'?'/index.html':decodeURIComponent(url.pathname)));if(!file.startsWith(root+path.sep))return res.writeHead(403).end();fs.readFile(file,(err,bytes)=>{if(err)return res.writeHead(404).end();res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml'})[path.extname(file)]||'application/octet-stream');res.end(bytes)})});
+ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1024,height:768}});page.on('pageerror',e=>receipt.errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/__save-error-fixture');await page.waitForFunction(()=>!!window.__saveErrorFixture);
+  receipt.layouts=[];await page.waitForFunction(()=>document.querySelector('#saveStatus').hidden);
+  for(const [width,height] of [[1024,768],[390,844]]){
+   await page.setViewportSize({width,height});
+   const normal=await page.locator('#saveStatus').evaluate(e=>getComputedStyle(e).color);await page.locator('#saveStatus').evaluate(e=>{e.textContent='Authored save-error layout fixture: could not save this checkpoint.';e.classList.add('error');e.hidden=false});await page.waitForTimeout(180);
+   const reading=await page.evaluate(()=>{const e=document.querySelector('#saveStatus'),panel=document.querySelector('#help'),style=getComputedStyle(e);return{width:innerWidth,text:e.textContent,role:e.getAttribute('role'),color:style.color,border:style.borderColor,visible:!e.hidden&&style.visibility==='visible',rect:e.getBoundingClientRect().toJSON(),panel:panel.getBoundingClientRect().toJSON(),parent:e.parentElement.id}});receipt.layouts.push({normal,...reading});await page.screenshot({path:path.join(out,'error-'+width+'.png')});assert.ok(reading.visible&&reading.rect.width>0);assert.equal(reading.parent,'notificationStack');assert.equal(reading.role,'status');assert.notEqual(reading.color,normal,'Save error has distinct warning text color');if(width<=650)assert.ok(reading.rect.bottom<=reading.panel.top);await page.locator('#saveStatus').evaluate(e=>{e.hidden=true;e.classList.remove('error');e.textContent='Saved'});
+  }
+  assert.equal(receipt.errors.length,0);
+ }finally{fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify(receipt,null,2));await browser.close();await new Promise(r=>server.close(r))}
+ console.log('Authored save-error UI layout PASS; this does not claim an actual storage failure or recovery.');
+})().catch(e=>{console.error(e);process.exitCode=1});

@@ -1,0 +1,13 @@
+let activeBrowser;const fs=require('node:fs'),path=require('node:path');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{
+ const root=path.resolve(__dirname,'../..'),browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:900},recordVideo:{dir:path.join(root,'docs/runtime-v176-video'),size:{width:1440,height:900}}});
+ activeBrowser=browser;const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.route('https://genvo.review/**',async r=>{const p=path.resolve(root,decodeURIComponent(new URL(r.request().url()).pathname).replace(/^\//,'')||'index.html');if(!p.startsWith(root+path.sep))return r.abort();if(!fs.existsSync(p))return r.fulfill({status:404,body:''});const ext=path.extname(p);await r.fulfill({body:fs.readFileSync(p),contentType:({'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.png':'image/png','.wav':'audio/wav'})[ext]||'application/octet-stream'});});
+ await page.goto('https://genvo.review/index.html');await page.waitForFunction(()=>window.__GENVO8__?.contextTray);
+ await page.getByRole('button',{name:/New World/}).click();await page.getByRole('button',{name:'Begin World',exact:true}).click();await page.waitForTimeout(600);
+ await page.waitForFunction(()=>window.__GENVO8__.nativeArtStatus().status==='ready');
+
+ const measurement=await page.evaluate(async()=>{window.__GENVO8__.sim.paused=true;const url=new URL('/assets/art/catalog.json',location.href),serial=await import('/reports/native-loader-serial-before.mjs'),current=await import('/src/render/runtime-part-art.js');const start=performance.now(),before=await serial.loadNativePartCatalog(url),serialMs=performance.now()-start,next=performance.now(),after=await current.loadNativePartCatalog(url),parallelMs=performance.now()-next;return{serialMs,parallelMs,serialStatus:before,currentStatus:after,scope:'One routed Chromium warm-load comparison of the saved preceding loader and current loader; not a cold-start or device-wide benchmark'}});
+ if(measurement.serialStatus.installed!==79||measurement.currentStatus.installed!==79||errors.length)throw Error('Native loading measurement did not install all actual parts');fs.writeFileSync(path.join(root,'docs/native-loading-comparison.json'),JSON.stringify(measurement,null,2));console.log(JSON.stringify(measurement));await browser.close();
+})().catch(async e=>{console.error(e);await activeBrowser?.close();process.exitCode=1});

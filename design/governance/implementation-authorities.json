@@ -730,9 +730,7 @@
     "src/lineage/swimming-review.js": "Review-only swimming policy exercised by tests/swimming-review.mjs; not live movement authority.",
     "src/organisms/tissue-construction.js": "Experimental material funding kernel exercised by tests/tissue-construction.mjs; not complete runtime tissue conservation.",
     "src/organisms/tissue-ledger.js": "Experimental material ledger exercised by tests/tissue-ledger.mjs and tissue-construction tests; preserve historical accounting contracts.",
-    "src/persistence/fauna-page-checkpoint.js": "Standalone checkpoint contract tested by tests/fauna-page-checkpoint.mjs; live persistence uses current save/region authorities.",
-    "src/render/arid-presentation.js": "Codex arid tint and signal helpers, superseded in the live renderer by PR #51 arid-expression.js and arid-surface-art.js at the October 30 consolidation; retained for tests/arid-presentation.mjs and tools/review-arid-controls.cjs.",
-    "src/render/inertia-expression.js": "Codex inertia pose expression, superseded in the live renderer by PR #51 physical-motion-expression.js at the October 30 consolidation; retained for tests/inertia-expression.mjs, tests/ground-contact-paint.mjs and tools/review-inertia-expression.mjs."
+    "src/persistence/fauna-page-checkpoint.js": "Standalone checkpoint contract tested by tests/fauna-page-checkpoint.mjs; live persistence uses current save/region authorities."
   },
   "derivedReferences": {
     "references/generated-sprite-sheets": "exported images generated from gameplay render functions; never gameplay imports",
