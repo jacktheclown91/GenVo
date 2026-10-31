@@ -1,0 +1,46 @@
+{
+ "schema": "genvo.release-provenance/1",
+ "date": "2026-10-30",
+ "game_zip": "GenVo-web-bc3017bf.zip",
+ "zip_sha256": "eb70c7c8be0c79e0f36337853748762a8087c065a627297fbc579387b36a5923",
+ "zip_bytes": 69594820,
+ "files": 919,
+ "unpacked_bytes": 93689683,
+ "source_commit": "bc3017bf1db7748dd046d941e760dd17312835b1",
+ "game_files_identical_to": "8180e1cd56ca52c19d52bfd4c0a4b12d7bb329f6 (bc3017bf changes only release tooling: tools/export-public.mjs, tests/public-export.mjs)",
+ "pipeline": [
+  "git archive bc3017bf",
+  "node tools/export_sprite_sheets.cjs",
+  "node tools/canonical-source-audit.mjs (PASS)",
+  "node tools/export-public.mjs",
+  "python tools/package-itch-preview.py",
+  "independent extraction: CRC, safe paths, every member byte-identical to export",
+  "git parity: 919 of 919 members byte-identical to Git at the source commit"
+ ],
+ "gates": {
+  "node22": "249 checks PASS",
+  "node24": "249 checks PASS",
+  "static": [
+   "architecture-check PASS",
+   "canonical-source-audit PASS",
+   "public-export PASS"
+  ]
+ },
+ "browser_on_extracted_package": {
+  "release-browser": "PASS: New World, WASD movement, audio, drink, eat, 20 s frame pacing (median 16.7 ms, p95 16.8, max 66.6, none over 100 ms), Save/reload/Continue, layouts 960x600-1920x1080; 0 missing files, 0 page errors, 0 console errors",
+  "first-player-acceptance": "PASS: courtship, conception, Creature Lab opened by pregnancy, birth on day 17, touch-only play, 0 errors, 0 gaps",
+  "integrated-acceptance": "PASS: menu, New World, movement, feeding, drinking, journal, night, 20 days of play, Save/Continue, mobile portrait without overflow, frame pacing p50 16.7 ms, 0 errors, 0 gaps"
+ },
+ "previous_public_build": {
+  "itch_upload": "html 20070216",
+  "zip": "GenVo-web-6d4964ba-LIVE-ROLLBACK.zip",
+  "sha256": "11bb508790e2ac21636de2530d742035ef48f8dffa6eb1ffc7aaba473ce741c7",
+  "verified": "live index.html and sampled sources byte-identical apart from itch.io's injected htmlgame.js",
+  "location": "releases/itch-page-before-2026-10-30/"
+ },
+ "not_verified": [
+  "the hosted itch.io page after upload (to be checked once uploaded)",
+  "browsers other than Chromium",
+  "real-GPU timing"
+ ]
+}

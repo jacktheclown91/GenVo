@@ -134,6 +134,7 @@ const runtime=[
   'tests/starter-partner.mjs',
   'tests/forage-season-competition.mjs',
   'tests/underground-feeding.mjs',
+  'tests/ai-disclosure.mjs',
   'tests/arid-expression-presentation.mjs',
   'tests/diurnal-light-presentation.mjs',
   'tests/field-guide-ui-state.mjs',
