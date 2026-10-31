@@ -249,6 +249,7 @@ const runtime=[
   'tests/movement-input-buffer.mjs',
   'tests/input-responsiveness.mjs',
   'tests/mandatory-tutorial.mjs',
+  'tests/first-life-polish.mjs',
   'tests/mating-tutorial-guide.mjs',
   'tests/home-ground-actions.mjs',
   'tests/survival-threat-guide.mjs',

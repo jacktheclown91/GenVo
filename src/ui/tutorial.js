@@ -98,7 +98,7 @@ export class TutorialController{
   }
   setSimulation(sim,{fresh=false,resume=false}={}){
     this.resourceCue?.clear();this.mateGuide?.reset();this.homeGuide?.reset();this.threatGuide?.reset();this.threatCueKey=null;this.mateCueKey=null;this.homeCueKey=null;this.sim=sim;if(fresh&&!resume)this.sim.uiTutorialRules='survival-home/1';let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
-    this.drankInStepWater=false;this.stepStartTick=sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');
+    this.drankInStepWater=false;this.stepStartTick=sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');this.conceptionNoticed=!!sim.player()?.pregnant;this.youngNoticed=(sim.family?.livingChildren?.(sim.player())||[]).length>0;this.mateNoticed=!!sim.player()?.lastMate;
     if(this.welcome)this.welcome.hidden=this.stage!=='welcome';
     if(this.completeModal)this.completeModal.hidden=this.stage!=='step-complete';
     if(this.briefing)this.briefing.hidden=true;if(this.transition)this.transition.hidden=true;this.transitionWasPaused=false;this.lineageEndedShown=false;
@@ -221,6 +221,19 @@ export class TutorialController{
     if(this.worldInputBlocked()){this.threatGuide?.clear();return;}
     const p=this.sim.player();if(!p?.alive)this.mateGuide?.clear();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showDiscovery(found);const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
     if(!p){this.renderer.guideTarget=null;this.render('Your family line ended.','Press R to start again.');if(!this.lineageEndedShown&&this.sim.lineage?.founderId){this.lineageEndedShown=true;this.showTransition('The family line ended','No grown descendant survived to take over. Press R to start a new run.','Close',true)}return}
+    if(p){
+      if(!this.conceptionNoticed){
+        const isPregnant=!!p.pregnant,matePregnant=this.sim.animals?.some?.(a=>a.alive&&a.pregnant?.fatherId===p.id);
+        if(isPregnant||matePregnant){this.conceptionNoticed=true;this.showToast('Conception: a new generation is gestating · protect your mate and food.',4500,'success')}
+      }
+      if(!this.youngNoticed){
+        const children=this.sim.family?.livingChildren?.(p)||[];
+        if(children.length>0){this.youngNoticed=true;this.showToast('Your first young has arrived · stay close so it learns food and water.',4500,'success')}
+      }
+      if(!this.mateNoticed&&(p.lastMate||this.historyHas('first-mate'))){
+        this.mateNoticed=true;if(this.stage!=='step-mate')this.showToast('Courtship accepted · you and your mate have paired.',4200,'success');
+      }
+    }
     if(this.extendedSurvivalTutorial()&&p.bracing){this.sim.uiTutorialDefense??={};this.sim.uiTutorialDefense.braced=true}
     this.noteEnergyBalance(p);
     this.threatGuide??=new SurvivalThreatGuide();
@@ -296,9 +309,24 @@ export class TutorialController{
     if(existing&&d<7.5){this.renderer.guideTarget={x:existing.x,y:existing.y,label:'old family shelter'};this.render('Found a new brood home','Your G2 pair can establish a second shelter · move at least 7.5 tiles from the old home with your mate, then press N.',{compact:true});return true}
     this.renderer.guideTarget=null;this.render('Build the new brood shelter',can.ok?"N · establish this pair's second family home using nearby plant material":can.reason,{compact:true});return true
   }
+  renderAcuteSurvival(p){
+    const spec=SPECIES[p.species];if(!spec)return false;
+    const water=p.hydration/spec.maxHydration,energy=p.energy/spec.maxEnergy;
+    if(water>=.28&&energy>=.28)return false;
+    if(water<=energy){
+      if(this.sim.world.isDrinkable(p.x,p.y)){this.render('Drink now · critical thirst','Shift+E drinks reachable water before strength collapses.',{compact:false});return true}
+      const known=this.sim.cognition?.knownWater?.(p),w=known||this.sim.world.nearestDrinkable(p.x,p.y,32);
+      if(w)this.renderer.guideTarget={x:w.x,y:w.y,label:'Water'};
+      this.render('Dehydration danger',`Hydration ${Math.round(water*100)}% · drink immediately at nearby water or moist plants`,{compact:false});return true;
+    }else{
+      const f=this.findFood(p,24);if(f)this.renderer.guideTarget={...f,label:'Food'};
+      this.render('Starvation danger',`Energy ${Math.round(energy*100)}% · feed immediately before your body exhausts`,{compact:false});return true;
+    }
+  }
   renderDynamicGoal(p){
     if(this.renderPredatorAlert(p))return;
     if(this.renderStalkerDenWarning(p))return;
+    if(this.renderAcuteSurvival(p))return;
     if(this.renderTerritoryShift(p))return;
     if(this.renderSuccession(p))return;
     if(this.renderGenerationChallenge(p))return;
@@ -530,7 +558,7 @@ export class TutorialController{
     if(!this.transition)return;this.transitionWasPaused=this.sim.paused;this.sim.paused=true;this.transitionKicker.textContent='NOTICE';this.transitionTitle.textContent=title;this.transitionLead.textContent='';this.transitionBody.textContent=body;this.transitionReveal.hidden=true;this.transitionChanges.hidden=true;if(this.transitionEvolution)this.transitionEvolution.hidden=true;this.transitionDetails.hidden=true;this.transitionDetails.open=false;this.transitionContinue.textContent=button;this.transition.dataset.keepPaused=keepPaused?'1':'0';this.transition.hidden=false;
   }
   continueTransition(){
-    if(!this.transition||this.transition.hidden)return;const offer=this.sim.evolution?.offerFor?.();if(offer&&!offer.chosen){this.showToast('Choose one adaptation first.',1600,'warn');return}const keep=this.transition.dataset.keepPaused==='1';this.transition.hidden=true;if(!keep)this.sim.paused=this.transitionWasPaused;this.transition.dataset.keepPaused='0';this.sim.evolution?.clearChosen?.();if(this.pendingLegacy?.length&&this.onLegacy)this.onLegacy(this.pendingLegacy.shift());
+    if(!this.transition||this.transition.hidden)return;const offer=this.sim.evolution?.offerFor?.();if(offer&&!offer.chosen){this.showToast('Choose one adaptation first.',1600,'warn');return}const keep=this.transition.dataset.keepPaused==='1';this.transition.hidden=true;if(!keep)this.sim.paused=this.transitionWasPaused;this.transition.dataset.keepPaused='0';this.sim.evolution?.clearChosen?.();const p=this.sim.player();if(p)this.showToast(`Now living as Generation ${p.generation} #${p.id} · ancestor's life is recorded in the Journal (L).`,4500,'success');if(this.pendingLegacy?.length&&this.onLegacy)this.onLegacy(this.pendingLegacy.shift());
   }
   renderEvolutionChoices(){
     if(!this.transitionEvolution||!this.transitionEvolutionChoices)return;const offer=this.sim.evolution?.offerFor?.();if(!offer?.offers?.length){this.transitionEvolution.hidden=true;this.transitionContinue.disabled=false;return}this.transitionEvolution.hidden=false;this.transitionEvolutionChoices.replaceChildren(...offer.offers.map((o,i)=>{const b=document.createElement('button');b.type='button';b.className='evolution-choice';b.dataset.adaptation=o.id;b.innerHTML=`<i>${i+1}</i><span><strong>${o.name}</strong><small>${o.tier===2?`Second-stage ${o.branch} branch · `:''}${o.summary}</small><em>${o.tradeoff}</em></span>`;b.addEventListener('click',()=>this.chooseEvolution(o.id));return b}));this.transitionContinue.disabled=!offer.chosen;if(offer.chosen)this.markEvolutionChoice(offer.chosen)

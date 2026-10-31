@@ -149,12 +149,23 @@ export function journalMarkup(m,canTakeOver,recordCount,recordPosition){
 }
 
 function journalNote(n){
-  if(n.type==='control')return'Continued the family line here.';
-  if(n.type==='stage')return`Became ${n.data?.stage||'older'}.`;
-  if(n.type==='offspring')return`Young #${n.data?.id??'?'} was born.`;
-  if(n.type==='born')return`Born to #${n.data?.motherId??'?'} and #${n.data?.fatherId??'?'}.`;
-  if(n.type==='first-mate')return`Paired with #${n.data?.id??'?'}.`;
-  return String(n.text||'').replace(/^Recognized /,'Met ').replace(/^Encountered /,'Saw ')+(/[.!?]$/.test(n.text||'')?'':'.');
+  if(n.type==='control')return'Took over active control of this lineage member.';
+  if(n.type==='stage')return`Matured to ${n.data?.stage||'next life stage'}.`;
+  if(n.type==='offspring')return`Offspring #${n.data?.id??'?'} born into the family line.`;
+  if(n.type==='born')return`Born to #${n.data?.motherId??'?'} and #${n.data?.fatherId??'?'}; entered the living world.`;
+  if(n.type==='first-mate')return`Courtship accepted; paired with #${n.data?.id??'?'} to continue the line.`;
+  if(n.type==='first-drink')return'First recorded drinking from open freshwater.';
+  if(String(n.type).startsWith('first-meal:'))return`First recorded feeding on ${foodLabel(n.data?.kind||n.type.split(':')[1])}.`;
+  if(String(n.type).startsWith('first-kill:'))return`First successful hunt: took ${n.data?.species||'prey'}.`;
+  if(String(n.type).startsWith('threat:'))return`Sighted predator (${SPECIES[n.data?.species]?.label||n.data?.species||'Stalker'}); noted hunting sign.`;
+  if(String(n.type).startsWith('flee')||String(n.type).startsWith('escape'))return'Evaded predator pursuit into dense cover.';
+  if(String(n.type).startsWith('wounded:'))return'Survived predator confrontation with injuries.';
+  if(String(n.type).startsWith('wound-recovered:'))return'Wounds fully knitted and strength restored.';
+  if(String(n.type).startsWith('fever-recovered:'))return'Weathered marsh fever; temporary immunity acquired.';
+  if(String(n.type).startsWith('home-established'))return'Established home territory around reliable food and water.';
+  if(String(n.type).startsWith('forage-patch:'))return n.data?.taught?'Guided to rich forage patch by elder kin.':'Discovered and catalogued a fertile forage patch.';
+  if(String(n.type).startsWith('water-found'))return'Discovered accessible freshwater bank.';
+  return String(n.text||'').replace(/^Recognized /,'Met ').replace(/^Encountered /,'Observed ')+(/[.!?]$/.test(n.text||'')?'':'.');
 }
 function plural(n,one,many=one+'s'){return`${n} ${n===1?one:many}`}
 function knowledgeLine(sim,animal){if(!animal?.alive)return'its places died with it';const places=sim.cognition?.knownPlaces?.(animal)||[],water=places.filter(p=>p.type==='water').length,shelters=places.filter(p=>p.type==='shelter').length,food=(sim.foraging?.knownPatches?.(animal)||[]).length;if(!water&&!shelters&&!food)return'knows no places of its own yet';return`knows ${[water?plural(water,'water bank'):'',food?plural(food,'food patch','food patches'):'',shelters?plural(shelters,'shelter'):''].filter(Boolean).join(', ')}`}
